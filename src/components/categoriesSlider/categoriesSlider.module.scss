@@ -1,13 +1,43 @@
 @import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
 @import '../../commonStyles/fonts.scss';
 
+.container {
+  position: relative;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  margin: 30px 8% 0 8.5%;
+}
+
 .title {
-  @include font-source-sans(24px, #fff, 700, 28px);
+  @include font-source-sans(24px, $white, 700, 28px);
   margin: 0 0 24px 0;
+  text-decoration: none;
+  display: block;
 }
 
 .slide {
   height: 391px;
   background: lightcyan;
-  border-radius: 10px;
+  border-radius: 20px;
+}
+
+.rightButton {
+  right: -50px;
+}
+
+.leftButton {
+  left: -30px;
+}
+
+@include tablets {
+  .rightButton {
+    right: -30px;
+  }
+
+  .leftButton {
+    left: -10px;
+  }
 }

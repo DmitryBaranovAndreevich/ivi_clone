@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import styles from './sliderButton.module.scss';
 
 interface ISliderButton {
   direction: string;
@@ -12,7 +13,7 @@ const SliderButton: FC<ISliderButton> = ({ direction, addClass, onClick }) => {
     query: '(max-width: 550px)',
   });
   return (
-    <div className={addClass} onClick={onClick}>
+    <div className={`${styles.container} ${addClass}`} onClick={onClick}>
       {direction === 'right' && (
         <svg
           width={isTablet ? '10' : '20'}

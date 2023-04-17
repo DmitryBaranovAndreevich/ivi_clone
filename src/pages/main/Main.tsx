@@ -8,7 +8,8 @@ const Main = () => {
       <h2>MainPage</h2>
       <Slider />
       <div className={styles.wrapper}>
-        {/* <CategoriesSlider title={'Рекомендую посмотреть >'} size={'medium'} /> */}
+        <CategoriesSlider title={'Рекомендую посмотреть >'} size={'medium'} />
+        <CategoriesSlider title={'(TOP 10) за неделю'} size={'big'} />
       </div>
     </div>
   );

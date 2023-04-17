@@ -2,6 +2,7 @@ import styles from './mainSlider.module.scss';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import SliderButton from '../UI/sliderButton/SliderButton';
+import { useEffect } from 'react';
 
 const MainSlider = () => {
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -40,6 +41,15 @@ const MainSlider = () => {
     },
   });
 
+  const callback = () => {
+    instanceRef.current?.update();
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', callback);
+    return () => window.removeEventListener('resize', callback);
+  }, []);
+
   return (
     <>
       <div ref={sliderRef} className={`${styles.container} keen-slider`}>
@@ -48,14 +58,14 @@ const MainSlider = () => {
             direction={'right'}
             addClass={styles.rightButton}
             onClick={() => {
-              instanceRef.current?.prev();
+              instanceRef.current?.next();
             }}
           />
           <SliderButton
             direction={'left'}
             addClass={styles.leftButton}
             onClick={() => {
-              instanceRef.current?.next();
+              instanceRef.current?.prev();
             }}
           />
         </div>
