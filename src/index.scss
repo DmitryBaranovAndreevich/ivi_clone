@@ -27,7 +27,7 @@ code {
 } */
 
 @import './commonStyles/fonts.scss';
-@import './commonStyles/color.scss';
+@import './commonStyles/variables/index.scss';
 
 * {
   padding: 0;

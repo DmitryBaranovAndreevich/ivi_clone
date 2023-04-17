@@ -1,0 +1,13 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.title {
+  @include font-source-sans(24px, #fff, 700, 28px);
+  margin: 0 0 24px 0;
+}
+
+.slide {
+  height: 391px;
+  background: lightcyan;
+  border-radius: 10px;
+}

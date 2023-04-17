@@ -1,6 +1,11 @@
-@import '../../styles/variables/index.scss';
+@import '../../commonStyles/variables/index.scss';
 
 .container {
-  background: $mainColorDark;
-  color: #fff;
+  background: $black;
+  color: $white;
+}
+
+.wrapper {
+  max-width: $desctop;
+  margin:  0 auto;
 }
