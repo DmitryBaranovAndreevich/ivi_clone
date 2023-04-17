@@ -1,3 +1,6 @@
+@import '../../styles/mixins/index.scss';
+@import '../../styles/variables/index.scss';
+
 .container {
   position: relative;
   max-width: 100vw;
@@ -61,7 +64,7 @@
   z-index: 3;
 }
 
-@media screen and (max-width: 850px) {
+@include laptop {
   .container {
     &:after {
       width: calc((100% - 120px) * 0.1 / 1.2 - 30px);
@@ -73,7 +76,7 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@include tablets {
   .container {
     &:after {
       width: calc((100% - 120px) * 0.1 / 1.2 - 20px);
@@ -97,7 +100,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@include phones {
   .container {
     &:after {
       width: calc((100% - 120px) * 0.1 / 1.2 - 10px);
