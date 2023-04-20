@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import styles from './sliderButton.module.scss';
+import useAppMediaQuery from '../../../hooks/useAppMediaQuery';
 
 interface ISliderButton {
   direction: string;
@@ -9,9 +9,7 @@ interface ISliderButton {
 }
 
 const SliderButton: FC<ISliderButton> = ({ direction, addClass, onClick }) => {
-  const isTablet = useMediaQuery({
-    query: '(max-width: 550px)',
-  });
+  const { isTablet } = useAppMediaQuery();
   return (
     <div className={`${styles.container} ${addClass}`} onClick={onClick}>
       {direction === 'right' && (

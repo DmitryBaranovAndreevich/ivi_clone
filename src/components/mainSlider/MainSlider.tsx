@@ -3,6 +3,7 @@ import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import SliderButton from '../UI/sliderButton/SliderButton';
 import { useEffect } from 'react';
+import { mediaQuery } from '../../service/constans';
 
 const MainSlider = () => {
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -17,21 +18,21 @@ const MainSlider = () => {
       duration: 1000,
     },
     breakpoints: {
-      '(max-width: 850px)': {
+      [mediaQuery.$laptop]: {
         slides: {
           origin: 'center',
           perView: 1.2,
           spacing: 42,
         },
       },
-      '(max-width: 550px)': {
+      [mediaQuery.$phones]: {
         slides: {
           origin: 'center',
           perView: 1.2,
           spacing: 32,
         },
       },
-      '(max-width: 450px)': {
+      [mediaQuery.$tablets]: {
         slides: {
           origin: 'center',
           perView: 1.2,

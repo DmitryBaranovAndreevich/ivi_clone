@@ -30,8 +30,8 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ title, size }) => {
     if (window.innerWidth < 1600)
       setViewItems(
         size === 'big'
-          ? Math.ceil(window.innerWidth / 400)
-          : size === 'medium'
+          ? Math.ceil(window.innerWidth / 400) //не получается вынести в отдельную переменную, т.к. при создании переменной расчет будет произведен всего 1 раз
+          : size === 'medium' // а нам нужно это делать для размера экрана в данный момент
           ? Math.ceil(window.innerWidth / 316)
           : 1
       );
