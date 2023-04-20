@@ -23,8 +23,8 @@ const NavigationItem: React.FC<TNavigationItemProps> = ({
   return (
     <li
       className={style.list_item}
-      onMouseEnter={isExpand ? onMouseEnter : undefined}
-      onMouseLeave={isExpand ? onMouseLeave : undefined}
+      onMouseEnter={isExpand ? onMouseEnter : onMouseLeave}
+      onMouseLeave={!isExpand ? onMouseLeave : undefined}
     >
       <UILink addingClass={style.list_item_link} title={title} href={href} />
     </li>

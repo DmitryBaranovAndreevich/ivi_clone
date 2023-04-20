@@ -1,6 +1,10 @@
 import React, { memo, ReactElement, ReactNode, useEffect, useMemo } from 'react';
 import UILink from '../Link/UILink';
+import UIButton from '../UIButton/UIButton';
 import style from './dropdown.module.scss';
+import DropdownBlock from './DropdownBlock';
+import logoTV from './../../../assests/svg/logoTV.svg';
+import DropdownSlider from './DropdownSlider';
 
 const MOCK_GENRES = [
   'Артхаус',
@@ -31,34 +35,38 @@ const MOCK_COUNTRY = ['Русские', 'Зарубежные', 'Советск�
 
 const MOCK_YEARS = ['Фильмы 2023 года', 'Фильмы 2022 года', 'Фильмы 2021 года', 'Фильмы 2020 года'];
 
-const Dropdown = () => {
-  const genresItems: Array<ReactNode> = useMemo((): Array<ReactNode> => {
-    return MOCK_GENRES.map((genre: string): ReactNode => {
-      return (
-        <div key={genre}>
-          <UILink addingClass={style.link} title={genre} href="#" />
-        </div>
-      );
-    });
-  }, [MOCK_GENRES]);
+const MOCK_INFO = [
+  'Новинки',
+  'Подборки',
+  'Рейтинг',
+  'Трейлеры',
+  'Что посмотреть',
+  'Фильмы в HD',
+  'Новинки подписки',
+];
 
+const Dropdown = () => {
   return (
     <div className={style.dropdown}>
       <div className={style.dropdown_body}>
         <div className={style.dropdown_content}>
-          <div>
-            <h3>Жанры</h3>
-            <div>{genresItems}</div>
+          <div className={style.dropdown_content_width}>
+            <DropdownBlock title="Жанры" listItems={MOCK_GENRES} />
           </div>
-          <div>
-            <h3>Страны</h3>
-            <div>{MOCK_COUNTRY}</div>
+          <div className={style.dropdown_content_regular}>
+            <DropdownBlock title="Страны" listItems={MOCK_COUNTRY} />
+            <DropdownBlock title="Годы" listItems={MOCK_YEARS} />
           </div>
-          <div>
-            <h3>Годы</h3>
-            <div>{MOCK_YEARS}</div>
+          <div className={style.dropdown_content_regular}>
+            <DropdownSlider listItems={MOCK_INFO} />
           </div>
-          <div className={style.notification}></div>
+        </div>
+        <div className={style.adding}>
+          <div className={style.adding_subscribe}></div>
+          <UIButton href={'https://www.ivi.ru/pages/tvsmart/'} addingClass={style.adding_btn}>
+            <img className={style.adding_btn_logo} src={logoTV} alt="logoTV" />
+            Смотреть на SmartTV
+          </UIButton>
         </div>
       </div>
     </div>

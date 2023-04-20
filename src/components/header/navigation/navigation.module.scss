@@ -1,29 +1,29 @@
 .navigation {
-    height: 100%;
-    display: flex;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .list {
-    display: flex;
-    list-style-type: none;
+  display: flex;
+  list-style-type: none;
 
-    &_item {
-        padding-left: 16px;
+  &_item {
+    padding-left: 16px;
 
-        &_link {
-            padding: 10px 0;
-            font-size: 15px;
-            font-weight: 500;
-        }
+    &_link {
+      padding: 10px 0;
+      font-size: 15px;
+      font-weight: 500;
     }
+  }
 }
 
 .expand {
-    padding: 12px;
-    margin-top: 14px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 24px;
+  padding: 12px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 24px;
 }

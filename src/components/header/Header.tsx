@@ -11,7 +11,7 @@ import Dropdown from '../UI/Dropdowns/Dropdown';
 
 const Header = () => {
   const [itemHovered, setItemHovered] = useState<string | null>(null);
-
+  // setItemHovered(null);
   return (
     <header className={style.header}>
       <div className={style.body}>
@@ -50,11 +50,14 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        {itemHovered && (
-          <div className={style.dropdown}>
-            <Dropdown />
-          </div>
-        )}
+        {/* {itemHovered && ( */}
+        <div
+          className={style.dropdown + ' ' + (itemHovered && style.dropdown_visible)}
+          onMouseLeave={() => setItemHovered(null)}
+        >
+          <Dropdown />
+        </div>
+        {/* )} */}
       </div>
     </header>
   );
