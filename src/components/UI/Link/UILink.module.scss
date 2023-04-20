@@ -1,0 +1,11 @@
+.link {
+    text-decoration: none;
+    font-style: normal;
+    line-height: 20px;
+    color: #fff;
+    opacity: 0.5;
+
+    &:hover {
+        opacity: 1;
+    }
+}

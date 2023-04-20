@@ -6,13 +6,13 @@ const Main = () => {
   return (
     <div>
       <h2>MainPage</h2>
-      <CardFilm
+      {/* <CardFilm
         image={example}
         name="qwertyqqqqqqqfrgjhkl;jhvghbjnkml,"
         year={2022}
         country="qwerty"
         genre="qwerty"
-      />
+      /> */}
     </div>
   );
 };
