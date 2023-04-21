@@ -1,22 +1,18 @@
-@import './../../../commonStyles/fonts.scss';
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
 
 .btn {
   text-align: center;
-  background-color: #ea003d;
-  border: #ea003d 1px solid;
-  border-radius: 8px;
+  background-color: $red;
+  @include border($red, 1px, solid, 8px);
+  @include font-source-sans(13px, $white, 500, 16px);
   cursor: pointer;
   display: inline-flex;
-  font-family: $font-inter;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  color: #fff;
 
   &:hover {
-    background-color: #ff0f4d;
-    border-color: #ff0f4d;
+    background-color: $red;
+    border-color: $red;
   }
 
 }

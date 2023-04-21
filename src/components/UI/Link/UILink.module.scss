@@ -1,8 +1,10 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
 .link {
+  @include font-source-sans(15px, $white, 400, 20px);
   text-decoration: none;
-  font-style: normal;
-  line-height: 20px;
-  color: #fff;
   opacity: 0.5;
 
   &:hover {

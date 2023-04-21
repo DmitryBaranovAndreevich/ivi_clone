@@ -1,20 +1,19 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
 .btn {
   display: flex;
   align-items: center;
-  background-color: #312b45;
-  border: #312b45 1px solid;
-  border-radius: 8px;
+  @include border($buttonColorBlue, 1px, solid, 8px);
+  @include font-source-sans(15px, $white, 500, 20px);
+  background-color: $buttonColorBlue;
   text-decoration: none;
   height: 40px;
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 500;
-  font-style: normal;
   padding: 9px 15px;
 
   &:hover {
-    background-color: #2e2844;
-    border-color: #2e2844;
+    background-color: $buttonColorBlueHover;
+    border-color: $buttonColorBlueHover;
   }
 }

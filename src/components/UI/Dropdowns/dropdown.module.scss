@@ -1,12 +1,13 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
 .dropdown {
-  left: -8px;
   position: absolute;
   right: -8px;
+  left: -8px;
   top: 4px;
-  transition-delay: 0s;
-  transition-duration: 1s;
-  transition-property: visibility, opacity;
-  transition-timing-function: ease-out;
+  @include transition(0s, $duration-big, ease-out, $properties: (visibility, opacity));
 
   &_body {
     margin-top: 68px;
@@ -38,7 +39,7 @@
       width: 1px;
       left: -20px;
       top: 12px;
-      background-color: #ffffff;
+      background-color: $white;
       position: absolute;
       opacity: 0.5;
     }
@@ -62,7 +63,7 @@
 .block {
 
   &_title {
-    color: #ffffff;
+    color: $white;
     margin-bottom: 8px;
   }
 
@@ -85,9 +86,9 @@
     left: -20px;
     top: 2px;
     width: 2px;
-    background-color: #ffffff;
+    background-color: $white;
     height: 18px;
-    transition: all 0.3s;
+  @include transition(0s, $duration-small, ease-out, $properties: all);
     opacity: 0;
   }
 
@@ -104,11 +105,10 @@
 }
 
 .adding {
-
   &_subscribe {
     height: 250px;
     width: 210px;
-    background-color: #312b45;
+    background-color: $buttonColorBlue;
     border-radius: 8px;
     margin-bottom: 30px;
   }
@@ -123,5 +123,5 @@
 }
 
 .link {
-  color: #ffffff;
+  color: $white;
 }
