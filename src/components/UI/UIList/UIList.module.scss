@@ -1,0 +1,29 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.block {
+
+  &_title {
+    @include font-source-sans(15px, $white, 700, 20px);
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    max-height: 320px;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    // margin-bottom: 20px;
+  }
+
+  &_item {
+    @include font-source-sans(15px, #a5a1b2, 400, 20px);
+
+  }
+}
+
+.link {
+  color: $white;
+}
