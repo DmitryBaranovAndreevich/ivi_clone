@@ -1,5 +1,6 @@
-@import '../../commonStyles/fonts.scss';
+@import '../../commonStyles/mixins/index.scss';
 @import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
 
 .card {
   max-width: 155px;
@@ -11,18 +12,18 @@
   max-height: 235px;
   border-radius: 8px 8px 8px 8px;
   transform: scale(1) translateY(0);
-  transition: all 0.5s;
+  @include transition(0s, $duration, ease-out, $properties: all);
 
   &_active {
     transform: scale(1.04) translateY(-5px);
 
     & .imageSection_image {
       filter: brightness(0.3);
-      transition: all 0.5s;
+      @include transition(0s, $duration, ease-out, $properties: all);
     }
 
     & .imageSection_information {
-      transition: all 0.5s;
+      @include transition(0s, $duration, ease-out, $properties: all);
       opacity: 1;
     }
   }
@@ -45,7 +46,7 @@
     left: 0;
     right: 0;
     opacity: 0;
-    transition: all .4s;
+    @include transition(0s, $duration, ease-out, $properties: all);
 
     &_show {
       opacity: 1;
@@ -62,16 +63,10 @@
       left: 16px;
       right: 16px;
       bottom: 16px;
-      font-size: 13px;
-      line-height: 16px;
-      font-weight: 400;
-      font-style: normal;
-      color: #d9d7e0;
+      @include font-source-sans(13px, $textColorLight, 400, 16px);
 
       &_value {
         display: flex;
-        font-weight: 700;
-        font-style: normal;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -79,15 +74,11 @@
         margin-top: 4px;
 
         &_integer {
-          font-size: 24px;
-          line-height: 28px;
-          height: 28px;
+          @include font-source-sans(24px, $textColorLight, 700, 28px);
         }
 
         &_defraction {
-          font-size: 20px;
-          line-height: 24px;
-          height: 24px;
+          @include font-source-sans(20px, $textColorLight, 700, 24px);
         }
       }
 
@@ -98,23 +89,19 @@
 
 
         &_name {
-          font-size: 13px;
-          line-height: 16px;
-          font-weight: 400;
-          font-style: normal;
-          color: #a5a1b2;
+          @include font-source-sans(13px, $textColorGrey, 400, 16px);
           margin-bottom: 4px;
           text-transform: lowercase;
         }
 
         &_range {
-          background-color: rgba(126, 121, 143, 0.32);
+          background-color: $grey;
           height: 4px;
           border-radius: 2px;
 
           &_progress {
             width: 66%;
-            background-color: #ea003d;
+            background-color: $red;
             height: 4px;
             border-radius: 2px;
           }
@@ -122,11 +109,7 @@
       }
 
       &_properties {
-        font-size: 13px;
-        line-height: 16px;
-        font-weight: 400;
-        font-style: normal;
-        color: #d9d7e0;
+        @include font-source-sans(13px, $textColorLight, 400, 16px);
         margin-top: 12px;
       }
     }
@@ -138,22 +121,13 @@
   margin-top: 8px;
 
   &_title {
-  color: #d9d7e0;
-font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
-    font-style: normal;
-    height: 20px;
+    @include font-source-sans(15px, $textColorLight, 500, 20px);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   &_extra {
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    color: #a5a1b2;
+    @include font-source-sans(13px, $textColorGrey, 400, 16px);
   }
 }

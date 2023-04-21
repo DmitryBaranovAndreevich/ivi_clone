@@ -35,3 +35,17 @@
   @if $weight { font-weight: $weight; }
   @if $lh { line-height: $lh; }
 }
+
+@mixin transition ($delay: 0s, $duration: 0s, $timingFunc: ease, $properties: all) {
+  transition-delay: $delay;
+	transition-duration: $duration;
+	transition-property: $properties;
+	transition-timing-function: $timingFunc;
+}
+
+@mixin border ($colour, $width: 1px, $style: solid, $radius: 0px) {
+  border-color: $colour;
+	border-width: $width;
+	border-style: $style;
+  border-radius: $radius;
+}
