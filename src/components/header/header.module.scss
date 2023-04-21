@@ -1,0 +1,120 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.header {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.body {
+  padding: 0 12px;
+}
+
+.content {
+  display: flex;
+  align-items: stretch;
+  height: 72px;
+  z-index: 2;
+  position: relative;
+
+  &_block {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &_combine {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  &_button {
+    margin-right: 20px;
+
+    &_btn {
+      height: 32px;
+      padding: 7px 11px;
+    }
+  }
+
+  &_search {
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &_btn {
+      cursor: pointer;
+      height: 40px;
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      @include font-source-sans(15px, $white, 500, 20px);
+    }
+
+    &_logo {
+      margin-right: 8px;
+    }
+  }
+
+  &_notifications {
+    &_logo {
+      opacity: 0.5;
+      height: 48px;
+      padding: 16px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_avatar {
+    padding-left: 12px;
+
+    &_link {
+      opacity: 0.5;
+
+      &:hover {
+        box-shadow: 0 4px 16px hsla(0, 0%, 100%, .24);
+        opacity: 1;
+      }
+
+      &_logo {
+        @include border($white, 2px, solid, 8px);
+        height: 48px;
+        padding: 12px;
+      }
+    }
+  }
+}
+
+.dropdown {
+  width: 100%;
+  height: 460px;
+  background: $bgcDarkBlue;
+  border-radius: 12px;
+  box-shadow: 0 20px 96px #12101b;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0);
+  @include transition(0s, $duration-small, ease-out, $properties: (visibility, opacity, height));
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+
+  &_visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
