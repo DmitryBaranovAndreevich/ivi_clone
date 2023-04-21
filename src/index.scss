@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,9 +25,8 @@ code {
     monospace;
 } */
 
-@import './commonStyles/mixins/index.scss';
-@import './commonStyles/variables/index.scss';
 @import './commonStyles/fonts.scss';
+@import './commonStyles/color.scss';
 
 * {
   padding: 0;
@@ -37,6 +35,10 @@ code {
 }
 
 body {
-  @include font-source-sans(15px, $black, 400, 150%);
-  background-color: $bgcMain;
+  font-family: $font-inter;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 150%;
+  color: $black;
 }
