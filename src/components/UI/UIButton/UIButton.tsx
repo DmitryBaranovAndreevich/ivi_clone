@@ -6,11 +6,12 @@ type TUIButtonProps = {
   children: ReactNode;
   href: string;
   addingClass: string;
+  target?: string;
 };
 
-const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass }) => {
+const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass, target }) => {
   return (
-    <Link to={href} className={style.btn + ' ' + addingClass}>
+    <Link to={href} className={style.btn + ' ' + addingClass} target={target}>
       {children}
     </Link>
   );

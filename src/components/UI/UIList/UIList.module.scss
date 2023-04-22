@@ -4,10 +4,6 @@
 
 .block {
 
-  &_title {
-    @include font-source-sans(15px, $white, 700, 20px);
-  }
-
   &_list {
     display: flex;
     flex-direction: column;
@@ -15,12 +11,6 @@
     flex-wrap: wrap;
     gap: 8px;
     list-style: none;
-    // margin-bottom: 20px;
-  }
-
-  &_item {
-    @include font-source-sans(15px, #a5a1b2, 400, 20px);
-
   }
 }
 
