@@ -1,59 +1,23 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useMemo } from 'react';
+import { TNavigation } from '../../../type/type';
 import style from './navigation.module.scss';
+import { TPropsNavigationProps } from './NavigationContainer';
 import NavigationItem from './NavigationItem';
 
-type TNavEl = {
-  href: string;
-  title: string;
-  isExpand: boolean;
-};
-
-type TNav = Array<TNavEl>;
-
-const nav: TNav = [
-  {
-    href: '#',
-    title: 'Мой Иви',
-    isExpand: false,
-  },
-  {
-    href: '#',
-    title: 'Что нового',
-    isExpand: false,
-  },
-  {
-    href: '#',
-    title: 'Фильмы',
-    isExpand: true,
-  },
-  {
-    href: '#',
-    title: 'Сериалы',
-    isExpand: true,
-  },
-  {
-    href: '#',
-    title: 'Мультфильмы',
-    isExpand: true,
-  },
-];
-
-export type TNavigationProps = {
-  setItemHovered: (isHover: string | null) => void;
-};
-
-const Navigation: React.FC<TNavigationProps> = ({ setItemHovered }) => {
-  const navBlock: Array<ReactNode> = nav.map((el: TNavEl): ReactNode => {
-    return (
-      <NavigationItem
-        key={el.title}
-        href={el.href}
-        title={el.title}
-        isExpand={el.isExpand}
-        setItemHovered={setItemHovered}
-      />
-    );
-  });
+const Navigation: React.FC<TPropsNavigationProps> = ({ navDesktop, navLaptop, setItemHovered }) => {
+  const navBlock: Array<ReactNode> = useMemo(() => {
+    return navDesktop.map((el: TNavigation): ReactNode => {
+      return (
+        <NavigationItem
+          key={el.title}
+          href={el.href}
+          title={el.title}
+          isExpand={el.isExpand}
+          setItemHovered={setItemHovered}
+        />
+      );
+    });
+  }, [navDesktop, setItemHovered]);
 
   return (
     <nav className={style.navigation}>
@@ -63,5 +27,3 @@ const Navigation: React.FC<TNavigationProps> = ({ setItemHovered }) => {
 };
 
 export default Navigation;
-
-// return <NavigationItem key={el.title} href={el.href} title={el.title} />

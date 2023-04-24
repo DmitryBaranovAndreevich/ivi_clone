@@ -1,0 +1,69 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.plank {
+    color: #fff;
+    position: relative;
+    // background-color: $buttonColorBlue;
+    // border-radius: 4px;
+    &_active {
+        & .button{
+            background-color: $lightGrey;
+
+            &_icon::before {
+                transform: rotate(-43deg) skew(10deg, 10deg) scale(-1) translate(2px, -2px);
+            }
+        }
+    }
+}
+
+.button {
+    background-color: $buttonColorBlue;
+    border-radius: 4px;
+    height: 56px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    @include font-source-sans(15px, $white, 500, 20px);
+
+    &_icon {
+        position: relative;
+        margin-left: 16px;
+        width: 16px;
+        height: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            border-left: 2px solid $white;
+            border-bottom: 2px solid $white;
+            border-radius: 0 2px;
+            width: 7px;
+            height: 7px;
+            transform: rotate(-43deg) skew(10deg, 10deg);
+        }
+    }
+}
+
+.dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    padding: 16px;
+    z-index: 1;
+    background: $buttonColorBlue;
+    border-radius: 4px;
+    box-shadow: 0 16px 32px rgba(7,5,14,.4);
+
+    &_genres {
+        width: 630px;
+        overflow: hidden;
+    }
+}

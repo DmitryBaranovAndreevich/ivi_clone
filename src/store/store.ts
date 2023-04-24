@@ -1,6 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { app } from './reducers/App';
+import { moviesFilter } from './reducers/MoviesFilter';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  app: app.reducer,
+  moviesFilter: moviesFilter.reducer,
+});
 
 export const setupStore = () => {
   return configureStore({

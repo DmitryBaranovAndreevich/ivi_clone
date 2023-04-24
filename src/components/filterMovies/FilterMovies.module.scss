@@ -1,0 +1,39 @@
+.selectBlock {
+    display: flex;
+    margin-left: -6px;
+    margin-right: -6px;
+
+    &_item {
+        margin-bottom: 12px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+}
+
+.plank {
+    position: relative;
+
+    &_item {
+        background-color: #312b45;
+        border-radius: 4px;
+        height: 56px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &_text {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 30px;
+        }
+
+        &_dropdown_icon {
+            width: 16px;
+            height: 6px;
+            font-size: 6px;
+            line-height: 6px;
+            align-self: center;
+            margin-left: 16px;
+        }
+    }
+}
