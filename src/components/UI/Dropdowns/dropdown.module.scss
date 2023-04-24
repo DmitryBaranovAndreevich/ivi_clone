@@ -114,6 +114,9 @@
   }
 
   &_btn {
+    border-color: $buttonColorBlue ;
+    background-color: $buttonColorBlue;
+
     &_logo {
       width: 15px;
       height: 15px;

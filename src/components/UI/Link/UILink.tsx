@@ -10,7 +10,7 @@ export type TNavigationItemProps = {
 
 const UILink: React.FC<TNavigationItemProps> = ({ href, title, addingClass }) => {
   return (
-    <Link className={style.link + ' ' + addingClass} to={href}>
+    <Link className={addingClass + ' ' + style.link} to={href}>
       {title}
     </Link>
   );

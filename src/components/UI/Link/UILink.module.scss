@@ -3,7 +3,7 @@
 @import '../../../commonStyles/fonts.scss';
 
 .link {
-  @include font-source-sans(15px, $white, 400, 20px);
+  @include font-source-sans(13px, $white, 400, 20px);
   text-decoration: none;
   opacity: 0.5;
 
