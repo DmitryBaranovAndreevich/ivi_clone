@@ -238,7 +238,7 @@ type TAppInitialState = {
   navigationTablet: Array<TNavigation>;
   genres: Array<TGenre>;
   countries: Array<TGenre>;
-  years: Array<string>;
+  years: Array<TGenre>;
 };
 
 const appInitialState: TAppInitialState = {
@@ -249,10 +249,10 @@ const appInitialState: TAppInitialState = {
   years: [],
 };
 
-export const app = createSlice({
+export const appReducer = createSlice({
   name: 'app',
   initialState: appInitialState,
   reducers: {},
 });
 
-export default app.reducer;
+export default appReducer.reducer;

@@ -6,7 +6,7 @@ type TFilterPlankProps = {
   list: Array<string>;
 };
 
-const FilterPlank: React.FC<TFilterPlankProps> = ({ addingClass }) => {
+const FilterDropdown: React.FC<TFilterPlankProps> = ({ addingClass }) => {
   return (
     <div className={style.dropdown + ' ' + addingClass}>
       <div className={style.list}>
@@ -16,4 +16,4 @@ const FilterPlank: React.FC<TFilterPlankProps> = ({ addingClass }) => {
   );
 };
 
-export default FilterPlank;
+export default FilterDropdown;

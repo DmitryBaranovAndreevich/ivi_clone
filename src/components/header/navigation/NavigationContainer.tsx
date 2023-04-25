@@ -15,7 +15,7 @@ type TOwnProps = {
 
 // type MapDispatchToPropsType = {};
 
-export type TPropsNavigationProps = TMapStateToProps;
+export type TNavigationProps = TMapStateToProps;
 
 const mapStateToProps = (state: TRootState, ownProps: TOwnProps): TMapStateToProps => ({
   navDesktop: state.app.navigationDesktop,

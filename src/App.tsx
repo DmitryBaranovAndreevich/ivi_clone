@@ -6,6 +6,7 @@ import NotFoundPage from './pages/404/404';
 import { useAppSelector } from './hooks/redux';
 import Header from './components/header/Header';
 import Movies from './pages/movies/Movies';
+import Footer from './components/footer/Footer';
 
 function App() {
   const {} = useAppSelector((state) => state);
@@ -14,9 +15,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

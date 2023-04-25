@@ -1,10 +1,10 @@
-import React, { ReactElement, ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { TNavigation } from '../../../type/type';
 import style from './navigation.module.scss';
-import { TPropsNavigationProps } from './NavigationContainer';
+import { TNavigationProps } from './NavigationContainer';
 import NavigationItem from './NavigationItem';
 
-const Navigation: React.FC<TPropsNavigationProps> = ({ navDesktop, navLaptop, setItemHovered }) => {
+const Navigation: React.FC<TNavigationProps> = ({ navDesktop, navLaptop, setItemHovered }) => {
   const navBlock: Array<ReactNode> = useMemo(() => {
     return navDesktop.map((el: TNavigation): ReactNode => {
       return (

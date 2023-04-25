@@ -5,6 +5,7 @@ import style from './dropdown.module.scss';
 import DropdownBlock from './DropdownBlock';
 import logoTV from './../../../assests/svg/logoTV.svg';
 import DropdownSlider from './DropdownSlider';
+import { useAppSelector } from '../../../hooks/redux';
 
 const MOCK_GENRES = [
   'Артхаус',
@@ -46,16 +47,18 @@ const MOCK_INFO = [
 ];
 
 const Dropdown = () => {
+  const { genres, countries, years } = useAppSelector((state) => state.app);
+
   return (
     <div className={style.dropdown}>
       <div className={style.dropdown_body}>
         <div className={style.dropdown_content}>
           <div className={style.dropdown_content_width}>
-            <DropdownBlock title="Жанры" listItems={MOCK_GENRES} />
+            <DropdownBlock title="Жанры" listItems={genres} />
           </div>
           <div className={style.dropdown_content_regular}>
-            <DropdownBlock title="Страны" listItems={MOCK_COUNTRY} />
-            <DropdownBlock title="Годы" listItems={MOCK_YEARS} />
+            <DropdownBlock title="Страны" listItems={countries} />
+            <DropdownBlock title="Годы" listItems={years} />
           </div>
           <div className={style.dropdown_content_regular}>
             <DropdownSlider listItems={MOCK_INFO} />

@@ -5,9 +5,12 @@
 .container {
   background: $bgcMain;
   color: $white;
+  max-width: 1240px;  
+  margin: 0 auto;
+  padding: 0 12px;
 }
 
-.wrapper {
-  max-width: $desctop;
-  margin: 0 auto;
-}
+// .wrapper {
+//   max-width: $desctop;
+
+// }
