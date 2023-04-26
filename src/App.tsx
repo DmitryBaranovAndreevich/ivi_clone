@@ -1,22 +1,39 @@
 import React from 'react';
-import styles from './App.module.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import styles from './App.module.scss';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import Main from './pages/main/Main';
 import NotFoundPage from './pages/404/404';
 import { useAppSelector } from './hooks/redux';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import LoginEmail from './pages/login/LoginEmail';
+import LoginPassword from './pages/login/LoginPassword';
+import LoginFinish from './pages/login/LoginFinish';
 
 function App() {
   const {} = useAppSelector((state) => state);
   return (
-    <div className="App">
-      <Header />
+    <div className={styles.container}>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route
+          element={
+            <>
+              <Header />
+              <Outlet />
+              <Footer />
+            </>
+          }
+        >
+          <Route path="/" element={<Main />}>
+            <Route path="profile">
+              <Route path="email" element={<LoginEmail />} />
+              <Route path="password" element={<LoginPassword />} />
+              <Route path="finish" element={<LoginFinish />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
-      <Footer />
     </div>
   );
 }

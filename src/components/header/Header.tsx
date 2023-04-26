@@ -43,7 +43,7 @@ const Header = () => {
             </Link>
           </div>
           <div className={style.content_avatar + ' ' + style.content_block}>
-            <Link className={style.content_avatar_link} to="#">
+            <Link className={style.content_avatar_link} to="/profile/email">
               <div className={style.content_avatar_link_logo}>
                 <img src={logoUser} alt="logoUser" />
               </div>

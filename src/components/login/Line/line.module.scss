@@ -1,0 +1,8 @@
+@import '../../../commonStyles/variables/index.scss';
+
+.line {
+  --size: 10%;
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(to right, $red var(--size), $white var(--size) 100%);
+}
