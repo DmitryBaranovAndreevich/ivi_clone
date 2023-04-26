@@ -5,6 +5,8 @@ type TMoviesFilterInitialState = {
   choosenGenres: Array<string>;
   choosenCountries: Array<string>;
   choosenYears: Array<string>;
+  choosenRate: number;
+  choosenCountReview: number;
 };
 
 const moviesFilterInitialState: TMoviesFilterInitialState = {
@@ -12,6 +14,8 @@ const moviesFilterInitialState: TMoviesFilterInitialState = {
   choosenGenres: [],
   choosenCountries: [],
   choosenYears: [],
+  choosenRate: 0,
+  choosenCountReview: 0,
 };
 
 export const moviesFilter = createSlice({
@@ -27,12 +31,12 @@ export const moviesFilter = createSlice({
     setYears(state, action: PayloadAction<{ years: Array<string> }>) {
       state.choosenYears = action.payload.years;
     },
-    // setActors(state, action: PayloadAction<{ years: Array<string> }>) {
-    //   state.choosenYears = action.payload.years;
-    // },
-    // setDirectors(state, action: PayloadAction<{ years: Array<string> }>) {
-    //   state.choosenYears = action.payload.years;
-    // },
+    setRate(state, action: PayloadAction<{ rate: number }>) {
+      state.choosenRate = action.payload.rate;
+    },
+    setCountReview(state, action: PayloadAction<{ countReview: number }>) {
+      state.choosenCountReview = action.payload.countReview;
+    },
   },
 });
 

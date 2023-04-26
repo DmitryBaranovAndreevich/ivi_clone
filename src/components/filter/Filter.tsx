@@ -8,14 +8,13 @@ import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
   const { genres, countries, years } = useAppSelector((state) => state.app);
-  const { choosenGenres, choosenCountries, choosenYears } = useAppSelector(
-    (state) => state.moviesFilter
-  );
+  const { choosenGenres, choosenCountries, choosenYears, choosenRate, choosenCountReview } =
+    useAppSelector((state) => state.moviesFilter);
   const dispatch = useAppDispatch();
-  const { setGenres, setCountries, setYears } = moviesFilter.actions;
+  const { setGenres, setCountries, setYears, setRate, setCountReview } = moviesFilter.actions;
   return (
     <div className={style.filter}>
-      <div className={style.checkboxBlock}>
+      <div className={`${style.filter_block} ${style.checkboxBlock}`}>
         <FilterPlank
           title="Жанры"
           nameInitialValue="genre"
@@ -47,12 +46,33 @@ const Filter = () => {
           }}
         />
       </div>
-      <div className={style.textBlock}>
+      <div className={`${style.filter_block} ${style.textBlock}`}>
         <FilterText title="Актер" nameInitialValue="actor" setFilter={() => {}} />
         <FilterText title="Режиссер" nameInitialValue="director" setFilter={() => {}} />
       </div>
-      <div className={style.rangeBlock}>
-        <FilterRange title="Актер" nameInitialValue="actor" setFilter={() => {}} />
+      <div className={`${style.filter_block} ${style.rangeBlock}`}>
+        <FilterRange
+          title="Рейтинг"
+          choosenRate={choosenRate}
+          nameInitialValue="rate"
+          step={0.1}
+          min={0}
+          max={10}
+          setFilter={(rate: number) => {
+            dispatch(setRate({ rate }));
+          }}
+        />
+        <FilterRange
+          title="Количесво отзывов"
+          choosenRate={choosenCountReview}
+          nameInitialValue="countReviews"
+          step={0.1}
+          min={0}
+          max={10}
+          setFilter={(countReview: number) => {
+            dispatch(setCountReview({ countReview }));
+          }}
+        />
       </div>
     </div>
   );

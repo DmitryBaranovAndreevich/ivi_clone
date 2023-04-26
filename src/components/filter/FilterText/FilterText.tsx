@@ -33,26 +33,26 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue, setF
       >
         {({ values, handleChange, handleBlur }) => (
           <Form className={style.form}>
-            <div className={style.form_block}>
-              <Field
-                name={nameInitialValue}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values[nameInitialValue]}
-                className={style.input}
-              />
-              <span
-                className={
-                  style.description +
-                  ' ' +
-                  style.description_focus +
-                  ' ' +
-                  (values.actor && style.description_active)
-                }
-              >
-                {title}
-              </span>
-            </div>
+            {/* <div className={style.form_block}> */}
+            <Field
+              name={nameInitialValue}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values[nameInitialValue]}
+              className={style.input}
+            />
+            <span
+              className={
+                style.description +
+                ' ' +
+                style.description_focus +
+                ' ' +
+                (values.actor && style.description_active)
+              }
+            >
+              {title}
+            </span>
+            {/* </div> */}
           </Form>
         )}
       </Formik>

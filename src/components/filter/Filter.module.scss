@@ -7,6 +7,13 @@
     padding: 16px;
     border-radius: 6px;
     background-color: $bgcDarkBlue;
+
+    &_block {
+        display: flex;
+        justify-content: space-around;
+        margin-left: -6px;
+        margin-right: -6px;
+    }
 }
 
 .checkboxBlock {
@@ -36,6 +43,13 @@
 }
 
 .textBlock {
+    display: flex;
+    justify-content: space-around;
+    margin-left: -6px;
+    margin-right: -6px;
+}
+
+.rangeBlock {
     display: flex;
     justify-content: space-around;
     margin-left: -6px;
