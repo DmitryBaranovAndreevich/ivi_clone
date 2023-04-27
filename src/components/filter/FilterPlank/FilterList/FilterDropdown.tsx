@@ -53,9 +53,6 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
           <Form
             className={`${addingClass} ${style.dropdown}`}
             onChange={() => onChange(values.genre)}
-            onClick={(e) => {
-              console.log(e);
-            }}
           >
             <ul className={style.dropdown_list}>{filterList}</ul>
           </Form>

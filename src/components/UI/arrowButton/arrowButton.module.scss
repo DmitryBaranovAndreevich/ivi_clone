@@ -1,0 +1,30 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.button {
+  position: relative;
+  width: 16px;
+  height: 10px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    border-left: 2px solid $white;
+    border-bottom: 2px solid $white;
+    border-radius: 0 2px;
+    width: 7px;
+    height: 7px;
+    transform: rotate(-43deg) skew(10deg, 10deg);
+  }
+
+  // &:hover {
+  //   background-color: $buttonColorBlueHover;
+  //   border-color: $buttonColorBlueHover;
+  // }
+
+  &_open::before {
+    transform: rotate(-43deg) skew(10deg, 10deg) scale(-1) translate(2px, -2px);
+  }
+}

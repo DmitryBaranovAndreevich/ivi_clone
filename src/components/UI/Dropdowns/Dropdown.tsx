@@ -1,40 +1,10 @@
-import React, { memo, ReactElement, ReactNode, useEffect, useMemo } from 'react';
-import UILink from '../Link/UILink';
+import React from 'react';
 import UIButton from '../UIButton/UIButton';
 import style from './dropdown.module.scss';
 import DropdownBlock from './DropdownBlock';
 import logoTV from './../../../assests/svg/logoTV.svg';
 import DropdownSlider from './DropdownSlider';
 import { useAppSelector } from '../../../hooks/redux';
-
-const MOCK_GENRES = [
-  'Артхаус',
-  'Биография',
-  'Боевики',
-  'Вестерн',
-  'Военные',
-  'Детективы',
-  'Для всей семьи',
-  'Для детей',
-  'Документальные',
-  'Драмы',
-  'Исторические',
-  'Катастрофы',
-  'Комедии',
-  'Криминал',
-  'Мелодрамы',
-  'Мистические',
-  'Приключения',
-  'Спорт',
-  'Триллеры',
-  'Ужасы',
-  'Фантастика',
-  'Фэнтези',
-];
-
-const MOCK_COUNTRY = ['Русские', 'Зарубежные', 'Советское кино'];
-
-const MOCK_YEARS = ['Фильмы 2023 года', 'Фильмы 2022 года', 'Фильмы 2021 года', 'Фильмы 2020 года'];
 
 const MOCK_INFO = [
   'Новинки',

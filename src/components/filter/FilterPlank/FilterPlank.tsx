@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useClickOutside } from '../../../hooks/useClickOutside';
 import { TGenre } from '../../../type/type';
+import ArrowButton from '../../UI/arrowButton/arrowButton';
 import FilterDropdown from './FilterList/FilterDropdown';
 import style from './FilterPlank.module.scss';
 
@@ -21,22 +23,25 @@ const FilterPlank: React.FC<TFilterPlankProps> = ({
   setFilter,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { buttonElement, dropdownElement } = useClickOutside(isOpen, setIsOpen);
 
   return (
     <div className={style.plank + ' ' + (isOpen && style.plank_active)}>
-      <div className={style.button} onClick={() => setIsOpen(!isOpen)}>
+      <div className={style.button} ref={buttonElement} onClick={() => setIsOpen(!isOpen)}>
         <p className={style.button_text}>{title}</p>
-        <div className={style.button_icon}></div>
+        <ArrowButton isOpen={isOpen} addingClass={style.button_arrow} />
       </div>
-      {isOpen && (
-        <FilterDropdown
-          addingClass={addingClass}
-          listItem={listItem}
-          nameInitialValue={nameInitialValue}
-          choosenValue={choosenValue}
-          setFilter={setFilter}
-        />
-      )}
+      <div ref={dropdownElement}>
+        {isOpen && (
+          <FilterDropdown
+            addingClass={addingClass}
+            listItem={listItem}
+            nameInitialValue={nameInitialValue}
+            choosenValue={choosenValue}
+            setFilter={setFilter}
+          />
+        )}
+      </div>
     </div>
   );
 };

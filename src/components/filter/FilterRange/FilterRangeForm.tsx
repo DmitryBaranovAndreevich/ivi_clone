@@ -26,7 +26,6 @@ const FilterRangeForm: React.FC<TFilterRangeFormProps> = ({
   min,
   max,
 }) => {
-  debugger;
   return (
     <div className={style.text}>
       <Formik

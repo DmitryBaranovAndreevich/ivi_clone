@@ -10,10 +10,6 @@
   &_active {
     & .button {
       background-color: $lightGrey;
-
-      &_icon::before {
-        transform: rotate(-43deg) skew(10deg, 10deg) scale(-1) translate(2px, -2px);
-      }
     }
   }
 }
@@ -30,23 +26,8 @@
   position: relative;
   @include font-source-sans(15px, $white, 500, 20px);
 
-  &_icon {
-    position: relative;
+  &_arrow {
     margin-left: 16px;
-    width: 16px;
-    height: 10px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      border-left: 2px solid $white;
-      border-bottom: 2px solid $white;
-      border-radius: 0 2px;
-      width: 7px;
-      height: 7px;
-      transform: rotate(-43deg) skew(10deg, 10deg);
-    }
   }
 }
 
