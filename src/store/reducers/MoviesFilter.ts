@@ -37,6 +37,14 @@ export const moviesFilter = createSlice({
     setCountReview(state, action: PayloadAction<{ countReview: number }>) {
       state.choosenCountReview = action.payload.countReview;
     },
+    resetAllValue(state) {
+      debugger;
+      state.choosenGenres = [];
+      state.choosenCountries = [];
+      state.choosenYears = [];
+      state.choosenRate = 0;
+      state.choosenCountReview = 0;
+    },
   },
 });
 

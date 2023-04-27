@@ -7,11 +7,13 @@ import FilterRange from './FilterRange/FilterRange';
 import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
+  debugger;
   const { genres, countries, years } = useAppSelector((state) => state.app);
   const { choosenGenres, choosenCountries, choosenYears, choosenRate, choosenCountReview } =
     useAppSelector((state) => state.moviesFilter);
   const dispatch = useAppDispatch();
-  const { setGenres, setCountries, setYears, setRate, setCountReview } = moviesFilter.actions;
+  const { setGenres, setCountries, setYears, setRate, setCountReview, resetAllValue } =
+    moviesFilter.actions;
   return (
     <div className={style.filter}>
       <div className={`${style.filter_block} ${style.checkboxBlock}`}>
@@ -73,6 +75,12 @@ const Filter = () => {
             dispatch(setCountReview({ countReview }));
           }}
         />
+      </div>
+      <div className={style.clear}>
+        <button className={style.clear_button} onClick={() => dispatch(resetAllValue())}>
+          <div className={style.clear_cross}></div>
+          Сбросить фильтр
+        </button>
       </div>
     </div>
   );

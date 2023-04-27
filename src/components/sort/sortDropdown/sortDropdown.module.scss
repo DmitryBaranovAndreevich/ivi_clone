@@ -20,7 +20,6 @@
 
 .item {
     @include font-source-sans(15px, $white, 500, 20px);
-
     position: relative;
     background-color: transparent;
     display: block;

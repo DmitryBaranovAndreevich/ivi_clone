@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import * as Yup from 'yup';
-import { Form, Formik, Field } from 'formik';
+import React, { ChangeEvent } from 'react';
 import style from './FilterRange.module.scss';
 
 type TFilterRangeFormProps = {
@@ -13,10 +11,6 @@ type TFilterRangeFormProps = {
   max: number;
 };
 
-const FormSchema = Yup.object().shape({
-  rate: Yup.number().required('Required').positive('Только положительное число').max(10),
-});
-
 const FilterRangeForm: React.FC<TFilterRangeFormProps> = ({
   title,
   choosenRate,
@@ -26,55 +20,41 @@ const FilterRangeForm: React.FC<TFilterRangeFormProps> = ({
   min,
   max,
 }) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const target = e.target as HTMLInputElement;
+    if (Number(target.value)) {
+      setFilter(Number(target.value));
+    }
+  };
   return (
     <div className={style.text}>
-      <Formik
-        initialValues={{ rate: choosenRate, rateRange: choosenRate, countReviews: 0 }}
-        validate={(values) => {
-          const errors: { rate?: string; countReviews?: string } = {};
-          if (Number(values.rate)) {
-            errors.rate = 'только цифры';
-          }
-          return errors;
-        }}
-        validationSchema={FormSchema}
-        onSubmit={() => {}}
-      >
-        {({ values, handleBlur }) => {
-          {
-            values[nameInitialValue] !== choosenRate && setFilter(values[nameInitialValue]);
-          }
-          return (
-            <Form className={style.form}>
-              <label className={style.label}>
-                <p>{title}</p>
-                <Field
-                  type="number"
-                  min={min}
-                  max={max}
-                  step={step}
-                  name={nameInitialValue}
-                  onBlur={handleBlur}
-                  value={values[nameInitialValue]}
-                  className={style.input}
-                />
-              </label>
-              <div className={style.slider}>
-                <Field
-                  type="range"
-                  min={min}
-                  max={max}
-                  step={step}
-                  name={nameInitialValue}
-                  onBlur={handleBlur}
-                  value={values[nameInitialValue]}
-                  className={style.slider_range}
-                />
-              </div>
-            </Form>
-          );
-        }}
-      </Formik>
+      <form className={style.form}>
+        <label className={style.label}>
+          <p>{title}</p>
+          <input
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            name={nameInitialValue}
+            onChange={onChange}
+            value={choosenRate}
+            className={style.input}
+          />
+        </label>
+        <div className={style.slider}>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            name={nameInitialValue}
+            onChange={onChange}
+            value={choosenRate}
+            className={style.slider_range}
+          />
+        </div>
+      </form>
     </div>
   );
 };
