@@ -1,26 +1,46 @@
 import React, { useMemo } from 'react';
 import { TKindSort } from '../../../store/reducers/MoviesSort';
-import style from './../sortDropdown.module.scss';
+import style from './sortDropdown.module.scss';
 
 type TSortDropdownProps = {
   kindsSort: Array<TKindSort>;
+  choosenSort: TKindSort;
   setSortWithParams: (sortValue: TKindSort) => void;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-const SortDropdown: React.FC<TSortDropdownProps> = ({ kindsSort, setSortWithParams }) => {
+const SortDropdown: React.FC<TSortDropdownProps> = ({
+  kindsSort,
+  choosenSort,
+  setSortWithParams,
+  setIsOpen,
+}) => {
   const kindsList = useMemo(() => {
-    const changeKindSort = ({ title, href }: TKindSort) => {
-      setSortWithParams({ title, href });
+    const changeKindSort = (kindSort: TKindSort) => {
+      setSortWithParams(kindSort);
     };
-    return kindsSort.map(({ title, href }: TKindSort) => {
+    const onClick = (kindSort: TKindSort) => {
+      changeKindSort(kindSort);
+      setIsOpen(false);
+    };
+    return kindsSort.map((kindSort: TKindSort) => {
       return (
-        <li key={href} onClick={() => changeKindSort({ title, href })}>
-          {title}
+        <li
+          className={`${style.item} ${choosenSort.title === kindSort.title && style.item_active}`}
+          key={kindSort.href}
+          onClick={() => onClick(kindSort)}
+        >
+          {kindSort.title}
         </li>
       );
     });
-  }, [kindsSort, setSortWithParams]);
-  return <ul>{kindsList}</ul>;
+  }, [kindsSort, setSortWithParams, choosenSort, setIsOpen]);
+  return (
+    <div className={style.dropdown}>
+      <div className={style.title}>Сортировать</div>
+      <ul className={style.list}>{kindsList}</ul>
+    </div>
+  );
 };
 
 export default SortDropdown;

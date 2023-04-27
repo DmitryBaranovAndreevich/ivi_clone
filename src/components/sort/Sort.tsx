@@ -31,10 +31,17 @@ const Sort = () => {
       <div ref={buttonElement} className={style.sorting} onClick={() => setIsOpen(!isOpen)}>
         <img className={style.sorting_logo} src={logoSort} alt="logoSort" />
         <p className={style.sorting_title}>{choosenSort.title}</p>
-        <ArrowButton isOpen={false} addingClass={style.sorting_arrow} />
+        <ArrowButton isOpen={isOpen} addingClass={style.sorting_arrow} />
       </div>
       <div ref={dropdownElement}>
-        {isOpen && <SortDropdown kindsSort={kindsSort} setSortWithParams={setSortWithParams} />}
+        {isOpen && (
+          <SortDropdown
+            kindsSort={kindsSort}
+            setSortWithParams={setSortWithParams}
+            choosenSort={choosenSort}
+            setIsOpen={setIsOpen}
+          />
+        )}
       </div>
     </div>
   );

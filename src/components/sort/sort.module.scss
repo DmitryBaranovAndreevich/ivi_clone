@@ -2,6 +2,10 @@
 @import '../../commonStyles/variables/index.scss';
 @import '../../commonStyles/fonts.scss';
 
+.sortBlock {
+  position: relative;
+}
+
 .sorting {
   display: flex;
   align-items: center;
@@ -11,7 +15,7 @@
     height: 12px;
   }
 
-  .title {
+  &_title {
     @include font-source-sans(15px, $white, 500, 20px);
   }
 }

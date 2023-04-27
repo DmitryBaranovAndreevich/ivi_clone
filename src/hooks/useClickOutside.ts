@@ -8,7 +8,6 @@ export const useClickOutside = (isOpen: boolean, setIsOpen: TSetIsOpen) => {
   useEffect(() => {
     const closeDropdown = (e: Event): void => {
       const target = e.target as HTMLDivElement;
-      debugger;
       if (
         dropdownElement.current &&
         !dropdownElement.current.contains(target) &&
@@ -19,7 +18,6 @@ export const useClickOutside = (isOpen: boolean, setIsOpen: TSetIsOpen) => {
       }
     };
     if (isOpen) {
-      debugger;
       document.addEventListener('click', closeDropdown, true);
     }
     return () => {
