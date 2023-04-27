@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
 
 const LoginEmail = () => {
-   const { setEmail } = userLoginSlice.actions;
+  const { setEmail } = userLoginSlice.actions;
   const { email } = useAppSelector((state) => state.userLoginReduser);
   const dispatch = useAppDispatch();
   const { value, handleChange } = useForm({ email });
