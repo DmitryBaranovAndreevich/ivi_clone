@@ -1,0 +1,124 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.text {
+    flex-basis: 45%;
+}
+
+.form {
+    margin: 10px;
+    position: relative;
+
+    &_block {
+        position: relative;
+        margin: 10px;
+        cursor: text;
+    }
+}
+
+.input {
+    background-color: $buttonColorBlue;
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    outline: none;
+    @include border(transparent, 0px, solid, 4px);
+    @include font-source-sans(15px, $white, 500, 20px);
+
+    &:focus {
+        background-color: $lightGrey;
+    }
+
+    &:focus~.description_focus {
+    @include font-source-sans(13px, $textColorLight, 500, 20px);
+    opacity: 0.5;
+        top: 0%;
+        left: 1%;
+    }
+}
+
+.description {
+    position: absolute;
+    @include font-source-sans(15px, $white, 500, 20px);
+    top: 30%;
+    left: 16px;
+    transition: all .5s;
+
+    &_active {
+        @include font-source-sans(13px, $textColorLight, 500, 20px);
+        opacity: 0.5;
+        color: $white;
+        top: 0%;
+        left: 1%;
+    }
+}
+
+.sign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_title {
+        cursor: default;
+    }
+
+    &_link {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &_text {
+            margin: 0;
+            font-size: 14px;
+            cursor: default;
+        }
+
+        &_nav {
+            margin-left: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: $white;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 50%;
+            }
+        }
+    }
+
+    &_form {
+        margin: 10px;
+
+        &_block {
+
+            &_span {}
+
+            &_btn {
+                height: 54px;
+                width: 100%;
+                border: 1px solid black;
+                border-radius: 20px;
+                color: #282828;
+                font-size: 20px;
+                background-color: black;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 50%;
+                }
+            }
+        }
+    }
+
+
+}
+
+.input_error {
+    border: 1px solid red;
+}

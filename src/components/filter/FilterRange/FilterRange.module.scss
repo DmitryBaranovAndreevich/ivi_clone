@@ -1,0 +1,80 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+// .range {
+//     position: relative;
+//     overflow: visible;
+
+//     &_line {
+//         background-color: rgb(221, 221, 221);
+//         position: relative;
+//         border-radius: 2px;
+//         height: 2px;
+//         top: 0px;
+//         width: 100%;
+
+//         &_active {
+//             background-color: rgb(176, 176, 176);
+//             position: absolute;
+//             border-radius: 2px;
+//             height: 2px;
+//             top: 0px;
+//         }
+//     }
+
+//     &_thumb {
+//         height: 15px;
+//         top: -2px;
+//         left: -2px;
+//         bottom: 4px;
+//         width: 100%;
+//         position: absolute;
+
+//         &_button {
+//             width: 10px;
+//             height: 10px;
+//             background-color: white;
+//             border-radius: 50%;
+//             border: none;
+//         }
+//     }
+// }
+
+.slider {
+    flex-basis: 45%;
+}
+
+.form {
+    margin: 10px;
+    position: relative;
+}
+
+.label {
+    display: flex;
+}
+
+.input {
+    background-color: #312b45;
+    margin-left: 16px;
+    padding-left: 16px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border-color: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 4px;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.slider {
+    margin: 8px 0;
+    &_range {
+        width: 100%;
+    }
+}

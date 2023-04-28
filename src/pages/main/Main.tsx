@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <h2>MainPage</h2>
-      {/* <Slider /> */}
+      <Slider />
       {/* <div className={styles.wrapper}>
         <CategoriesSlider title={'Рекомендую посмотреть >'} size={'medium'} />
         <CategoriesSlider title={'(TOP 10) за неделю'} size={'big'} />
