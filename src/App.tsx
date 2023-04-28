@@ -5,6 +5,7 @@ import Main from './pages/main/Main';
 import NotFoundPage from './pages/404/404';
 import { useAppSelector } from './hooks/redux';
 import Header from './components/header/Header';
+import Movies from './pages/movies/Movies';
 import Footer from './components/footer/Footer';
 import LoginEmail from './pages/login/LoginEmail';
 import LoginPassword from './pages/login/LoginPassword';
@@ -31,7 +32,8 @@ function App() {
               <Route path="finish" element={<LoginFinish />} />
             </Route>
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
+        <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

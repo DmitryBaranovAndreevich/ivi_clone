@@ -6,12 +6,12 @@ import logoSearch from './../../assests/svg/logoSearch.svg';
 import logoBell from './../../assests/svg/logoBell.svg';
 import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
-import Navigation from './navigation/Navigation';
 import Dropdown from '../UI/Dropdowns/Dropdown';
+import NavigationContainer from './navigation/NavigationContainer';
 
 const Header = () => {
   const [itemHovered, setItemHovered] = useState<string | null>(null);
-  // setItemHovered(null);
+
   return (
     <header className={style.header}>
       <div className={style.body}>
@@ -22,7 +22,7 @@ const Header = () => {
             </Link>
           </div>
           <div className={style.content_menu}>
-            <Navigation setItemHovered={setItemHovered} />
+            <NavigationContainer setItemHovered={setItemHovered} />
           </div>
           <div className={style.content_combine}>
             <div className={style.content_button + ' ' + style.content_block}>
@@ -50,14 +50,12 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        {/* {itemHovered && ( */}
         <div
           className={style.dropdown + ' ' + (itemHovered && style.dropdown_visible)}
           onMouseLeave={() => setItemHovered(null)}
         >
           <Dropdown />
         </div>
-        {/* )} */}
       </div>
     </header>
   );
