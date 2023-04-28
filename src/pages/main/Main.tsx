@@ -3,6 +3,7 @@ import Slider from '../../components/mainSlider/MainSlider';
 import CardFilm from '../../components/cardFilm/cardFilm';
 import styles from './Main.module.scss';
 import example from './../../assests/example.jpg';
+import { Outlet } from 'react-router-dom';
 
 const Main = () => {
   return (
@@ -20,6 +21,7 @@ const Main = () => {
         country="qwerty"
         genre="qwerty"
       />
+      <Outlet />
     </div>
   );
 };

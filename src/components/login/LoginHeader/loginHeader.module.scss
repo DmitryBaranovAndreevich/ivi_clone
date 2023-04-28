@@ -1,0 +1,29 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.container {
+  display: flex;
+  padding: 10px 20px;
+  align-self: stretch;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  @include font-source-sans(15px, $white, 700, 20px);
+}
+
+.button {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  @include font-source-sans(15px, $buttonColorLight, 500, 20px);
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+  }
+}
+

@@ -2,10 +2,11 @@ import styles from './mainSlider.module.scss';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import SliderButton from '../UI/sliderButton/SliderButton';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { mediaQuery } from '../../service/constans';
 
 const MainSlider = () => {
+  const [dark, setDark] = useState(true);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 1,
     mode: 'free-snap',
@@ -17,6 +18,8 @@ const MainSlider = () => {
     defaultAnimation: {
       duration: 1000,
     },
+    animationStarted: () => setDark(false),
+    dragEnded: () => setTimeout(() => setDark(true), 480),
     breakpoints: {
       [mediaQuery.$laptop]: {
         slides: {
@@ -53,7 +56,10 @@ const MainSlider = () => {
 
   return (
     <>
-      <div ref={sliderRef} className={`${styles.container} keen-slider`}>
+      <div
+        ref={sliderRef}
+        className={`${styles.container} keen-slider ${dark && styles.container_darkBackground}`}
+      >
         <div className={styles.buttonContainer}>
           <SliderButton
             direction={'right'}

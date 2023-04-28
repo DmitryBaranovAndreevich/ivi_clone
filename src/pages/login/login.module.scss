@@ -1,0 +1,88 @@
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.span {
+  display: block;
+  @include font-source-sans(15px, $white, 700, 20px);
+}
+
+.wrapper {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px;
+  max-width: 235px;
+  width: 100%;
+  text-align: center;
+  @include font-source-sans(15px, $white, 500, 20px);
+}
+
+.responce {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  left: 200px;
+}
+
+.editButton {
+  height: 25px;
+  background: transparent;
+  border: 1px solid $white;
+  border-radius: 50%;
+  cursor: pointer;
+  align-self: center;
+  padding-top: 2px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.div {
+  max-width: 400px;
+  width: 100%;
+}
+
+.animation {
+  animation-name: move;
+}
+
+.animationTime1 {
+  animation-duration: 2s;
+}
+
+.animationTime2 {
+  animation-duration: 4s;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translateY(99%);
+    opacity: 0;
+  }
+
+  35% {
+    transform: translateY(95%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
