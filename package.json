@@ -1,5 +1,6 @@
 {
   "name": "ivi_clone",
+  "homepage": "https://github.com/DmitryBaranovAndreevich/ivi_clone/tree/actors_page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
