@@ -33,7 +33,7 @@ function App() {
             </Route>
           </Route>
           <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
-        <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

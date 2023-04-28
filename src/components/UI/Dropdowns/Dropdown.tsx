@@ -16,8 +16,8 @@ const MOCK_INFO = [
   'Новинки подписки',
 ];
 
-const Dropdown = () => {
-  const { genres, countries, years } = useAppSelector((state) => state.app);
+const Dropdown: React.FC = () => {
+  const { genres, countries, years } = useAppSelector((state) => state.appReducer);
 
   return (
     <div className={style.dropdown}>

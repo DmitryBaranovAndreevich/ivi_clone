@@ -8,9 +8,9 @@ import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
   debugger;
-  const { genres, countries, years } = useAppSelector((state) => state.app);
+  const { genres, countries, years } = useAppSelector((state) => state.appReducer);
   const { choosenGenres, choosenCountries, choosenYears, choosenRate, choosenCountReview } =
-    useAppSelector((state) => state.moviesFilter);
+    useAppSelector((state) => state.moviesFilterReduser);
   const dispatch = useAppDispatch();
   const { setGenres, setCountries, setYears, setRate, setCountReview, resetAllValue } =
     moviesFilter.actions;
