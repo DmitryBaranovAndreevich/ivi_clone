@@ -4,3 +4,8 @@ export const mediaQuery = {
   $tablets: '(max-width: 550px)',
   $phones: '(max-width: 450px)',
 };
+
+export const URL = 'http://localhost:3000/login';
+export const headers = {
+  Accept: 'application/json',
+};

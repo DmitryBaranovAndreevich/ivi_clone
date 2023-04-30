@@ -18,8 +18,8 @@ type TOwnProps = {
 export type TNavigationProps = TMapStateToProps;
 
 const mapStateToProps = (state: TRootState, ownProps: TOwnProps): TMapStateToProps => ({
-  navDesktop: state.app.navigationDesktop,
-  navLaptop: state.app.navigationTablet,
+  navDesktop: state.appReducer.navigationDesktop,
+  navLaptop: state.appReducer.navigationTablet,
   setItemHovered: ownProps.setItemHovered,
 });
 

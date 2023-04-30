@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 import { moviesSort, TKindSort } from '../../store/reducers/MoviesSort';
 
 const Sort = () => {
-  const { choosenSort, kindsSort } = useAppSelector((state) => state.moviesSort);
+  const { choosenSort, kindsSort } = useAppSelector((state) => state.moviesSortReduser);
   const dispatch = useAppDispatch();
   const { setSort } = moviesSort.actions;
   const [isOpen, setIsOpen] = useState(false);
