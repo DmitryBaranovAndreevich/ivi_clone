@@ -1,8 +1,7 @@
 import { moviesSort } from './reducers/MoviesSort';
-import { appApi } from './api/appApi';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { appReducer } from './reducers/App';
 import { moviesFilter } from './reducers/MoviesFilter';
+import { appReducer } from './reducers/App';
 
 const rootReducer = combineReducers({
   // [appApi.reducerPath]: appApi.reducer,

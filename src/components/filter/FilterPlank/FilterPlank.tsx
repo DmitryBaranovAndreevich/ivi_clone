@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useClickOutside } from '../../../hooks/useClickOutside';
+import { TObjWithParamsUrl } from '../../../hooks/useNavigation';
 import { TGenre } from '../../../type/type';
 import ArrowButton from '../../UI/arrowButton/arrowButton';
 import FilterDropdown from './FilterList/FilterDropdown';
@@ -9,7 +10,7 @@ type TFilterPlankProps = {
   title: string;
   nameInitialValue: 'genre' | 'country' | 'year';
   listItem: Array<TGenre>;
-  choosenValue: Array<string>;
+  choosenValue: TObjWithParamsUrl;
   addingClass: string;
   setFilter: (value: Array<string>) => void;
 };

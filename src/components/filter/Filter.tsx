@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useNavigation } from '../../hooks/useNavigation';
 import { moviesFilter } from '../../store/reducers/MoviesFilter';
 import style from './Filter.module.scss';
 import FilterPlank from './FilterPlank/FilterPlank';
@@ -7,13 +9,13 @@ import FilterRange from './FilterRange/FilterRange';
 import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
-  debugger;
   const { genres, countries, years } = useAppSelector((state) => state.app);
-  const { choosenGenres, choosenCountries, choosenYears, choosenRate, choosenCountReview } =
-    useAppSelector((state) => state.moviesFilter);
+  // const { choosenRate, choosenCountReview } = useAppSelector((state) => state.moviesFilter);
   const dispatch = useAppDispatch();
   const { setGenres, setCountries, setYears, setRate, setCountReview, resetAllValue } =
     moviesFilter.actions;
+  const meanUrl = useNavigation(genres, countries, years);
+
   return (
     <div className={style.filter}>
       <div className={`${style.filter_block} ${style.checkboxBlock}`}>
@@ -21,7 +23,7 @@ const Filter = () => {
           title="Жанры"
           nameInitialValue="genre"
           listItem={genres}
-          choosenValue={choosenGenres}
+          choosenValue={meanUrl}
           addingClass={style.dropdown_genre}
           setFilter={(genres: Array<string>) => {
             dispatch(setGenres({ genres }));
@@ -30,7 +32,7 @@ const Filter = () => {
         <FilterPlank
           title="Страны"
           nameInitialValue="country"
-          choosenValue={choosenCountries}
+          choosenValue={meanUrl}
           listItem={countries}
           addingClass={style.dropdown_country}
           setFilter={(countries: Array<string>) => {
@@ -40,7 +42,7 @@ const Filter = () => {
         <FilterPlank
           title="Годы"
           nameInitialValue="year"
-          choosenValue={choosenYears}
+          choosenValue={meanUrl}
           listItem={years}
           addingClass={style.dropdown_year}
           setFilter={(years: Array<string>) => {
@@ -55,7 +57,6 @@ const Filter = () => {
       <div className={`${style.filter_block} ${style.rangeBlock}`}>
         <FilterRange
           title="Рейтинг"
-          choosenRate={choosenRate}
           nameInitialValue="rate"
           step={0.1}
           min={0}
@@ -66,7 +67,6 @@ const Filter = () => {
         />
         <FilterRange
           title="Количесво отзывов"
-          choosenRate={choosenCountReview}
           nameInitialValue="countReviews"
           step={0.1}
           min={0}

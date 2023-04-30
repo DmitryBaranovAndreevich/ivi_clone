@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TMockObj } from '../../components/footer/FoterSocial';
 
 export type TTitleKindSort =
   | 'По количеству оценок'

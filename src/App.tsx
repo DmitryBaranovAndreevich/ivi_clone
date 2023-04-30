@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from './App.module.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main';
 import NotFoundPage from './pages/404/404';
 import { useAppSelector } from './hooks/redux';
@@ -15,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
+        <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
