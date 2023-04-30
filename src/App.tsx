@@ -32,7 +32,7 @@ function App() {
               <Route path="finish" element={<LoginFinish />} />
             </Route>
           </Route>
-          <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
+          <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

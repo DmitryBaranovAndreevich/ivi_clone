@@ -9,12 +9,13 @@ import FilterRange from './FilterRange/FilterRange';
 import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
-  const { genres, countries, years } = useAppSelector((state) => state.app);
+  const { genres, countries, years } = useAppSelector((state) => state.appReducer);
   // const { choosenRate, choosenCountReview } = useAppSelector((state) => state.moviesFilter);
   const dispatch = useAppDispatch();
   const { setGenres, setCountries, setYears, setRate, setCountReview, resetAllValue } =
     moviesFilter.actions;
   const meanUrl = useNavigation(genres, countries, years);
+  debugger;
 
   return (
     <div className={style.filter}>

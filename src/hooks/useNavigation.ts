@@ -12,12 +12,12 @@ export const useNavigation = (
   countries: Array<TGenre>,
   years: Array<TGenre>
 ) => {
-  debugger;
   const params = useParams();
   const objWithParamsUrl: TObjWithParamsUrl = {};
   const isInclude = (listItem: Array<TGenre>, params: string) => {
     return listItem.some((item) => item.englishName === params.split('+')[0]);
   };
+  debugger;
   if (params.first && params.second && params.third) {
     return { genre: params.first, country: params.second, years: params.third };
   } else if (params.first && params.second && !params.third) {
