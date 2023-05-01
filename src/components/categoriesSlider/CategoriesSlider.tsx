@@ -3,18 +3,21 @@ import styles from './categoriesSlider.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SliderButton from '../UI/sliderButton/SliderButton';
 import { Link } from 'react-router-dom';
+import { IFilm, IGenre, appApi } from '../../store/api/appApi';
+import CardFilm from '../cardFilm/cardFilm';
 
 interface ICategoriesSlider {
-  title: string;
+  genre: IGenre;
   size: 'big' | 'medium';
 }
 
-const CategoriesSlider: FC<ICategoriesSlider> = ({ title, size }) => {
+const CategoriesSlider: FC<ICategoriesSlider> = ({ genre, size }) => {
+  const { data: moviesOfGenre } = appApi.useGetMoviesOfGenreQuery(genre.englishName);
   const [viewItems, setViewItems] = useState(
     size === 'big'
-      ? Math.ceil(window.innerWidth / 400)
+      ? Math.ceil(window.innerWidth / 300)
       : size === 'medium'
-      ? Math.ceil(window.innerWidth / 316)
+      ? Math.ceil(window.innerWidth / 246)
       : 1
   );
 
@@ -30,9 +33,9 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ title, size }) => {
     if (window.innerWidth < 1600)
       setViewItems(
         size === 'big'
-          ? Math.ceil(window.innerWidth / 400) //не получается вынести в отдельную переменную, т.к. при создании переменной расчет будет произведен всего 1 раз
+          ? Math.ceil(window.innerWidth / 300) //не получается вынести в отдельную переменную, т.к. при создании переменной расчет будет произведен всего 1 раз
           : size === 'medium' // а нам нужно это делать для размера экрана в данный момент
-          ? Math.ceil(window.innerWidth / 316)
+          ? Math.ceil(window.innerWidth / 246)
           : 1
       );
     instanceRef.current?.update();
@@ -42,10 +45,14 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ title, size }) => {
     instanceRef.current?.update();
     return () => window.removeEventListener('resize', callback);
   }, []);
+
+  useEffect(() => {
+    instanceRef.current?.update();
+  }, [moviesOfGenre]);
   return (
     <div className={styles.wrapper}>
       <Link className={styles.title} to="#">
-        {title}
+        {genre.name}
       </Link>
       <div className={styles.container}>
         <div className={styles.buttonContainer}>
@@ -65,24 +72,25 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ title, size }) => {
           />
         </div>
         <div ref={sliderRef} className={`${styles.sliderContainer} keen-slider`}>
-          <div className={`${styles.slide} keen-slider__slide`}>1</div>
-          <div className={`${styles.slide} keen-slider__slide`}>2</div>
-          <div className={`${styles.slide} keen-slider__slide`}>3</div>
-          <div className={`${styles.slide} keen-slider__slide`}>4</div>
-          <div className={`${styles.slide} keen-slider__slide`}>5</div>
-          <div className={`${styles.slide} keen-slider__slide`}>6</div>
-          <div className={`${styles.slide} keen-slider__slide`}>7</div>
-          <div className={`${styles.slide} keen-slider__slide`}>8</div>
-          <div className={`${styles.slide} keen-slider__slide`}>9</div>
-          <div className={`${styles.slide} keen-slider__slide`}>10</div>
-          <div className={`${styles.slide} keen-slider__slide`}>11</div>
-          <div className={`${styles.slide} keen-slider__slide`}>12</div>
-          <div className={`${styles.slide} keen-slider__slide`}>13</div>
-          <div className={`${styles.slide} keen-slider__slide`}>14</div>
-          <div className={`${styles.slide} keen-slider__slide`}>15</div>
-          <div className={`${styles.slide} keen-slider__slide`}>16</div>
-          <div className={`${styles.slide} keen-slider__slide`}>17</div>
-          <div className={`${styles.slide} keen-slider__slide`}>18</div>
+          {moviesOfGenre &&
+            moviesOfGenre.map((movie) => {
+              return (
+                <div
+                  className={`${styles.slide} keen-slider__slide`}
+                  key={movie.id}
+                  style={size === 'big' ? { height: 400 } : { height: 277 }}
+                >
+                  <CardFilm
+                    size={size}
+                    image={movie.poster}
+                    name={movie.name}
+                    year={movie.year}
+                    country="qwerty"
+                    genre={genre.name}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
