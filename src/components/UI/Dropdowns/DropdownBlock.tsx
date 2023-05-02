@@ -1,5 +1,4 @@
 import React, { ReactNode, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
 import { TGenre } from '../../../type/type';
 import UILink from '../Link/UILink';
 import style from './dropdown.module.scss';
@@ -14,11 +13,7 @@ const DropdownBlock: React.FC<TDropdownBlockProps> = ({ title, listItems }) => {
     return listItems.map((item: TGenre): ReactNode => {
       return (
         <div className={style.block_items_item} key={item.id}>
-          <UILink
-            addingClass={style.link}
-            title={item.name}
-            href={`http://localhost:3000/movies/${item.englishName}`}
-          />
+          <UILink addingClass={style.link} title={item.name} href={`/movies/${item.englishName}`} />
         </div>
       );
     });

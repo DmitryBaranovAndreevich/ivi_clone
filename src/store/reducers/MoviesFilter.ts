@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TMoviesFilterInitialState = {
-  // kindOfFilter:
   choosenGenres: Array<string>;
   choosenCountries: Array<string>;
   choosenYears: Array<string>;
   choosenRate: number;
   choosenCountReview: number;
+  path: string;
 };
 
 const moviesFilterInitialState: TMoviesFilterInitialState = {
-  // kindOfFilter:
   choosenGenres: [],
   choosenCountries: [],
   choosenYears: [],
   choosenRate: 0,
   choosenCountReview: 0,
+  path: `/movies`,
 };
 
 export const moviesFilter = createSlice({

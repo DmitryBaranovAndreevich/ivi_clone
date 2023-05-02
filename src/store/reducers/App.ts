@@ -117,89 +117,54 @@ const MOCK_GENRES = [
 const MOCK_COUNTRY = [
   {
     id: 1,
-    name: 'Комедия',
-    englishName: 'comedy',
+    name: 'Russia',
+    englishName: 'ru',
   },
   {
     id: 2,
-    name: 'Артхаус',
-    englishName: 'arthouse',
+    name: 'США',
+    englishName: 'us',
   },
   {
     id: 3,
-    name: 'Биография',
-    englishName: 'biography',
+    name: 'Франция',
+    englishName: 'fr',
   },
   {
     id: 4,
-    name: 'Боевики',
-    englishName: 'boeviki',
+    name: 'Италия',
+    englishName: 'it',
   },
   {
     id: 5,
-    name: 'Комедия',
-    englishName: 'comedy',
-  },
-  {
-    id: 6,
-    name: 'Артхаус',
-    englishName: 'arthouse',
-  },
-  {
-    id: 7,
-    name: 'Биография',
-    englishName: 'biography',
-  },
-  {
-    id: 8,
-    name: 'Боевики',
-    englishName: 'boeviki',
-  },
-  {
-    id: 9,
-    name: 'Комедия',
-    englishName: 'comedy',
-  },
-  {
-    id: 10,
-    name: 'Артхаус',
-    englishName: 'arthouse',
-  },
-  {
-    id: 11,
-    name: 'Биография',
-    englishName: 'biography',
-  },
-  {
-    id: 12,
-    name: 'Боевики',
-    englishName: 'boeviki',
+    name: 'Советские',
+    englishName: 'su',
   },
 ];
 
 const MOCK_NAVIGATION_DESKTOP = [
   {
-    href: '#',
+    href: '/',
     title: 'Мой Иви',
     isExpand: false,
   },
   {
-    href: '#',
+    href: 'https://www.ivi.tv/new',
     title: 'Что нового',
     isExpand: false,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Фильмы',
     isExpand: true,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Сериалы',
     isExpand: true,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Мультфильмы',
     isExpand: true,
   },

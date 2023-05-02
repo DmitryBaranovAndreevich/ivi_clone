@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import MoviesDropdown from '../../UI/Dropdowns/Dropdown';
+import React from 'react';
 import UILink from '../../UI/Link/UILink';
 import style from './navigation.module.scss';
 
