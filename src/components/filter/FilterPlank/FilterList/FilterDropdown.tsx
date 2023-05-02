@@ -9,7 +9,7 @@ import { setUrlParams } from '../../../../utils/helperWithNavigation';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre>;
+  listItem: Array<TGenre> | undefined;
   choosenValue: TObjWithParamsUrl;
   addingClass: string;
   setFilter: (values: Array<string>) => void;
@@ -41,7 +41,7 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
   }, [valuesCheckbox, navigate]);
   // console.log(params);
   const filterList = useMemo(() => {
-    return listItem.map((item: TGenre) => {
+    return listItem?.map((item: TGenre) => {
       return (
         <FilterCheckbox
           key={item.id}

@@ -8,9 +8,9 @@ export type TObjWithParamsUrl = {
 };
 
 export const useNavigation = (
-  genres: Array<TGenre>,
-  countries: Array<TGenre>,
-  years: Array<TGenre>
+  genres: Array<TGenre> | undefined,
+  countries: Array<TGenre> | undefined,
+  years: Array<TGenre> | undefined
 ) => {
   const params = useParams();
   const objWithParamsUrl: TObjWithParamsUrl = {};
@@ -21,26 +21,26 @@ export const useNavigation = (
   if (params.first && params.second && params.third) {
     return { genre: params.first, country: params.second, years: params.third };
   } else if (params.first && params.second && !params.third) {
-    if (isInclude(genres, params.first)) {
+    if (genres && isInclude(genres, params.first)) {
       objWithParamsUrl.genre = params.first;
-    } else if (isInclude(countries, params.first)) {
+    } else if (countries && isInclude(countries, params.first)) {
       objWithParamsUrl.country = params.first;
-    } else if (isInclude(years, params.first)) {
+    } else if (years && isInclude(years, params.first)) {
       objWithParamsUrl.year = params.first;
     }
-    if (isInclude(genres, params.second)) {
+    if (genres && isInclude(genres, params.second)) {
       objWithParamsUrl.genre = params.second;
-    } else if (isInclude(countries, params.second)) {
+    } else if (countries && isInclude(countries, params.second)) {
       objWithParamsUrl.country = params.second;
-    } else if (isInclude(years, params.second)) {
+    } else if (years && isInclude(years, params.second)) {
       objWithParamsUrl.year = params.second;
     }
   } else if (params.first && !params.second && !params.third) {
-    if (isInclude(genres, params.first)) {
+    if (genres && isInclude(genres, params.first)) {
       objWithParamsUrl.genre = params.first;
-    } else if (isInclude(countries, params.first)) {
+    } else if (countries && isInclude(countries, params.first)) {
       objWithParamsUrl.country = params.first;
-    } else if (isInclude(years, params.first)) {
+    } else if (years && isInclude(years, params.first)) {
       objWithParamsUrl.year = params.first;
     }
   }

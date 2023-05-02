@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useNavigation } from '../../hooks/useNavigation';
+import { useGetGenresQuery } from '../../store/api/appApi';
 import { moviesFilter } from '../../store/reducers/MoviesFilter';
 import style from './Filter.module.scss';
 import FilterPlank from './FilterPlank/FilterPlank';
