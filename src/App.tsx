@@ -10,6 +10,7 @@ import Footer from './components/footer/Footer';
 import LoginEmail from './pages/login/LoginEmail';
 import LoginPassword from './pages/login/LoginPassword';
 import LoginFinish from './pages/login/LoginFinish';
+import Watch from './pages/watch/Watch';
 
 function App() {
   const {} = useAppSelector((state) => state);
@@ -33,6 +34,7 @@ function App() {
             </Route>
           </Route>
           <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
+          <Route path="/watch/:id?" element={<Watch />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

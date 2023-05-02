@@ -38,7 +38,6 @@ export const moviesFilter = createSlice({
       state.choosenCountReview = action.payload.countReview;
     },
     resetAllValue(state) {
-      debugger;
       state.choosenGenres = [];
       state.choosenCountries = [];
       state.choosenYears = [];

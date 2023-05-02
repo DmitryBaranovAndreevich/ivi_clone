@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { appApi, useGetGenresQuery } from '../../store/api/appApi';
 import { moviesFilter } from '../../store/reducers/MoviesFilter';
 import style from './Filter.module.scss';
 import FilterPlank from './FilterPlank/FilterPlank';
@@ -7,8 +8,8 @@ import FilterRange from './FilterRange/FilterRange';
 import FilterText from './FilterText/FilterText';
 
 const Filter = () => {
-  debugger;
-  const { genres, countries, years } = useAppSelector((state) => state.appReducer);
+  const { data: genres } = useGetGenresQuery('');
+  const { countries, years } = useAppSelector((state) => state.appReducer);
   const { choosenGenres, choosenCountries, choosenYears, choosenRate, choosenCountReview } =
     useAppSelector((state) => state.moviesFilterReduser);
   const dispatch = useAppDispatch();

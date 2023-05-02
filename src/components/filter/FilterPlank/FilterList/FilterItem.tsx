@@ -11,7 +11,6 @@ type TFilterListProps = {
 
 const FilterCheckbox: React.FC<TFilterListProps> = ({ nameInitialValue, name, englishName }) => {
   const params = useParams();
-  console.log(params);
   return (
     <li className={style.dropdown_item}>
       <label className={style.dropdown_label}>

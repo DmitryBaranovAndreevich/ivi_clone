@@ -1,0 +1,16 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.info {
+  width: 37.5%;
+}
+
+.titleBlock {
+  margin: 8px 0 20px 0;
+  padding: 0 12px;
+
+  &_title {
+    @include font-source-sans(42px, $white, 700, 44px);
+  }
+}

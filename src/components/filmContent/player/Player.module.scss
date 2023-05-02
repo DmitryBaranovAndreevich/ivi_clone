@@ -1,0 +1,44 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.player {
+    width: 62.5%;
+    // position: sticky;
+    // top: 32px;
+    // display: inline-block;
+    // vertical-align: top;
+    // padding-right: 32px;
+}
+
+.playerBlock {
+    width: 719px;
+    height: 405px;
+    background-color: grey;
+}
+
+.adding {
+    display: flex;
+    margin-top: 24px;
+
+    &_btn {
+        height: 40px;
+        padding: 10px 12px;
+        margin-right: 16px;
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+}
+
+.logo {
+    width: 16px;
+    height: 16px;
+
+    &_withText {
+        margin-right: 6px;
+    }
+}

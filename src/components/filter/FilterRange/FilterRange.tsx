@@ -23,7 +23,6 @@ const FilterRange: React.FC<TFilterRangeProps> = ({
   max,
   setFilter,
 }) => {
-  debugger;
   return (
     <div className={style.slider}>
       <FilterRangeForm

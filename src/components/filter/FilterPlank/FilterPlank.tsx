@@ -8,7 +8,7 @@ import style from './FilterPlank.module.scss';
 type TFilterPlankProps = {
   title: string;
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre>;
+  listItem: Array<TGenre> | undefined;
   choosenValue: Array<string>;
   addingClass: string;
   setFilter: (value: Array<string>) => void;

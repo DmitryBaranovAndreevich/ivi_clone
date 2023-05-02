@@ -6,7 +6,7 @@ import FilterCheckbox from './FilterItem';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre>;
+  listItem: Array<TGenre> | undefined;
   choosenValue: Array<string>;
   addingClass: string;
   setFilter: (values: Array<string>) => void;
@@ -20,7 +20,7 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
   choosenValue,
 }) => {
   const filterList = useMemo(() => {
-    return listItem.map((item: TGenre) => {
+    return listItem?.map((item: TGenre) => {
       return (
         <FilterCheckbox
           key={item.id}
