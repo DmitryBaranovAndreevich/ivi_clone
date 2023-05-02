@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
 import style from './../FilterPlank.module.scss';
-import { useParams } from 'react-router-dom';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
@@ -10,7 +9,6 @@ type TFilterListProps = {
 };
 
 const FilterCheckbox: React.FC<TFilterListProps> = ({ nameInitialValue, name, englishName }) => {
-  const params = useParams();
   return (
     <li className={style.dropdown_item}>
       <label className={style.dropdown_label}>
