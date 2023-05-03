@@ -1,0 +1,10 @@
+.CommonButton {
+    width: 182px;
+    height: 32px;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 7px 11px;
+    background: #ea003d;
+    color: white;
+    text-align: center;
+}

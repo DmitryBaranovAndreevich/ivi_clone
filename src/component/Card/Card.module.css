@@ -1,0 +1,55 @@
+.AppCard {
+    height: 100%;
+    background: #1f1b2e;
+    padding-top: 132px;
+    width: 66.66666667%;
+    margin-left: 16.66666667%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.AppCardImg {
+    margin-bottom: 16px;
+    width: 120px;
+    height: 120px;
+    cursor: auto;
+    border-radius: 15%;
+}
+
+.AppCardTitle {
+    font-size: 56px;
+    line-height: 56px;
+    font-style: normal;
+    font-weight: 700;
+    word-wrap: break-word;
+    color: #fff;
+}
+
+.AppCardTranslation {
+    margin-top: 16px;
+    color: #a5a1b2;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.AppCardDescription {
+    color: #d9d7e0;
+}
+
+.AppCardFilmsContainer {
+    margin-top: 40px;
+}
+
+.AppCardFilmsTitle {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.AppCardFilmsCarousel {
+    width: 596px;
+    height: 257px;
+}
