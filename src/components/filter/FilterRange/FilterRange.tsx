@@ -9,7 +9,6 @@ type TFilterRangeProps = {
   step: number;
   min: number;
   max: number;
-  setFilter: (value: number) => void;
 };
 
 type qqq = {
@@ -17,14 +16,7 @@ type qqq = {
   ratingsNumber_gte?: string;
 };
 
-const FilterRange: React.FC<TFilterRangeProps> = ({
-  title,
-  nameInitialValue,
-  step,
-  min,
-  max,
-  setFilter,
-}) => {
+const FilterRange: React.FC<TFilterRangeProps> = ({ title, nameInitialValue, step, min, max }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [choosenRate, setChoosenRate] = useState(0);
   const rating: number = Number(searchParams.get('rating_gte'))
@@ -41,12 +33,12 @@ const FilterRange: React.FC<TFilterRangeProps> = ({
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const queryParams: qqq = {};
     const target = e.target as HTMLInputElement;
-    if (Number(target.value) && nameInitialValue === 'rate') {
+    if (isFinite(Number(target.value)) && nameInitialValue === 'rate') {
       if (searchParams.get('ratingsNumber_gte')) {
         queryParams.ratingsNumber_gte = String(searchParams.get('ratingsNumber_gte'));
       }
       queryParams.rating_gte = target.value;
-    } else if (Number(target.value) && nameInitialValue === 'countReviews') {
+    } else if (isFinite(Number(target.value)) && nameInitialValue === 'countReviews') {
       if (searchParams.get('rating_gte')) {
         queryParams.rating_gte = String(searchParams.get('rating_gte'));
       }
@@ -60,7 +52,6 @@ const FilterRange: React.FC<TFilterRangeProps> = ({
         title={title}
         choosenRate={choosenRate}
         nameInitialValue={nameInitialValue}
-        setFilter={setFilter}
         step={step}
         min={min}
         max={max}

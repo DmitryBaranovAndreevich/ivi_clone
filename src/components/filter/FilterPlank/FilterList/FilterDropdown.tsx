@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Form, Formik } from 'formik';
-import { TGenre } from '../../../../type/type';
+import { TGenreCountriesYears } from '../../../../type/type';
 import style from './../FilterPlank.module.scss';
 import FilterCheckbox from './FilterItem';
 import { generatePath, useNavigate, useSearchParams } from 'react-router-dom';
@@ -9,17 +9,15 @@ import { setUrlParams } from '../../../../utils/helperWithNavigation';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre> | undefined;
+  listItem: Array<TGenreCountriesYears> | undefined;
   choosenValue: TObjWithParamsUrl;
   addingClass: string;
-  setFilter: (values: Array<string>) => void;
 };
 
 const FilterDropdown: React.FC<TFilterListProps> = ({
   nameInitialValue,
   listItem,
   addingClass,
-  setFilter,
   choosenValue,
 }) => {
   const [valuesCheckbox, setValuesCheckbox] = useState<Array<string>>(
@@ -29,19 +27,16 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
   const navigate = useNavigate();
   useEffect(() => {
     if (valuesCheckbox.join('+') !== choosenValue[nameInitialValue]) {
-      debugger;
-      const path = generatePath('/movies/:genre?/:country?/:year?', {
+      const path = generatePath('/movies/:genre?/:year?/:country?', {
         genre: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'genre') || null,
-        country: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'country') || null,
         year: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'year') || null,
+        country: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'country') || null,
       });
       navigate(`${path}?${searchParams}`);
-      // setSearchParams(searchParams);
     }
   }, [valuesCheckbox, navigate]);
-  // console.log(params);
   const filterList = useMemo(() => {
-    return listItem?.map((item: TGenre) => {
+    return listItem?.map((item: TGenreCountriesYears) => {
       return (
         <FilterCheckbox
           key={item.id}

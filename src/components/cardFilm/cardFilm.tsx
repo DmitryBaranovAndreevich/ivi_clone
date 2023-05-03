@@ -6,14 +6,14 @@ import style from './cardFilm.module.scss';
 import { useMemo, useState } from 'react';
 
 type TCardFilmProps = {
-  image: string;
   name: string;
   year: number;
   country: string;
   genre: string;
+  poster: string;
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre }) => {
+const CardFilm: React.FC<TCardFilmProps> = ({ poster, name, year, country, genre }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
   const rateInteger = 8;
   const rateFraction = 4;
@@ -34,7 +34,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre 
         }
       >
         <div className={style.imageSection_image_wrp}>
-          <img className={style.imageSection_image} src={image} alt={name} />
+          <img className={style.imageSection_image} src={poster} alt={name} />
         </div>
         <div
           className={

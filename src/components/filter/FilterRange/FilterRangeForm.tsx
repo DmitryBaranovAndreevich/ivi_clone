@@ -6,7 +6,6 @@ type TFilterRangeFormProps = {
   title: string;
   choosenRate: number;
   nameInitialValue: 'rate' | 'countReviews';
-  setFilter: (value: number) => void;
   step: number;
   min: number;
   max: number;
@@ -17,7 +16,6 @@ const FilterRangeForm: React.FC<TFilterRangeFormProps> = ({
   title,
   choosenRate,
   nameInitialValue,
-  setFilter,
   step,
   min,
   max,

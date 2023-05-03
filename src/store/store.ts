@@ -4,6 +4,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userLoginReduser from './reducers/UserLoginSlice';
 import appReducer from './reducers/App';
 import moviesFilterReduser from './reducers/MoviesFilter';
+import { filmApi } from './api/filmApi';
 
 const rootReducer = combineReducers({
   appReducer,
@@ -11,12 +12,14 @@ const rootReducer = combineReducers({
   moviesSortReduser,
   moviesFilterReduser,
   [appApi.reducerPath]: appApi.reducer,
+  [filmApi.reducerPath]: filmApi.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(appApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat([appApi.middleware, filmApi.middleware]),
   });
 };
 

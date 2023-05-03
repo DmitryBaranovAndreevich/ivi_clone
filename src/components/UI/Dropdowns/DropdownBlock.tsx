@@ -1,22 +1,40 @@
 import React, { ReactNode, useMemo } from 'react';
-import { TGenre } from '../../../type/type';
+import { TGenreCountriesYears } from '../../../type/type';
 import UILink from '../Link/UILink';
 import style from './dropdown.module.scss';
 
 type TDropdownBlockProps = {
-  title: string;
-  listItems: Array<TGenre>;
+  title: 'Жанры' | 'Страны' | 'Годы';
+  listItems: Array<TGenreCountriesYears> | undefined;
 };
 
 const DropdownBlock: React.FC<TDropdownBlockProps> = ({ title, listItems }) => {
-  const itemsBlock: Array<ReactNode> = useMemo((): Array<ReactNode> => {
-    return listItems.map((item: TGenre): ReactNode => {
-      return (
-        <div className={style.block_items_item} key={item.id}>
-          <UILink addingClass={style.link} title={item.name} href={`/movies/${item.englishName}`} />
-        </div>
-      );
-    });
+  const itemsBlock: Array<ReactNode> | undefined = useMemo((): Array<ReactNode> | undefined => {
+    if (title === 'Годы' || title === 'Страны') {
+      return listItems?.slice(0, 4).map((item: TGenreCountriesYears): ReactNode => {
+        return (
+          <div className={style.block_items_item} key={item.id}>
+            <UILink
+              addingClass={style.link}
+              title={title === 'Годы' ? `Фильмы ${item.name} года` : item.name}
+              href={`/movies/${item.englishName}`}
+            />
+          </div>
+        );
+      });
+    } else {
+      return listItems?.map((item: TGenreCountriesYears): ReactNode => {
+        return (
+          <div className={style.block_items_item} key={item.id}>
+            <UILink
+              addingClass={style.link}
+              title={item.name}
+              href={`/movies/${item.englishName}`}
+            />
+          </div>
+        );
+      });
+    }
   }, [listItems]);
   return (
     <div className={style.block}>

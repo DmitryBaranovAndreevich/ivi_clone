@@ -18,8 +18,6 @@ function App() {
     id: '1',
     name: 'robin',
   });
-
-  debugger;
   return (
     <div className={styles.container}>
       <Routes>

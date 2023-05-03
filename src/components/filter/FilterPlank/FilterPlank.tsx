@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useClickOutside } from '../../../hooks/useClickOutside';
 import { TObjWithParamsUrl } from '../../../hooks/useNavigation';
-import { TGenre } from '../../../type/type';
+import { TGenreCountriesYears } from '../../../type/type';
 import ArrowButton from '../../UI/arrowButton/arrowButton';
 import FilterDropdown from './FilterList/FilterDropdown';
 import style from './FilterPlank.module.scss';
@@ -9,10 +9,9 @@ import style from './FilterPlank.module.scss';
 type TFilterPlankProps = {
   title: string;
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre> | undefined;
+  listItem: Array<TGenreCountriesYears> | undefined;
   choosenValue: TObjWithParamsUrl;
   addingClass: string;
-  setFilter: (value: Array<string>) => void;
 };
 
 const FilterPlank: React.FC<TFilterPlankProps> = ({
@@ -21,7 +20,6 @@ const FilterPlank: React.FC<TFilterPlankProps> = ({
   listItem,
   choosenValue,
   addingClass,
-  setFilter,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { buttonElement, dropdownElement } = useClickOutside(isOpen, setIsOpen);
@@ -39,7 +37,6 @@ const FilterPlank: React.FC<TFilterPlankProps> = ({
             listItem={listItem}
             nameInitialValue={nameInitialValue}
             choosenValue={choosenValue}
-            setFilter={setFilter}
           />
         )}
       </div>

@@ -15,7 +15,7 @@ const Main = () => {
         <CategoriesSlider title={'(TOP 10) за неделю'} size={'big'} />
       </div> */}
       <CardFilm
-        image={example}
+        poster={example}
         name="qwertyqqqqqqqfrgjhkl;jhvghbjnkml,"
         year={2022}
         country="qwerty"

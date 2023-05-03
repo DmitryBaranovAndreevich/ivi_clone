@@ -13,7 +13,6 @@ export const setUrlParams: TSetUrlParams = (
   choosenValue,
   partUrl
 ) => {
-  debugger;
   if (nameInitialValue === partUrl) {
     return valuesCheckbox.join('+');
   } else if (choosenValue[partUrl]) {
