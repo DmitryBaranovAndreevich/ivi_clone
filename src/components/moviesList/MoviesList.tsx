@@ -18,10 +18,11 @@ const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
         <li key={film.id} className={style.item}>
           <CardFilm
             name={film.name}
-            poster={film.poster}
+            image={film.poster}
             year={film.year}
             country={'Страна'}
             genre={'Жанр'}
+            size={'medium'}
           />
         </li>
       );

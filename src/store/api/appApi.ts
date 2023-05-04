@@ -27,19 +27,9 @@ export const appApi = createApi({
     baseUrl: URL_TO_FILMS,
   }),
   endpoints: (build) => ({
-    getGenres: build.query<IGenre[], string>({
+    getGenres: build.query<TGenreCountriesYears[], ''>({
       query: () => ({
-        url: '/genres',
-      }),
-    }),
-    getMoviesOfGenre: build.query<IFilm[], string>({
-      query: (genre) => ({
-        url: `/films/filter/${genre}`,
-      }),
-    }),
-    getAllFilms: build.query<IFilm[], string>({
-      query: () => ({
-        url: '/films',
+        url: 'genres',
       }),
       transformResponse: (response: TGenreCountriesYears[]): TGenreCountriesYears[] => {
         return response.map((genre: TGenreCountriesYears) => {
@@ -50,6 +40,16 @@ export const appApi = createApi({
           };
         });
       },
+    }),
+    getMoviesOfGenre: build.query<IFilm[], string>({
+      query: (genre) => ({
+        url: `/films/filter/${genre}`,
+      }),
+    }),
+    getAllFilms: build.query<IFilm[], string>({
+      query: () => ({
+        url: '/films',
+      }),
     }),
     getCountries: build.query<TGenreCountriesYears[], ''>({
       query: () => ({
