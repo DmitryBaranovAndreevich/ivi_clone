@@ -1,18 +1,17 @@
 import React, { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
+import { sortList } from '../../utils/helperWithSort';
 import CardFilm from '../cardFilm/cardFilm';
 import { IFilm } from '../filmContent/TFilm';
-import style from './MoviesList.module.scss';
+import style from './MoviesListBlock.module.scss';
 
-const MoviesList = () => {
-  const location = useLocation();
-  const { data: filmSort } = useGetFilmsQuery(
-    { pathName: location.pathname.replace(/\/movies/, ''), search: location.search },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
+type TMoviesListProps = {
+  filmSort: Array<IFilm> | undefined;
+};
+
+const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
+  debugger;
   const filmsBlock = useMemo(() => {
     return filmSort?.map((film: IFilm) => {
       return (

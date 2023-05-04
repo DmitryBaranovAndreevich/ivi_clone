@@ -10,7 +10,7 @@ import { useGetCountriesQuery, useGetGenresQuery } from '../../store/api/appApi'
 import { useAppSelector } from '../../hooks/redux';
 import { useNavigation } from '../../hooks/useNavigation';
 import MoviesHeader from '../../components/moviesHeader/MoviesHeader';
-import MoviesList from '../../components/moviesList/MoviesList';
+import MoviesListBlock from '../../components/moviesList/MoviesListBlock';
 
 const Movies = () => {
   const { data: genres } = useGetGenresQuery('');
@@ -23,7 +23,7 @@ const Movies = () => {
       <MoviesHeader meanUrl={meanUrl} />
       <Sort />
       <Filter meanUrl={meanUrl} />
-      <MoviesList />
+      <MoviesListBlock />
     </div>
   );
 };

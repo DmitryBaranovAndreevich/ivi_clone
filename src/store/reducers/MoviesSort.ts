@@ -6,6 +6,8 @@ export type TTitleKindSort =
   | 'По дате выхода'
   | 'По алфавиту';
 
+export type THrefKindSort = 'mark' | 'rate' | 'year' | 'name';
+
 export type TKindSort = {
   title: TTitleKindSort;
   href: string;
@@ -14,7 +16,6 @@ export type TKindSort = {
 type TMoviesSortInitialState = {
   kindsSort: Array<TKindSort>;
   choosenSort: TKindSort;
-  searchUrl: null | string;
 };
 
 const moviesSortInitialState: TMoviesSortInitialState = {
@@ -40,7 +41,6 @@ const moviesSortInitialState: TMoviesSortInitialState = {
     title: 'По количеству оценок',
     href: 'mark',
   },
-  searchUrl: null,
 };
 
 export const moviesSort = createSlice({
@@ -49,9 +49,6 @@ export const moviesSort = createSlice({
   reducers: {
     setSort(state, action: PayloadAction<{ sortValue: TKindSort }>) {
       state.choosenSort = action.payload.sortValue;
-    },
-    setSearchUrl(state, action: PayloadAction<{ url: string }>) {
-      state.searchUrl = action.payload.url;
     },
   },
 });
