@@ -11,13 +11,6 @@
   margin: 30px 8% 0 8.5%;
 }
 
-.title {
-  @include font-source-sans(24px, $white, 700, 28px);
-  margin: 0 0 24px 0;
-  text-decoration: none;
-  display: block;
-}
-
 .rightButton {
   right: -50px;
 }

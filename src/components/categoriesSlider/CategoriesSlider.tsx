@@ -2,17 +2,19 @@ import { useKeenSlider } from 'keen-slider/react';
 import styles from './categoriesSlider.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SliderButton from '../UI/sliderButton/SliderButton';
-import { Link } from 'react-router-dom';
-import { IFilm, IGenre, appApi } from '../../store/api/appApi';
+import { IFilm } from '../../store/api/appApi';
 import CardFilm from '../cardFilm/cardFilm';
 
-interface ICategoriesSlider {
-  genre: IGenre;
+export interface ISlider {
   size: 'big' | 'medium';
+  title: string;
 }
 
-const CategoriesSlider: FC<ICategoriesSlider> = ({ genre, size }) => {
-  const { data: moviesOfGenre } = appApi.useGetMoviesOfGenreQuery(genre.englishName);
+interface ICategoriesSlider extends ISlider {
+  items: IFilm[];
+}
+
+const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
   const [viewItems, setViewItems] = useState(
     size === 'big'
       ? Math.ceil(window.innerWidth / 300)
@@ -48,12 +50,9 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ genre, size }) => {
 
   useEffect(() => {
     instanceRef.current?.update();
-  }, [moviesOfGenre]);
+  }, [items]);
   return (
     <div className={styles.wrapper}>
-      <Link className={styles.title} to="#">
-        {genre.name}
-      </Link>
       <div className={styles.container}>
         <div className={styles.buttonContainer}>
           <SliderButton
@@ -72,8 +71,8 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ genre, size }) => {
           />
         </div>
         <div ref={sliderRef} className={`${styles.sliderContainer} keen-slider`}>
-          {moviesOfGenre &&
-            moviesOfGenre.map((movie) => {
+          {items &&
+            items.map((movie) => {
               return (
                 <div
                   className={`${styles.slide} keen-slider__slide`}
@@ -86,7 +85,7 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ genre, size }) => {
                     name={movie.name}
                     year={movie.year}
                     country="qwerty"
-                    genre={genre.name}
+                    genre={title}
                   />
                 </div>
               );

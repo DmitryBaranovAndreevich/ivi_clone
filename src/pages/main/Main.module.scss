@@ -8,6 +8,29 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   max-width: $desctop;
-  margin: 0 auto;
+  margin: 50px auto;
+
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  color: $white;
+  font-size: 28px;
+  color: lightcoral;
+
 }

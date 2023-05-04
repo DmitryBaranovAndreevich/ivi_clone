@@ -36,6 +36,11 @@ export const appApi = createApi({
         url: `/films/filter/${genre}`,
       }),
     }),
+    getAllFilms: build.query<IFilm[], string>({
+      query: () => ({
+        url: '/films',
+      }),
+    }),
   }),
 });
 
