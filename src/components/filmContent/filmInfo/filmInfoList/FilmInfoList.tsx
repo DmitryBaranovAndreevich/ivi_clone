@@ -9,7 +9,6 @@ type TFilmInfoListProps = {
 };
 
 const FilmInfoList: React.FC<TFilmInfoListProps> = ({ paramsList, modify }) => {
-  debugger;
   const items: Array<ReactNode> = useMemo((): Array<ReactNode> => {
     return paramsList.map((item: TParamListMovie) => {
       return (

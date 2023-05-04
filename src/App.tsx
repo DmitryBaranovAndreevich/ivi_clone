@@ -39,7 +39,7 @@ function App() {
             </Route>
           </Route>
           <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
-          <Route path="/watch" element={<Watch />} />
+          <Route path="/watch/:id" element={<Watch />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

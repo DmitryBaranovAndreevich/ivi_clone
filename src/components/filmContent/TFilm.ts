@@ -4,51 +4,73 @@ type TFilmRoles = {
   personId: number;
 };
 
-interface IDirectors {
+type TRoles = {
   id: number;
   name: string;
+  originalName: string;
+  photo: string;
+};
+
+export interface IDirectors {
+  id: number;
+  name: string;
+  originalName: string;
   photo: string;
   FilmDirectors: TFilmRoles;
 }
+
 export interface IActors {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmActors: TFilmRoles;
 }
-interface IWriters {
+
+export interface IWriters {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmWriters: TFilmRoles;
 }
-interface IProducers {
+
+export interface IProducers {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmProducers: TFilmRoles;
 }
-interface ICinematography {
+
+export interface ICinematography {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmCinematography: TFilmRoles;
 }
-interface IMusicians {
+
+export interface IMusicians {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmMusicians: TFilmRoles;
 }
-interface IEditors {
+
+export interface IEditors {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmEditors: TFilmRoles;
 }
-interface IDesigners {
+
+export interface IDesigners {
   id: number;
   name: string;
+  originalName: string;
   photo: string;
   FilmDesigners: TFilmRoles;
 }

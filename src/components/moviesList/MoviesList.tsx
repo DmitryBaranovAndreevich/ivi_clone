@@ -11,7 +11,6 @@ type TMoviesListProps = {
 };
 
 const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
-  debugger;
   const filmsBlock = useMemo(() => {
     return filmSort?.map((film: IFilm) => {
       return (

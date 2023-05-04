@@ -5,8 +5,12 @@ import style from './FilmContent.module.scss';
 import films from './films.json';
 import { IFilm } from './TFilm';
 
-const FilmContent = () => {
-  const film: IFilm = films;
+type TFilmContentProps = {
+  film: IFilm;
+};
+
+const FilmContent: React.FC<TFilmContentProps> = ({ film }) => {
+  // const film: IFilm = films;
   return (
     <div className={style.filmContent}>
       <Player poster={film.poster} />

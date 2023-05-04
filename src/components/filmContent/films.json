@@ -1,6 +1,7 @@
 {
     "id": 4,
     "name": "Очень крутой фильм",
+    "originalName": "Очень крутой фильм",
     "poster": "http://source.com/0",
     "mpaaRating": "18+",
     "rating": 2.2,
@@ -12,7 +13,8 @@
         {
             "id": 1,
             "name": "Роб Шнайдер",
-            "photo": "http://source.com/1",
+            "originalName": "Роб Шнайдер",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmDirectors": {
                 "id": 4,
                 "filmId": 4,
@@ -24,7 +26,8 @@
         {
             "id": 2,
             "name": "Адам Сендлер",
-            "photo": "http://source.com/2",
+            "originalName": "Адам Сендлер",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmActors": {
                 "id": 13,
                 "filmId": 4,
@@ -34,7 +37,8 @@
         {
             "id": 3,
             "name": "Билл Найи",
-            "photo": "http://source.com/3",
+            "originalName": "Билл Найи",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmActors": {
                 "id": 14,
                 "filmId": 4,
@@ -44,7 +48,8 @@
         {
             "id": 4,
             "name": "Билл Скарсгард",
-            "photo": "http://source.com/4",
+            "originalName": "Билл Скарсгард",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmActors": {
                 "id": 15,
                 "filmId": 4,
@@ -54,7 +59,8 @@
         {
             "id": 5,
             "name": "Пенелопа Круз",
-            "photo": "http://source.com/5",
+            "originalName": "Пенелопа Круз",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmActors": {
                 "id": 16,
                 "filmId": 4,
@@ -66,7 +72,8 @@
         {
             "id": 6,
             "name": "Лев Толстой",
-            "photo": "http://source.com/6",
+            "originalName": "Лев Толстой",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmWriters": {
                 "id": 4,
                 "filmId": 4,
@@ -78,7 +85,8 @@
         {
             "id": 7,
             "name": "Чарли Ванштейн",
-            "photo": "http://source.com/7",
+            "originalName": "Чарли Ванштейн",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmProducers": {
                 "id": 7,
                 "filmId": 4,
@@ -88,7 +96,8 @@
         {
             "id": 8,
             "name": "Александр Роднянский",
-            "photo": "http://source.com/8",
+            "originalName": "Александр Роднянский",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmProducers": {
                 "id": 8,
                 "filmId": 4,
@@ -100,7 +109,8 @@
         {
             "id": 11,
             "name": "Лоик Реми",
-            "photo": "http://source.com/9",
+            "originalName": "Лоик Реми",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmCinematography": {
                 "id": 4,
                 "filmId": 4,
@@ -112,7 +122,8 @@
         {
             "id": 12,
             "name": "50 Cent",
-            "photo": "http://source.com/10",
+            "originalName": "50 Cent",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmMusicians": {
                 "id": 4,
                 "filmId": 4,
@@ -124,7 +135,8 @@
         {
             "id": 9,
             "name": "Михаил Понтожа",
-            "photo": "http://source.com/11",
+            "originalName": "Михаил Понтожа",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmDesigners": {
                 "id": 7,
                 "filmId": 4,
@@ -134,7 +146,8 @@
         {
             "id": 10,
             "name": "Курбан Бердыев",
-            "photo": "http://source.com/12",
+            "originalName": "Курбан Бердыев",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmDesigners": {
                 "id": 8,
                 "filmId": 4,
@@ -146,7 +159,8 @@
         {
             "id": 11,
             "name": "Лоик Реми",
-            "photo": "http://source.com/9",
+            "originalName": "Лоик Реми",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmEditors": {
                 "id": 8,
                 "filmId": 4,
@@ -156,7 +170,8 @@
         {
             "id": 13,
             "name": "Татьяна Кальдерон",
-            "photo": "http://source.com/13",
+            "originalName": "Татьяна Кальдерон",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
             "FilmEditors": {
                 "id": 7,
                 "filmId": 4,
