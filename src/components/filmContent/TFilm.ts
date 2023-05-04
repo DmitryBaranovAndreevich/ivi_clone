@@ -10,7 +10,7 @@ interface IDirectors {
   photo: string;
   FilmDirectors: TFilmRoles;
 }
-interface IActors {
+export interface IActors {
   id: number;
   name: string;
   photo: string;
@@ -59,7 +59,7 @@ type TFilmGenres = {
   genreId: number;
 };
 
-interface IGenres {
+export interface IGenres {
   id: number;
   name: string;
   englishName: string;
@@ -86,7 +86,7 @@ type TFilmCountries = {
   countryId: number;
 };
 
-interface ICountries {
+export interface ICountries {
   id: number;
   name: string;
   englishName: string;
@@ -98,7 +98,7 @@ export interface IFilm {
   name: string;
   poster: string;
   mpaaRating: string;
-  rating: string;
+  rating: number;
   ratingsNumber: number;
   year: number;
   duration: string;

@@ -9,3 +9,10 @@ export type TGenreCountriesYears = {
   name: string;
   englishName: string;
 };
+
+export type TParamListMovie = {
+  title: string;
+  link?: string;
+  type?: 'likeButton';
+  icon?: string;
+};

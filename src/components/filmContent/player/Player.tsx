@@ -9,7 +9,9 @@ type TPlayerProps = {
 const Player: React.FC<TPlayerProps> = ({ poster }) => {
   return (
     <div className={style.player}>
-      <div className={style.playerBlock}></div>
+      <div className={style.playerBlock}>
+        <div className={style.video}></div>
+      </div>
       <PlayerAdding />
     </div>
   );

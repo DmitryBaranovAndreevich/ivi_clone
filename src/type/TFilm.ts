@@ -95,7 +95,7 @@ interface ICountries {
 
 export interface IFilm {
   id: number;
-  originalName: string,
+  originalName: string;
   name: string;
   poster: string;
   mpaaRating: string;

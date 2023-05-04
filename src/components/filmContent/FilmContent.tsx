@@ -15,6 +15,11 @@ const FilmContent = () => {
         year={film.year}
         duration={film.duration}
         mpaaRating={film.mpaaRating}
+        countries={film.countries}
+        genre={film.genres}
+        actors={film.actors}
+        rating={film.rating}
+        description={film.description}
       />
     </div>
   );

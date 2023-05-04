@@ -4,16 +4,23 @@ import style from './UIButton.module.scss';
 
 type TUIButtonProps = {
   children: ReactNode;
-  href: string;
+  href?: string;
   addingClass: string;
   target?: string;
+  type?: 'button' | 'link';
 };
 
-const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass, target }) => {
+const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass, type, target }) => {
   return (
-    <Link to={href} className={style.btn + ' ' + addingClass} target={target}>
-      {children}
-    </Link>
+    <React.Fragment>
+      {type === 'button' ? (
+        <button className={style.btn + ' ' + addingClass}>{children}</button>
+      ) : (
+        <Link to={href ? href : '/'} className={style.btn + ' ' + addingClass} target={target}>
+          {children}
+        </Link>
+      )}
+    </React.Fragment>
   );
 };
 
