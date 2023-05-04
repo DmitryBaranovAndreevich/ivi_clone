@@ -1,25 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URL_TO_FILMS } from '../../service/constans';
 
-export interface IFilm {
-  id: number;
-  name: string;
-  poster: string;
-  mpaaRating: string;
-  rating: string;
-  ratingsNumber: number;
-  year: number;
-  duration: string;
-  description: string;
-}
-
-export interface IGenre {
-  id: number;
-  name: string;
-  englishName: string;
-  films: IFilm[];
-}
 import { TGenreCountriesYears } from '../../type/type';
+import { IFilm } from '../../type/TFilm';
 
 export const appApi = createApi({
   reducerPath: 'appApi',

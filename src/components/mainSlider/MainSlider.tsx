@@ -4,8 +4,8 @@ import { useKeenSlider } from 'keen-slider/react';
 import SliderButton from '../UI/sliderButton/SliderButton';
 import { CSSProperties, FC, useEffect, useState } from 'react';
 import { mediaQuery } from '../../service/constans';
-import { IFilm } from '../../store/api/appApi';
 import RedButton from '../UI/redButton/RedButton';
+import { IFilm } from '../../type/TFilm';
 
 interface IMainSlider {
   items: IFilm[];
