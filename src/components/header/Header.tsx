@@ -36,7 +36,7 @@ const Header = () => {
             </div>
           </div>
           <div className={style.content_notifications + ' ' + style.content_block}>
-            <Link to="#">
+            <Link to="https://www.ivi.tv/profile/pull_notifications">
               <div className={style.content_notifications_logo}>
                 <img src={logoBell} alt="logoBell" />
               </div>

@@ -6,8 +6,13 @@
   @include font-source-sans(13px, $white, 400, 20px);
   text-decoration: none;
   opacity: 0.5;
+  display: inline-block;
 
   &:hover {
     opacity: 1;
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
   }
 }

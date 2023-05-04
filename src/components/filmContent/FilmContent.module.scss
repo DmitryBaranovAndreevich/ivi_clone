@@ -2,10 +2,10 @@
 @import '../../commonStyles/variables/index.scss';
 @import '../../commonStyles/fonts.scss';
 
-.container {
-  background: $bgcMain;
-  color: $white;
-  max-width: 1240px;  
-  margin: 0 auto;
-  padding: 0 12px;
+.filmContent {
+    display: flex;
+}
+
+.content {
+
 }

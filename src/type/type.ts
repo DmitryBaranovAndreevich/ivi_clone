@@ -4,7 +4,7 @@ export type TNavigation = {
   isExpand: boolean;
 };
 
-export type TGenre = {
+export type TGenreCountriesYears = {
   id: number;
   name: string;
   englishName: string;

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TGenre, TNavigation } from '../../type/type';
+import { TGenreCountriesYears, TNavigation } from '../../type/type';
 
 const MOCK_GENRES = [
   {
@@ -117,89 +117,147 @@ const MOCK_GENRES = [
 const MOCK_COUNTRY = [
   {
     id: 1,
-    name: 'Комедия',
-    englishName: 'comedy',
+    name: 'Russia',
+    englishName: 'ru',
   },
   {
     id: 2,
-    name: 'Артхаус',
-    englishName: 'arthouse',
+    name: 'США',
+    englishName: 'us',
   },
   {
     id: 3,
-    name: 'Биография',
-    englishName: 'biography',
+    name: 'Франция',
+    englishName: 'fr',
   },
   {
     id: 4,
-    name: 'Боевики',
-    englishName: 'boeviki',
+    name: 'Италия',
+    englishName: 'it',
   },
   {
     id: 5,
-    name: 'Комедия',
-    englishName: 'comedy',
+    name: 'Советские',
+    englishName: 'su',
+  },
+];
+
+const MOCK_YEARS = [
+  {
+    id: 1,
+    name: '2023',
+    englishName: '2023',
+  },
+  {
+    id: 2,
+    name: '2022',
+    englishName: '2022',
+  },
+  {
+    id: 3,
+    name: '2021',
+    englishName: '2021',
+  },
+  {
+    id: 4,
+    name: '2020',
+    englishName: '2020',
+  },
+  {
+    id: 5,
+    name: '2019',
+    englishName: '2019',
   },
   {
     id: 6,
-    name: 'Артхаус',
-    englishName: 'arthouse',
+    name: '2018',
+    englishName: '2018',
   },
   {
     id: 7,
-    name: 'Биография',
-    englishName: 'biography',
+    name: '2017',
+    englishName: '2017',
   },
   {
     id: 8,
-    name: 'Боевики',
-    englishName: 'boeviki',
+    name: '2016',
+    englishName: '2016',
   },
   {
     id: 9,
-    name: 'Комедия',
-    englishName: 'comedy',
+    name: '2022-2023',
+    englishName: '2022-2023',
   },
   {
     id: 10,
-    name: 'Артхаус',
-    englishName: 'arthouse',
+    name: '2021-2022',
+    englishName: '2021-2022',
   },
   {
     id: 11,
-    name: 'Биография',
-    englishName: 'biography',
+    name: '2020-2021',
+    englishName: '2020-2021',
   },
   {
     id: 12,
-    name: 'Боевики',
-    englishName: 'boeviki',
+    name: '2019-2020',
+    englishName: '2019-2020',
+  },
+  {
+    id: 13,
+    name: '2010-2020',
+    englishName: '2010-2020',
+  },
+  {
+    id: 14,
+    name: '2010-2015',
+    englishName: '2010-2015',
+  },
+  {
+    id: 15,
+    name: '2000-2010',
+    englishName: '2000-2010',
+  },
+  {
+    id: 16,
+    name: '1990-2000',
+    englishName: '1990-2000',
+  },
+  {
+    id: 17,
+    name: '1980-1990',
+    englishName: '1980-1990',
+  },
+  {
+    id: 18,
+    name: '1980',
+    englishName: '1980',
   },
 ];
 
 const MOCK_NAVIGATION_DESKTOP = [
   {
-    href: '#',
+    href: '/',
     title: 'Мой Иви',
     isExpand: false,
   },
   {
-    href: '#',
+    href: 'https://www.ivi.tv/new',
     title: 'Что нового',
     isExpand: false,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Фильмы',
     isExpand: true,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Сериалы',
     isExpand: true,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Мультфильмы',
     isExpand: true,
   },
@@ -236,9 +294,9 @@ const MOCK_NAVIGATION_LAPTOP = [
 type TAppInitialState = {
   navigationDesktop: Array<TNavigation>;
   navigationTablet: Array<TNavigation>;
-  genres: Array<TGenre>;
-  countries: Array<TGenre>;
-  years: Array<TGenre>;
+  genres: Array<TGenreCountriesYears>;
+  countries: Array<TGenreCountriesYears>;
+  years: Array<TGenreCountriesYears>;
 };
 
 const appInitialState: TAppInitialState = {
@@ -246,7 +304,7 @@ const appInitialState: TAppInitialState = {
   navigationTablet: MOCK_NAVIGATION_LAPTOP,
   genres: MOCK_GENRES,
   countries: MOCK_COUNTRY,
-  years: [],
+  years: MOCK_YEARS,
 };
 
 export const appReducer = createSlice({

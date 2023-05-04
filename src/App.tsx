@@ -10,9 +10,14 @@ import Footer from './components/footer/Footer';
 import LoginEmail from './pages/login/LoginEmail';
 import LoginPassword from './pages/login/LoginPassword';
 import LoginFinish from './pages/login/LoginFinish';
+import ProtectedRoute from './components/protectedRoute/protectedRoute';
 
 function App() {
   const {} = useAppSelector((state) => state);
+  const [user, setUser] = React.useState<{ id: string; name: string } | null>({
+    id: '1',
+    name: 'robin',
+  });
   return (
     <div className={styles.container}>
       <Routes>
@@ -26,13 +31,13 @@ function App() {
           }
         >
           <Route path="/" element={<Main />}>
-            <Route path="profile">
+            <Route path="profile" element={<ProtectedRoute user={!user} />}>
               <Route path="email" element={<LoginEmail />} />
               <Route path="password" element={<LoginPassword />} />
               <Route path="finish" element={<LoginFinish />} />
             </Route>
           </Route>
-          <Route path="/movies/:genre?/:country?/:year?" element={<Movies />} />
+          <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

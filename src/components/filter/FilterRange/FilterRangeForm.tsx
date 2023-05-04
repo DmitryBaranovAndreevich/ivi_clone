@@ -1,31 +1,26 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import style from './FilterRange.module.scss';
 
 type TFilterRangeFormProps = {
   title: string;
   choosenRate: number;
   nameInitialValue: 'rate' | 'countReviews';
-  setFilter: (value: number) => void;
   step: number;
   min: number;
   max: number;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const FilterRangeForm: React.FC<TFilterRangeFormProps> = ({
   title,
   choosenRate,
   nameInitialValue,
-  setFilter,
   step,
   min,
   max,
+  onChange,
 }) => {
-  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const target = e.target as HTMLInputElement;
-    if (Number(target.value)) {
-      setFilter(Number(target.value));
-    }
-  };
   return (
     <div className={style.text}>
       <form className={style.form}>

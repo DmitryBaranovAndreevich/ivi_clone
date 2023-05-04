@@ -1,26 +1,42 @@
-import React, { useMemo, useState } from 'react';
-import { Form, Formik, Field } from 'formik';
-import { TGenre } from '../../../../type/type';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Form, Formik } from 'formik';
+import { TGenreCountriesYears } from '../../../../type/type';
 import style from './../FilterPlank.module.scss';
 import FilterCheckbox from './FilterItem';
+import { generatePath, useNavigate, useSearchParams } from 'react-router-dom';
+import { TObjWithParamsUrl } from '../../../../hooks/useNavigation';
+import { setUrlParams } from '../../../../utils/helperWithNavigation';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
-  listItem: Array<TGenre>;
-  choosenValue: Array<string>;
+  listItem: Array<TGenreCountriesYears> | undefined;
+  choosenValue: TObjWithParamsUrl;
   addingClass: string;
-  setFilter: (values: Array<string>) => void;
 };
 
 const FilterDropdown: React.FC<TFilterListProps> = ({
   nameInitialValue,
   listItem,
   addingClass,
-  setFilter,
   choosenValue,
 }) => {
+  const [valuesCheckbox, setValuesCheckbox] = useState<Array<string>>(
+    choosenValue[nameInitialValue]?.split('+') || []
+  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (valuesCheckbox.join('+') !== choosenValue[nameInitialValue]) {
+      const path = generatePath('/movies/:genre?/:year?/:country?', {
+        genre: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'genre') || null,
+        year: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'year') || null,
+        country: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'country') || null,
+      });
+      navigate(`${path}?${searchParams}`);
+    }
+  }, [valuesCheckbox, navigate]);
   const filterList = useMemo(() => {
-    return listItem.map((item: TGenre) => {
+    return listItem?.map((item: TGenreCountriesYears) => {
       return (
         <FilterCheckbox
           key={item.id}
@@ -32,28 +48,21 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
     });
   }, [listItem, nameInitialValue]);
 
-  const onChange = (genres: Array<string>) => {
-    setFilter(genres);
-  };
-
   return (
     <Formik
       initialValues={{
-        genre: [],
-        country: [],
-        year: [],
+        genre: valuesCheckbox,
+        country: valuesCheckbox,
+        year: valuesCheckbox,
       }}
-      onSubmit={(values) => setFilter(values.genre)}
+      onSubmit={(values) => setValuesCheckbox(values[nameInitialValue])}
     >
       {({ values }) => {
         {
-          values[nameInitialValue] !== choosenValue && setFilter(values.genre);
+          setValuesCheckbox(values[nameInitialValue]);
         }
         return (
-          <Form
-            className={`${addingClass} ${style.dropdown}`}
-            onChange={() => onChange(values.genre)}
-          >
+          <Form className={`${addingClass} ${style.dropdown}`}>
             <ul className={style.dropdown_list}>{filterList}</ul>
           </Form>
         );

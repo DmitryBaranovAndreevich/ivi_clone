@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TMockObj } from '../../components/footer/FoterSocial';
 
 export type TTitleKindSort =
   | 'По количеству оценок'
   | 'По рейтингу'
   | 'По дате выхода'
   | 'По алфавиту';
+
+export type THrefKindSort = 'mark' | 'rate' | 'year' | 'name';
 
 export type TKindSort = {
   title: TTitleKindSort;

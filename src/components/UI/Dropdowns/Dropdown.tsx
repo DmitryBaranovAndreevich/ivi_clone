@@ -5,6 +5,7 @@ import DropdownBlock from './DropdownBlock';
 import logoTV from './../../../assests/svg/logoTV.svg';
 import DropdownSlider from './DropdownSlider';
 import { useAppSelector } from '../../../hooks/redux';
+import { useGetCountriesQuery, useGetGenresQuery } from '../../../store/api/appApi';
 
 const MOCK_INFO = [
   'Новинки',
@@ -17,7 +18,9 @@ const MOCK_INFO = [
 ];
 
 const Dropdown: React.FC = () => {
-  const { genres, countries, years } = useAppSelector((state) => state.appReducer);
+  const { data: genres } = useGetGenresQuery('');
+  const { data: countries } = useGetCountriesQuery('');
+  const { years } = useAppSelector((state) => state.appReducer);
 
   return (
     <div className={style.dropdown}>

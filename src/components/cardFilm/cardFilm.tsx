@@ -6,11 +6,11 @@ import style from './cardFilm.module.scss';
 import { useMemo, useState } from 'react';
 
 type TCardFilmProps = {
-  image: string;
   name: string;
   year: number;
   country: string;
   genre: string;
+  image: string;
   size: 'big' | 'medium';
 };
 
