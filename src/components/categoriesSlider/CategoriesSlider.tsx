@@ -2,8 +2,8 @@ import { useKeenSlider } from 'keen-slider/react';
 import styles from './categoriesSlider.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SliderButton from '../UI/sliderButton/SliderButton';
-import { IFilm } from '../../store/api/appApi';
 import CardFilm from '../cardFilm/cardFilm';
+import { IFilm } from '../../type/TFilm';
 
 export interface ISlider {
   size: 'big' | 'medium';

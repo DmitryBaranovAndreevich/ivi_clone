@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { IFilm, appApi } from '../../store/api/appApi';
+import { appApi } from '../../store/api/appApi';
 import CategoriesSlider, { ISlider } from '../categoriesSlider/CategoriesSlider';
 import { Link } from 'react-router-dom';
 import styles from './mainPageSlider.module.scss';
 import Spinner from '../UI/spinner/Spinner';
+import { IFilm } from '../../type/TFilm';
 
 interface IMainPageSlider extends ISlider {
   genre: string;
