@@ -39,7 +39,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre,
             className={style.imageSection_image}
             src={image}
             alt={name}
-            style={size === 'big' ? { minHeight: 350 } : { minHeight: 200 }}
+            style={size === 'big' ? { minHeight: 450 } : { minHeight: 200 }}
           />
         </div>
         <div
