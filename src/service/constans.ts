@@ -9,3 +9,5 @@ export const URL = 'http://localhost:3000/login';
 export const headers = {
   Accept: 'application/json',
 };
+
+export const URL_TO_FILMS = 'http://localhost:3000/api';

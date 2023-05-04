@@ -10,10 +10,11 @@ type TCardFilmProps = {
   year: number;
   country: string;
   genre: string;
-  poster: string;
+  image: string;
+  size: 'big' | 'medium';
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({ poster, name, year, country, genre }) => {
+const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre, size }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
   const rateInteger = 8;
   const rateFraction = 4;
@@ -34,7 +35,12 @@ const CardFilm: React.FC<TCardFilmProps> = ({ poster, name, year, country, genre
         }
       >
         <div className={style.imageSection_image_wrp}>
-          <img className={style.imageSection_image} src={poster} alt={name} />
+          <img
+            className={style.imageSection_image}
+            src={image}
+            alt={name}
+            style={size === 'big' ? { minHeight: 350 } : { minHeight: 200 }}
+          />
         </div>
         <div
           className={

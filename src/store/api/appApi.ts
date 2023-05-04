@@ -1,10 +1,30 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { URL_TO_FILMS } from '../../service/constans';
+
+export interface IFilm {
+  id: number;
+  name: string;
+  poster: string;
+  mpaaRating: string;
+  rating: string;
+  ratingsNumber: number;
+  year: number;
+  duration: string;
+  description: string;
+}
+
+export interface IGenre {
+  id: number;
+  name: string;
+  englishName: string;
+  films: IFilm[];
+}
 import { TGenreCountriesYears } from '../../type/type';
 
 export const appApi = createApi({
   reducerPath: 'appApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000/api/',
+    baseUrl: URL_TO_FILMS,
   }),
   endpoints: (build) => ({
     getGenres: build.query<TGenreCountriesYears[], ''>({
@@ -20,6 +40,16 @@ export const appApi = createApi({
           };
         });
       },
+    }),
+    getMoviesOfGenre: build.query<IFilm[], string>({
+      query: (genre) => ({
+        url: `/films/filter/${genre}`,
+      }),
+    }),
+    getAllFilms: build.query<IFilm[], string>({
+      query: () => ({
+        url: '/films',
+      }),
     }),
     getCountries: build.query<TGenreCountriesYears[], ''>({
       query: () => ({

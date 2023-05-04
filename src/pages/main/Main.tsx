@@ -1,26 +1,36 @@
-import CategoriesSlider from '../../components/categoriesSlider/CategoriesSlider';
 import Slider from '../../components/mainSlider/MainSlider';
-import CardFilm from '../../components/cardFilm/cardFilm';
 import styles from './Main.module.scss';
-import example from './../../assests/example.jpg';
 import { Outlet } from 'react-router-dom';
+import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
+import { IFilm, appApi } from '../../store/api/appApi';
+import Spinner from '../../components/UI/spinner/Spinner';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+
+interface Error {
+  error: string;
+}
 
 const Main = () => {
-  return (
+  const { data, isLoading, error } = appApi.useGetAllFilmsQuery('');
+  console.log((error as FetchBaseQueryError)?.data);
+  return isLoading ? (
+    <div className={styles.spinner}>
+      <Spinner size={'big'} />
+    </div>
+  ) : (
     <div className={styles.container}>
-      <h2>MainPage</h2>
-      <Slider />
-      {/* <div className={styles.wrapper}>
-        <CategoriesSlider title={'Рекомендую посмотреть >'} size={'medium'} />
-        <CategoriesSlider title={'(TOP 10) за неделю'} size={'big'} />
-      </div> */}
-      <CardFilm
-        poster={example}
-        name="qwertyqqqqqqqfrgjhkl;jhvghbjnkml,"
-        year={2022}
-        country="qwerty"
-        genre="qwerty"
-      />
+      {error ? (
+        <p className={styles.error}>{(error as Error).error}</p>
+      ) : (
+        <>
+          <Slider items={data as IFilm[]} />
+          <div className={styles.wrapper}>
+            <MainPageSlider genre={'fantasy'} size={'medium'} title={'Фентези'} />
+            <MainPageSlider genre={'action'} size={'big'} title={'Боевики'} />
+            <MainPageSlider genre={'adventure'} size={'medium'} title={'Приключения'} />
+          </div>
+        </>
+      )}
       <Outlet />
     </div>
   );

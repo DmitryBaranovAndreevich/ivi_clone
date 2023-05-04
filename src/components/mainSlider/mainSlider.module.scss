@@ -33,27 +33,41 @@
 }
 
 .slide {
+  --image: url('');
+  padding: 60px;
+  gap: 35px;
+  flex-direction: column;
   box-sizing: border-box;
-  height: 70%;
+  max-height: 40%;
   background-position: center;
   background-size: cover;
   position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   border-radius: 20px;
-  background: rgba(lightcyan, 0.5);
-
-  &_active {
-    background: lightcyan;
-  }
+  background: var(--image) no-repeat center/cover;
 
   &:before {
     content: '';
     display: block;
     width: 0;
     height: 0;
-    padding-top: 35%;
+    padding-top: 5%;
   }
+}
+
+.button {
+  padding: 12px 30px;
+}
+
+.description {
+  @include font-source-sans(12px, #2e6bc7, 500, 18px);
+  max-width: 60%;
+}
+
+.moviesName {
+  max-width: 50%;
+  @include font-source-sans(32px, #2e6bc7, 800, 48px);
 }
 
 .rightButton {

@@ -2,10 +2,17 @@ import styles from './mainSlider.module.scss';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import SliderButton from '../UI/sliderButton/SliderButton';
-import { useEffect, useState } from 'react';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 import { mediaQuery } from '../../service/constans';
+import { IFilm } from '../../store/api/appApi';
+import RedButton from '../UI/redButton/RedButton';
 
-const MainSlider = () => {
+interface IMainSlider {
+  items: IFilm[];
+}
+
+const MainSlider: FC<IMainSlider> = ({ items }) => {
+  console.log(items);
   const [dark, setDark] = useState(true);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 1,
@@ -19,7 +26,7 @@ const MainSlider = () => {
       duration: 1000,
     },
     animationStarted: () => setDark(false),
-    dragEnded: () => setTimeout(() => setDark(true), 480),
+    dragEnded: () => setTimeout(() => setDark(true), 280),
     breakpoints: {
       [mediaQuery.$laptop]: {
         slides: {
@@ -76,12 +83,19 @@ const MainSlider = () => {
             }}
           />
         </div>
-        <div className={`${styles.slide} keen-slider__slide`}>1</div>
-        <div className={`${styles.slide} keen-slider__slide`}>2</div>
-        <div className={`${styles.slide} keen-slider__slide`}>3</div>
-        <div className={`${styles.slide} keen-slider__slide`}>4</div>
-        <div className={`${styles.slide} keen-slider__slide`}>5</div>
-        <div className={`${styles.slide} keen-slider__slide`}>6</div>
+        {items.map((movie) => (
+          <div
+            className={`${styles.slide} keen-slider__slide`}
+            style={{ '--image': `url(${movie.poster})` } as CSSProperties}
+            key={movie.id}
+          >
+            <p className={styles.moviesName}>{movie.name}</p>
+            <p className={styles.description}>{movie.description}</p>
+            <div>
+              <RedButton addingClass={styles.button} text={'Смотреть по подписке'} />
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

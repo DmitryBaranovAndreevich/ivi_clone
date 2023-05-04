@@ -19,7 +19,7 @@ const RedButton: React.FC<TRedButtonProps> = ({
 }) => {
   return (
     <button className={style.btn + ' ' + addingClass} onClick={onClick} type={type}>
-      {isLoad ? <Spinner /> : text}
+      {isLoad ? <Spinner size={'small'} /> : text}
     </button>
   );
 };
