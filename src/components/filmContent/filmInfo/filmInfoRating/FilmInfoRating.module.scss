@@ -7,6 +7,10 @@
     height: 84px;
     padding: 10px;
     justify-content: space-between;
+
+    &:hover {
+        background-color: $buttonGrey;
+    }
 }
 
 .block {

@@ -7,19 +7,14 @@ type TUIButtonProps = {
   href?: string;
   addingClass: string;
   target?: string;
-  type?: 'button' | 'link';
 };
 
-const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass, type, target }) => {
+const UIButton: React.FC<TUIButtonProps> = ({ href, children, addingClass, target }) => {
   return (
     <React.Fragment>
-      {type === 'button' ? (
-        <button className={style.btn + ' ' + addingClass}>{children}</button>
-      ) : (
-        <Link to={href ? href : '/'} className={style.btn + ' ' + addingClass} target={target}>
-          {children}
-        </Link>
-      )}
+      <Link to={href ? href : '/'} className={style.btn + ' ' + addingClass} target={target}>
+        {children}
+      </Link>
     </React.Fragment>
   );
 };

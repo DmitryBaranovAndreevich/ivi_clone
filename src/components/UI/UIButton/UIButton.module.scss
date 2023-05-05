@@ -8,6 +8,7 @@
   justify-content: center;
   @include border($bgcDarkBlue, 1px, solid, 8px);
   @include font-source-sans(15px, $white, 500, 20px);
+  @include transition(0s, $duration, ease-out, $properties: all);
   background-color: $bgcDarkBlue;
   text-decoration: none;
   height: 40px;

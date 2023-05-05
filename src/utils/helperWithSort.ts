@@ -1,4 +1,4 @@
-import { IFilm } from './../components/filmContent/TFilm';
+import { IFilm } from '../type/TFilm';
 
 const sortAscending = (array: Array<IFilm>, field: keyof IFilm): Array<IFilm> => {
   return array?.sort((a: IFilm, b: IFilm) => (a[field] > b[field] ? 1 : -1));

@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import ButtonWithotBgc from '../../../UI/buttonWithoutBgc/ButtonWithoutBgc';
-import UIButton from '../../../UI/UIButton/UIButton';
+import GreyButton from '../../../UI/greyButton/GreyButton';
 import RatingCard from '../RatingCard';
 import style from './FilmInfoRating.module.scss';
 
@@ -10,7 +10,7 @@ type TFilmInfoDescriptionProps = {
 
 const FilmInfoRating: React.FC<TFilmInfoDescriptionProps> = ({ rating }) => {
   return (
-    <UIButton type="button" addingClass={style.button}>
+    <GreyButton onClick={() => {}} addingClass={style.button}>
       <div className={style.block}>
         <RatingCard rating={rating} addingClass={style.rating} />
         <div className={style.caption}>Рейтинг Кинопоиск</div>
@@ -18,7 +18,7 @@ const FilmInfoRating: React.FC<TFilmInfoDescriptionProps> = ({ rating }) => {
       <ButtonWithotBgc addingClass={style.evaluateBtn} onClick={() => {}}>
         Оценить
       </ButtonWithotBgc>
-    </UIButton>
+    </GreyButton>
   );
 };
 

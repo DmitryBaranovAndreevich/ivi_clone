@@ -1,13 +1,13 @@
 import React from 'react';
 import { formatDurationFilm } from '../../../hooks/helperFilm';
 import { TParamListMovie } from '../../../type/type';
-import { IActors, ICountries, IGenres } from '../TFilm';
 import style from './FilmInfo.module.scss';
 import WatchList from './filmInfoList/FilmInfoList';
 import logoSound from './../../../assests/svg/logoSound.svg';
 import FilmInfoStickers from './filmInfoStickers/FilmInfoStickers';
 import FilmInfoDescription from './filmInfoDescription/FilmInfoDescription';
 import FilmInfoRating from './filmInfoRating/FilmInfoRating';
+import { IActors, ICountries, IGenres } from '../../../type/TFilm';
 
 type TFilmInfoProps = {
   name: string;
