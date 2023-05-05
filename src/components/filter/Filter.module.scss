@@ -3,106 +3,106 @@
 @import '../../commonStyles/fonts.scss';
 
 .filter {
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 6px;
-    background-color: $bgcDarkBlue;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: $bgcDarkBlue;
 
-    &_block {
-        display: flex;
-        justify-content: space-around;
-        margin-left: -6px;
-        margin-right: -6px;
-    }
+  &_block {
+    display: flex;
+    justify-content: space-around;
+    margin-left: -6px;
+    margin-right: -6px;
+  }
 }
 
 .checkboxBlock {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -6px;
-    margin-right: -6px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -6px;
+  margin-right: -6px;
 }
 
 .dropdown {
-    &_genre {
-        width: 630px;
-        overflow: hidden;
-    }
+  &_genre {
+    width: 630px;
+    overflow: hidden;
+  }
 
-    &_country {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 630px;
-        overflow: hidden;
-    }
+  &_country {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 630px;
+    overflow: hidden;
+  }
 
-    &_year {
-        left: 0;
-        right: 0;
-    }
+  &_year {
+    left: 0;
+    right: 0;
+  }
 }
 
 .textBlock {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -6px;
-    margin-right: -6px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -6px;
+  margin-right: -6px;
 }
 
 .rangeBlock {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -6px;
-    margin-right: -6px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -6px;
+  margin-right: -6px;
 }
 
 .clear {
-    margin-top: 16px;
-    margin-left: 16px;
+  margin-top: 16px;
+  margin-left: 16px;
 
-    &_button {
-        position: relative;
-        background: transparent;
-        border: none;
-        outline: none;
-        @include font-source-sans(15px, $white, 400, 20px);
-        cursor: pointer;
-        height: 32px;
-        padding: 8px 16px;
-        @include transition(0s, $duration, ease-out, $properties: (color));
+  &_button {
+    position: relative;
+    background: transparent;
+    border: none;
+    outline: none;
+    @include font-source-sans(15px, $white, 400, 20px);
+    cursor: pointer;
+    height: 32px;
+    padding: 8px 16px;
+    @include transition(0s, $duration, ease-out, $properties: (color));
 
-        &:hover {
-            color: $red;
-        }
-
-        &:hover .clear_cross::after, 
-        &:hover .clear_cross::before {
-            background-color: $red;
-        }
+    &:hover {
+      color: $red;
     }
 
-    &_cross {
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            top: 11px;
-            left: 0;
-            width: 2px;
-            height: 14px;
-            background-color: $white;
-            border-radius: 4px;
-        @include transition(0s, $duration, ease-out, $properties: (background-color));
-
-        }
-
-        &::before {
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            transform: rotate(-45deg);
-        }
+    &:hover .clear_cross::after,
+    &:hover .clear_cross::before {
+      background-color: $red;
     }
+  }
+
+  &_cross {
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 2px;
+      height: 14px;
+      background-color: $white;
+      border-radius: 4px;
+      @include transition(0s, $duration, ease-out, $properties: (background-color));
+
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
 }

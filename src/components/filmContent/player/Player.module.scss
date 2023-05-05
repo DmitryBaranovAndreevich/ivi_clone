@@ -4,15 +4,22 @@
 
 .player {
     width: 62.5%;
-    // position: sticky;
-    // top: 32px;
-    // display: inline-block;
-    // vertical-align: top;
+    padding-right: 32px;
+    position: sticky;
+    top: 32px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
     // padding-right: 32px;
 }
 
 .playerBlock {
-    width: 719px;
+    // width: 719px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.video {
     height: 405px;
     background-color: grey;
 }

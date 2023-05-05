@@ -9,14 +9,18 @@ export const filmApi = createApi({
   endpoints: (build) => ({
     getFilms: build.query<IFilm[], { pathName: string | null; search: string | null }>({
       query: ({ pathName, search }) => {
-        debugger;
         if (!pathName) {
           return { url: 'films' };
         }
         return { url: `films/filter${pathName}${search}` };
       },
     }),
+    getOneFilm: build.query<IFilm, { id: string | undefined }>({
+      query: ({ id }) => {
+        return { url: `films/${id}` };
+      },
+    }),
   }),
 });
 
-export const { useGetFilmsQuery } = filmApi;
+export const { useGetFilmsQuery, useGetOneFilmQuery } = filmApi;

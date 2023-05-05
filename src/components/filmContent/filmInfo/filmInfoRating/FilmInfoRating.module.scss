@@ -1,0 +1,30 @@
+@import '../../../../commonStyles/mixins/index.scss';
+@import '../../../../commonStyles/variables/index.scss';
+@import '../../../../commonStyles/fonts.scss';
+
+.button {
+    width: 100%;
+    height: 84px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rating {
+    width: 64px;
+    height: 64px;
+}
+
+.block {
+    @include font-source-sans(13px, $white, 500, 20px);
+}
+
+.evaluateBtn {
+    padding: 3px 7px;
+    @include font-source-sans(11px, $white, 500, 16px);
+}

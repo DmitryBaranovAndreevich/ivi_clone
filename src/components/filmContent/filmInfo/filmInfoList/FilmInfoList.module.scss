@@ -1,0 +1,66 @@
+@import '../../../../commonStyles/mixins/index.scss';
+@import '../../../../commonStyles/variables/index.scss';
+@import '../../../../commonStyles/fonts.scss';
+
+.watchList {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    color: rgba(255, 255, 255, .8);
+    margin-top: 4px;
+}
+
+.item {
+    position: relative;
+    @include font-source-sans(15px, rgba($white, .7), 400, 20px);
+    display: inline-block;
+    vertical-align: top;
+    display: flex;
+    align-items: center;
+
+    &:not(:first-child):before {
+        content: '';
+        width: 8px;
+        display: inline-block;
+    }
+
+    &_dot:not(:first-child):before {
+        content: '';
+        width: 2px;
+        height: 2px;
+        text-align: center;
+        background-color: rgba($white, .7);
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+
+    &_link {
+        @include font-source-sans(15px, rgba($white, .7), 400, 20px);
+        opacity: 1;
+    }
+}
+
+.btn {
+    @include font-source-sans(13px, $white, 500, 16px);
+    box-shadow: 0 4px 12px transparent;
+    background-color: rgba($white,.16);
+    height: 20px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo {
+    opacity: .8;
+    width: 15px;
+    height: 15px;
+}

@@ -3,10 +3,8 @@
 @import '../../../commonStyles/fonts.scss';
 
 .button {
-    width: 100%;
+    // width: 100%;
     background-color: transparent;
-    height: 40px;
-    padding: 9px 15px;
     @include border(rgba($white, .3), 1px, solid, 8px);
     @include font-source-sans(15px, $white, 500, 20px);
     @include transition(0s, $duration, ease-out, $properties: all);
