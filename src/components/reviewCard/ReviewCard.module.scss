@@ -1,0 +1,68 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.review {
+    width: 286px;
+    height: 162px;
+    padding-right: 24px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: $bgcDarkBlue;
+
+    &_title {
+        @include font-source-sans(13px, $textColorGrey, 700, 16px);
+        margin-bottom: 8px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &_text {
+        @include font-source-sans(15px, $white, 400, 22px);
+        height: 50px;
+    }
+
+    &_bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &_date {
+        @include font-source-sans(13px, $textColorGrey, 400, 16px);
+    }
+}
+
+.vote {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &_value {
+        @include font-source-sans(15px, $green, 700, 20px);
+    }
+
+    &_button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        width: 16px;
+        height: 16px;
+    }
+
+    &_img {
+        width: 16px;
+        height: 16px;
+    }
+
+    &_like {
+        &_img {
+            transform: rotate(180deg);
+        }
+    }
+}

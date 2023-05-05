@@ -6,6 +6,7 @@ import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import { IFilm } from '../../type/TFilm';
 import styles from './Watch.module.scss';
 import films from './../../components/filmContent/films.json';
+import ReviewCard from '../../components/reviewCard/ReviewCard';
 
 const Watch = () => {
   const params = useParams();
@@ -23,6 +24,7 @@ const Watch = () => {
             producers={film.producers}
             writers={film.writers}
           />
+          <ReviewCard title="Топ коммент" text="Мне понравился фильм." />
         </React.Fragment>
       ) : (
         <p>Фильм не найден</p>
