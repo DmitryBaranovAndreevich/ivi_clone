@@ -120,6 +120,7 @@ export interface IFilm {
   originalName: string;
   name: string;
   poster: string;
+  trailer: string;
   mpaaRating: string;
   rating: number;
   ratingsNumber: number;
@@ -138,9 +139,11 @@ export interface IFilm {
   awards: Array<IAwards>;
   countries: Array<ICountries>;
   reviews: Array<string>;
+  relatedFilms: Array<IFilmsList>;
 }
 
 export interface IFilmsList {
+  id: number;
   name: string;
   originalName: string;
   poster: string;

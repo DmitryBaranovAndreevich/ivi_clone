@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IFilm } from '../../components/filmContent/TFilm';
+import { IFilm } from '../../type/TFilm';
 
 export const filmApi = createApi({
   reducerPath: 'filmApi',

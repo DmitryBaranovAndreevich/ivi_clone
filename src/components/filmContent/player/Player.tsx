@@ -4,13 +4,14 @@ import PlayerAdding from './PlayerAdding';
 
 type TPlayerProps = {
   poster: string;
+  trailer: string;
 };
 
-const Player: React.FC<TPlayerProps> = ({ poster }) => {
+const Player: React.FC<TPlayerProps> = ({ poster, trailer }) => {
   return (
     <div className={style.player}>
       <div className={style.playerBlock}>
-        <div className={style.video}></div>
+        <div className={style.video}>{trailer}</div>
       </div>
       <PlayerAdding />
     </div>

@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from 'react';
-import { IActors, IDirectors, IProducers, IWriters } from '../filmContent/TFilm';
+import { IActors, IDirectors, IProducers, IWriters } from '../../type/TFilm';
 import PersonItem from '../personItem/PersonItem';
 import style from './FilmCreators.module.scss';
 
@@ -9,7 +9,6 @@ type TPersonListProps = {
 };
 
 const CreatorList: React.FC<TPersonListProps> = ({ personList, role }) => {
-  debugger;
   const personBlock: Array<ReactNode> = useMemo(() => {
     return personList.map((person) => {
       return (

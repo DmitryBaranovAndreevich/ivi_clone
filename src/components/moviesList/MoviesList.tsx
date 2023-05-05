@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
+import { IFilm } from '../../type/TFilm';
 import { sortList } from '../../utils/helperWithSort';
 import CardFilm from '../cardFilm/cardFilm';
-import { IFilm } from '../filmContent/TFilm';
 import style from './MoviesListBlock.module.scss';
 
 type TMoviesListProps = {

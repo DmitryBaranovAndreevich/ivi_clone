@@ -7,19 +7,23 @@ type TStickerCardProps = {
   caption: string;
   rating?: number;
   avatar?: string;
+  hover: string | null;
 };
 
-const StickerCard: React.FC<TStickerCardProps> = ({ type, rating, caption, avatar }) => {
+const StickerCard: React.FC<TStickerCardProps> = ({ type, rating, caption, avatar, hover }) => {
+  debugger;
   return (
     <React.Fragment>
-      <div className={style.content}>
+      <div className={`${style.content} ${hover === caption && style.content_hover}`}>
         {type === 'actor' ? (
           <img className={style.content_avatar} src={avatar} alt={caption} />
         ) : (
           <RatingCard rating={rating} addingClass={style.content_rating} />
         )}
       </div>
-      <div className={style.caption}>{caption}</div>
+      <div className={`${style.caption} ${hover === caption && style.caption_hover}`}>
+        {caption}
+      </div>
     </React.Fragment>
   );
 };

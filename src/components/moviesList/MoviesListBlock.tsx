@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
 import { sortList } from '../../utils/helperWithSort';
-import { IFilm } from '../filmContent/TFilm';
 import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import MoviesList from './MoviesList';
 import style from './MoviesListBlock.module.scss';

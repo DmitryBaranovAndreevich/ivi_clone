@@ -7,6 +7,7 @@ import { IFilm } from '../../type/TFilm';
 import styles from './Watch.module.scss';
 import films from './../../components/filmContent/films.json';
 import ReviewCard from '../../components/reviewCard/ReviewCard';
+import RelatedFilms from '../../components/relatedFilms/RelatedFilms';
 
 const Watch = () => {
   const params = useParams();
@@ -17,7 +18,7 @@ const Watch = () => {
       {film ? (
         <React.Fragment>
           <FilmContent film={film} />
-          Блок похожих фильмом
+          <RelatedFilms relatedFilms={film.relatedFilms}></RelatedFilms>
           <FilmCreators
             directors={film.directors}
             actors={film.actors}

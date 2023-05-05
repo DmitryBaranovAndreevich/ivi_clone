@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
-import { IActors, IDirectors, IProducers, IWriters } from '../filmContent/TFilm';
 import CreatorList from './CreatorList';
+import { IActors, IDirectors, IProducers, IWriters } from '../../type/TFilm';
 import style from './FilmCreators.module.scss';
 
 type TFilmCreatorsProps = {
