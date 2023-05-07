@@ -106,6 +106,9 @@
 
 .adding {
   &_subscribe {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     height: 250px;
     width: 210px;
     background-color: $buttonColorBlue;

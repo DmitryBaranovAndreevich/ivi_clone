@@ -10,7 +10,7 @@ export interface ISlider {
   title: string;
 }
 
-interface ICategoriesSlider extends ISlider {
+export interface ICategoriesSlider extends ISlider {
   items: IFilm[];
 }
 
