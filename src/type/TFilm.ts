@@ -1,6 +1,7 @@
 import { TFilmCountries } from './TCountry';
 import { TFilmGenres } from './TGenres';
 import { TPersonFilms } from './TPerson';
+import { IReviews } from './TReviews';
 
 type TFilmRoles = {
   id: number;
@@ -130,7 +131,7 @@ export interface IFilm {
   genres: Array<IGenres>;
   awards: Array<IAwards>;
   countries: Array<ICountries>;
-  reviews: Array<string>;
+  reviews: Array<IReviews>;
   relatedFilms: Array<IFilmsList>;
 }
 

@@ -24,7 +24,7 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
     setHover(null);
   };
   const blockActors: Array<ReactNode> = useMemo(() => {
-    return actors?.map((actor) => {
+    return actors?.slice(0, 5).map((actor) => {
       return (
         <li
           key={actor.id}

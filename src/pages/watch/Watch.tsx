@@ -29,9 +29,12 @@ const Watch = () => {
             writers={film.writers}
           />
           <FilmReview
+            filmId={film.id}
             nameFilm={film.name}
-            title="Топ коммент kkdcmseknrsvdc jkrelkncjmelrknvsdc rejlnvck."
-            text="Мне понравился фильмf fr jjfkencx jekcmkxn fn4lemkc flkek."
+            review={film.reviews}
+            // title="Топ коммент kkdcmseknrsvdc jkrelkncjmelrknvsdc rejlnvck."
+            // text="Мне понравился фильмf fr jjfkencx jekcmkxn fn4lemkc flkek."
+            // rating={}
           />
         </React.Fragment>
       ) : (

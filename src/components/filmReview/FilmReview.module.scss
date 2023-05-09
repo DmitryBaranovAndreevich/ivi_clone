@@ -19,3 +19,10 @@
 .showMore {
     padding: 7px 11px;
 }
+
+.reviews {
+    &_list {
+        display: flex;
+        list-style-type: none;
+    }
+}

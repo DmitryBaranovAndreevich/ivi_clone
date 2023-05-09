@@ -14,7 +14,6 @@ export const personApi = createApi({
     }),
     getOnePerson: build.query<IPerson, { id: string | undefined }>({
       query: ({ id }) => {
-        debugger;
         return { url: `persons/${id}` };
       },
     }),

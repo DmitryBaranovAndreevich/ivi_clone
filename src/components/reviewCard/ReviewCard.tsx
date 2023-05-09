@@ -2,40 +2,34 @@ import React from 'react';
 import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import style from './ReviewCard.module.scss';
 import logoHand from './../../assests/svg/logoHand.svg';
+import ReviewCardVote from './ReviewCardVote';
+import ReviewCardDate from './ReviewCardDate';
+import { Link } from 'react-router-dom';
 
 type TReviewCardProps = {
-  title: string;
-  text?: string;
+  filmId: number;
+  titleReview: string;
+  textReview: string;
+  ratingReview: number;
 };
 
-const ReviewCard: React.FC<TReviewCardProps> = ({ title, text }) => {
+const ReviewCard: React.FC<TReviewCardProps> = ({
+  filmId,
+  titleReview,
+  textReview,
+  ratingReview,
+}) => {
   return (
-    <div className={style.review}>
+    <Link className={style.review} to={`/watch/${filmId}/reviews`}>
       <div className={style.content}>
-        <div className={style.content_title}>{title}</div>
-        <div className={style.content_text}>{text}</div>
+        <div className={style.content_title}>{titleReview}</div>
+        <div className={style.content_text}>{textReview}</div>
         <div className={style.content_bottom}>
-          <div className={style.content_date}>4&nbsp;апреля&nbsp;2023</div>
-          <div className={style.vote}>
-            <button className={`${style.vote_button} ${style.vote_like}`} type="button">
-              <img
-                className={`${style.vote_img} ${style.vote_like_img}`}
-                src={logoHand}
-                alt="like"
-              />
-            </button>
-            <div className={style.vote_value}>1</div>
-            <button className={`${style.vote_button} ${style.vote_dislike}`} type="button">
-              <img
-                className={`${style.vote_img} ${style.vote_dislike_img}`}
-                src={logoHand}
-                alt="dislike"
-              />
-            </button>
-          </div>
+          <ReviewCardDate />
+          <ReviewCardVote rating={ratingReview} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

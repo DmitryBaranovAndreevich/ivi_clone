@@ -26,3 +26,10 @@ export type TPersons = {
   name: TPersonName;
   englishName: TPersonEnglishName;
 };
+
+export type TReviewUser = {
+  [index: number]: {
+    title?: string;
+    text: string;
+  };
+};

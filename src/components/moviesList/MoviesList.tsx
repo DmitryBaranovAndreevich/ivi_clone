@@ -16,6 +16,7 @@ const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
       return (
         <li key={film.id} className={style.item}>
           <CardFilm
+            filmId={film.id}
             name={film.name}
             image={film.poster}
             year={film.year}

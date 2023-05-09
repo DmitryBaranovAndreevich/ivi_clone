@@ -7,8 +7,10 @@ import { useMemo, useState } from 'react';
 import CardFilmRating from './cardFilmRating';
 import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';
+import { Link } from 'react-router-dom';
 
 type TCardFilmProps = {
+  filmId: number;
   name: string;
   year: number;
   country: string;
@@ -19,6 +21,7 @@ type TCardFilmProps = {
 };
 
 const CardFilm: React.FC<TCardFilmProps> = ({
+  filmId,
   image,
   name,
   year,
@@ -30,7 +33,8 @@ const CardFilm: React.FC<TCardFilmProps> = ({
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
 
   return (
-    <div
+    <Link
+      to={`/watch/${filmId}`}
       className={style.card}
       onMouseOver={() => setIsMouseOverImageSection(true)}
       onMouseOut={() => setIsMouseOverImageSection(false)}
@@ -90,7 +94,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({
           <span>Бесплатно</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
