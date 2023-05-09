@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TGenreCountriesYears, TNavigation } from '../../type/type';
+import { TGenreCountriesYears, TNavigation, TPersons } from '../../type/type';
 
 const MOCK_GENRES = [
   {
@@ -291,12 +291,41 @@ const MOCK_NAVIGATION_LAPTOP = [
   },
 ];
 
+const MOCK_TYPE_PERSONS: Array<TPersons> = [
+  {
+    id: 1,
+    name: 'Режиссёр',
+    englishName: 'directors',
+  },
+  {
+    id: 2,
+    name: 'Актёры',
+    englishName: 'actors',
+  },
+  {
+    id: 3,
+    name: 'Продюсеры',
+    englishName: 'producers',
+  },
+  {
+    id: 4,
+    name: 'Художники',
+    englishName: 'designers',
+  },
+  {
+    id: 5,
+    name: 'Сценаристы',
+    englishName: 'writers',
+  },
+];
+
 type TAppInitialState = {
   navigationDesktop: Array<TNavigation>;
   navigationTablet: Array<TNavigation>;
   genres: Array<TGenreCountriesYears>;
   countries: Array<TGenreCountriesYears>;
   years: Array<TGenreCountriesYears>;
+  typePersons: Array<TPersons>;
 };
 
 const appInitialState: TAppInitialState = {
@@ -305,6 +334,7 @@ const appInitialState: TAppInitialState = {
   genres: MOCK_GENRES,
   countries: MOCK_COUNTRY,
   years: MOCK_YEARS,
+  typePersons: MOCK_TYPE_PERSONS,
 };
 
 export const appReducer = createSlice({

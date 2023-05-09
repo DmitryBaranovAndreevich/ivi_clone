@@ -3,18 +3,24 @@
 @import '../../commonStyles/fonts.scss';
 
 .person {
-    display: inline-block;
+    @include font-source-sans(13px, $textColorLight, 500, 16px);
+    display: block;
     text-decoration: none;
-    padding-right: 24px;
     margin-bottom: 24px;
 }
 
 .avatarSection {
-    width: 88px;
-    height: 88px;
+    width: 100%;
+    // height: 88px;
     position: relative;
     border-radius: 50%;
     overflow: hidden;
+
+    &::after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+    }
 
     &_img {
         position: absolute;
@@ -39,7 +45,6 @@
 
     &_name {
         display: block;
-        @include font-source-sans(13px, $textColorLight, 500, 16px);
         @include transition(0s, $duration-small, ease-out, $properties: (color));
 
     }
@@ -47,4 +52,8 @@
     &_role {
         @include font-source-sans(13px, $textColorGrey, 400, 16px);
     }
+}
+
+.count {
+    @include font-source-sans(13px, $textColorGrey, 400, 16px);
 }

@@ -3,66 +3,89 @@
 @import '../../commonStyles/fonts.scss';
 
 .review {
-    width: 286px;
-    height: 162px;
-    padding-right: 24px;
+  width: 286px;
+  height: 162px;
+  padding-right: 24px;
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: $bgcDarkBlue;
+  border-radius: 8px;
+  @include transition(0s, $duration-small, ease-out, $properties: background-color);
+
+  &:hover {
+    background-color: $bgcDarkBlueHover;
+  }
+
+  &_title {
+    @include font-source-sans(13px, $textColorGrey, 700, 16px);
+    margin-bottom: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &_text {
+    @include font-source-sans(13px, $white, 400, 22px);
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    margin-bottom: 10px;
+  }
+
+  &_bottom {
     display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: $bgcDarkBlue;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    &_title {
-        @include font-source-sans(13px, $textColorGrey, 700, 16px);
-        margin-bottom: 8px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    &_text {
-        @include font-source-sans(15px, $white, 400, 22px);
-        height: 50px;
-    }
-
-    &_bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    &_date {
-        @include font-source-sans(13px, $textColorGrey, 400, 16px);
-    }
+  &_date {
+    @include font-source-sans(13px, $textColorGrey, 400, 16px);
+  }
 }
 
 .vote {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-    &_value {
-        @include font-source-sans(15px, $green, 700, 20px);
-    }
+  &_value {
+    @include font-source-sans(15px, $green, 700, 20px);
+  }
 
-    &_button {
-        border: none;
-        outline: none;
-        background-color: transparent;
-        width: 16px;
-        height: 16px;
+  &_button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+    @include transition(0s, $duration-small, ease-out, $properties: opacity);
+
+    &:hover {
+      opacity: 0.5;
     }
+  }
+
+  &_img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_like {
+    align-self: flex-end;
 
     &_img {
-        width: 16px;
-        height: 16px;
+      transform: rotate(180deg);
     }
+  }
 
-    &_like {
-        &_img {
-            transform: rotate(180deg);
-        }
-    }
+  &_dislike {
+    align-self: flex-start;
+  }
 }

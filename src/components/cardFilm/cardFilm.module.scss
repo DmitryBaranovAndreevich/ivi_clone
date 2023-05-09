@@ -13,6 +13,7 @@
   border-radius: 8px 8px 8px 8px;
   transform: scale(1) translateY(0);
   @include transition(0s, $duration, ease-out, $properties: all);
+  padding: 15px;
 
   &_active {
     transform: scale(1.04) translateY(-5px);
@@ -41,6 +42,7 @@
     left: 0;
     right: 0;
     opacity: 0;
+    margin: 15px;
     @include transition(0s, $duration, ease-out, $properties: all);
 
     &_show {
@@ -103,9 +105,17 @@
         }
       }
 
+      &_duration {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        @include font-source-sans(11px, $textColorLight, 400, 16px);
+        margin-top: 4px;
+      }
+
       &_properties {
-        @include font-source-sans(13px, $textColorLight, 400, 16px);
-        margin-top: 12px;
+        @include font-source-sans(11px, $textColorLight, 400, 16px);
+        margin-top: 4px;
       }
     }
   }

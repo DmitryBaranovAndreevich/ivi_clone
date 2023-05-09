@@ -1,0 +1,52 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.list {
+    list-style-type: none;
+    position: relative;
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 2px solid rgba(255,255,255,.2);
+    }
+}
+
+.item {
+    position: relative;
+
+    &_active {
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 4px;
+            background-color: $red;
+            z-index: 1;
+        }
+    }
+
+    &_link {
+        @include font-source-sans(13px, $white, 500, 20px);
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    &_count {
+        @include font-source-sans(13px, $textColorGrey, 400, 16px);
+        padding: 10px 0 10px 4px;
+        // vertical-align: top;
+        // display: inline-block;
+        // height: 100%;
+        // box-sizing: border-box;
+    }
+}

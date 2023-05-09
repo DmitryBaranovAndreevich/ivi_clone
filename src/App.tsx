@@ -12,6 +12,7 @@ import LoginPassword from './pages/login/LoginPassword';
 import LoginFinish from './pages/login/LoginFinish';
 import ProtectedRoute from './components/protectedRoute/protectedRoute';
 import Watch from './pages/watch/Watch';
+import WatchExtra from './pages/watchExtra/WatchExtra';
 
 function App() {
   const {} = useAppSelector((state) => state);
@@ -39,7 +40,8 @@ function App() {
             </Route>
           </Route>
           <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
-          <Route path="/watch/:id" element={<Watch />} />
+          <Route path="/watch/:id/" element={<Watch />} />
+          <Route path="/watch/:id/:page?" element={<WatchExtra />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

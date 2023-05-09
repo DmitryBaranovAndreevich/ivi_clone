@@ -86,6 +86,7 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
                     year={movie.year}
                     country="qwerty"
                     genre={title}
+                    duration={movie.duration}
                   />
                 </div>
               );

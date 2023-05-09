@@ -6,9 +6,10 @@ import style from './FilmInfoList.module.scss';
 type TFilmInfoListProps = {
   paramsList: Array<TParamListMovie>;
   modify?: 'withDot';
+  addingClass?: string;
 };
 
-const FilmInfoList: React.FC<TFilmInfoListProps> = ({ paramsList, modify }) => {
+const FilmInfoList: React.FC<TFilmInfoListProps> = ({ paramsList, modify, addingClass }) => {
   const items: Array<ReactNode> = useMemo((): Array<ReactNode> => {
     return paramsList.map((item: TParamListMovie) => {
       return (
@@ -25,7 +26,7 @@ const FilmInfoList: React.FC<TFilmInfoListProps> = ({ paramsList, modify }) => {
       );
     });
   }, [paramsList, modify]);
-  return <ul className={style.watchList}>{items}</ul>;
+  return <ul className={`${style.watchList} ${addingClass}`}>{items}</ul>;
 };
 
 export default FilmInfoList;

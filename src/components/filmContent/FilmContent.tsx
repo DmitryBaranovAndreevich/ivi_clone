@@ -13,7 +13,13 @@ const FilmContent: React.FC<TFilmContentProps> = ({ film }) => {
   // const film: IFilm = films;
   return (
     <div className={style.filmContent}>
-      <Player poster={film.poster} trailer={film.trailer} />
+      <Player
+        poster={film.poster}
+        trailer={film.trailer}
+        name={film.name}
+        year={film.year}
+        duration={film.duration}
+      />
       <FilmInfo
         name={film.name}
         year={film.year}

@@ -117,7 +117,7 @@ export interface IFilm {
   rating: number;
   ratingsNumber: number;
   year: number;
-  duration: string;
+  duration: number;
   description: string;
   directors: Array<IDirectors>;
   actors: Array<IActors>;

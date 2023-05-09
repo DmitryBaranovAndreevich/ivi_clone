@@ -1,0 +1,104 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.wrapper {
+    z-index: 100;
+    width: 50%;
+  }
+  
+  .cross {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+  
+    &:hover .cross_line {
+      opacity: 1;
+    }
+  
+    &_line {
+      position: absolute;
+      top: 0;
+      height: 20px;
+      width: 2px;
+      background-color: $white;
+      opacity: 0.7;
+  
+      &_first {
+        transform: rotate(45deg);
+      }
+  
+      &_sec {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  
+  .content {
+  }
+  
+  .title {
+    @include font-source-sans(40px, $white, 900, 44px);
+  }
+  
+  .text {
+    margin-top: 12px;
+    @include font-source-sans(15px, $textColorGrey, 400, 20px);
+  }
+  
+  .ratingBlock {
+    margin-top: 24px;
+  }
+  
+  .rating {
+    background-color: #1f1b2e;
+    display: flex;
+    height: 60px;
+    padding: 4px;
+    column-gap: 2px;
+    border-radius: 16px;
+  }
+  
+  .rate {
+    flex-basis: 10%;
+    height: 52px;
+    border-radius: 12px;
+  }
+  
+  .button {
+    width: 100%;
+    background-color: transparent;
+    height: 52px;
+    @include transition(0s, $duration, ease-out, $properties: background-color);
+    border: none;
+    border-radius: 12px;
+  
+    &:hover {
+      background-color: $red;
+  
+      & .button_value {
+        color: $white;
+      }
+    }
+  
+    &_value {
+      @include font-source-sans(20px, $lightGrey, 500, 24px);
+      @include transition(0s, $duration, ease-out, $properties: color);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .labelBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+  
+    &_text {
+      @include font-source-sans(13px, $lightGrey, 400, 16px);
+    }
+  }

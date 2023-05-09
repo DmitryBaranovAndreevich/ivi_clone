@@ -16,3 +16,13 @@ export type TParamListMovie = {
   type?: 'likeButton';
   icon?: string;
 };
+
+export type TPersonName = 'Режиссёр' | 'Актёры' | 'Продюсеры' | 'Художники' | 'Сценаристы';
+
+export type TPersonEnglishName = 'directors' | 'actors' | 'producers' | 'designers' | 'writers';
+
+export type TPersons = {
+  id: number;
+  name: TPersonName;
+  englishName: TPersonEnglishName;
+};

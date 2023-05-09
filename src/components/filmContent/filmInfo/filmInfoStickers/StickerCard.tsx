@@ -11,7 +11,6 @@ type TStickerCardProps = {
 };
 
 const StickerCard: React.FC<TStickerCardProps> = ({ type, rating, caption, avatar, hover }) => {
-  debugger;
   return (
     <React.Fragment>
       <div className={`${style.content} ${hover === caption && style.content_hover}`}>

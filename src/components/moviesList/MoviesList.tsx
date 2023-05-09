@@ -21,6 +21,7 @@ const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
             year={film.year}
             country={'Страна'}
             genre={'Жанр'}
+            duration={film.duration}
             size={'medium'}
           />
         </li>

@@ -43,7 +43,7 @@ export interface IPerson {
   name: string;
   originalName: string;
   photo: string;
-  films: IFilmsList;
+  films: Array<IFilmsList>;
   professions: Array<IPersonProfessions>;
 }
 

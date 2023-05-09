@@ -39,4 +39,14 @@ code {
 body {
   @include font-source-sans(15px, $black, 400, 150%);
   background-color: $bgcMain;
+  // position: fixed;
+    width: 100%;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 30vh;
 }

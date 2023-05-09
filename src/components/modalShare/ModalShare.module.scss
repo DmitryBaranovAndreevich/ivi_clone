@@ -1,0 +1,132 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.wrapper {
+  width: 400px;
+  background-color: $bgcMain;
+  padding: 16px 24px 24px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+  border-radius: 20px;
+  z-index: 100;
+  position: relative;
+}
+
+.cross {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  &_btn {
+    width: 28px;
+    height: 28px;
+    background-color: rgba($white, .16);
+    @include border(transparent, 0px, solid, 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    @include transition(0s, $duration, ease-out, $properties: transform);
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &_logo {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.header {
+  display: flex;
+  padding-bottom: 17px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -24px;
+    right: -24px;
+    bottom: 0;
+    height: 1px;
+    background-color: rgba(255,255,255,.08);
+  }
+}
+
+.imageBlock {
+  width: 43px;
+
+  &_poster {
+    max-width: 100%;
+    min-height: 100%;
+    border-radius: 8px
+  }
+}
+
+.textBlock {
+  margin-left: 16px;
+  overflow: hidden;
+  padding-right: 40px;
+}
+
+.params {
+  @include font-source-sans(13px, $white, 400, 22px);
+  margin-top: 4px;
+}
+
+.title {
+  @include font-source-sans(17px, $white, 700, 22px);
+  display: block;
+  overflow: hidden;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.list {
+  justify-content: flex-start;
+
+  & li {
+    @include font-source-sans(13px, $white, 400, 16px);
+    opacity: 0.7;
+  }
+}
+
+.content {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &_group_big {
+    & .button {
+      border-radius: 0;
+
+      &:first-child {
+        border-radius: 8px 8px 0 0;
+      }
+    
+      &:last-child {
+        border-radius: 0 0 8px 8px ;
+      }
+    }
+  }
+}
+
+.button {
+  height: 48px;
+  padding-right: 16px;
+  padding-left: 16px;
+  justify-content: space-between;
+
+  &_text {
+    @include font-source-sans(15px, $white, 500, 20px);
+  }
+
+  &_img {
+    width: 20px;
+    height: 20px;
+  }
+}

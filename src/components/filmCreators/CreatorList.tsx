@@ -15,10 +15,7 @@ const CreatorList: React.FC<TPersonListProps> = ({ personList, role }) => {
         <PersonItem
           key={person.originalName}
           addingClass={style.person}
-          name={person.name}
-          originalName={person.originalName}
-          photo={person.photo}
-          id={person.id}
+          personId={person.id}
           role={role}
         />
       );
