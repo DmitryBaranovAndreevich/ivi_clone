@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import style from './FilmInfoDescription.module.scss';
 
 type TFilmInfoDescriptionProps = {

@@ -1,5 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { ChangeEvent } from 'react';
 import style from './FilterRange.module.scss';
 
 type TFilterRangeFormProps = {

@@ -1,13 +1,12 @@
 import { Form, Formik, Field } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-
 import RedButton from '../UI/redButton/RedButton';
 import style from './FormAddReview.module.scss';
 import logoUser from './../../assests/svg/logoUser.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { reviewSlice } from '../../store/reducers/ReviewSlice';
-import { reviewApi, useAddReviewMutation } from '../../store/api/reviewApi';
+import { useAddReviewMutation } from '../../store/api/reviewApi';
 
 const FormSchema = Yup.object().shape({
   review: Yup.string()

@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import style from './FilmReview.module.scss';
-import logoHand from './../../assests/svg/logoHand.svg';
 import ReviewCard from '../reviewCard/ReviewCard';
 import { useNavigate } from 'react-router-dom';
 import { IReviews } from '../../type/TReviews';
@@ -10,9 +9,6 @@ type TReviewCardProps = {
   filmId: number;
   nameFilm: string;
   review: Array<IReviews>;
-  // title: string;
-  // text?: string;
-  // rating: number;
 };
 
 const FilmReview: React.FC<TReviewCardProps> = ({ filmId, nameFilm, review }) => {

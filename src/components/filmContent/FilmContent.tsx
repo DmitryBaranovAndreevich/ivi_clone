@@ -2,7 +2,6 @@ import React from 'react';
 import FilmInfo from './filmInfo/FilmInfo';
 import Player from './player/Player';
 import style from './FilmContent.module.scss';
-import films from './films.json';
 import { IFilm } from '../../type/TFilm';
 
 type TFilmContentProps = {

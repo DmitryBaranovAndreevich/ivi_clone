@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/redux';
-import { TObjWithParamsUrl, useNavigation } from '../../hooks/useNavigation';
+import { TObjWithParamsUrl } from '../../hooks/useNavigation';
 import { useGetCountriesQuery, useGetGenresQuery } from '../../store/api/appApi';
 import style from './Filter.module.scss';
 import FilterPlank from './FilterPlank/FilterPlank';

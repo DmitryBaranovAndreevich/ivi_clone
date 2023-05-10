@@ -3,7 +3,7 @@ import logoMagic from '../../assests/svg/logoMagic.svg';
 import logoStarLight from '../../assests/svg/logoStarLight.svg';
 import logoCircle from '../../assests/svg/logoCircle.svg';
 import style from './cardFilm.module.scss';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import CardFilmRating from './cardFilmRating';
 import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';

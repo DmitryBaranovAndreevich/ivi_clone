@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import ModalReview from '../../../modalReview/ModalReview';
 import ButtonWithotBgc from '../../../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import GreyButton from '../../../UI/greyButton/GreyButton';

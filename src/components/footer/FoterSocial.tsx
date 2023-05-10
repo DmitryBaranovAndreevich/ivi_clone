@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React from 'react';
 import style from './footer.module.scss';
 import UIButton from '../UI/UIButton/UIButton';
 import logoVK from './../../assests/svg/logoSocialVK.svg';
