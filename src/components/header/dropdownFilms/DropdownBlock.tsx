@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo } from 'react';
 import { TGenreCountriesYears } from '../../../type/type';
-import UILink from '../Link/UILink';
-import style from './dropdown.module.scss';
+import UILink from '../../UI/Link/UILink';
+import style from './DropdownFilms.module.scss';
 
 type TDropdownBlockProps = {
   title: 'Жанры' | 'Страны' | 'Годы';

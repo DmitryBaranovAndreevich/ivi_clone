@@ -1,50 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import UIButton from '../UIButton/UIButton';
 import style from './dropdown.module.scss';
-import DropdownBlock from './DropdownBlock';
 import logoTV from './../../../assests/svg/logoTV.svg';
-import DropdownSlider from './DropdownSlider';
 import { useAppSelector } from '../../../hooks/redux';
 import { useGetCountriesQuery, useGetGenresQuery } from '../../../store/api/appApi';
 
-const MOCK_INFO = [
-  'Новинки',
-  'Подборки',
-  'Рейтинг',
-  'Трейлеры',
-  'Что посмотреть',
-  'Фильмы в HD',
-  'Новинки подписки',
-];
+type TDropdownProps = {
+  children: ReactNode;
+};
 
-const Dropdown: React.FC = () => {
-  const { data: genres } = useGetGenresQuery('');
-  const { data: countries } = useGetCountriesQuery('');
-  const { years } = useAppSelector((state) => state.appReducer);
-
+const Dropdown: React.FC<TDropdownProps> = ({ children }) => {
   return (
     <div className={style.dropdown}>
-      <div className={style.dropdown_body}>
-        <div className={style.dropdown_content}>
-          <div className={style.dropdown_content_width}>
-            <DropdownBlock title="Жанры" listItems={genres} />
-          </div>
-          <div className={style.dropdown_content_regular}>
-            <DropdownBlock title="Страны" listItems={countries} />
-            <DropdownBlock title="Годы" listItems={years} />
-          </div>
-          <div className={style.dropdown_content_regular}>
-            <DropdownSlider listItems={MOCK_INFO} />
-          </div>
-        </div>
-        <div className={style.adding}>
-          <div className={style.adding_subscribe}></div>
-          <UIButton href={'https://www.ivi.ru/pages/tvsmart/'} addingClass={style.adding_btn}>
-            <img className={style.adding_btn_logo} src={logoTV} alt="logoTV" />
-            Смотреть на SmartTV
-          </UIButton>
-        </div>
-      </div>
+      <div className={style.dropdown_body}>{children}</div>
     </div>
   );
 };

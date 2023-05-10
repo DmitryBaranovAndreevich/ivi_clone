@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import { TRootState } from '../../../store/store';
-import { TNavigation } from '../../../type/type';
+import { TNavigationDesctop, TNavigationLaptop } from '../../../type/type';
+import { TItemHovered } from '../Header';
 import Navigation from './Navigation';
 
 type TMapStateToProps = {
-  navDesktop: Array<TNavigation>;
-  navLaptop: Array<TNavigation>;
-  setItemHovered: (isHover: string | null) => void;
+  navDesktop: Array<TNavigationDesctop>;
+  navLaptop: Array<TNavigationLaptop>;
+  setItemHovered: (isHover: TItemHovered) => void;
 };
 
 type TOwnProps = {
-  setItemHovered: (isHover: string | null) => void;
+  setItemHovered: (isHover: TItemHovered) => void;
 };
 
 // type MapDispatchToPropsType = {};

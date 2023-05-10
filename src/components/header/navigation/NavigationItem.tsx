@@ -1,12 +1,14 @@
 import React from 'react';
+import { TNavigationDesctopTitle } from '../../../type/type';
 import UILink from '../../UI/Link/UILink';
+import { TItemHovered } from '../Header';
 import style from './navigation.module.scss';
 
 export type TNavigationItemProps = {
   href: string;
-  title: string;
+  title: TNavigationDesctopTitle;
   isExpand: boolean;
-  setItemHovered: (isHover: string | null) => void;
+  setItemHovered: (isHover: TItemHovered) => void;
 };
 
 const NavigationItem: React.FC<TNavigationItemProps> = ({

@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
-import UILink from '../Link/UILink';
-import style from './dropdown.module.scss';
+import UILink from '../../UI/Link/UILink';
+import style from './DropdownFilms.module.scss';
 
 type TDropdownBlockProps = {
   listItems: Array<string>;

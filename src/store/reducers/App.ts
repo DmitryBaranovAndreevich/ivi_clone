@@ -7,11 +7,16 @@ import {
   MOCK_TYPE_PERSONS,
   MOCK_YEARS,
 } from '../../mockData/mockData';
-import { TGenreCountriesYears, TNavigation, TPersons } from '../../type/type';
+import {
+  TGenreCountriesYears,
+  TNavigationDesctop,
+  TNavigationLaptop,
+  TPersons,
+} from '../../type/type';
 
 type TAppInitialState = {
-  navigationDesktop: Array<TNavigation>;
-  navigationTablet: Array<TNavigation>;
+  navigationDesktop: Array<TNavigationDesctop>;
+  navigationTablet: Array<TNavigationLaptop>;
   genres: Array<TGenreCountriesYears>;
   countries: Array<TGenreCountriesYears>;
   years: Array<TGenreCountriesYears>;
