@@ -1,4 +1,4 @@
-import { TPersons } from '../type/type';
+import { TNavigationDesctop, TNavigationLaptop, TPersons } from '../type/type';
 
 export const MOCK_GENRES = [
   {
@@ -234,7 +234,7 @@ export const MOCK_YEARS = [
   },
 ];
 
-export const MOCK_NAVIGATION_DESKTOP = [
+export const MOCK_NAVIGATION_DESKTOP: Array<TNavigationDesctop> = [
   {
     href: '/',
     title: 'Мой Иви',
@@ -262,7 +262,7 @@ export const MOCK_NAVIGATION_DESKTOP = [
   },
 ];
 
-export const MOCK_NAVIGATION_LAPTOP = [
+export const MOCK_NAVIGATION_LAPTOP: Array<TNavigationLaptop> = [
   {
     href: '#',
     title: 'Мой Иви',

@@ -1,6 +1,21 @@
-export type TNavigation = {
+export type TNavigationDesctopTitle =
+  | 'Мой Иви'
+  | 'Что нового'
+  | 'Фильмы'
+  | 'Сериалы'
+  | 'Мультфильмы';
+
+export type TNavigationDesctop = {
   href: string;
-  title: string;
+  title: TNavigationDesctopTitle;
+  isExpand: boolean;
+};
+
+export type TNavigationLaptopTitle = 'Мой Иви' | 'Каталог' | 'Поиск' | 'Профиль' | 'Еще';
+
+export type TNavigationLaptop = {
+  href: string;
+  title: TNavigationLaptopTitle;
   isExpand: boolean;
 };
 

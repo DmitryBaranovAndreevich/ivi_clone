@@ -1,10 +1,7 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { string } from 'yup';
 import { IActors } from '../../../../type/TFilm';
-import { TParamListMovie } from '../../../../type/type';
 import ModalReview from '../../../modalReview/ModalReview';
-import UILink from '../../../UI/Link/UILink';
 import UIModal from '../../../UI/modal/UIModal';
 import style from './FilmInfoStickers.module.scss';
 import StickerCard from './StickerCard';

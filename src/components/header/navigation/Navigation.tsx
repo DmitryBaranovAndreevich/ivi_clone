@@ -1,12 +1,12 @@
 import React, { ReactNode, useMemo } from 'react';
-import { TNavigation } from '../../../type/type';
+import { TNavigationDesctop } from '../../../type/type';
 import style from './navigation.module.scss';
 import { TNavigationProps } from './NavigationContainer';
 import NavigationItem from './NavigationItem';
 
 const Navigation: React.FC<TNavigationProps> = ({ navDesktop, navLaptop, setItemHovered }) => {
   const navBlock: Array<ReactNode> = useMemo(() => {
-    return navDesktop.map((el: TNavigation): ReactNode => {
+    return navDesktop.map((el: TNavigationDesctop): ReactNode => {
       return (
         <NavigationItem
           key={el.title}

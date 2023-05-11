@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React from 'react';
 import CreatorList from './CreatorList';
 import { IActors, IDirectors, IProducers, IWriters } from '../../type/TFilm';
 import style from './FilmCreators.module.scss';

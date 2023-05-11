@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import UIButton from '../../UI/UIButton/UIButton';
 import logoPlay from './../../../assests/svg/logoPlay.svg';
 import logoBookmarkWidth from './../../../assests/svg/logoBookmarkWidth.svg';
 import logoBookmarkFill from './../../../assests/svg/logoBookmarkFill.svg';
