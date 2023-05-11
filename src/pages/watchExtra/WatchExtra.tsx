@@ -14,14 +14,15 @@ import WatchExtraContent from '../../components/watchExtraContent/WatchExtraAsid
 
 const WatchExtra = () => {
   const params = useParams();
-  const { data: film, isLoading } = useGetOneFilmQuery({ id: String(params.id) });
-  if (isLoading) {
-    return (
-      <div className="spinner">
-        <Spinner size={'big'} />
-      </div>
-    );
-  }
+  // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(params.id) });
+  // if (isLoading) {
+  //   return (
+  //     <div className="spinner">
+  //       <Spinner size={'big'} />
+  //     </div>
+  //   );
+  // }
+  const film: IFilm = films;
   if (!film) return <div>Фильм не найден!</div>;
   return (
     <div className={style.container}>

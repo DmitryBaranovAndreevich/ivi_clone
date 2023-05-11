@@ -1,0 +1,24 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.cross {
+  width: 28px;
+  height: 28px;
+  background-color: rgba($white, .16);
+  @include border(transparent, 0px, solid, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @include transition(0s, $duration, ease-out, $properties: transform);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &_logo {
+    width: 10px;
+    height: 10px;
+  }
+}

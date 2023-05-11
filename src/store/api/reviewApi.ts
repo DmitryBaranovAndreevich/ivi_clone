@@ -9,7 +9,6 @@ export const reviewApi = createApi({
   endpoints: (build) => ({
     addReview: build.mutation<TAddReview, { review: TAddReview; filmId: number }>({
       query: ({ review, filmId }) => {
-        debugger;
         return {
           url: `/reviews/add/${filmId}`,
           method: 'POST',

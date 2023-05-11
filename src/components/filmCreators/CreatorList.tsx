@@ -5,7 +5,7 @@ import style from './FilmCreators.module.scss';
 
 type TPersonListProps = {
   personList: Array<IDirectors> | Array<IActors> | Array<IProducers> | Array<IWriters>;
-  role: 'director' | 'actor';
+  role: 'режиссер' | 'актер';
 };
 
 const CreatorList: React.FC<TPersonListProps> = ({ personList, role }) => {

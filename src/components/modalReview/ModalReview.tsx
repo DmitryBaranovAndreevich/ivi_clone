@@ -1,4 +1,5 @@
 import React, { ReactNode, useMemo, useState } from 'react';
+import CrossButton from '../UI/crossButton/CrossButton';
 import style from './ModalReview.module.scss';
 
 type TModalReviewProps = {
@@ -20,10 +21,7 @@ const ModalReview: React.FC<TModalReviewProps> = ({ closeModal }) => {
   }, [rateValue]);
   return (
     <div className={style.wrapper}>
-      <button className={style.cross} onClick={closeModal}>
-        <span className={`${style.cross_line} ${style.cross_line_first}`}></span>
-        <span className={`${style.cross_line} ${style.cross_line_sec}`}></span>
-      </button>
+      <CrossButton closeModal={closeModal} addingClass={style.cross} />
       <div className={style.content}>
         <h2 className={style.title}>Ваша оценка</h2>
         <p className={style.text}>Оценки улучшают рекомендации</p>

@@ -13,8 +13,9 @@ import logoSocialVK from './../../assests/svg/logoSocialVK.svg';
 import logoSocialOK from './../../assests/svg/logoSocialOK.svg';
 import logoSocialTwitter from './../../assests/svg/logoSocialTwitter.svg';
 import ModalShareButton from './ModalShareButton';
+import CrossButton from '../UI/crossButton/CrossButton';
 
-type TModalReviewProps = {
+type TModalShareProps = {
   closeModal: () => void;
   poster: string;
   name: string;
@@ -22,7 +23,7 @@ type TModalReviewProps = {
   duration: number;
 };
 
-const ModalShare: React.FC<TModalReviewProps> = ({ closeModal, poster, name, year, duration }) => {
+const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year, duration }) => {
   const paramsYear: TParamListMovie = {
     title: String(year),
   };
@@ -32,9 +33,7 @@ const ModalShare: React.FC<TModalReviewProps> = ({ closeModal, poster, name, yea
   return (
     <div className={style.wrapper}>
       <div className={style.cross}>
-        <button className={style.cross_btn} onClick={closeModal}>
-          <img className={style.cross_logo} src={logoCross} alt="cross" />
-        </button>
+        <CrossButton closeModal={closeModal} addingClass={style.cross_btn} />
       </div>
       <div className={style.header}>
         <div className={style.imageBlock}>

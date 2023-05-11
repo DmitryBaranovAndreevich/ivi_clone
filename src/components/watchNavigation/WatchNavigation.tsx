@@ -44,7 +44,6 @@ const WatchNavigation: React.FC<TWatchNavigationProps> = ({
       );
     });
   }, [filmId, countReviews, choosenPage]);
-  debugger;
   return <ul className={style.list}>{navigationBlock}</ul>;
 };
 

@@ -13,7 +13,6 @@ type TPersonItemProps = {
 };
 
 const PersonItem: React.FC<TPersonItemProps> = ({ personId, role, addingClass, isShowCount }) => {
-  debugger;
   const { data: person, isLoading } = useGetOnePersonQuery({ id: String(personId) });
   const nameArray = person ? person.name.split(' ') : ['', ''];
   const [wordFilm, setWordFilm] = useState('фильм');

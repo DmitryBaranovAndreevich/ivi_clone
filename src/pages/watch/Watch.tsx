@@ -13,9 +13,9 @@ import FilmReview from '../../components/filmReview/FilmReview';
 import UIModal from '../../components/UI/modal/UIModal';
 
 const Watch = () => {
-  const params = useParams();
-  const { data: film } = useGetOneFilmQuery({ id: params.id });
-  // const film: IFilm = films;
+  // const params = useParams();
+  // const { data: film } = useGetOneFilmQuery({ id: params.id });
+  const film: IFilm = films;
   return (
     <div className={styles.container}>
       {film ? (
@@ -23,6 +23,7 @@ const Watch = () => {
           <FilmContent film={film} />
           <RelatedFilms title={film.name} relatedFilms={film.relatedFilms}></RelatedFilms>
           <FilmCreators
+            filmId={film.id}
             directors={film.directors}
             actors={film.actors}
             producers={film.producers}
