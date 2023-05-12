@@ -16,10 +16,11 @@ const BreadCrumbs: React.FC<TBreadCrumbsProps> = ({ listParams, constantMean }) 
   const navigate = useNavigate();
   const listBlock = useMemo(() => {
     return listParams?.map((params: Array<string>, index: number) => {
-      if (params) {
+      const paramsString = params.join(', ');
+      if (paramsString) {
         return (
           <li key={index} className={`${style.item} ${style.item_extra}`}>
-            {params.join(', ')}
+            {paramsString}
           </li>
         );
       }
