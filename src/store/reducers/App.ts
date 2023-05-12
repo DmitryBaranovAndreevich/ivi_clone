@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   MOCK_COUNTRY,
   MOCK_GENRES,
+  MOCK_INFO_FILMS,
   MOCK_NAVIGATION_DESKTOP,
   MOCK_NAVIGATION_LAPTOP,
   MOCK_TYPE_PERSONS,
@@ -9,6 +10,7 @@ import {
 } from '../../mockData/mockData';
 import {
   TGenreCountriesYears,
+  TInfoFilm,
   TNavigationDesctop,
   TNavigationLaptop,
   TPersons,
@@ -21,6 +23,7 @@ type TAppInitialState = {
   countries: Array<TGenreCountriesYears>;
   years: Array<TGenreCountriesYears>;
   typePersons: Array<TPersons>;
+  headerInfoFilm: Array<TInfoFilm>;
 };
 
 const appInitialState: TAppInitialState = {
@@ -30,6 +33,7 @@ const appInitialState: TAppInitialState = {
   countries: MOCK_COUNTRY,
   years: MOCK_YEARS,
   typePersons: MOCK_TYPE_PERSONS,
+  headerInfoFilm: MOCK_INFO_FILMS,
 };
 
 export const appReducer = createSlice({

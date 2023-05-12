@@ -6,6 +6,7 @@ import { useAppSelector } from '../../hooks/redux';
 import { useNavigation } from '../../hooks/useNavigation';
 import MoviesHeader from '../../components/moviesHeader/MoviesHeader';
 import MoviesListBlock from '../../components/moviesList/MoviesListBlock';
+import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 
 const Movies = () => {
   const { data: genres } = useGetGenresQuery('');
@@ -15,6 +16,7 @@ const Movies = () => {
 
   return (
     <div className={styles.container}>
+      <BreadCrumbs />
       <MoviesHeader meanUrl={meanUrl} />
       <Sort />
       <Filter meanUrl={meanUrl} />

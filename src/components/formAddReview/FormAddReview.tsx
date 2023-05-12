@@ -41,14 +41,13 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({ filmId }) => {
         initialValues={{ review: reviewUser[filmId]?.text ?? '' }}
         validationSchema={FormSchema}
         onSubmit={(values) => {
-          debugger;
           addReview({
             review: { title: '', text: values.review },
             filmId,
           });
         }}
       >
-        {({ values, handleChange, handleBlur, touched, errors }) => {
+        {({ values, handleBlur }) => {
           return (
             <div className={style.review}>
               <Form className={style.form}>

@@ -1,0 +1,30 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.list {
+    display: flex;
+    list-style-type: none;
+    gap: 14px;
+}
+
+.item {
+    position: relative;
+
+    &::before {
+        content: '/';
+        position: absolute;
+        left: -9px;
+        color: #fff;
+    }
+
+    &:first-child {
+        &::before {
+            content: '';
+        }
+    }
+}
+
+.button {
+    @include font-source-sans(11px, $white, 500, 16px);
+}

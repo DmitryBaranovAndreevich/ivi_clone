@@ -1,4 +1,6 @@
+import { searchApi } from './api/searchApi';
 import reviewReducer from './reducers/ReviewSlice';
+import searchReducer from './reducers/SearchSlice';
 import moviesSortReduser from './reducers/MoviesSort';
 import { appApi } from './api/appApi';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -15,17 +17,24 @@ const rootReducer = combineReducers({
   moviesSortReduser,
   reviewReducer,
   moviesFilterReduser,
+  searchReducer,
   [appApi.reducerPath]: appApi.reducer,
   [filmApi.reducerPath]: filmApi.reducer,
   [personApi.reducerPath]: personApi.reducer,
   [reviewApi.reducerPath]: reviewApi.reducer,
+  [searchApi.reducerPath]: searchApi.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat([appApi.middleware, filmApi.middleware, personApi.middleware]),
+      getDefaultMiddleware().concat([
+        appApi.middleware,
+        filmApi.middleware,
+        personApi.middleware,
+        searchApi.middleware,
+      ]),
   });
 };
 

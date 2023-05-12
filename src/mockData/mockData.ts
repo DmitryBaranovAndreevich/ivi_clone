@@ -317,3 +317,34 @@ export const MOCK_TYPE_PERSONS: Array<TPersons> = [
     englishName: 'writers',
   },
 ];
+
+export const MOCK_INFO_FILMS = [
+  {
+    title: 'Новинки',
+    href: 'https://www.ivi.tv/new/movie-new',
+  },
+  {
+    title: 'Подборки',
+    href: 'https://www.ivi.tv/collections',
+  },
+  {
+    title: 'Рейтинг',
+    href: '/movies?rating_gte=7',
+  },
+  {
+    title: 'Трейлеры',
+    href: 'https://www.ivi.tv/trailers',
+  },
+  {
+    title: 'Что посмотреть',
+    href: 'https://www.ivi.tv/goodmovies',
+  },
+  {
+    title: 'Фильмы в HD',
+    href: 'https://www.ivi.tv/collections/movies-hd',
+  },
+  {
+    title: 'Новинки подписки',
+    href: 'https://www.ivi.tv/collections/very-new-svod?_gl=1%2Azl9h5o%2A_ga%2AMTI1MjQzNDUwNy4xNjgzODI0NzEy%2A_ga_GETQ4387MJ%2AMTY4Mzg0MTkyOS4yLjEuMTY4Mzg0MjQzOC42MC4wLjA.&sort=priority_in_collection',
+  },
+];

@@ -3,13 +3,10 @@
 @import '../../commonStyles/fonts.scss';
 
 .wrapper {
-  width: 400px;
-  background-color: $bgcMain;
-  padding: 16px 24px 24px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
-  border-radius: 20px;
-  z-index: 100;
-  position: relative;
+  z-index: 200;
+  width: 50%;
+  align-self: flex-start;
+  padding-top: 60px;
 }
 
 .cross {
@@ -17,7 +14,7 @@
   right: 32px;
   top: 32px;
   width: 20px;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
   opacity: 0.5;
 
@@ -27,94 +24,115 @@
   }
 }
 
-.header {
-  display: flex;
-  padding-bottom: 17px;
-  position: relative;
+.title {
+  margin-bottom: 40px;
+  @include font-source-sans(40px, $white, 700, 44px);
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: -24px;
-    right: -24px;
-    bottom: 0;
-    height: 1px;
-    background-color: rgba(255,255,255,.08);
+.input {
+  width: 100%;
+  height: 40px;
+  padding-right: 12px;
+  @include font-source-sans(15px, $bgcDarkBlue, 500, 20px);
+  background-color: #d9d7e0;
+  padding: 18px 0 2px 12px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+
+  &:focus~.label_focus {
+    @include font-source-sans(13px, $textColorGrey, 500, 20px);
+    transform: translate3d(-11px, -8px, 0) scale(0.86) perspective(1px)
+  }
+
+  &_wrp {
+    position: relative;
   }
 }
 
-.imageBlock {
-  width: 43px;
+.label {
+  position: absolute;
+  @include font-source-sans(15px, $textColorGrey, 500, 20px);
+  @include transition(0s, $duration, ease-out, $properties: all);
+  left: 12px;
+  top: 10px;
 
-  &_poster {
-    max-width: 100%;
-    min-height: 100%;
-    border-radius: 8px
+  &_active {
+    @include font-source-sans(13px, $textColorGrey, 500, 20px);
+    transform: translate3d(0, -8px, 0) scale(0.86) perspective(1px)
+  }
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &_cross {
+    width: 14px;
+    height: 14px;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &_search {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.findBlock {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 12px 8px 12px;
+}
+
+.findItem {
+  flex-basis: 50%;
+  padding-right: 16px;
+  margin-bottom: 8px;
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+  padding-top: 8px;
+}
+
+.iconBlock {
+  width: 20px;
+  height: 20px;
+
+  &_img {
+    width: 100%;
+    height: 100%;
   }
 }
 
 .textBlock {
-  margin-left: 16px;
-  overflow: hidden;
-  padding-right: 40px;
-}
+  margin-left: 12px;
 
-.params {
-  @include font-source-sans(13px, $white, 400, 22px);
-  margin-top: 4px;
-}
+  &_title {
+    @include font-source-sans(15px, $textColorGrey, 500, 20px);
+    @include transition(0s, $duration-small, ease-out, $properties: color);
 
-.title {
-  @include font-source-sans(17px, $white, 700, 22px);
-  display: block;
-  overflow: hidden;
-  // -webkit-line-clamp: 2;
-  // -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-}
-
-.list {
-  justify-content: flex-start;
-
-  & li {
-    @include font-source-sans(13px, $white, 400, 16px);
-    opacity: 0.7;
-  }
-}
-
-.content {
-  padding-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  &_group_big {
-    & .button {
-      border-radius: 0;
-
-      &:first-child {
-        border-radius: 8px 8px 0 0;
-      }
-    
-      &:last-child {
-        border-radius: 0 0 8px 8px ;
-      }
+    &:hover {
+      color: $red;
     }
   }
-}
 
-.button {
-  height: 48px;
-  padding-right: 16px;
-  padding-left: 16px;
-  justify-content: space-between;
-
-  &_text {
-    @include font-source-sans(15px, $white, 500, 20px);
-  }
-
-  &_img {
-    width: 20px;
-    height: 20px;
+  &_role {
+    @include font-source-sans(13px, $textColorGrey, 400, 16px);
+    margin-top: 4px;
   }
 }

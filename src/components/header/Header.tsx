@@ -13,14 +13,16 @@ import DropdownSubscribe from './dropdownSubscribe/DropdownSubscribe';
 import DropdownFilms from './dropdownFilms/DropdownFilms';
 import DropdownNotification from './dropdownNotification/DropdownNotification';
 import DropdownProfile from './dropdownProfile/DropdownProfile';
+import ModalSearch from '../modalSearch/ModalSearch';
+import UIModal from '../UI/modal/UIModal';
 
 export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
 
 const Header = () => {
-  const [itemHovered, setItemHovered] = useState<TItemHovered>('Профиль');
+  const [isSearchModal, setIsSearchModal] = useState(false);
+  const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
   const onMouseLeave = () => setItemHovered(null);
   const onMouseEnter = (title: TItemHovered) => setItemHovered(title);
-  debugger;
   return (
     <header className={style.header}>
       <div className={style.body}>
@@ -43,6 +45,7 @@ const Header = () => {
             <div
               className={style.content_search + ' ' + style.content_block}
               onMouseEnter={onMouseLeave}
+              onClick={() => setIsSearchModal(true)}
             >
               <button className={style.content_search_btn}>
                 <img className={style.content_search_logo} src={logoSearch} alt="logoSearch" />
@@ -86,6 +89,11 @@ const Header = () => {
             {itemHovered === 'Профиль' && <DropdownProfile />}
           </Dropdown>
         </div>
+        {isSearchModal && (
+          <UIModal>
+            <ModalSearch closeModal={() => setIsSearchModal(false)} />
+          </UIModal>
+        )}
       </div>
     </header>
   );

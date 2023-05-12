@@ -7,20 +7,11 @@ import DropdownSlider from './DropdownSlider';
 import UIButton from '../../UI/UIButton/UIButton';
 import logoTV from './../../../assests/svg/logoTV.svg';
 
-const MOCK_INFO = [
-  'Новинки',
-  'Подборки',
-  'Рейтинг',
-  'Трейлеры',
-  'Что посмотреть',
-  'Фильмы в HD',
-  'Новинки подписки',
-];
-
 const DropdownFilms: React.FC = () => {
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
+  const { headerInfoFilm } = useAppSelector((state) => state.appReducer);
   return (
     <>
       <div className={style.dropdown_content}>
@@ -32,7 +23,7 @@ const DropdownFilms: React.FC = () => {
           <DropdownBlock title="Годы" listItems={years} />
         </div>
         <div className={style.dropdown_content_regular}>
-          <DropdownSlider listItems={MOCK_INFO} />
+          <DropdownSlider listItems={headerInfoFilm} />
         </div>
       </div>
       <div className={style.adding}>

@@ -1,9 +1,10 @@
 import React, { ReactNode, useMemo, useState } from 'react';
+import { TInfoFilm } from '../../../type/type';
 import UILink from '../../UI/Link/UILink';
 import style from './DropdownFilms.module.scss';
 
 type TDropdownBlockProps = {
-  listItems: Array<string>;
+  listItems: Array<TInfoFilm>;
 };
 
 const DropdownSlider: React.FC<TDropdownBlockProps> = ({ listItems }) => {
@@ -14,14 +15,14 @@ const DropdownSlider: React.FC<TDropdownBlockProps> = ({ listItems }) => {
   };
 
   const itemsBlock: Array<ReactNode> = useMemo((): Array<ReactNode> => {
-    return listItems.map((item: string, index: number): ReactNode => {
+    return listItems.map((item: TInfoFilm, index: number): ReactNode => {
       return (
         <div
           className={style.item + ' ' + (active === index && style.item_active)}
-          key={item}
+          key={item.title}
           onMouseEnter={() => makeItemActive(index)}
         >
-          <UILink addingClass={style.link} title={item} href="#" />
+          <UILink addingClass={style.link} title={item.title} href={item.href} />
         </div>
       );
     });

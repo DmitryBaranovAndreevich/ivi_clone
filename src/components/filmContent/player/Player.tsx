@@ -14,6 +14,14 @@ const Player: React.FC<TPlayerProps> = ({ poster, name, trailer, year, duration 
   return (
     <div className={style.player}>
       <div className={style.playerBlock}>
+        {/* <video
+          id="video"
+          className="video-root"
+          crossOrigin="anonymous"
+          data-test="video"
+          preload="auto"
+          src={trailer}
+        ></video> */}
         <div className={style.video}>{trailer}</div>
       </div>
       <PlayerAdding poster={poster} name={name} year={year} duration={duration} />

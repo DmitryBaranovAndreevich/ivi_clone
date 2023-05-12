@@ -48,3 +48,8 @@ export type TReviewUser = {
     text: string;
   };
 };
+
+export type TInfoFilm = {
+  title: string;
+  href: string;
+};

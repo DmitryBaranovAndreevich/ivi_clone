@@ -1,40 +1,34 @@
-import React from 'react';
-import style from './ModalShare.module.scss';
-import logoCross from './../../assests/svg/logoCross.svg';
-import FilmInfoList from '../filmContent/filmInfo/filmInfoList/FilmInfoList';
-import { formatDurationFilm } from '../../hooks/helperFilm';
-import { TParamListMovie } from '../../type/type';
-import UIButton from '../UI/UIButton/UIButton';
-import logoFile from './../../assests/svg/logoFile.svg';
-import logoWhatsApp from './../../assests/svg/logoSocialWhatsApp.svg';
-import logoSocialTelegram from './../../assests/svg/logoSocialTelegram.svg';
-import logoSocialViber from './../../assests/svg/logoSocialViber.svg';
-import logoSocialVK from './../../assests/svg/logoSocialVK.svg';
-import logoSocialOK from './../../assests/svg/logoSocialOK.svg';
-import logoSocialTwitter from './../../assests/svg/logoSocialTwitter.svg';
+import React, { useMemo } from 'react';
+import style from './ModalSearch.module.scss';
 import CrossButton from '../UI/crossButton/CrossButton';
 import ModalSearchForm from './ModalSearchForm';
+import { useAppSelector } from '../../hooks/redux';
+import { useGetPersonByNameQuery } from '../../store/api/searchApi';
+import FindPerson from './FindPerson';
 
 type TModalSearchProps = {
   closeModal: () => void;
-  poster: string;
-  name: string;
-  year: number;
-  duration: number;
 };
 
-const ModalSearch: React.FC<TModalSearchProps> = ({ closeModal, poster, name, year, duration }) => {
-  const paramsYear: TParamListMovie = {
-    title: String(year),
-  };
-  const paramsDuration: TParamListMovie = {
-    title: formatDurationFilm(duration),
-  };
+const ModalSearch: React.FC<TModalSearchProps> = ({ closeModal }) => {
+  const { searchMain } = useAppSelector((state) => state.searchReducer);
+  const { data: listPerson } = useGetPersonByNameQuery({ name: searchMain });
+  const findPersonsBlock = useMemo(() => {
+    return listPerson?.map((person) => {
+      // return <div></div>;
+    });
+  }, [listPerson]);
   return (
     <div className={style.wrapper}>
       <CrossButton closeModal={closeModal} addingClass={style.cross} />
       <h2 className={style.title}>Поиск</h2>
-      <ModalSearchForm />
+      <ModalSearchForm searchMain={searchMain} />
+      <div className={style.findBlock}>
+        <FindPerson namePerson="rfdtr rfdcx" role="actor" />
+        <FindPerson namePerson="rfdtr rfdcx" role="actor" />
+        <FindPerson namePerson="rfdtr rfdcx" role="actor" />
+        <FindPerson namePerson="rfdtr rfdcx" role="actor" />
+      </div>
     </div>
   );
 };
