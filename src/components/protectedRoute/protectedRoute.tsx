@@ -8,7 +8,7 @@ type TProtectedRouteProps = {
 };
 
 const ProtectedRoute: React.FC<TProtectedRouteProps> = ({ user, redirectPath = '/' }) => {
-  if (!user) {
+  if (user) {
     return <Navigate to={redirectPath} replace />;
   }
 

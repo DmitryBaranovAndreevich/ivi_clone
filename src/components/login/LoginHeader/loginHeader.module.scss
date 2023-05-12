@@ -27,3 +27,10 @@
   }
 }
 
+.regButton {
+  padding: 10px 20px;
+  background: $red;
+  border-radius: 10px;
+  text-decoration: none;
+  @include font-source-sans(13px, $white, 500, 16px);
+}

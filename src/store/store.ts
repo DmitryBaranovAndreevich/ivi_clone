@@ -2,6 +2,7 @@ import moviesSortReduser from './reducers/MoviesSort';
 import { appApi } from './api/appApi';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userLoginReduser from './reducers/UserLoginSlice';
+import userAuthReduser from './reducers/UserAuthSlice';
 import appReducer from './reducers/App';
 import moviesFilterReduser from './reducers/MoviesFilter';
 import { filmApi } from './api/filmApi';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userLoginReduser,
   moviesSortReduser,
   moviesFilterReduser,
+  userAuthReduser,
   [appApi.reducerPath]: appApi.reducer,
   [filmApi.reducerPath]: filmApi.reducer,
 });

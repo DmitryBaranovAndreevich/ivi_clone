@@ -8,10 +8,11 @@ import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
 import NavigationContainer from './navigation/NavigationContainer';
+import { useAppSelector } from '../../hooks/redux';
 
 const Header = () => {
   const [itemHovered, setItemHovered] = useState<string | null>(null);
-
+  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
   return (
     <header className={style.header}>
       <div className={style.body}>
@@ -43,11 +44,15 @@ const Header = () => {
             </Link>
           </div>
           <div className={style.content_avatar + ' ' + style.content_block}>
-            <Link className={style.content_avatar_link} to="/profile/email">
-              <div className={style.content_avatar_link_logo}>
-                <img src={logoUser} alt="logoUser" />
-              </div>
-            </Link>
+            {isRegister ? (
+              <RedButton addingClass={style.content_button_btn} text={'Выйти из профиля'} />
+            ) : (
+              <Link className={style.content_avatar_link} to="/profile/email">
+                <div className={style.content_avatar_link_logo}>
+                  <img src={logoUser} alt="logoUser" />
+                </div>
+              </Link>
+            )}
           </div>
         </div>
         <div

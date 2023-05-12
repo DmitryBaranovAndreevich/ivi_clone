@@ -6,7 +6,7 @@ interface IInitialState {
   password: string;
   isLoading: boolean;
   error: string;
-  tokens: { accesstoken: string | null; refreshtoken: string | null };
+  token: string | null;
   isRegister: boolean;
 }
 
@@ -15,7 +15,7 @@ const initialState: IInitialState = {
   password: '',
   isLoading: false,
   error: '',
-  tokens: { accesstoken: null, refreshtoken: null },
+  token: null,
   isRegister: false,
 };
 
@@ -40,7 +40,7 @@ export const userLoginSlice = createSlice({
       builder.addCase(fulfilled, (state, action) => {
         state.isLoading = false;
         state.isRegister = true;
-        state.tokens = action.payload;
+        state.token = action.payload.token;
         state.error = '';
         state.isRegister = true;
       });
