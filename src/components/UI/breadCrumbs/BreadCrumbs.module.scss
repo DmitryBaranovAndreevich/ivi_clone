@@ -4,6 +4,7 @@
 
 .list {
     display: flex;
+    align-items: center;
     list-style-type: none;
     gap: 14px;
 }
@@ -23,8 +24,12 @@
             content: '';
         }
     }
-}
 
-.button {
-    @include font-source-sans(11px, $white, 500, 16px);
+    &_extra {
+        @include font-source-sans(13px, $textColorGrey, 500, 16px);
+        &::before {
+            color: $textColorGrey;
+        }
+
+    }
 }

@@ -7,16 +7,30 @@ import { useNavigation } from '../../hooks/useNavigation';
 import MoviesHeader from '../../components/moviesHeader/MoviesHeader';
 import MoviesListBlock from '../../components/moviesList/MoviesListBlock';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
+import { useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { getArrayFromOneItem } from '../../utils/helperFilmBreadCrumbs';
 
 const Movies = () => {
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
   const meanUrl = useNavigation(genres, years, countries);
+  // console.log(meanUrl);
+  const [meanBreadcrumbs, setMeanBreadcrumbs] = useState<Array<Array<string>> | null>(null);
+  useEffect(() => {
+    const arrYears = getArrayFromOneItem(years, meanUrl.year);
+    if (arrYears) {
+      setMeanBreadcrumbs([arrYears]);
+    }
+  }, [years, meanUrl.year]);
 
   return (
     <div className={styles.container}>
-      <BreadCrumbs />
+      <BreadCrumbs
+        listParams={meanBreadcrumbs}
+        constantMean={{ title: 'Фильмы', href: '/movies' }}
+      />
       <MoviesHeader meanUrl={meanUrl} />
       <Sort />
       <Filter meanUrl={meanUrl} />
