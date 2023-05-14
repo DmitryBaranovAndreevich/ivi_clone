@@ -8,10 +8,20 @@ import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
 import NavigationContainer from './navigation/NavigationContainer';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
+import { eraseCookie } from '../../service/eraseCookie';
 
 const Header = () => {
+  const { setDefaultValue } = userLoginSlice.actions;
+  const dispatch = useAppDispatch();
   const [itemHovered, setItemHovered] = useState<string | null>(null);
+  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
 
+  const exitFromProfile = () => {
+    dispatch(setDefaultValue());
+    eraseCookie('token');
+  };
   return (
     <header className={style.header}>
       <div className={style.body}>
@@ -43,11 +53,19 @@ const Header = () => {
             </Link>
           </div>
           <div className={style.content_avatar + ' ' + style.content_block}>
-            <Link className={style.content_avatar_link} to="/profile/email">
-              <div className={style.content_avatar_link_logo}>
-                <img src={logoUser} alt="logoUser" />
-              </div>
-            </Link>
+            {isRegister ? (
+              <RedButton
+                addingClass={style.content_button_btn}
+                text={'Выйти из профиля'}
+                onClick={exitFromProfile}
+              />
+            ) : (
+              <Link className={style.content_avatar_link} to="/profile/email">
+                <div className={style.content_avatar_link_logo}>
+                  <img src={logoUser} alt="logoUser" />
+                </div>
+              </Link>
+            )}
           </div>
         </div>
         <div
@@ -62,3 +80,6 @@ const Header = () => {
 };
 
 export default Header;
+function dispatch(arg0: { payload: undefined; type: 'login/setDefaultValue' }) {
+  throw new Error('Function not implemented.');
+}

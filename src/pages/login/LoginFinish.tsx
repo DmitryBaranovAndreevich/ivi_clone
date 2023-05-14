@@ -24,7 +24,7 @@ const LoginFinish = () => {
     <LoginLayout>
       <LoginHeader title={'Здравствуйте'} />
       <Line persent={'100%'} />
-      <LoginMessage>Войдите или зарегистрируйтесь</LoginMessage>
+      <LoginMessage>Войдите</LoginMessage>
       <div className={`${styles.responce}`}>
         <LoginMessage response>{email}</LoginMessage>
       </div>
