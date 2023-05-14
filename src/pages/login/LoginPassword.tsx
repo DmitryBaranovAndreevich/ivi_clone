@@ -53,7 +53,7 @@ const LoginPassword = () => {
         return Promise.reject(payload as string);
       })
       .catch((err) => {
-        setError(err);
+        setError(typeof err === 'object' ? err.message : err);
       });
   };
 

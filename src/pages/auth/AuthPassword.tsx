@@ -66,8 +66,7 @@ const AuthPassword = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
-        setError(err.message);
+        setError(typeof err === 'object' ? err.message : err);
       });
   };
   return (
