@@ -29,6 +29,11 @@ export const userLoginSlice = createSlice({
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;
     },
+    setDefaultValue(state) {
+      state.email = initialState.email;
+      state.password = initialState.password;
+      state.isRegister = initialState.isRegister;
+    },
   },
   extraReducers: (builder) => {
     login();
