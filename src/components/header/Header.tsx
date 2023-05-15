@@ -15,12 +15,23 @@ import DropdownNotification from './dropdownNotification/DropdownNotification';
 import DropdownProfile from './dropdownProfile/DropdownProfile';
 import ModalSearch from '../modalSearch/ModalSearch';
 import UIModal from '../UI/modal/UIModal';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
+import { eraseCookie } from '../../service/eraseCookie';
 
 export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
 
 const Header = () => {
+  const { setDefaultValue } = userLoginSlice.actions;
+  const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
+  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+
+  const exitFromProfile = () => {
+    dispatch(setDefaultValue());
+    eraseCookie('token');
+  };
   const onMouseLeave = () => setItemHovered(null);
   const onMouseEnter = (title: TItemHovered) => setItemHovered(title);
   return (
@@ -63,15 +74,20 @@ const Header = () => {
               </div>
             </Link>
           </div>
-          <div
-            onMouseEnter={() => onMouseEnter('Профиль')}
-            className={style.content_avatar + ' ' + style.content_block}
-          >
-            <Link className={style.content_avatar_link} to="/profile/email">
-              <div className={style.content_avatar_link_logo}>
-                <img src={logoUser} alt="logoUser" />
-              </div>
-            </Link>
+          <div className={style.content_avatar + ' ' + style.content_block}>
+            {isRegister ? (
+              <RedButton
+                addingClass={style.content_button_btn}
+                text={'Выйти из профиля'}
+                onClick={exitFromProfile}
+              />
+            ) : (
+              <Link className={style.content_avatar_link} to="/profile/email">
+                <div className={style.content_avatar_link_logo}>
+                  <img src={logoUser} alt="logoUser" />
+                </div>
+              </Link>
+            )}
           </div>
         </div>
         <div
@@ -100,3 +116,6 @@ const Header = () => {
 };
 
 export default Header;
+function dispatch(arg0: { payload: undefined; type: 'login/setDefaultValue' }) {
+  throw new Error('Function not implemented.');
+}

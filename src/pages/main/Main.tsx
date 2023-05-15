@@ -6,6 +6,7 @@ import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { IFilm } from '../../type/TFilm';
+import InfiniteSlider from '../../components/infiniteSlider/InfiniteSlider';
 
 interface Error {
   error: string;
@@ -13,7 +14,6 @@ interface Error {
 
 const Main = () => {
   const { data, isLoading, error } = appApi.useGetAllFilmsQuery('');
-  console.log((error as FetchBaseQueryError)?.data);
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner size={'big'} />

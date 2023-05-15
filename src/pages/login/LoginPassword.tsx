@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { loginUser } from '../../store/reducers/ActionCreators';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
+import { setCookie } from '../../service/setCookie';
 
 const LoginPassword = () => {
   const {
@@ -42,11 +43,17 @@ const LoginPassword = () => {
         dispatch(setPassword(password));
         return dispatch(loginUser({ email, password }));
       })
-      .then((res) => {
-        if (res.payload) navigate('/profile/finish', { replace: true });
+      .then(({ payload }) => {
+        if (typeof payload !== 'string') {
+          setCookie('token', (payload as { token: string }).token, {
+            expires: 1000 * 60 * 60 * 24 * 30,
+          });
+          navigate('/profile/finish', { replace: true });
+        }
+        return Promise.reject(payload as string);
       })
       .catch((err) => {
-        setError(err.message);
+        setError(typeof err === 'object' ? err.message : err);
       });
   };
 
@@ -54,7 +61,7 @@ const LoginPassword = () => {
     <LoginLayout>
       <LoginHeader title={'Здравствуйте'} />
       <Line persent={'50%'} />
-      <LoginMessage>Войдите или зарегистрируйтесь</LoginMessage>
+      <LoginMessage>Войдите</LoginMessage>
       <div className={`${styles.responce} ${styles.animation} ${styles.animationTime1}`}>
         <button className={styles.editButton} type="button" onClick={() => navigate(-1)}>
           <EditIcon width={'25px'} height={'15px'} />

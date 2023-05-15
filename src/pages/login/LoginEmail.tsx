@@ -46,12 +46,12 @@ const LoginEmail = () => {
 
   return (
     <LoginLayout>
-      <LoginHeader title={'Вход или регистрация'} />
+      <LoginHeader title={'Вход'} />
       <Line persent={'10%'} />
       <form className={styles.wrapper}>
         <LoginMessage>
-          <span className={styles.span}>Войдите или зарегистрируйтесь</span> чтобы пользоваться
-          сервисом на любом устройстве
+          <span className={styles.span}>Войдите</span> чтобы пользоваться сервисом на любом
+          устройстве
         </LoginMessage>
         <Input
           placeholder={'Через email или телефон'}

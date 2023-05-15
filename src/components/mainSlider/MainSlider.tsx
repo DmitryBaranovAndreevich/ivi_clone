@@ -12,7 +12,6 @@ interface IMainSlider {
 }
 
 const MainSlider: FC<IMainSlider> = ({ items }) => {
-  console.log(items);
   const [dark, setDark] = useState(true);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 1,

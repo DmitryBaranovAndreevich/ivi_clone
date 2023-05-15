@@ -13,13 +13,12 @@ import LoginFinish from './pages/login/LoginFinish';
 import ProtectedRoute from './components/protectedRoute/protectedRoute';
 import Watch from './pages/watch/Watch';
 import WatchExtra from './pages/watchExtra/WatchExtra';
+import AuthPassword from './pages/auth/AuthPassword';
+import AuthEmail from './pages/auth/AuthEmail';
+import AuthFinish from './pages/auth/AuthFinish';
 
 function App() {
-  const {} = useAppSelector((state) => state);
-  const [user, setUser] = React.useState<{ id: string; name: string } | null>({
-    id: '1',
-    name: 'robin',
-  });
+  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
   return (
     <div className={styles.container}>
       <Routes>
@@ -33,7 +32,14 @@ function App() {
           }
         >
           <Route path="/" element={<Main />}>
-            <Route path="profile" element={<ProtectedRoute user={!user} />}>
+            <Route path="auth" element={<ProtectedRoute user={isRegister} />}>
+              <Route path="email" element={<AuthEmail />} />
+              <Route path="password" element={<AuthPassword />} />
+              <Route path="finish" element={<AuthFinish />} />
+            </Route>
+          </Route>
+          <Route path="/" element={<Main />}>
+            <Route path="profile" element={<ProtectedRoute user={isRegister} />}>
               <Route path="email" element={<LoginEmail />} />
               <Route path="password" element={<LoginPassword />} />
               <Route path="finish" element={<LoginFinish />} />
