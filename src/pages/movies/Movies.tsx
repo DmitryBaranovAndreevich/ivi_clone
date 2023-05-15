@@ -16,14 +16,13 @@ const Movies = () => {
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
   const meanUrl = useNavigation(genres, years, countries);
-  // console.log(meanUrl);
   const [meanBreadcrumbs, setMeanBreadcrumbs] = useState<Array<Array<string>> | null>(null);
   useEffect(() => {
+    const arrGenres = getArrayFromOneItem(genres, meanUrl.genre);
     const arrYears = getArrayFromOneItem(years, meanUrl.year);
-    if (arrYears) {
-      setMeanBreadcrumbs([arrYears]);
-    }
-  }, [years, meanUrl.year]);
+    const arrCountries = getArrayFromOneItem(countries, meanUrl.country);
+    setMeanBreadcrumbs([arrGenres, arrYears, arrCountries]);
+  }, [genres, countries, years, meanUrl.genre, meanUrl.year, meanUrl.country]);
 
   return (
     <div className={styles.container}>

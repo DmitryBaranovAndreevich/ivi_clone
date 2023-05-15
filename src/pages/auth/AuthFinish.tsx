@@ -7,7 +7,7 @@ import styles from '../login/login.module.scss';
 import { useEffect } from 'react';
 
 const AuthFinish = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const redirect = () => {
     navigate('/', { replace: true });
   };

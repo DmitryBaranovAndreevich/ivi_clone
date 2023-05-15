@@ -20,9 +20,11 @@ const Player: React.FC<TPlayerProps> = ({ poster, name, trailer, year, duration 
           crossOrigin="anonymous"
           data-test="video"
           preload="auto"
-          src={trailer}
+          src="https://www.youtube.com/embed/Jvurpf91omw"
         ></video> */}
-        <div className={style.video}>{trailer}</div>
+        <div className={style.video}>
+          <iframe className={style.iframe} src={trailer}></iframe>
+        </div>
       </div>
       <PlayerAdding poster={poster} name={name} year={year} duration={duration} />
     </div>

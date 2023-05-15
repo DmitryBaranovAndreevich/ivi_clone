@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import style from './WatchExtra.module.scss';
 import logoClock from './../../assests/svg/logoClock.svg';
@@ -14,18 +14,22 @@ import WatchExtraContent from '../../components/watchExtraContent/WatchExtraAsid
 
 const WatchExtra = () => {
   const params = useParams();
-  // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(params.id) });
-  // if (isLoading) {
-  //   return (
-  //     <div className="spinner">
-  //       <Spinner size={'big'} />
-  //     </div>
-  //   );
-  // }
-  const film: IFilm = films;
+  const { data: film, isLoading } = useGetOneFilmQuery({ id: String(params.id) });
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
+  // const film: IFilm = films;
   if (!film) return <div>Фильм не найден!</div>;
   return (
     <div className={style.container}>
+      <Link to="#">
+        <div></div>
+        <div>К фильму</div>
+      </Link>
       <WatchExtraContent
         choosenPage={params.page ? params.page : ''}
         filmName={film.name}

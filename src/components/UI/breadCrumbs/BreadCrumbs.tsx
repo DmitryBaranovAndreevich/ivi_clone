@@ -12,7 +12,6 @@ type TBreadCrumbsProps = {
 };
 
 const BreadCrumbs: React.FC<TBreadCrumbsProps> = ({ listParams, constantMean }) => {
-  // console.log(location);
   const navigate = useNavigate();
   const listBlock = useMemo(() => {
     return listParams?.map((params: Array<string>, index: number) => {

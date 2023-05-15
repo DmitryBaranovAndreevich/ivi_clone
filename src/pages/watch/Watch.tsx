@@ -11,17 +11,27 @@ import ReviewCard from '../../components/reviewCard/ReviewCard';
 import RelatedFilms from '../../components/relatedFilms/RelatedFilms';
 import FilmReview from '../../components/filmReview/FilmReview';
 import UIModal from '../../components/UI/modal/UIModal';
+import Spinner from '../../components/UI/spinner/Spinner';
 
 const Watch = () => {
-  // const params = useParams();
-  // const { data: film } = useGetOneFilmQuery({ id: params.id });
-  const film: IFilm = films;
+  const params = useParams();
+  const { data: film, isLoading } = useGetOneFilmQuery({ id: params.id });
+  // const film: IFilm = films;
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
   return (
     <div className={styles.container}>
       {film ? (
         <React.Fragment>
           <FilmContent film={film} />
-          <RelatedFilms title={film.name} relatedFilms={film.relatedFilms}></RelatedFilms>
+          {film.relatedFilms.length > 0 && (
+            <RelatedFilms title={film.name} relatedFilms={film.relatedFilms}></RelatedFilms>
+          )}
           <FilmCreators
             filmId={film.id}
             directors={film.directors}

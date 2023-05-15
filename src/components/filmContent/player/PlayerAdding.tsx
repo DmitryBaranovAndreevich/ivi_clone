@@ -19,6 +19,7 @@ type TPlayerAddingProps = {
 
 const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, duration }) => {
   const [isShareModal, setIsShareModal] = useState(false);
+  const [isTrailerModal, setIsTrailerModal] = useState(false);
   const [isInBookmark, setIsInBookmark] = useState(false);
   const navigate = useNavigate();
   return (
@@ -46,6 +47,17 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
         Бесплатные фильмы
       </GreyButton>
       {isShareModal && (
+        <UIModal>
+          <ModalShare
+            closeModal={() => setIsShareModal(false)}
+            poster={poster}
+            name={name}
+            year={year}
+            duration={duration}
+          />
+        </UIModal>
+      )}
+      {isTrailerModal && (
         <UIModal>
           <ModalShare
             closeModal={() => setIsShareModal(false)}
