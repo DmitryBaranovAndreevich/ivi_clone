@@ -1,0 +1,54 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.container {
+    background: $bgcMain;
+    color: $white;
+    max-width: 1240px;  
+    margin: 0 auto;
+    padding: 68px 12px;
+    display: flex;
+}
+
+.content {
+    width: 50%;
+    margin-left: 12.5%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.aside {
+    width: 12.5%;
+    margin-left: 12.5%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.title {
+    @include font-source-sans(38px, $white, 900, 44px);
+    margin-bottom: 20px;
+}
+
+// padding-left: 12px;
+// padding-right: 12px;
+// -moz-box-sizing: border-box;
+// -webkit-box-sizing: border-box;
+// box-sizing: border-box;
+// width: 12.5%;
+// margin-left: 12.5%;
+
+.imageBlock {
+
+}
+
+.textBlock {
+    
+}
+
+.duration {
+    &_logo {
+        width: 16px;
+        height: 16px;
+    }
+}

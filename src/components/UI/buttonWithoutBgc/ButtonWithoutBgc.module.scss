@@ -6,7 +6,7 @@
     // width: 100%;
     background-color: transparent;
     @include border(rgba($white, .3), 1px, solid, 8px);
-    @include font-source-sans(15px, $white, 500, 20px);
+    @include font-source-sans(13px, $white, 500, 16px);
     @include transition(0s, $duration, ease-out, $properties: all);
 
     &:hover {

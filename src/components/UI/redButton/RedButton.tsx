@@ -8,6 +8,7 @@ type TRedButtonProps = {
   onClick?: (e: FormEvent) => void;
   type?: 'button' | 'submit' | 'reset' | undefined;
   isLoad?: boolean;
+  isDisabled?: boolean;
 };
 
 const RedButton: React.FC<TRedButtonProps> = ({
@@ -16,9 +17,15 @@ const RedButton: React.FC<TRedButtonProps> = ({
   onClick,
   type,
   isLoad = false,
+  isDisabled,
 }) => {
   return (
-    <button className={style.btn + ' ' + addingClass} onClick={onClick} type={type}>
+    <button
+      className={style.btn + ' ' + addingClass}
+      onClick={onClick}
+      type={type}
+      disabled={isDisabled}
+    >
       {isLoad ? <Spinner size={'small'} /> : text}
     </button>
   );

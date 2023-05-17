@@ -1,28 +1,51 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGetOnePersonQuery } from '../../store/api/personApi';
+import { makeWordEnd } from '../../utils/helper';
+import Spinner from '../UI/spinner/Spinner';
 import style from './PersonItem.module.scss';
 
 type TPersonItemProps = {
-  name: string;
-  originalName: string;
-  photo: string;
-  id: number;
-  role: string;
+  personId: number;
+  role?: string;
   addingClass: string;
+  isShowCount?: boolean;
 };
 
-const PersonItem: React.FC<TPersonItemProps> = ({ name, originalName, photo, id, role }) => {
-  const nameArray = name.split(' ');
+const PersonItem: React.FC<TPersonItemProps> = ({ personId, role, addingClass, isShowCount }) => {
+  const { data: person, isLoading } = useGetOnePersonQuery({ id: String(personId) });
+  const nameArray = person ? person.name.split(' ') : ['', ''];
+  const [wordFilm, setWordFilm] = useState('фильм');
+  useEffect(() => {
+    const count = !isLoading && person ? person?.films.length : 0;
+    setWordFilm(makeWordEnd(count, 'фильм', 'фильма', 'фильмов'));
+  }, [person, isLoading]);
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
   return (
-    <Link className={style.person} to={`/person/${originalName}`}>
+    <Link className={`${style.person} ${addingClass}`} to={`/person/${person?.id}`}>
       <div className={style.avatarSection}>
-        <img className={style.avatarSection_img} src={photo} />
+        {person?.photo ? (
+          <img className={style.avatarSection_img} src={person.photo} />
+        ) : (
+          <div></div>
+        )}
       </div>
       <div className={style.textSection}>
         {nameArray[0] && <span className={style.textSection_name}>{nameArray[0]}</span>}
         {nameArray[1] && <span className={style.textSection_name}>{nameArray[1]}</span>}
-        <span className={style.textSection_role}>{role}</span>
+        {role && <span className={style.textSection_role}>{role}</span>}
       </div>
+      {isShowCount && person?.films && (
+        <p className={style.count}>
+          {person.films.length} {wordFilm}
+        </p>
+      )}
     </Link>
   );
 };

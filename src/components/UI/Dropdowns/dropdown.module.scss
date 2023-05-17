@@ -15,32 +15,15 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-  }
+    position: relative;
 
-  &_content {
-    margin-left: -12px;
-    margin-right: -12px;
-    flex-basis: 75%;
-    display: flex;
-    justify-content: space-between;
-
-    &_width {
-      flex-basis: 45%;
-      margin-left: 10px;
-    }
-
-    &_regular {
-      position: relative;
-      flex-basis: 25%;
-    }
-
-    &_line {
-      height: 90%;
-      width: 1px;
-      left: -20px;
-      top: 12px;
-      background-color: $white;
+    &::before {
+      content: '';
       position: absolute;
+      top: 0;
+      width: 95%;
+      height: 1px;
+      background-color: $white;
       opacity: 0.5;
     }
   }

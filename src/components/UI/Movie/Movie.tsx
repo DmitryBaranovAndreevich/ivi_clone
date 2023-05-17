@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { IFilm } from '../../filmContent/TFilm';
 import styles from './movie.module.scss';
 import { Link } from 'react-router-dom';
+import { IFilmsList } from '../../../type/TFilm';
 
 interface IMovie {
-  data: IFilm;
+  data: IFilmsList;
 }
 
 const Movie: FC<IMovie> = ({ data }) => {

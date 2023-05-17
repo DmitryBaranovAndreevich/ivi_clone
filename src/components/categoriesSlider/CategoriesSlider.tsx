@@ -80,12 +80,14 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
                   style={size === 'big' ? { height: 500 } : { height: 350 }}
                 >
                   <CardFilm
+                    filmId={movie.id}
                     size={size}
                     image={movie.poster}
                     name={movie.name}
                     year={movie.year}
                     country="qwerty"
                     genre={title}
+                    duration={movie.duration}
                   />
                 </div>
               );

@@ -4,6 +4,7 @@
 
 .link {
   @include font-source-sans(13px, $white, 400, 20px);
+  @include transition(0s, $duration, ease-out, $properties: all);
   text-decoration: none;
   opacity: 0.5;
   display: inline-block;

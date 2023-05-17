@@ -7,15 +7,9 @@ import style from './MoviesHeader.module.scss';
 
 type TMoviesHeaderProps = {
   meanUrl: TObjWithParamsUrl;
-  // choosenYears: Array<string>;
-  // choosenCountries: Array<string>;
 };
 
-const MoviesHeader: React.FC<TMoviesHeaderProps> = ({
-  meanUrl,
-  // choosenYears,
-  // choosenCountries,
-}) => {
+const MoviesHeader: React.FC<TMoviesHeaderProps> = ({ meanUrl }) => {
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);

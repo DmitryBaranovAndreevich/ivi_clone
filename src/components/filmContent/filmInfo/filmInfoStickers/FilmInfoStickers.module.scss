@@ -9,6 +9,7 @@
     grid-gap: 4px;
     overflow: hidden;
     list-style-type: none;
+    height: 96px;
 }
 
 .stickerItem {
@@ -25,17 +26,26 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+
+    }
 }
 
 .content {
     display: flex;
     width: 56px;
     height: 56px;
-    background-color: rgba($white, .16);
+    background-color: $buttonGrey;
     border-radius: 12px;
     @include transition(0s, $duration, ease-out, $properties: background-color);
     align-items: center;
     justify-content: center;
+
+    &_hover {
+        background-color: $buttonGreyHover;
+    }
 
     &_avatar {
         display: flex;
@@ -43,6 +53,8 @@
         align-items: center;
         width: 44px;
         height: 44px;
+        border-radius: 8px;
+        object-fit: cover;
     }
 
     &_rating {
@@ -62,4 +74,20 @@
     text-overflow: ellipsis; 
     text-align: center;
     @include transition(0s, $duration, ease-out, $properties: opacity);
+
+    &_hover {
+        opacity: 1;
+    }
 }
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $green;
+    border-radius: 8px;
+  
+    &_mean {
+        @include font-source-sans(15px, $white, 500, 20px);
+    }
+  }

@@ -7,12 +7,16 @@ type TProtectedRouteProps = {
   redirectPath?: string;
 };
 
-const ProtectedRoute: React.FC<TProtectedRouteProps> = ({ user, redirectPath = '/' }) => {
+const ProtectedRoute: React.FC<TProtectedRouteProps> = ({ user, redirectPath = '/', children }) => {
   if (user) {
     return <Navigate to={redirectPath} replace />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      {children}|<Outlet />
+    </>
+  );
 };
 
 export default ProtectedRoute;

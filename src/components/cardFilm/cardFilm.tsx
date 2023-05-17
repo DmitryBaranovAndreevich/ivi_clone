@@ -3,28 +3,38 @@ import logoMagic from '../../assests/svg/logoMagic.svg';
 import logoStarLight from '../../assests/svg/logoStarLight.svg';
 import logoCircle from '../../assests/svg/logoCircle.svg';
 import style from './cardFilm.module.scss';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+import CardFilmRating from './cardFilmRating';
+import CardFilmInfo from './cardFilmInfo';
+import CardFilmDuration from './cardFilmDuration';
+import { Link } from 'react-router-dom';
 
 type TCardFilmProps = {
+  filmId: number;
   name: string;
   year: number;
   country: string;
   genre: string;
   image: string;
+  duration: number;
   size: 'big' | 'medium';
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre, size }) => {
+const CardFilm: React.FC<TCardFilmProps> = ({
+  filmId,
+  image,
+  name,
+  year,
+  country,
+  genre,
+  duration,
+  size,
+}) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
-  const rateInteger = 8;
-  const rateFraction = 4;
-
-  const filmInfoTxtContent = useMemo(() => {
-    return `${year}, ${country}, ${genre}`;
-  }, [year, country, genre]);
 
   return (
-    <div
+    <Link
+      to={`/watch/${filmId}`}
       className={style.card}
       onMouseOver={() => setIsMouseOverImageSection(true)}
       onMouseOut={() => setIsMouseOverImageSection(false)}
@@ -64,23 +74,15 @@ const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre,
             </div>
           </div>
           <div className={style.imageSection_information_content}>
-            <div className={style.imageSection_information_content_value}>
-              <div className={style.imageSection_information_content_value_integer}>
-                {rateInteger}
-              </div>
-              <div className={style.imageSection_information_content_value_defraction}>
-                ,{rateFraction}
-              </div>
-            </div>
+            <CardFilmRating ratingsNumber={8.4} />
             <div className={style.imageSection_information_content_rate}>
               <div className={style.imageSection_information_content_rate_name}>Актеры</div>
               <div className={style.imageSection_information_content_rate_range}>
                 <div className={style.imageSection_information_content_rate_range_progress}></div>
               </div>
             </div>
-            <div className={style.imageSection_information_content_properties}>
-              {filmInfoTxtContent}
-            </div>
+            <CardFilmInfo year={year} country={country} genre={genre} />
+            <CardFilmDuration>{duration} мин.</CardFilmDuration>
           </div>
         </div>
       </div>
@@ -92,7 +94,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ image, name, year, country, genre,
           <span>Бесплатно</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

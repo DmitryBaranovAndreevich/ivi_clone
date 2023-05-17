@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
+import { IFilm } from '../../type/TFilm';
 import { sortList } from '../../utils/helperWithSort';
 import CardFilm from '../cardFilm/cardFilm';
-import { IFilm } from '../filmContent/TFilm';
 import style from './MoviesListBlock.module.scss';
 
 type TMoviesListProps = {
@@ -16,11 +16,13 @@ const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
       return (
         <li key={film.id} className={style.item}>
           <CardFilm
+            filmId={film.id}
             name={film.name}
             image={film.poster}
             year={film.year}
             country={'Страна'}
             genre={'Жанр'}
+            duration={film.duration}
             size={'medium'}
           />
         </li>

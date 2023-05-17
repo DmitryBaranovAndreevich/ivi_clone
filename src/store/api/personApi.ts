@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import TPerson from '../../type/TPerson';
+import { IPerson, IPersons } from '../../type/TPerson';
+import { getCookie } from '../../service/getCookie';
 
 export const personApi = createApi({
   reducerPath: 'personApi',
@@ -7,15 +8,20 @@ export const personApi = createApi({
     baseUrl: 'http://localhost:3000/api/',
   }),
   endpoints: (build) => ({
-    getPerson: build.query<TPerson, { id: string; token: string }>({
-      query: ({ id, token }) => ({
-        url: `persons/${id}`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }),
+    getPersons: build.query<IPersons[], ''>({
+      query: () => {
+        return { url: 'persons' };
+      },
+    }),
+    getOnePerson: build.query<IPerson, { id: string | undefined }>({
+      query: ({ id }) => {
+        return {
+          url: `persons/${id}`,
+          headers: { Authorization: `Bearer: ${getCookie('token')}` },
+        };
+      },
     }),
   }),
 });
 
-export const { useGetPersonQuery } = personApi;
+export const { useGetPersonsQuery, useGetOnePersonQuery } = personApi;

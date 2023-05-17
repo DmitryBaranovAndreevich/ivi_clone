@@ -1,3 +1,8 @@
+import { TFilmCountries } from './TCountry';
+import { TFilmGenres } from './TGenres';
+import { TPersonFilms } from './TPerson';
+import { IReviews } from './TReviews';
+
 type TFilmRoles = {
   id: number;
   filmId: number;
@@ -75,12 +80,6 @@ export interface IDesigners {
   FilmDesigners: TFilmRoles;
 }
 
-type TFilmGenres = {
-  id: number;
-  filmId: number;
-  genreId: number;
-};
-
 export interface IGenres {
   id: number;
   name: string;
@@ -102,12 +101,6 @@ interface IAwards {
   FilmAwards: TFilmAwards;
 }
 
-type TFilmCountries = {
-  id: number;
-  filmId: number;
-  countryId: number;
-};
-
 export interface ICountries {
   id: number;
   name: string;
@@ -117,14 +110,15 @@ export interface ICountries {
 
 export interface IFilm {
   id: number;
-  originalName: string;
   name: string;
+  originalName: string;
   poster: string;
+  trailer: string;
   mpaaRating: string;
   rating: number;
   ratingsNumber: number;
   year: number;
-  duration: string;
+  duration: number;
   description: string;
   directors: Array<IDirectors>;
   actors: Array<IActors>;
@@ -137,10 +131,12 @@ export interface IFilm {
   genres: Array<IGenres>;
   awards: Array<IAwards>;
   countries: Array<ICountries>;
-  reviews: Array<string>;
+  reviews: Array<IReviews>;
+  relatedFilms: Array<IFilmsList>;
 }
 
 export interface IFilmsList {
+  id: number;
   name: string;
   originalName: string;
   poster: string;
@@ -151,4 +147,7 @@ export interface IFilmsList {
   year: number;
   duration: number;
   description: string;
+  FilmCountries?: TFilmCountries;
+  FilmGenres?: TFilmGenres;
+  PersonFilms?: TPersonFilms;
 }

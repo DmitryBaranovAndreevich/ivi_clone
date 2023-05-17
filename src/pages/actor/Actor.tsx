@@ -1,22 +1,21 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/UI/spinner/Spinner';
-import { getCookie } from '../../service/getCookie';
 import { personApi } from '../../store/api/personApi';
 import styles from './actor.module.scss';
 import Line from '../../components/login/Line/Line';
 import Movie from '../../components/UI/Movie/Movie';
 
 const Actor = () => {
-  const param = useParams();
-  const token = getCookie('token') as string;
-  const { data, isLoading } = personApi.useGetPersonQuery({ id: param.id as string, token });
+  const { id } = useParams();
+  const { data, isLoading } = personApi.useGetOnePersonQuery({ id });
+  const navigate = useNavigate();
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner size={'big'} />
     </div>
   ) : (
     <div className={styles.wrapper}>
-      <Link to={''} className={styles.reverse}>
+      <Link to={''} onClick={() => navigate(-1)} className={styles.reverse}>
         Назад
       </Link>
       <div className={styles.container}>
