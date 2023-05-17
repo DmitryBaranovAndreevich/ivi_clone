@@ -28,7 +28,7 @@ const PersonItem: React.FC<TPersonItemProps> = ({ personId, role, addingClass, i
     );
   }
   return (
-    <Link className={`${style.person} ${addingClass}`} to={`/person/${person?.originalName}`}>
+    <Link className={`${style.person} ${addingClass}`} to={`/person/${person?.id}`}>
       <div className={style.avatarSection}>
         {person?.photo ? (
           <img className={style.avatarSection_img} src={person.photo} />

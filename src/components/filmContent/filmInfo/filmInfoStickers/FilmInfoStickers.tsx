@@ -29,7 +29,7 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
           onMouseEnter={() => onMouseEnter(actor.name)}
           onMouseLeave={onMouseLeave}
         >
-          <Link to={`/person/${actor.name}`} className={style.sticker}>
+          <Link to={`/person/${actor.id}`} className={style.sticker}>
             <StickerCard type="actor" caption={actor.name} avatar={actor.photo} hover={hover} />
           </Link>
         </li>

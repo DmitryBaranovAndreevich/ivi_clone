@@ -1,0 +1,45 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  padding: 9px 15px;
+  @include font-source-sans(15px, $white, 500, 20px);
+  text-decoration: none;
+  background: $lightGrey;
+  border-radius: 10px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.poster {
+  width: 80px;
+  height: 122px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.year,
+.name {
+  @include font-source-sans(15px, $white, 500, 20px);
+}
+
+.rating {
+  @include font-source-sans(13px, $textColorGrey, 700, 16px);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}

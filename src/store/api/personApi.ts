@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IPerson, IPersons } from '../../type/TPerson';
+import { getCookie } from '../../service/getCookie';
 
 export const personApi = createApi({
   reducerPath: 'personApi',
@@ -14,7 +15,10 @@ export const personApi = createApi({
     }),
     getOnePerson: build.query<IPerson, { id: string | undefined }>({
       query: ({ id }) => {
-        return { url: `persons/${id}` };
+        return {
+          url: `persons/${id}`,
+          headers: { Authorization: `Bearer: ${getCookie('token')}` },
+        };
       },
     }),
   }),

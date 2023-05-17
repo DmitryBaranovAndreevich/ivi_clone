@@ -53,3 +53,5 @@ export interface IPersons {
   originalName: string;
   photo: string;
 }
+
+export default IPerson;
