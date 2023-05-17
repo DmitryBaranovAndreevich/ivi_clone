@@ -6,6 +6,7 @@ import userAuthReduser from './reducers/UserAuthSlice';
 import appReducer from './reducers/App';
 import moviesFilterReduser from './reducers/MoviesFilter';
 import { filmApi } from './api/filmApi';
+import { personApi } from './api/personApi';
 
 const rootReducer = combineReducers({
   appReducer,
@@ -15,13 +16,14 @@ const rootReducer = combineReducers({
   userAuthReduser,
   [appApi.reducerPath]: appApi.reducer,
   [filmApi.reducerPath]: filmApi.reducer,
+  [personApi.reducerPath]: personApi.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat([appApi.middleware, filmApi.middleware]),
+      getDefaultMiddleware().concat([appApi.middleware, filmApi.middleware, personApi.middleware]),
   });
 };
 
