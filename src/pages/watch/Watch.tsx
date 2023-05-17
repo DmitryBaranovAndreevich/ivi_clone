@@ -12,6 +12,7 @@ import RelatedFilms from '../../components/relatedFilms/RelatedFilms';
 import FilmReview from '../../components/filmReview/FilmReview';
 import UIModal from '../../components/UI/modal/UIModal';
 import Spinner from '../../components/UI/spinner/Spinner';
+import FilmTrailer from '../../components/filmTrailer/FilmTrailer';
 
 const Watch = () => {
   const params = useParams();
@@ -39,6 +40,7 @@ const Watch = () => {
             producers={film.producers}
             writers={film.writers}
           />
+          <FilmTrailer filmId={film.id} filmPoster={film.poster} trailer={film.trailer} />
           <FilmReview
             filmId={film.id}
             nameFilm={film.name}

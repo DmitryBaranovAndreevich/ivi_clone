@@ -18,15 +18,65 @@ type TWatchReviewsProps = {
   reviews: Array<IReviews>;
 };
 
-const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId, reviews }) => {
+const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
+  const [reviewWithParent, setReviewWithParent] = useState<Array<IReviews>>([]);
+  const { data: film, isLoading, isFetching, refetch } = useGetOneFilmQuery({ id: String(filmId) });
   const reviewsBlock = useMemo(() => {
-    return reviews.map(({ id, title, text, rating }) => {
-      return <WatchReviewItem key={id} titleReview={title} textReview={text} rating={rating} />;
-    });
-  }, [reviews]);
+    // film?.reviews
+    //   .map((review) => {
+    //     if (!review.parentId) {
+    //       return (
+    //         <WatchReviewItem
+    //           key={review.id}
+    //           filmId={filmId}
+    //           reviewId={review.id}
+    //           titleReview={review.title}
+    //           textReview={review.text}
+    //           rating={review.rating}
+    //           refetchFilms={refetch}
+    //         />
+    //       );
+    //     }
+    //     // else {
+    //     //   setReviewWithParent((prevState) => [...prevState, review]);
+    //     // }
+    //   })
+    return film?.reviews
+      .map((review) => {
+        if (!review.parentId) {
+          return (
+            <WatchReviewItem
+              key={review.id}
+              filmId={filmId}
+              reviewId={review.id}
+              titleReview={review.title}
+              textReview={review.text}
+              rating={review.rating}
+              refetchFilms={refetch}
+            />
+          );
+        }
+        // else {
+        //   setReviewWithParent((prevState) => [...prevState, review]);
+        // }
+      })
+      .reverse();
+  }, [filmId, film?.reviews, refetch]);
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
   return (
     <div className={style.content}>
-      <FormAddReview filmId={filmId} />
+      <FormAddReview filmId={filmId} forWhat="film" refetchFilms={refetch} />
+      {isFetching && (
+        <div>
+          <Spinner size={'small'} />
+        </div>
+      )}
       {reviewsBlock}
     </div>
   );

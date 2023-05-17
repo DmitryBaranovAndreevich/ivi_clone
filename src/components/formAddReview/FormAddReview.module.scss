@@ -12,7 +12,9 @@
 
     &_content {
         width: 100%;
-        margin-right: 12px;
+        // margin-right: 12px;
+        display: flex;
+        justify-content: space-around;
     }
 }
 
@@ -35,7 +37,7 @@
     padding-right: 12px;
     @include font-source-sans(15px, $bgcDarkBlue, 500, 20px);
     background-color: #d9d7e0;
-    padding: 18px 0 2px 12px;
+    padding: 18px 12px 2px 12px;
     border: none;
     outline: none;
     border-radius: 8px;
@@ -47,6 +49,7 @@
 
     &_wrp {
         position: relative;
+        flex-basis: 45%;
     }
 }
 

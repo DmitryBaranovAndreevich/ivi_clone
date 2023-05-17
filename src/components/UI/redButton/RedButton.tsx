@@ -22,7 +22,7 @@ const RedButton: React.FC<TRedButtonProps> = ({
   return (
     <button
       className={style.btn + ' ' + addingClass}
-      onClick={onClick}
+      // onClick={onClick}
       type={type}
       disabled={isDisabled}
     >

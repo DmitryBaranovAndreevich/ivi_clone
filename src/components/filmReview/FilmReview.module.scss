@@ -2,6 +2,10 @@
 @import '../../commonStyles/variables/index.scss';
 @import '../../commonStyles/fonts.scss';
 
+.reviewBlock {
+    padding-top: 24px;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

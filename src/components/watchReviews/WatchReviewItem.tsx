@@ -15,14 +15,46 @@ import style from './WatchReviews.module.scss';
 import logoUser from './../../assests/svg/logoUser.svg';
 import GreyButton from '../UI/greyButton/GreyButton';
 import UIButton from '../UI/UIButton/UIButton';
+import FormAddReview from '../formAddReview/FormAddReview';
 
 type TWatchReviewItemProps = {
+  filmId: number;
+  reviewId: number;
   titleReview: string;
   textReview: string;
   rating: number;
+  refetchFilms: () => void;
 };
 
-const WatchReviewItem: React.FC<TWatchReviewItemProps> = ({ titleReview, textReview, rating }) => {
+const WatchReviewItem: React.FC<TWatchReviewItemProps> = ({
+  filmId,
+  reviewId,
+  titleReview,
+  textReview,
+  rating,
+  refetchFilms,
+}) => {
+  const [isShowForm, setIsShowForm] = useState(false);
+  const { data: film } = useGetOneFilmQuery({ id: String(filmId) });
+  // const reviewsBlock = useMemo(() => {
+  //   return film?.reviews
+  //     .map(({ id, title, text, rating, parentId }) => {
+  //       if (!parentId) {
+  //         return (
+  //           <WatchReviewItem
+  //             key={id}
+  //             filmId={filmId}
+  //             reviewId={id}
+  //             titleReview={title}
+  //             textReview={text}
+  //             rating={rating}
+  //             refetchFilms={refetch}
+  //           />
+  //         );
+  //       }
+  //     })
+  //     .reverse();
+  // }, [filmId, film?.reviews, refetch]);
   return (
     <div className={style.review}>
       <div className={style.review_header}>
@@ -40,9 +72,19 @@ const WatchReviewItem: React.FC<TWatchReviewItemProps> = ({ titleReview, textRev
       <div className={style.review_content}>
         <p className={style.review_text}>{textReview}</p>
       </div>
-      <button className={style.answer} onClick={() => {}}>
-        Ответить
-      </button>
+      {!isShowForm && (
+        <button className={style.answer} onClick={() => setIsShowForm(true)}>
+          Ответить
+        </button>
+      )}
+      {isShowForm && (
+        <FormAddReview
+          filmId={filmId}
+          forWhat="review"
+          reviewId={reviewId}
+          refetchFilms={refetchFilms}
+        />
+      )}
     </div>
   );
 };

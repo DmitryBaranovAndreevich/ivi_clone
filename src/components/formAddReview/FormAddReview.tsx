@@ -6,10 +6,14 @@ import style from './FormAddReview.module.scss';
 import logoUser from './../../assests/svg/logoUser.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { reviewSlice } from '../../store/reducers/ReviewSlice';
-import { useAddReviewMutation } from '../../store/api/reviewApi';
+import { useAddReviewForReviewMutation, useAddReviewMutation } from '../../store/api/reviewApi';
 
 const FormSchema = Yup.object().shape({
-  review: Yup.string()
+  reviewTitle: Yup.string()
+    .min(5, 'Минимум 5 символов')
+    .max(500, 'Превышен лимит по количеству символов')
+    .required('Required'),
+  reviewText: Yup.string()
     .min(10, 'Минимум 10 символов')
     .max(500, 'Превышен лимит по количеству символов')
     .required('Required'),
@@ -17,34 +21,79 @@ const FormSchema = Yup.object().shape({
 
 type TFormAddReviewProps = {
   filmId: number;
+  forWhat: 'film' | 'review';
+  reviewId?: number;
+  refetchFilms: () => void;
 };
 
-const FormAddReview: React.FC<TFormAddReviewProps> = ({ filmId }) => {
-  const [errorReview, setErrorReview] = useState<null | string>(null);
+const FormAddReview: React.FC<TFormAddReviewProps> = ({
+  filmId,
+  forWhat,
+  reviewId,
+  refetchFilms,
+}) => {
+  const [errorReviewTitle, setErrorReviewTitle] = useState<null | string>(null);
+  const [errorReviewText, setErrorReviewText] = useState<null | string>(null);
+
   const dispatch = useAppDispatch();
   const [addReview, {}] = useAddReviewMutation();
-  const { addReviewUser } = reviewSlice.actions;
-  const { reviewUser } = useAppSelector((state) => state.reviewReducer);
-  const onChange = (filmId: number, reviewText: string) => {
-    if (reviewText.length < 10) {
-      setErrorReview(`Минимум 10 символов, вы ввели ${reviewText.length}`);
-    } else if (reviewText.length > 500) {
-      setErrorReview(`Превышен лимит по количеству символов`);
+  const [addReviewForReview, {}] = useAddReviewForReviewMutation();
+  const { addReviewUser, setReviewForReview } = reviewSlice.actions;
+  const { reviewUser, reviewForReview } = useAppSelector((state) => state.reviewReducer);
+  const onChange = (filmId: number, reviewObj: { title: string; text: string }) => {
+    if (reviewObj.title.length < 5) {
+      setErrorReviewTitle(`Минимум 5 символов, вы ввели ${reviewObj.title.length}`);
+    } else if (reviewObj.title.length > 100) {
+      setErrorReviewTitle(`Превышен лимит по количеству символов`);
     } else {
-      setErrorReview(null);
+      setErrorReviewTitle(null);
     }
-    dispatch(addReviewUser({ filmId, reviewText }));
+    if (reviewObj.text.length < 10) {
+      setErrorReviewText(`Минимум 10 символов, вы ввели ${reviewObj.text.length}`);
+    } else if (reviewObj.text.length > 500) {
+      setErrorReviewText(`Превышен лимит по количеству символов`);
+    } else {
+      setErrorReviewText(null);
+    }
+    if (forWhat === 'film') {
+      dispatch(addReviewUser({ filmId, reviewObj }));
+    }
+    if (forWhat === 'review' && reviewId) {
+      dispatch(setReviewForReview({ reviewId, reviewObj }));
+    }
   };
   return (
     <div>
       <Formik
-        initialValues={{ review: reviewUser[filmId]?.text ?? '' }}
+        initialValues={{
+          reviewTitle:
+            forWhat === 'review' && reviewId
+              ? reviewForReview[reviewId]?.title ?? ''
+              : reviewUser[filmId]?.title ?? '',
+          reviewText:
+            forWhat === 'review' && reviewId
+              ? reviewForReview[reviewId]?.text ?? ''
+              : reviewUser[filmId]?.text ?? '',
+        }}
         validationSchema={FormSchema}
-        onSubmit={(values) => {
-          addReview({
-            review: { title: '', text: values.review },
-            filmId,
-          });
+        onSubmit={async (values) => {
+          debugger;
+          if (forWhat === 'film') {
+            await addReview({
+              review: { title: values.reviewTitle, text: values.reviewText },
+              filmId,
+            });
+            dispatch(addReviewUser({ filmId, reviewObj: { title: '', text: '' } }));
+          }
+          if (forWhat === 'review' && reviewId) {
+            await addReviewForReview({
+              review: { title: values.reviewTitle, text: values.reviewText },
+              filmId,
+              reviewId,
+            });
+            dispatch(setReviewForReview({ reviewId, reviewObj: { title: '', text: '' } }));
+          }
+          refetchFilms();
         }}
       >
         {({ values, handleBlur }) => {
@@ -55,34 +104,58 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({ filmId }) => {
                   <img className={style.avatar_logo} src={logoUser} alt="avatar" />
                 </div>
                 <div className={style.form_content}>
-                  <div className={`${style.input_wrp} ${errorReview && style.error}`}>
+                  <div className={`${style.input_wrp} ${errorReviewTitle && style.error}`}>
                     <Field
-                      name="review"
+                      name="reviewTitle"
                       onChange={(e: { target: { value: string } }) => {
-                        values.review = e.target.value;
-                        onChange(filmId, e.target.value);
+                        values.reviewTitle = e.target.value;
+                        onChange(filmId, { title: e.target.value, text: values.reviewText });
                       }}
                       onBlur={handleBlur}
                       className={style.input}
                     />
                     <span
                       className={`${style.label} ${style.label_focus} ${
-                        values.review && style.label_active
+                        values.reviewTitle && style.label_active
                       }`}
                     >
                       Написать отзыв
                     </span>
+                    {errorReviewTitle && values.reviewTitle.length !== 0 ? (
+                      <div className={style.error_text}>{errorReviewTitle}</div>
+                    ) : null}
                   </div>
-                  {errorReview && values.review.length !== 0 ? (
-                    <div className={style.error_text}>{errorReview}</div>
-                  ) : null}
+                  <div className={`${style.input_wrp} ${errorReviewText && style.error}`}>
+                    <Field
+                      name="reviewText"
+                      onChange={(e: { target: { value: string } }) => {
+                        values.reviewText = e.target.value;
+                        onChange(filmId, { title: values.reviewTitle, text: e.target.value });
+                      }}
+                      onBlur={handleBlur}
+                      className={style.input}
+                    />
+                    <span
+                      className={`${style.label} ${style.label_focus} ${
+                        values.reviewText && style.label_active
+                      }`}
+                    >
+                      Написать отзыв
+                    </span>
+                    {errorReviewText && values.reviewText.length !== 0 ? (
+                      <div className={style.error_text}>{errorReviewText}</div>
+                    ) : null}
+                  </div>
                 </div>
                 <RedButton
                   addingClass={style.submit}
                   text="Отправить"
-                  // onClick={}
                   type="submit"
-                  isDisabled={errorReview || values.review.length === 0 ? true : false}
+                  isDisabled={
+                    errorReviewTitle || errorReviewText || values.reviewText.length === 0
+                      ? true
+                      : false
+                  }
                 />
               </Form>
             </div>

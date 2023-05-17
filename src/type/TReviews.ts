@@ -1,8 +1,9 @@
 export interface IReviews {
-  id: string;
+  id: number;
   title: string;
   text: string;
   rating: number;
+  parentId: number;
   userId: number;
   filmId: number;
 }

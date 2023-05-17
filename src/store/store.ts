@@ -35,6 +35,7 @@ export const setupStore = () => {
         appApi.middleware,
         filmApi.middleware,
         personApi.middleware,
+        reviewApi.middleware,
         searchApi.middleware,
       ]),
   });

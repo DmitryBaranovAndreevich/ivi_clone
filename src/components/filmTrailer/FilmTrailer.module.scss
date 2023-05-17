@@ -1,0 +1,60 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.trailer {
+  margin-bottom: 8px;
+  padding: 24px 0;
+}
+
+.titleBlock {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 0 12px;
+}
+
+.title {
+  @include font-source-sans(24px, $white, 700, 28px);
+  display: inline-block;
+
+  &_underline {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .16), inset 0 0 0 rgba(255, 255, 255, .16);
+  }
+}
+
+.content {
+  // width: 286px;
+}
+
+.contentBlock {
+  cursor: pointer;
+}
+
+.poster {
+  height: 200px;
+
+  &_img {
+    border-radius: 8px;
+    width: auto;
+    height: 200px;
+    transform: scale(1) translateY(0);
+    @include transition(0s, $duration, ease-out, $properties: all);
+
+    &:hover {
+      transform: scale(1.04) translateY(-5px);
+        }
+  }
+}
+
+.textBlock {
+  margin-top: 12px;
+}
+
+.subscription {
+  @include font-source-sans(15px, $textColorLight, 500, 20px);
+}
+
+// transform: scale(1) translateY(0);
+// transform: scale(1.04) translateY(-5px);
