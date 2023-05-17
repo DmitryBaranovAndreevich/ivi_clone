@@ -13,6 +13,7 @@ import FilmReview from '../../components/filmReview/FilmReview';
 import UIModal from '../../components/UI/modal/UIModal';
 import Spinner from '../../components/UI/spinner/Spinner';
 import FilmTrailer from '../../components/filmTrailer/FilmTrailer';
+import FilmAllDevices from '../../components/filmDevices/FilmAllDevices';
 
 const Watch = () => {
   const params = useParams();
@@ -41,14 +42,8 @@ const Watch = () => {
             writers={film.writers}
           />
           <FilmTrailer filmId={film.id} filmPoster={film.poster} trailer={film.trailer} />
-          <FilmReview
-            filmId={film.id}
-            nameFilm={film.name}
-            review={film.reviews}
-            // title="Топ коммент kkdcmseknrsvdc jkrelkncjmelrknvsdc rejlnvck."
-            // text="Мне понравился фильмf fr jjfkencx jekcmkxn fn4lemkc flkek."
-            // rating={}
-          />
+          <FilmReview filmId={film.id} nameFilm={film.name} review={film.reviews} />
+          <FilmAllDevices filmPoster={film.poster} title={film.name} />
         </React.Fragment>
       ) : (
         <p>Фильм не найден</p>

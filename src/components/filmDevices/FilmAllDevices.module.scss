@@ -1,0 +1,94 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.devices {
+  display: grid;
+  grid-template-columns: 536px 1fr;
+  column-gap: 24px;
+  padding: 24px 0;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+  @include font-source-sans(24px, $white, 700, 28px);
+  margin-bottom: 12px;
+}
+
+.text {
+  @include font-source-sans(15px, $textColorGrey, 400, 20px);
+  margin-bottom: 24px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.button {
+  align-items: center;
+  justify-content: center;
+  width: 215px;
+  height: 40px;
+}
+
+.imageBlock {
+
+  &_content {
+    position: relative;
+    height: 272px;
+    width: 536px;
+    margin: 0 auto;
+  }
+}
+
+.allDevices {
+  position: relative;
+  width: 536px;
+  height: 272px;
+  z-index: 1;
+}
+
+.ipad {
+  position: absolute;
+  right: 42px;
+  bottom: 0;
+  width: 200px;
+  height: 136px;
+  z-index: 1;
+}
+
+.posterTV {
+  position: absolute;
+  left: 100px;
+  top: 3px;
+  width: 337px;
+  height: 192px;
+  border-radius: 2px;
+  overflow: hidden;
+
+  &_img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.posterIpad {
+  position: absolute;
+  right: 48px;
+  bottom: 7px;
+  width: 188px;
+  height: 102px;
+  border-radius: 4px;
+  z-index: 1;
+  overflow: hidden;
+
+  &_img {
+    width: 100%;
+    height: auto;
+  }
+}
