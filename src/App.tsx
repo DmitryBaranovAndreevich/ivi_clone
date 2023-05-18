@@ -16,9 +16,11 @@ import WatchExtra from './pages/watchExtra/WatchExtra';
 import AuthPassword from './pages/auth/AuthPassword';
 import AuthEmail from './pages/auth/AuthEmail';
 import AuthFinish from './pages/auth/AuthFinish';
+import Actor from './pages/actor/Actor';
 
 function App() {
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+  console.log(!isRegister);
   return (
     <div className={styles.container}>
       <Routes>
@@ -48,6 +50,14 @@ function App() {
           <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
           <Route path="/watch/:id/" element={<Watch />} />
           <Route path="/watch/:id/:page?" element={<WatchExtra />} />
+          <Route
+            path="/person/:id"
+            element={
+              <ProtectedRoute user={!isRegister} redirectPath={'/profile/email'}>
+                <Actor />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

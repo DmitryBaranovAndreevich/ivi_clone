@@ -1,0 +1,59 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.container {
+  width: 70vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reverse {
+  @include font-source-sans(15px, $white, 500, 20px);
+}
+
+.foto {
+  display: block;
+  width: 120px;
+  height: 144px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.rusName {
+  @include font-source-sans(56px, $white, 700, 56px);
+}
+
+.engName, .span {
+  margin: 0;
+  @include font-source-sans(15px, $textColorGrey, 400, 22px);
+}
+
+.title {
+  margin-top: 50px;
+  @include font-source-sans(24px,  $white, 700, 28px);
+}
+
+.smallTitle {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  margin: 0;
+  border-bottom: 3px solid red;
+  @include font-source-sans(15px,  $white, 700, 38px);
+}
+
