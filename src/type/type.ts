@@ -44,7 +44,7 @@ export type TPersons = {
 
 export type TReviewUser = {
   [index: number]: {
-    title?: string;
+    title: string;
     text: string;
   };
 };

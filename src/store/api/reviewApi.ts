@@ -24,7 +24,7 @@ export const reviewApi = createApi({
           url: `films/${filmId}`,
           method: 'POST',
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxlcmFAZ21haWwuY29tIiwiaWQiOjIsInBob25lIjoiODkyNzAwMDAwMDAiLCJyb2xlcyI6W10sImlhdCI6MTY4NDMxMzQyMSwiZXhwIjoxNjg0Mzk5ODIxfQ.6evPm_XBsrXQNqGxAbKrU3eDkOmYz-SPXx1t9RCtJbo`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
           },
           body: review,
         };
@@ -40,7 +40,7 @@ export const reviewApi = createApi({
           url: `films/${filmId}/review/${reviewId}`,
           method: 'POST',
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxlcmFAZ21haWwuY29tIiwiaWQiOjIsInBob25lIjoiODkyNzAwMDAwMDAiLCJyb2xlcyI6W10sImlhdCI6MTY4NDMxMzQyMSwiZXhwIjoxNjg0Mzk5ODIxfQ.6evPm_XBsrXQNqGxAbKrU3eDkOmYz-SPXx1t9RCtJbo`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
           },
           body: review,
         };

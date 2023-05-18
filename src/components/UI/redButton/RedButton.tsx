@@ -26,7 +26,13 @@ const RedButton: React.FC<TRedButtonProps> = ({
       type={type}
       disabled={isDisabled}
     >
-      {isLoad ? <Spinner size={'small'} /> : text}
+      {isLoad ? (
+        <div className={style.spinner}>
+          <Spinner size={'small'} />
+        </div>
+      ) : (
+        text
+      )}
     </button>
   );
 };

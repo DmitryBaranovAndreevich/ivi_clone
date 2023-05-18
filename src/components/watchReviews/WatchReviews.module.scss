@@ -4,6 +4,10 @@
 
 .content {}
 
+.formBlock {
+    margin-bottom: 32px;
+}
+
 .title {
     @include font-source-sans(20px, $white, 700, 24px);
     margin-bottom: 16px;
@@ -34,14 +38,49 @@
     margin-bottom: 40px;
 }
 
-.review {
-    padding-left: 36px;
+.reviewsBlock {
     margin-top: 28px;
-    position: relative;
 
     &:first-child {
         margin: 0;
     }
+
+    & .reviewsBlock {
+        &:nth-child(2) {
+            width: 90%;
+            margin-left: 10%;
+        }
+    
+        &:nth-child(3) {
+            width: 80%;
+            margin-left: 20%;
+        }
+    
+        &:nth-child(4) {
+            width: 70%;
+            margin-left: 30%;
+        }
+    }
+}
+
+.childReviews {
+    width: 90%;
+    margin-left: 10%;
+    margin-top: 28px;
+
+    & .review {
+        margin-top: 28px;
+    }
+}
+
+.review {
+    padding-left: 36px;
+    // margin-top: 28px;
+    position: relative;
+
+    // &:first-child {
+    //     margin: 0;
+    // }
 
     &_header {
         display: flex;
@@ -100,4 +139,8 @@
         text-decoration: underline;
         color: $textColorLight;
     }
+}
+
+.childrenForm {
+    margin: 24px 0;
 }

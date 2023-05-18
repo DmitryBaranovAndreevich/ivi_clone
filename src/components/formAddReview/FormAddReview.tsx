@@ -7,11 +7,12 @@ import logoUser from './../../assests/svg/logoUser.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { reviewSlice } from '../../store/reducers/ReviewSlice';
 import { useAddReviewForReviewMutation, useAddReviewMutation } from '../../store/api/reviewApi';
+import Spinner from '../UI/spinner/Spinner';
 
 const FormSchema = Yup.object().shape({
   reviewTitle: Yup.string()
-    .min(5, 'Минимум 5 символов')
-    .max(500, 'Превышен лимит по количеству символов')
+    .min(1, 'Минимум 1 символов')
+    .max(30, 'Превышен лимит по количеству символов')
     .required('Required'),
   reviewText: Yup.string()
     .min(10, 'Минимум 10 символов')
@@ -24,6 +25,7 @@ type TFormAddReviewProps = {
   forWhat: 'film' | 'review';
   reviewId?: number;
   refetchFilms: () => void;
+  isFetching: boolean;
 };
 
 const FormAddReview: React.FC<TFormAddReviewProps> = ({
@@ -31,6 +33,7 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
   forWhat,
   reviewId,
   refetchFilms,
+  isFetching,
 }) => {
   const [errorReviewTitle, setErrorReviewTitle] = useState<null | string>(null);
   const [errorReviewText, setErrorReviewText] = useState<null | string>(null);
@@ -38,12 +41,12 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
   const dispatch = useAppDispatch();
   const [addReview, {}] = useAddReviewMutation();
   const [addReviewForReview, {}] = useAddReviewForReviewMutation();
-  const { addReviewUser, setReviewForReview } = reviewSlice.actions;
-  const { reviewUser, reviewForReview } = useAppSelector((state) => state.reviewReducer);
+  const { setReviewForFilm, setReviewForReview } = reviewSlice.actions;
+  const { reviewForFilm, reviewForReview } = useAppSelector((state) => state.reviewReducer);
   const onChange = (filmId: number, reviewObj: { title: string; text: string }) => {
-    if (reviewObj.title.length < 5) {
-      setErrorReviewTitle(`Минимум 5 символов, вы ввели ${reviewObj.title.length}`);
-    } else if (reviewObj.title.length > 100) {
+    if (reviewObj.title.length < 1) {
+      setErrorReviewTitle(`Минимум 1 символов, вы ввели ${reviewObj.title.length}`);
+    } else if (reviewObj.title.length > 30) {
       setErrorReviewTitle(`Превышен лимит по количеству символов`);
     } else {
       setErrorReviewTitle(null);
@@ -56,7 +59,7 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
       setErrorReviewText(null);
     }
     if (forWhat === 'film') {
-      dispatch(addReviewUser({ filmId, reviewObj }));
+      dispatch(setReviewForFilm({ filmId, reviewObj }));
     }
     if (forWhat === 'review' && reviewId) {
       dispatch(setReviewForReview({ reviewId, reviewObj }));
@@ -69,11 +72,11 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
           reviewTitle:
             forWhat === 'review' && reviewId
               ? reviewForReview[reviewId]?.title ?? ''
-              : reviewUser[filmId]?.title ?? '',
+              : reviewForFilm[filmId]?.title ?? '',
           reviewText:
             forWhat === 'review' && reviewId
               ? reviewForReview[reviewId]?.text ?? ''
-              : reviewUser[filmId]?.text ?? '',
+              : reviewForFilm[filmId]?.text ?? '',
         }}
         validationSchema={FormSchema}
         onSubmit={async (values) => {
@@ -83,7 +86,7 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
               review: { title: values.reviewTitle, text: values.reviewText },
               filmId,
             });
-            dispatch(addReviewUser({ filmId, reviewObj: { title: '', text: '' } }));
+            dispatch(setReviewForFilm({ filmId, reviewObj: { title: '', text: '' } }));
           }
           if (forWhat === 'review' && reviewId) {
             await addReviewForReview({
@@ -119,7 +122,7 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
                         values.reviewTitle && style.label_active
                       }`}
                     >
-                      Написать отзыв
+                      Напишите ваше имя
                     </span>
                     {errorReviewTitle && values.reviewTitle.length !== 0 ? (
                       <div className={style.error_text}>{errorReviewTitle}</div>
@@ -151,8 +154,12 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
                   addingClass={style.submit}
                   text="Отправить"
                   type="submit"
+                  isLoad={isFetching}
                   isDisabled={
-                    errorReviewTitle || errorReviewText || values.reviewText.length === 0
+                    errorReviewTitle ||
+                    errorReviewText ||
+                    values.reviewText.length === 0 ||
+                    isFetching
                       ? true
                       : false
                   }

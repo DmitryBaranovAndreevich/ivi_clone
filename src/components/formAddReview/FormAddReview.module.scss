@@ -6,15 +6,18 @@
 
 .form {
     padding-left: 36px;
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
     display: flex;
     position: relative;
+    align-items: flex-end;
 
     &_content {
         width: 100%;
-        // margin-right: 12px;
         display: flex;
-        justify-content: space-around;
+        gap: 26px;
+        width: 90%;
+        flex-direction: column;
+        margin-right: 10px;
     }
 }
 
@@ -67,8 +70,12 @@
 }
 
 .submit {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
-    padding: 9px 15px;
+    // padding: 9px 15px;
     @include font-source-sans(15px, $white, 500, 20px);
 
     &:disabled {
@@ -81,6 +88,7 @@
 .error {
     &_text {
         @include font-source-sans(13px, $orange, 400, 16px);
+        position: absolute;
     }
 
     & .input {

@@ -1,7 +1,7 @@
 import { title } from 'process';
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { number } from 'yup';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import { useGetOnePersonQuery } from '../../store/api/personApi';
 import { IReviews } from '../../type/TReviews';
@@ -12,6 +12,9 @@ import style from './WatchReviews.module.scss';
 import WatchReviewItem from './WatchReviewItem';
 import WatchPersonType from './WatchReviewItem';
 import FormAddReview from '../formAddReview/FormAddReview';
+import { TReviewUser } from '../../type/type';
+import { reviewSlice, TTreeReviews } from '../../store/reducers/ReviewSlice';
+import { makeTreeReviews } from '../../utils/helperWithReviews';
 
 type TWatchReviewsProps = {
   filmId: number;
@@ -19,49 +22,36 @@ type TWatchReviewsProps = {
 };
 
 const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
-  const [reviewWithParent, setReviewWithParent] = useState<Array<IReviews>>([]);
   const { data: film, isLoading, isFetching, refetch } = useGetOneFilmQuery({ id: String(filmId) });
-  const reviewsBlock = useMemo(() => {
-    // film?.reviews
-    //   .map((review) => {
-    //     if (!review.parentId) {
-    //       return (
-    //         <WatchReviewItem
-    //           key={review.id}
-    //           filmId={filmId}
-    //           reviewId={review.id}
-    //           titleReview={review.title}
-    //           textReview={review.text}
-    //           rating={review.rating}
-    //           refetchFilms={refetch}
-    //         />
-    //       );
-    //     }
-    //     // else {
-    //     //   setReviewWithParent((prevState) => [...prevState, review]);
-    //     // }
-    //   })
-    return film?.reviews
-      .map((review) => {
-        if (!review.parentId) {
-          return (
+  const dispatch = useAppDispatch();
+  const { setTreeReviews } = reviewSlice.actions;
+  const { treeReviews } = useAppSelector((state) => state.reviewReducer);
+  useEffect(() => {
+    const treeReviews = makeTreeReviews(film?.reviews ?? []);
+    dispatch(setTreeReviews({ treeReviews }));
+  }, [film?.reviews, dispatch, setTreeReviews]);
+  const reviewsBlock = useMemo((): ReactNode => {
+    const qqq = (treeReviews: Array<TTreeReviews>) => {
+      return treeReviews.map((treeReview: TTreeReviews) => {
+        return (
+          <div className={style.reviewsBlock} key={treeReview.review.id}>
             <WatchReviewItem
-              key={review.id}
+              key={treeReview.review.id}
               filmId={filmId}
-              reviewId={review.id}
-              titleReview={review.title}
-              textReview={review.text}
-              rating={review.rating}
+              reviewId={treeReview.review.id}
+              titleReview={treeReview.review.title}
+              textReview={treeReview.review.text}
+              rating={treeReview.review.rating}
               refetchFilms={refetch}
+              isFetching={isFetching}
             />
-          );
-        }
-        // else {
-        //   setReviewWithParent((prevState) => [...prevState, review]);
-        // }
-      })
-      .reverse();
-  }, [filmId, film?.reviews, refetch]);
+            {treeReview.childrenReviews && qqq(treeReview.childrenReviews)}
+          </div>
+        );
+      });
+    };
+    return qqq(treeReviews);
+  }, [filmId, treeReviews, refetch, isFetching]);
   if (isLoading) {
     return (
       <div className="spinner">
@@ -71,13 +61,20 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
   }
   return (
     <div className={style.content}>
-      <FormAddReview filmId={filmId} forWhat="film" refetchFilms={refetch} />
-      {isFetching && (
+      <div className={style.formBlock}>
+        <FormAddReview
+          filmId={filmId}
+          forWhat="film"
+          refetchFilms={refetch}
+          isFetching={isFetching}
+        />
+      </div>
+      {/* {isFetching && (
         <div>
           <Spinner size={'small'} />
         </div>
-      )}
-      {reviewsBlock}
+      )} */}
+      <div>{reviewsBlock}</div>
     </div>
   );
 };
