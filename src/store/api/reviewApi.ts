@@ -8,13 +8,16 @@ export const reviewApi = createApi({
   reducerPath: 'reviewApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3000/api/',
-    // prepareHeaders: (headers, { getState, endpoint }) => {
-    //   const token = getCookie('token');
-    //   if (token) {
-    //     headers.set('Authorization', `Bearer ${token}`);
-    //   }
-    //   return headers;
-    // },
+    credentials: 'include',
+    prepareHeaders: (headers, { getState, endpoint }) => {
+      debugger;
+      headers.set('Content-Type', 'application/json');
+      const token = getCookie('token');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints: (build) => ({
     addReview: build.mutation<TAddReview, { review: TAddReview; filmId: number }>({
@@ -23,9 +26,9 @@ export const reviewApi = createApi({
         return {
           url: `films/${filmId}`,
           method: 'POST',
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
-          },
+          // headers: {
+          //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
+          // },
           body: review,
         };
       },
@@ -39,9 +42,9 @@ export const reviewApi = createApi({
         return {
           url: `films/${filmId}/review/${reviewId}`,
           method: 'POST',
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
-          },
+          // headers: {
+          //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
+          // },
           body: review,
         };
       },

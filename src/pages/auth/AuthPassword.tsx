@@ -34,7 +34,7 @@ const AuthPassword = () => {
   const shema = Yup.object().shape({
     password: Yup.string()
       .required('Введите пароль')
-      .min(8, 'Минимальная длина 8 символов')
+      .min(6, 'Минимальная длина 6 символов')
       .matches(/[a-zA-Z0-9]/, 'Пароль должен содержать только латинские буквы и цыфры'),
     phone: Yup.string()
       .required('Поле с номером телефона обязательно для заполнения')
@@ -59,6 +59,7 @@ const AuthPassword = () => {
       })
       .then(({ payload }) => {
         if (payload) {
+          debugger;
           setCookie('token', (payload as { token: string }).token, {
             expires: 1000 * 60 * 60 * 24 * 30,
           });

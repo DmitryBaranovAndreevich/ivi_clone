@@ -11,6 +11,7 @@ import moviesFilterReduser from './reducers/MoviesFilter';
 import { filmApi } from './api/filmApi';
 import { personApi } from './api/personApi';
 import { reviewApi } from './api/reviewApi';
+import { adminApi } from './api/adminApi';
 
 const rootReducer = combineReducers({
   appReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   [personApi.reducerPath]: personApi.reducer,
   [reviewApi.reducerPath]: reviewApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
+  [adminApi.reducerPath]: adminApi.reducer,
 });
 
 export const setupStore = () => {
@@ -37,6 +39,7 @@ export const setupStore = () => {
         personApi.middleware,
         reviewApi.middleware,
         searchApi.middleware,
+        adminApi.middleware,
       ]),
   });
 };

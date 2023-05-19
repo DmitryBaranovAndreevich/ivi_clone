@@ -31,7 +31,7 @@ const LoginPassword = () => {
   const shema = Yup.object().shape({
     password: Yup.string()
       .required('Введите пароль')
-      .min(8, 'Минимальная длина 8 символов')
+      .min(6, 'Минимальная длина 6 символов')
       .matches(/[a-zA-Z0-9]/, 'Пароль должен содержать только латинские буквы и цыфры'),
   });
 

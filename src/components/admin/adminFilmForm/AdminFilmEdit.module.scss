@@ -1,0 +1,230 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.container {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    position: relative;
+}
+
+.label {
+    @include font-source-sans(18px, $white, 500, 20px);
+}
+
+.input {
+    @include font-source-sans(16px, $white, 400, 16px);
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    background-color: $bgcDarkBlue;
+    @include border($bgcDarkBlue, 3px, solid, 8px);
+    outline: none;
+
+    &:focus {
+        background-color: $bgcDarkBlueHover;
+        @include border($bgcDarkBlue, 3px, solid, 8px);
+    }
+
+    &[type="number"]::-webkit-outer-spin-button,
+    &[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+    &[type="number"]:hover,
+    &[type="number"]:focus {
+      -moz-appearance: number-input;
+    }
+    
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &_error {
+        @include border($red, 3px, solid, 8px);
+
+        &_text {
+            @include font-source-sans(12px, $red, 400, 12px);
+            position: absolute;
+            bottom: -20px;
+            right: 10px;
+        }
+    }
+}
+
+.checkboxBlock {
+    &_list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 8px 0;
+    }
+
+    &_title {
+        @include font-source-sans(15px, $white, 500, 13px);
+        // margin: 16px 0;
+    }
+
+    &_label {
+        margin: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    &_include {
+        display: flex;
+        align-items: center;
+        margin: 16px 0;
+    }
+
+    &_checkbox {
+        margin: 16px 0;
+    }
+
+    &_text {
+        margin-left: 8px;
+        @include font-source-sans(13px, $white, 400, 13px);
+    }
+}
+
+.submit {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    @include font-source-sans(15px, $white, 500, 20px);
+}
+
+//         &_error {
+//             position: absolute;
+//             bottom: -20px;
+//             right: 10px;
+//             color: $red;
+//             font-size: 12px;
+//         }
+//     }
+// }
+
+// .product {
+//     display: flex;
+
+//     &_img {
+//         width: 100px;
+//         height: 100px;
+
+//         &_img {
+//             max-width: 100%;
+//             max-height: 100%;
+//         }
+//     }
+// }
+
+// .table {
+
+//     &_title {
+//         padding: 20px 0;
+//     }
+//     &_header {
+//         display: grid;
+//         grid-template-columns: 0.5fr 3fr 1fr 1fr 0.5fr 0.5fr;
+//         gap: 10px;
+//         color: $black;
+//         font-size: 20px;
+//         font-weight: 500;
+//     }
+
+//     &_product {
+//         display: grid;
+//         grid-template-columns: 0.5fr 3fr 1fr 1fr 0.5fr 0.5fr;
+//         align-items: center;
+//         gap: 10px;
+//         margin: 10px 0;
+
+//         &_img {
+//             display: flex;
+//             justify-content: center;
+
+//             &_img {
+//                 max-width: 100%;
+//                 max-height: 50px;
+//             }
+//         }
+
+//         &_edit {
+//             border: none;
+//             outline: none;
+//             background-color: transparent;
+//             cursor: pointer;
+
+//             &:hover {
+//                 color: $yellow;
+//             }
+//         }
+
+//         &_delete {
+//             width: 32px;
+//             height: 32px;
+//             cursor: pointer;
+
+//             &:hover {
+//                 opacity: 0.5;
+//             }
+
+//         }
+//     }
+// }
+
+// .checkbox {
+//     margin: 10px 0;
+
+//     &_title {
+//         position: relative;
+//         padding-left: 15px;
+//         font-size: 14px;
+//         font-weight: 400;
+//         color: $black;
+//         cursor: pointer;
+
+//         &:hover {
+//             opacity: 0.5;
+//         }
+
+//         &:after {
+//             content: '';
+//             position: absolute;
+//             top: 7px;
+//             left: 0;
+//             border: 3px solid transparent;
+//             border-top: 5px solid $dark-blue;
+//             transition: all 0.5s;
+//         }
+
+//         &_open {
+//             &:after {
+//                 transform: scaleY(-1);
+//                 top: 3px;
+//             }
+//         }
+//     }
+
+//     &_label {
+//         display: block;
+//     }
+
+//     &_input {
+//         margin-right: 5px;
+//     }
+// }
