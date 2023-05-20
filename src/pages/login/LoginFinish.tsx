@@ -6,8 +6,10 @@ import LoginMessage from '../../components/login/LoginMessage/LoginMessage';
 import { useAppSelector } from '../../hooks/redux';
 import styles from './login.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const LoginFinish = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { email, password } = useAppSelector((state) => state.userLoginReduser);
   const redirect = () => {
@@ -22,18 +24,18 @@ const LoginFinish = () => {
 
   return (
     <LoginLayout>
-      <LoginHeader title={'Здравствуйте'} />
+      <LoginHeader title={t('login.greeting')} />
       <Line persent={'100%'} />
-      <LoginMessage>Войдите</LoginMessage>
+      <LoginMessage>{t('login.enter1')}</LoginMessage>
       <div className={`${styles.responce}`}>
         <LoginMessage response>{email}</LoginMessage>
       </div>
-      <LoginMessage>Введите пароль, чтобы войти</LoginMessage>
+      <LoginMessage>{t('login.passEnt')}</LoginMessage>
       <div className={`${styles.responce} ${styles.animation} ${styles.animationTime1}`}>
         <LoginMessage response>{'⚹'.repeat(password.length)}</LoginMessage>
       </div>
       <div className={`${styles.div} ${styles.animation} ${styles.animationTime2}`}>
-        <LoginMessage success>Вы успешно авторизировались</LoginMessage>
+        <LoginMessage success>{t('login.finish')}</LoginMessage>
       </div>
     </LoginLayout>
   );

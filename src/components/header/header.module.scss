@@ -122,3 +122,18 @@
     height: 350px;
   }
 }
+.checkbox {
+  width: 0;
+  height: 0;
+
+  &:checked + .label {
+    background: $buttonColorLight;
+    color: black;
+  }
+}
+
+.label {
+  color: $white;
+  padding: 5px 25px;
+  background: $buttonGreyHover;
+}

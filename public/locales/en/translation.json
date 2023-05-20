@@ -1,0 +1,46 @@
+{
+  "header": {
+    "freeButton": "Watch 30 days for free",
+    "search": "Search"
+  },
+  "genre": {
+    "fantasy": "fantasy",
+    "action": "action",
+    "adventure": "adventure"
+  },
+  "login": {
+    "register": "Register",
+    "enter": "Entrance",
+    "enter1": "Log in",
+    "use": "to use the service on any device",
+    "placeholder": "Via email or phone",
+    "continue": "Continue",
+    "passErr": "Enter the password",
+    "lengthErr": "The minimum length is 8 characters",
+    "textErr": "The password must contain only Latin letters and digits",
+    "greeting": "Hello",
+    "passEnt": "Enter your password to log in",
+    "finish": "You have successfully logged in"
+  },
+  "auth": {
+    "hello": "Hello",
+    "dataErr": "Incorrect data entered",
+    "emailErr": "The email address field is required",
+    "nameErr": "The field with the name is required to fill in",
+    "secNameErr": "The last name field is required to fill in",
+    "phoneErr": "The field with the phone number is required to fill in",
+    "lengthErr": "The minimum length is 6 characters",
+    "ageErr": "The age field is required",
+    "countryErr": "Country of residence required to enter",
+    "register": "Registration",
+    "register1": "Register",
+    "emailEnt": "Enter email",
+    "nameEnt": "Enter a name",
+    "secNameEnt": "Enter your last name",
+    "passEnt": "Enter the password and other data",
+    "phoneEnt": "Enter your phone number",
+    "ageEnt": "Enter your age",
+    "countEnt": "Enter the country",
+    "congratulations": "Congratulations"
+  }
+}

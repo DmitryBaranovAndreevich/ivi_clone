@@ -17,8 +17,10 @@ import { userAuthSlice } from '../../store/reducers/UserAuthSlice';
 import ErrorMessage from '../../components/login/ErrorMessage/ErrorMessage';
 import { loginUser } from '../../store/reducers/ActionCreators';
 import { setCookie } from '../../service/setCookie';
+import { useTranslation } from 'react-i18next';
 
 const AuthPassword = () => {
+  const { t } = useTranslation();
   const {
     email,
     first_name,
@@ -33,14 +35,14 @@ const AuthPassword = () => {
 
   const shema = Yup.object().shape({
     password: Yup.string()
-      .required('Введите пароль')
-      .min(8, 'Минимальная длина 8 символов')
-      .matches(/[a-zA-Z0-9]/, 'Пароль должен содержать только латинские буквы и цыфры'),
+      .required(t('login.passErr') as string)
+      .min(8, t('login.lengthErr') as string)
+      .matches(/[a-zA-Z0-9]/, t('login.textErr') as string),
     phone: Yup.string()
-      .required('Поле с номером телефона обязательно для заполнения')
-      .min(6, 'минимальная длинна 6 символов'),
-    age: Yup.number().required('Поле возраст обязательно для заполнения'),
-    country: Yup.string().required('Срана проживания обязательно для ввода'),
+      .required(t('auth.phoneErr') as string)
+      .min(6, t('auth.lengthErr') as string),
+    age: Yup.number().required(t('auth.ageErr') as string),
+    country: Yup.string().required(t('auth.countryErr') as string),
   });
 
   const handleClick = (e: FormEvent) => {
@@ -71,9 +73,9 @@ const AuthPassword = () => {
   };
   return (
     <LoginLayout>
-      <LoginHeader title={'Здравствуйте'} />
+      <LoginHeader title={t('auth.hello')} />
       <Line persent={'50%'} />
-      <LoginMessage>Зарегистрируйтесь</LoginMessage>
+      <LoginMessage>{t('auth.register1')}</LoginMessage>
       <div className={`${styles.responce} ${styles.animation} ${styles.animationTime1}`}>
         <button className={styles.editButton} type="button" onClick={() => navigate(-1)}>
           <EditIcon width={'25px'} height={'15px'} />
@@ -83,29 +85,29 @@ const AuthPassword = () => {
         <LoginMessage response>{second_name}</LoginMessage>
       </div>
       <form className={`${styles.wrapper} ${styles.animation} ${styles.animationTime2}`}>
-        <LoginMessage>Введите пароль и другие данные</LoginMessage>
+        <LoginMessage>{t('auth.passEnt')}</LoginMessage>
         <PassInput name={'password'} value={value.password} onChange={handleChange} />
         <Input
-          placeholder={'Введите телефон'}
+          placeholder={t('auth.phoneEnt')}
           name={'phone'}
           value={value.phone}
           onChange={handleChange}
         />
         <Input
-          placeholder={'Введите ваш возраст'}
+          placeholder={t('auth.ageEnt')}
           name={'age'}
           value={value.age}
           onChange={handleChange}
         />
         <Input
-          placeholder={'Введите страну'}
+          placeholder={t('auth.countEnt')}
           name={'country'}
           value={value.country}
           onChange={handleChange}
         />
         <RedButton
           addingClass={styles.button}
-          text={'Войти'}
+          text={t('login.enter1')}
           type={'submit'}
           onClick={handleClick}
         />

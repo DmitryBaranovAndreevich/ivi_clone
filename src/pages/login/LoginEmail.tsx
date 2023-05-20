@@ -12,8 +12,10 @@ import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../../components/login/ErrorMessage/ErrorMessage';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
+import { useTranslation } from 'react-i18next';
 
 const LoginEmail = () => {
+  const { t } = useTranslation();
   const { setEmail } = userLoginSlice.actions;
   const { email } = useAppSelector((state) => state.userLoginReduser);
   const dispatch = useAppDispatch();
@@ -46,22 +48,21 @@ const LoginEmail = () => {
 
   return (
     <LoginLayout>
-      <LoginHeader title={'Вход'} />
+      <LoginHeader title={t('login.enter')} />
       <Line persent={'10%'} />
       <form className={styles.wrapper}>
         <LoginMessage>
-          <span className={styles.span}>Войдите</span> чтобы пользоваться сервисом на любом
-          устройстве
+          <span className={styles.span}>{t('login.enter1')}</span> {t('login.use')}
         </LoginMessage>
         <Input
-          placeholder={'Через email или телефон'}
+          placeholder={t('login.placeholder')}
           name={'email'}
           value={value.email}
           onChange={handleChange}
         />
         <RedButton
           addingClass={styles.button}
-          text={'Продолжить'}
+          text={t('login.continue')}
           type={'submit'}
           onClick={handleClick}
         />
