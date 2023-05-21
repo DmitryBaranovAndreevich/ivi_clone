@@ -15,8 +15,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { loginUser } from '../../store/reducers/ActionCreators';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
 import { setCookie } from '../../service/setCookie';
+import { useTranslation } from 'react-i18next';
 
 const LoginPassword = () => {
+  const { t } = useTranslation();
   const {
     email,
     isLoading,
@@ -30,9 +32,9 @@ const LoginPassword = () => {
 
   const shema = Yup.object().shape({
     password: Yup.string()
-      .required('Введите пароль')
-      .min(8, 'Минимальная длина 8 символов')
-      .matches(/[a-zA-Z0-9]/, 'Пароль должен содержать только латинские буквы и цыфры'),
+      .required(t('login.passErr') as string)
+      .min(8, t('login.lengthErr') as string)
+      .matches(/[a-zA-Z0-9]/, t('login.textErr') as string),
   });
 
   const handleClick = (e: FormEvent) => {
@@ -59,9 +61,9 @@ const LoginPassword = () => {
 
   return (
     <LoginLayout>
-      <LoginHeader title={'Здравствуйте'} />
+      <LoginHeader title={t('login.greeting')} />
       <Line persent={'50%'} />
-      <LoginMessage>Войдите</LoginMessage>
+      <LoginMessage>{t('login.enter1')}</LoginMessage>
       <div className={`${styles.responce} ${styles.animation} ${styles.animationTime1}`}>
         <button className={styles.editButton} type="button" onClick={() => navigate(-1)}>
           <EditIcon width={'25px'} height={'15px'} />
@@ -69,12 +71,12 @@ const LoginPassword = () => {
         <LoginMessage response>{email}</LoginMessage>
       </div>
       <form className={`${styles.wrapper} ${styles.animation} ${styles.animationTime2}`}>
-        <LoginMessage>Введите пароль, чтобы войти</LoginMessage>
+        <LoginMessage>{t('login.passEnt')}</LoginMessage>
         <PassInput name={'password'} value={value.password} onChange={handleChange} />
         <RedButton
           isLoad={isLoading}
           addingClass={styles.button}
-          text={'Войти'}
+          text={t('login.enter1')}
           type={'submit'}
           onClick={handleClick}
         />

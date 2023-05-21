@@ -5,6 +5,7 @@ import ModalReview from '../../../modalReview/ModalReview';
 import UIModal from '../../../UI/modal/UIModal';
 import style from './FilmInfoStickers.module.scss';
 import StickerCard from './StickerCard';
+import { useTranslation } from 'react-i18next';
 
 type TFilmInfoStickersProps = {
   actors: Array<IActors>;
@@ -20,6 +21,7 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
   const onMouseLeave = () => {
     setHover(null);
   };
+  const { t } = useTranslation();
   const blockActors: Array<ReactNode> = useMemo(() => {
     return actors?.slice(0, 5).map((actor) => {
       return (
@@ -40,12 +42,12 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
     <ul className={style.stickersList}>
       <li
         className={style.stickerItem}
-        onMouseEnter={() => onMouseEnter('Рейтинг Кинопоиск')}
+        onMouseEnter={() => onMouseEnter(t('movie.rating'))}
         onMouseLeave={onMouseLeave}
         onClick={() => setIsShowModal(true)}
       >
         <div className={style.sticker}>
-          <StickerCard type="rating" rating={rating} caption="Рейтинг Кинопоиск" hover={hover} />
+          <StickerCard type="rating" rating={rating} caption={t('movie.rating')} hover={hover} />
         </div>
       </li>
       {blockActors}

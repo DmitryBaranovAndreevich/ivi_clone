@@ -43,6 +43,10 @@
   @include font-source-sans(15px, $textColorGrey, 400, 22px);
 }
 
+.span {
+  margin-left: 10px;
+}
+
 .title {
   margin-top: 50px;
   @include font-source-sans(24px,  $white, 700, 28px);

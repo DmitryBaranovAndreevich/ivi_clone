@@ -4,12 +4,14 @@ import { TObjWithParamsUrl } from '../../hooks/useNavigation';
 import { useGetCountriesQuery, useGetGenresQuery } from '../../store/api/appApi';
 import { TGenreCountriesYears } from '../../type/type';
 import style from './MoviesHeader.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type TMoviesHeaderProps = {
   meanUrl: TObjWithParamsUrl;
 };
 
 const MoviesHeader: React.FC<TMoviesHeaderProps> = ({ meanUrl }) => {
+  const { t } = useTranslation();
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
@@ -38,7 +40,7 @@ const MoviesHeader: React.FC<TMoviesHeaderProps> = ({ meanUrl }) => {
 
   return (
     <div className={style.header}>
-      <h2 className={style.title}>Фильмы</h2>
+      <h2 className={style.title}>{t('filter.title')}</h2>
       <div className={style.list}>
         <p className={style.list_text}>{listAllCategories}</p>
       </div>

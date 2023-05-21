@@ -1,0 +1,110 @@
+{
+  "header": {
+    "freeButton": "Watch 30 days for free",
+    "search": "Search"
+  },
+  "genre": {
+    "fantasy": "fantasy",
+    "action": "action",
+    "adventure": "adventure"
+  },
+  "login": {
+    "register": "Register",
+    "enter": "Entrance",
+    "enter1": "Log in",
+    "use": "to use the service on any device",
+    "placeholder": "Via email or phone",
+    "continue": "Continue",
+    "passErr": "Enter the password",
+    "lengthErr": "The minimum length is 8 characters",
+    "textErr": "The password must contain only Latin letters and digits",
+    "greeting": "Hello",
+    "passEnt": "Enter your password to log in",
+    "finish": "You have successfully logged in"
+  },
+  "auth": {
+    "hello": "Hello",
+    "dataErr": "Incorrect data entered",
+    "emailErr": "The email address field is required",
+    "nameErr": "The field with the name is required to fill in",
+    "secNameErr": "The last name field is required to fill in",
+    "phoneErr": "The field with the phone number is required to fill in",
+    "lengthErr": "The minimum length is 6 characters",
+    "ageErr": "The age field is required",
+    "countryErr": "Country of residence required to enter",
+    "register": "Registration",
+    "register1": "Register",
+    "emailEnt": "Enter email",
+    "nameEnt": "Enter a name",
+    "secNameEnt": "Enter your last name",
+    "passEnt": "Enter the password and other data",
+    "phoneEnt": "Enter your phone number",
+    "ageEnt": "Enter your age",
+    "countEnt": "Enter the country",
+    "congratulations": "Congratulations"
+  },
+  "actor": {
+    "commBack": "Back",
+    "films": "Full filmography",
+    "quantity": "Number of films: ",
+    "actor": "Actor"
+  },
+  "movie": {
+    "film": "With the movie",
+    "watch": "watching",
+    "actors": "Actors and created",
+    "yet": "another",
+    "details": "Details about the movie",
+    "estimate": "Estimate",
+    "rating": "Kinopoisk rating",
+    "trailer": "trailer",
+    "freeMovies": "Free movies"
+  },
+  "filter": {
+    "genres": "Genres",
+    "countries": "Countries",
+    "years": "Years",
+    "actor": "Actor",
+    "director": "Director",
+    "rating": "Rating",
+    "reviews": "Number of reviews",
+    "reset": "Reset the filter",
+    "title": "Films",
+    "crumbs": "My Film"
+  },
+  "dropdown": {
+    "subscribe": "Ivy's subscription",
+    "benefits": "All the benefits are in one subscription",
+    "new": "New TV series and movies",
+    "filling": "Weekly filling of the catalog with films and TV series from around the world",
+    "withoutAds": "Movies and TV series without ads",
+    "account": "Family account on 5 devices",
+    "uploading": "Uploading to mobile devices",
+    "otherSubscriptions": "Other subscriptions"
+  },
+  "footer": {
+    "aboutCompany": "About the company",
+    "job": "Job openings",
+    "betaTesting": "Beta Testing Program",
+    "partners": "Information for partners",
+    "advertising": "Advertising placement",
+    "agreement": "User agreement",
+    "policy": "Privacy policy",
+    "compliance": "Compliance",
+    "ivi": "My Evie",
+    "whatNew": "What's new",
+    "films": "Films",
+    "serials": "Serials",
+    "cartoons": "Cartoons",
+    "whatToSee": "What to see",
+    "about": "About",
+    "sections": "Sections",
+    "activation": "Certificate Activation",
+    "supportService": "Support Service",
+    "help": "We are always ready to help you.",
+    "operators": "Our operators are online 24/7",
+    "chat": "Write in the chat",
+    "answers": "Answers to questions",
+    "withoutAds": "Watch movies, TV series and cartoons without ads"
+  }
+}

@@ -9,6 +9,7 @@ import GreyButton from '../../UI/greyButton/GreyButton';
 import UIModal from '../../UI/modal/UIModal';
 import ModalShare from '../../modalShare/ModalShare';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type TPlayerAddingProps = {
   poster: string;
@@ -18,6 +19,7 @@ type TPlayerAddingProps = {
 };
 
 const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, duration }) => {
+  const { t } = useTranslation();
   const [isShareModal, setIsShareModal] = useState(false);
   const [isTrailerModal, setIsTrailerModal] = useState(false);
   const [isInBookmark, setIsInBookmark] = useState(false);
@@ -26,7 +28,7 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
     <div className={style.adding}>
       <GreyButton onClick={() => {}} addingClass={style.adding_btn}>
         <img className={`${style.logo} ${style.logo_withText}`} src={logoPlay} alt="trailer" />
-        Трейлер
+        {t('movie.trailer')}
       </GreyButton>
       <GreyButton onClick={() => setIsInBookmark(!isInBookmark)} addingClass={style.adding_btn}>
         <img
@@ -44,7 +46,7 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
           src={logoFolder}
           alt="free movies"
         />
-        Бесплатные фильмы
+        {t('movie.freeMovies')}
       </GreyButton>
       {isShareModal && (
         <UIModal>

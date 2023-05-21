@@ -12,8 +12,10 @@ import ErrorMessage from '../../components/login/ErrorMessage/ErrorMessage';
 import * as Yup from 'yup';
 import { userAuthSlice } from '../../store/reducers/UserAuthSlice';
 import { useAppDispatch } from '../../hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 const AuthEmail = () => {
+  const { t } = useTranslation();
   const { setEmailNameSurName } = userAuthSlice.actions;
   const dispatch = useAppDispatch();
   const { value, handleChange } = useForm({ email: '', first_name: '', second_name: '' });
@@ -22,10 +24,10 @@ const AuthEmail = () => {
 
   const shema = Yup.object().shape({
     email: Yup.string()
-      .email('Введены не корректные данные')
-      .required('Поле адреса email обязательно для заполнения'),
-    first_name: Yup.string().required('Поле с именем обязательно для заполнения'),
-    second_name: Yup.string().required('Поле с фамилией обязательно для заполнения'),
+      .email(t('auth.dataErr') as string)
+      .required(t('auth.emailErr') as string),
+    first_name: Yup.string().required(t('auth.nameErr') as string),
+    second_name: Yup.string().required(t('auth.secNameErr') as string),
   });
 
   useEffect(() => {
@@ -47,34 +49,33 @@ const AuthEmail = () => {
 
   return (
     <LoginLayout>
-      <LoginHeader title={'Регистрация'} />
+      <LoginHeader title={t('auth.register')} />
       <Line persent={'10%'} />
       <form className={styles.wrapper}>
         <LoginMessage>
-          <span className={styles.span}>Зарегистрируйтесь</span> чтобы пользоваться сервисом на
-          любом устройстве
+          <span className={styles.span}>{t('auth.register1')}</span> {t('login.use')}
         </LoginMessage>
         <Input
-          placeholder={'Введите email'}
+          placeholder={t('auth.emailEnt')}
           name={'email'}
           value={value.email}
           onChange={handleChange}
         />
         <Input
-          placeholder={'Введите имя'}
+          placeholder={t('auth.nameEnt')}
           name={'first_name'}
           value={value.first_name}
           onChange={handleChange}
         />
         <Input
-          placeholder={'Введите фамилию'}
+          placeholder={t('auth.secNameEnt')}
           name={'second_name'}
           value={value.second_name}
           onChange={handleChange}
         />
         <RedButton
           addingClass={styles.button}
-          text={'Продолжить'}
+          text={t('login.continue')}
           type={'submit'}
           onClick={handleClick}
         />

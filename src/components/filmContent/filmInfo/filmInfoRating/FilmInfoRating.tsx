@@ -5,6 +5,7 @@ import GreyButton from '../../../UI/greyButton/GreyButton';
 import UIModal from '../../../UI/modal/UIModal';
 import RatingCard from '../RatingCard';
 import style from './FilmInfoRating.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type TFilmInfoDescriptionProps = {
   rating: number;
@@ -12,15 +13,16 @@ type TFilmInfoDescriptionProps = {
 
 const FilmInfoRating: React.FC<TFilmInfoDescriptionProps> = ({ rating }) => {
   const [isShowModal, setIsShowModal] = useState(false);
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <GreyButton onClick={() => setIsShowModal(true)} addingClass={style.button}>
         <div className={style.block}>
           <RatingCard rating={rating} addingClass={style.rating} />
-          <div className={style.caption}>Рейтинг Кинопоиск</div>
+          <div className={style.caption}>{t('movie.rating')}</div>
         </div>
         <ButtonWithotBgc addingClass={style.evaluateBtn} onClick={() => setIsShowModal(false)}>
-          Оценить
+          {t('movie.estimate')}
         </ButtonWithotBgc>
       </GreyButton>
       {isShowModal && (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import RedButton from '../UI/redButton/RedButton';
 import logo from './../../assests/svg/logo.svg';
@@ -18,15 +18,22 @@ import UIModal from '../UI/modal/UIModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
 import { eraseCookie } from '../../service/eraseCookie';
+import { useTranslation } from 'react-i18next';
 
 export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const { setDefaultValue } = userLoginSlice.actions;
   const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+
+  const changeLanguage = (e: FormEvent) => {
+    const input = e.target as HTMLInputElement;
+    if (input.checked) i18n.changeLanguage(input.value);
+  };
 
   const exitFromProfile = () => {
     dispatch(setDefaultValue());
@@ -47,11 +54,36 @@ const Header = () => {
             <NavigationContainer setItemHovered={setItemHovered} />
           </div>
           <div className={style.content_combine}>
+            <div className={style.content_button + ' ' + style.content_block}>
+              <input
+                type="radio"
+                id="check1"
+                className={style.checkbox}
+                name="lang"
+                value="en"
+                onClick={changeLanguage}
+              />
+              <label htmlFor="check1" className={style.label} onChange={changeLanguage}>
+                en
+              </label>
+              <input
+                type="radio"
+                id="check2"
+                className={style.checkbox}
+                name="lang"
+                value="ru"
+                defaultChecked
+                onClick={changeLanguage}
+              />
+              <label htmlFor="check2" className={style.label}>
+                ru
+              </label>
+            </div>
             <div
               onMouseEnter={() => onMouseEnter('Подписка')}
               className={style.content_button + ' ' + style.content_block}
             >
-              <RedButton addingClass={style.content_button_btn} text="Смотреть 30 дней бесплатно" />
+              <RedButton addingClass={style.content_button_btn} text={t('header.freeButton')} />
             </div>
             <div
               className={style.content_search + ' ' + style.content_block}
@@ -60,7 +92,7 @@ const Header = () => {
             >
               <button className={style.content_search_btn}>
                 <img className={style.content_search_logo} src={logoSearch} alt="logoSearch" />
-                Поиск
+                {t('header.search')}
               </button>
             </div>
           </div>
