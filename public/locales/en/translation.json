@@ -42,5 +42,22 @@
     "ageEnt": "Enter your age",
     "countEnt": "Enter the country",
     "congratulations": "Congratulations"
+  },
+  "actor": {
+    "commBack": "Back",
+    "films": "Full filmography",
+    "quantity": "Number of films: ",
+    "actor": "Actor"
+  },
+  "movie": {
+    "film": "With the movie",
+    "watch": "watching",
+    "actors": "Actors and created",
+    "yet": "another",
+    "details": "Details about the movie",
+    "estimate": "Estimate",
+    "rating": "Kinopoisk rating",
+    "trailer": "trailer",
+    "freeMovies": "Free movies"
   }
 }
