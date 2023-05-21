@@ -7,12 +7,14 @@ import style from './Filter.module.scss';
 import FilterPlank from './FilterPlank/FilterPlank';
 import FilterRange from './FilterRange/FilterRange';
 import FilterText from './FilterText/FilterText';
+import { useTranslation } from 'react-i18next';
 
 type TFilterProps = {
   meanUrl: TObjWithParamsUrl;
 };
 
 const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
+  const { t } = useTranslation();
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
@@ -22,21 +24,21 @@ const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
     <div className={style.filter}>
       <div className={`${style.filter_block} ${style.checkboxBlock}`}>
         <FilterPlank
-          title="Жанры"
+          title={t('filter.genres')}
           nameInitialValue="genre"
           listItem={genres}
           choosenValue={meanUrl}
           addingClass={style.dropdown_genre}
         />
         <FilterPlank
-          title="Страны"
+          title={t('filter.countries')}
           nameInitialValue="country"
           choosenValue={meanUrl}
           listItem={countries}
           addingClass={style.dropdown_country}
         />
         <FilterPlank
-          title="Годы"
+          title={t('filter.years')}
           nameInitialValue="year"
           choosenValue={meanUrl}
           listItem={years}
@@ -44,13 +46,19 @@ const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
         />
       </div>
       <div className={`${style.filter_block} ${style.textBlock}`}>
-        <FilterText title="Актер" nameInitialValue="actor" setFilter={() => {}} />
-        <FilterText title="Режиссер" nameInitialValue="director" setFilter={() => {}} />
+        <FilterText title={t('filter.actor')} nameInitialValue="actor" setFilter={() => {}} />
+        <FilterText title={t('filter.director')} nameInitialValue="director" setFilter={() => {}} />
       </div>
       <div className={`${style.filter_block} ${style.rangeBlock}`}>
-        <FilterRange title="Рейтинг" nameInitialValue="rate" step={0.1} min={0} max={10} />
         <FilterRange
-          title="Количесво отзывов"
+          title={t('filter.rating')}
+          nameInitialValue="rate"
+          step={0.1}
+          min={0}
+          max={10}
+        />
+        <FilterRange
+          title={t('filter.reviews')}
           nameInitialValue="countReviews"
           step={0.1}
           min={0}
@@ -60,7 +68,7 @@ const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
       <div className={style.clear}>
         <button className={style.clear_button} onClick={() => navigate('/movies')}>
           <div className={style.clear_cross}></div>
-          Сбросить фильтр
+          {t('filter.reset')}
         </button>
       </div>
     </div>

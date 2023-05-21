@@ -10,41 +10,40 @@ import logoComputer from './../../../assests/svg/logoComputer.svg';
 import logoDownload from './../../../assests/svg/logoDownload.svg';
 import ButtonWithHoverBgc from '../../UI/buttonWithHoverBgc/ButtonWithHoverBgc';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const DropdownSubscribe: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <>
       <div className={style.content}>
         <div className={style.headerBlock}>
-          <h2 className={style.title}>Подписка Иви</h2>
-          <p className={style.text}>Все преимущества - в одной подписке</p>
+          <h2 className={style.title}>{t('dropdown.subscribe')}</h2>
+          <p className={style.text}>{t('dropdown.benefits')}</p>
         </div>
         <div className={style.mainBlock}>
           <div className={style.mainBlock_narrow}>
-            <DropdownSubscribeCard logo={logoCamera} text={'Новинки сериалов и фильмов'} />
+            <DropdownSubscribeCard logo={logoCamera} text={t('dropdown.new')} />
           </div>
           <div className={style.mainBlock_width}>
-            <DropdownSubscribeCard
-              logo={logoFolderWithPlus}
-              text={'Еженедельное наполнение каталога фильмами и сериалами со всего мира'}
-            />
+            <DropdownSubscribeCard logo={logoFolderWithPlus} text={t('dropdown.filling')} />
           </div>
           <div className={style.mainBlock_narrow}>
-            <DropdownSubscribeCard logo={logoMegaphone} text={'Фильмы и сериалы без реклами'} />
+            <DropdownSubscribeCard logo={logoMegaphone} text={t('dropdown.withoutAds')} />
           </div>{' '}
           <div className={style.mainBlock_narrow}>
-            <DropdownSubscribeCard logo={logoComputer} text={'Семейный аккаунт на 5 устройствах'} />
+            <DropdownSubscribeCard logo={logoComputer} text={t('dropdown.account')} />
           </div>{' '}
           <div className={style.mainBlock_narrow}>
-            <DropdownSubscribeCard logo={logoDownload} text={'Загрузка на мобильные устройства'} />
+            <DropdownSubscribeCard logo={logoDownload} text={t('dropdown.uploading')} />
           </div>
         </div>
       </div>
       <div className={style.content}>
         <div className={style.slider}></div>
         <ButtonWithHoverBgc
-          title="Другие подписки"
+          title={t('dropdown.otherSubscriptions')}
           addingClass={style.button}
           onClick={() => navigate('https://www.ivi.tv/profile/subscriptio')}
         />

@@ -10,8 +10,10 @@ import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { getArrayFromOneItem } from '../../utils/helperFilmBreadCrumbs';
+import { useTranslation } from 'react-i18next';
 
 const Movies = () => {
+  const { t } = useTranslation();
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
@@ -28,7 +30,7 @@ const Movies = () => {
     <div className={styles.container}>
       <BreadCrumbs
         listParams={meanBreadcrumbs}
-        constantMean={{ title: 'Фильмы', href: '/movies' }}
+        constantMean={{ title: t('filter.title'), href: '/movies' }}
       />
       <MoviesHeader meanUrl={meanUrl} />
       <Sort />

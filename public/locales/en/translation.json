@@ -59,5 +59,52 @@
     "rating": "Kinopoisk rating",
     "trailer": "trailer",
     "freeMovies": "Free movies"
+  },
+  "filter": {
+    "genres": "Genres",
+    "countries": "Countries",
+    "years": "Years",
+    "actor": "Actor",
+    "director": "Director",
+    "rating": "Rating",
+    "reviews": "Number of reviews",
+    "reset": "Reset the filter",
+    "title": "Films",
+    "crumbs": "My Film"
+  },
+  "dropdown": {
+    "subscribe": "Ivy's subscription",
+    "benefits": "All the benefits are in one subscription",
+    "new": "New TV series and movies",
+    "filling": "Weekly filling of the catalog with films and TV series from around the world",
+    "withoutAds": "Movies and TV series without ads",
+    "account": "Family account on 5 devices",
+    "uploading": "Uploading to mobile devices",
+    "otherSubscriptions": "Other subscriptions"
+  },
+  "footer": {
+    "aboutCompany": "About the company",
+    "job": "Job openings",
+    "betaTesting": "Beta Testing Program",
+    "partners": "Information for partners",
+    "advertising": "Advertising placement",
+    "agreement": "User agreement",
+    "policy": "Privacy policy",
+    "compliance": "Compliance",
+    "ivi": "My Evie",
+    "whatNew": "What's new",
+    "films": "Films",
+    "serials": "Serials",
+    "cartoons": "Cartoons",
+    "whatToSee": "What to see",
+    "about": "About",
+    "sections": "Sections",
+    "activation": "Certificate Activation",
+    "supportService": "Support Service",
+    "help": "We are always ready to help you.",
+    "operators": "Our operators are online 24/7",
+    "chat": "Write in the chat",
+    "answers": "Answers to questions",
+    "withoutAds": "Watch movies, TV series and cartoons without ads"
   }
 }
