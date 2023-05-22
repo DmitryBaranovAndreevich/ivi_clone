@@ -5,8 +5,10 @@ import LoginLayout from '../../components/login/LoginLayout/LoginLayout';
 import LoginMessage from '../../components/login/LoginMessage/LoginMessage';
 import styles from '../login/login.module.scss';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const AuthFinish = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const redirect = () => {
     navigate('/', { replace: true });
@@ -19,11 +21,11 @@ const AuthFinish = () => {
   }, []);
   return (
     <LoginLayout>
-      <LoginHeader title={'Поздравляю'} />
+      <LoginHeader title={t('auth.congratulations')} />
       <Line persent={'100%'} />
-      <LoginMessage>Зарегистрируйтесь</LoginMessage>
+      <LoginMessage>{t('auth.register1')}</LoginMessage>
       <div className={`${styles.div} ${styles.animation} ${styles.animationTime2}`}>
-        <LoginMessage success>Вы успешно авторизировались</LoginMessage>
+        <LoginMessage success>{t('login.finish')}</LoginMessage>
       </div>
     </LoginLayout>
   );

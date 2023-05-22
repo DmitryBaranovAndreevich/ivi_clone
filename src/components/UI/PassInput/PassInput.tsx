@@ -1,5 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import styles from './passInput.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface IInput {
   name?: string;
@@ -8,6 +9,7 @@ interface IInput {
 }
 
 const PassInput: FC<IInput> = ({ name, value, onChange }) => {
+  const { t } = useTranslation();
   const [isActiv, setIsActiv] = useState(false);
   const [inputValue, setInputValue] = useState(value);
 
@@ -23,7 +25,7 @@ const PassInput: FC<IInput> = ({ name, value, onChange }) => {
   };
   return (
     <div className={styles.container}>
-      <span className={styles.span}>Введите пароль</span>
+      <span className={styles.span}>{t('login.passErr')}</span>
       <input
         type={isActiv ? 'text' : 'password'}
         className={styles.input}

@@ -1,12 +1,14 @@
 import { FC } from 'react';
 import styles from './loginHeader.module.scss';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface ILoginHader {
   title: string;
 }
 
 const LoginHeader: FC<ILoginHader> = ({ title }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   return (
     <>
@@ -18,7 +20,7 @@ const LoginHeader: FC<ILoginHader> = ({ title }) => {
       </div>
       {!location.pathname.startsWith('/auth') && (
         <Link to={'/auth/email'} style={{ textDecoration: 'none' }}>
-          <p className={styles.regButton}>Зарегистрироваться</p>
+          <p className={styles.regButton}>{t('login.register')}</p>
         </Link>
       )}
     </>

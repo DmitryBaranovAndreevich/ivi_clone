@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ButtonWithHoverBgc from '../buttonWithHoverBgc/ButtonWithHoverBgc';
 import style from './BreadCrumbs.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type TBreadCrumbsProps = {
   listParams: Array<Array<string>> | null;
@@ -12,6 +13,7 @@ type TBreadCrumbsProps = {
 };
 
 const BreadCrumbs: React.FC<TBreadCrumbsProps> = ({ listParams, constantMean }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const listBlock = useMemo(() => {
     return listParams?.map((params: Array<string>, index: number) => {
@@ -30,7 +32,7 @@ const BreadCrumbs: React.FC<TBreadCrumbsProps> = ({ listParams, constantMean }) 
       <ul className={style.list}>
         <li className={style.item}>
           <ButtonWithHoverBgc
-            title="Mой Film"
+            title={t('filter.crumbs')}
             addingClass={style.button}
             onClick={() => navigate('/movies')}
           />
