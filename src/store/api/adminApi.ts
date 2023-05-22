@@ -25,7 +25,6 @@ export const adminApi = createApi({
     }),
     deleteFilm: build.mutation<IFilm[], { id: string | undefined }>({
       query: ({ id }) => {
-        debugger;
         return {
           url: `/films/${id}`,
           method: 'DELETE',
@@ -34,7 +33,6 @@ export const adminApi = createApi({
     }),
     changeFilmName: build.mutation<IFilm[], { id: string; newNameFilm: string }>({
       query: ({ id, newNameFilm }) => {
-        debugger;
         return {
           url: `/films/${id}`,
           method: 'PUT',
@@ -44,7 +42,6 @@ export const adminApi = createApi({
     }),
     addGenreToFilm: build.mutation<IFilm[], { id: string; genre: string }>({
       query: ({ id, genre }) => {
-        debugger;
         return {
           url: `/films/${id}/add/genre`,
           method: 'POST',

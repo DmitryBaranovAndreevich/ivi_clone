@@ -7,12 +7,31 @@ export const filmApi = createApi({
     baseUrl: 'http://localhost:3000/api/',
   }),
   endpoints: (build) => ({
-    getFilms: build.query<IFilm[], { pathName: string | null; search: string | null }>({
-      query: ({ pathName, search }) => {
-        if (!pathName) {
-          return { url: 'films' };
+    getFilms: build.query<
+      IFilm[],
+      {
+        pathName: string | null;
+        searchRatingGte: string | null;
+        searchRatingsNumberGte: string | null;
+        searchPerson?: string | null;
+      }
+    >({
+      query: ({ pathName, searchRatingGte, searchRatingsNumberGte, searchPerson }) => {
+        const searchParams = [];
+        if (searchRatingGte) {
+          searchParams.push(`rating_gte=${searchRatingGte}`);
         }
-        return { url: `films/filter${pathName}${search}` };
+        if (searchRatingsNumberGte) {
+          searchParams.push(`ratingsNumber_gte=${searchRatingsNumberGte}`);
+        }
+        if (searchPerson) {
+          searchParams.push(`person=${searchPerson.split('+').join(' ')}`);
+        }
+        debugger;
+        if (!pathName) {
+          return { url: `films/?${searchParams.join('&')}` };
+        }
+        return { url: `films/filter${pathName}?${searchParams.join('&')}` };
       },
     }),
     getOneFilm: build.query<IFilm, { id: string | undefined }>({
@@ -20,6 +39,7 @@ export const filmApi = createApi({
         return { url: `films/${id}` };
       },
     }),
+    // getFilmsBy
   }),
 });
 

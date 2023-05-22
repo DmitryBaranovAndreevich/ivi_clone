@@ -3,7 +3,6 @@ import RedButton from '../UI/redButton/RedButton';
 import style from './FilmAllDevices.module.scss';
 import allDevices from './../../assests/allDevices.png';
 import ipad from './../../assests/ipad.png';
-import Line from '../login/Line/Line';
 import { Link } from 'react-router-dom';
 
 type TFilmAllDevicesProps = {

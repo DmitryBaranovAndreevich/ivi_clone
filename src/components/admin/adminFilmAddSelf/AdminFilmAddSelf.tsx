@@ -1,13 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import style from './AdminFilmAddSelf.module.scss';
-import { useGetOneFilmQuery } from '../../../store/api/filmApi';
-import Spinner from '../../UI/spinner/Spinner';
 import { useGetGenresQuery } from '../../../store/api/appApi';
-import { IGenres } from '../../../type/TGenres';
 import { TGenreCountriesYears } from '../../../type/type';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import RedButton from '../../UI/redButton/RedButton';
 import AdminCheckbox from '../adminFilmForm/adminCheckbox/adminCheckbox';
 import AdminInput from '../adminFilmForm/adminInput/AdminInput';

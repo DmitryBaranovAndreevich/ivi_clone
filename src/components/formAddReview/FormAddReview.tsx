@@ -80,7 +80,6 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
         }}
         validationSchema={FormSchema}
         onSubmit={async (values) => {
-          debugger;
           if (forWhat === 'film') {
             await addReview({
               review: { title: values.reviewTitle, text: values.reviewText },

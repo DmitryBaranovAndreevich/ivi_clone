@@ -1,11 +1,9 @@
 import { Field, Formik, Form } from 'formik';
 import React from 'react';
-import UILink from '../../UI/Link/UILink';
 import RedButton from '../../UI/redButton/RedButton';
 import AdminInput from '../adminFilmForm/adminInput/AdminInput';
 import * as Yup from 'yup';
 import style from './AdminFilmAddById.module.scss';
-// import { useAddFilmByIdQuery } from '../../../store/api/adminApi';
 
 const FormSchema = Yup.object().shape({
   price: Yup.number().required('Required').positive('Только положительное число'),

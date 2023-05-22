@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import { IFilm } from '../../../type/TFilm';
-import UIButton from '../../UI/UIButton/UIButton';
+import React from 'react';
 import style from './AdminFilmItem.module.scss';
 import logoDelete from './../../../assests/svg/logoDelete.svg';
 import GreyButton from '../../UI/greyButton/GreyButton';
 import ButtonWithHoverBgc from '../../UI/buttonWithHoverBgc/ButtonWithHoverBgc';
-import Spinner from '../../UI/spinner/Spinner';
-import { useGetOneFilmQuery } from '../../../store/api/filmApi';
 import { useDeleteFilmMutation } from '../../../store/api/adminApi';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type TAdminFilmItemType = {
   filmId: number;

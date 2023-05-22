@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import { IFilm } from '../../../type/TFilm';
-import UIButton from '../../UI/UIButton/UIButton';
 import style from './AdminGenreItem.module.scss';
 import logoDelete from './../../../assests/svg/logoDelete.svg';
 import GreyButton from '../../UI/greyButton/GreyButton';
 import ButtonWithHoverBgc from '../../UI/buttonWithHoverBgc/ButtonWithHoverBgc';
-import Spinner from '../../UI/spinner/Spinner';
-import { useGetOneFilmQuery } from '../../../store/api/filmApi';
-import {
-  useChangeGenreNameMutation,
-  useDeleteFilmMutation,
-  useDeleteGenreMutation,
-} from '../../../store/api/adminApi';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useChangeGenreNameMutation, useDeleteGenreMutation } from '../../../store/api/adminApi';
 import { Field, Form, Formik } from 'formik';
 
 type TAdminGenreItemType = {

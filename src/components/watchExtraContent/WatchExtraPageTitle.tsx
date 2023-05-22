@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import style from './WatchExtraPage.module.scss';
+import style from './WatchExtraContent.module.scss';
 
 type TWatchExtraTitleProps = {
   filmName: string;

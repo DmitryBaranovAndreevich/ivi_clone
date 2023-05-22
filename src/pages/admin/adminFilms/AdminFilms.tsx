@@ -1,11 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import AdminFilmForm from '../../../components/admin/adminFilmForm/AdminFilmEdit';
 import AdminFilmItem from '../../../components/admin/adminFilmItem/AdminFilmItem';
 import ButtonWithoutBgc from '../../../components/UI/buttonWithoutBgc/ButtonWithoutBgc';
-import GreyButton from '../../../components/UI/greyButton/GreyButton';
 import Spinner from '../../../components/UI/spinner/Spinner';
-import { useGetFilmsQuery, useGetOneFilmQuery } from '../../../store/api/filmApi';
-import { IFilm, IFilmsList } from '../../../type/TFilm';
+import { useGetFilmsQuery } from '../../../store/api/filmApi';
+import { IFilm } from '../../../type/TFilm';
 import style from './AdminFilms.module.scss';
 import logoCross from './../../../assests/svg/logoCross.svg';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +21,7 @@ const AdminFilms = () => {
     isLoading,
     refetch,
   } = useGetFilmsQuery(
-    { pathName: null, search: null },
+    { pathName: null, searchRatingGte: null, searchRatingsNumberGte: null },
     {
       refetchOnMountOrArgChange: true,
     }

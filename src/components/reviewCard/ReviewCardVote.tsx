@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import style from './ReviewCard.module.scss';
 import logoHand from './../../assests/svg/logoHand.svg';
 

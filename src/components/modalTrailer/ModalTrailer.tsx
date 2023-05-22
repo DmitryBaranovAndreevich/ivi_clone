@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React from 'react';
 import CrossButton from '../UI/crossButton/CrossButton';
 import style from './ModalTrailer.module.scss';
 

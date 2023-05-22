@@ -1,11 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
 import style from './AdminFilmEdit.module.scss';
 import { useGetOneFilmQuery } from '../../../store/api/filmApi';
 import Spinner from '../../UI/spinner/Spinner';
 import { useGetGenresQuery } from '../../../store/api/appApi';
-import { IGenres } from '../../../type/TGenres';
 import { TGenreCountriesYears } from '../../../type/type';
 import AdminCheckbox from './adminCheckbox/adminCheckbox';
 import AdminInput from './adminInput/AdminInput';
@@ -44,7 +42,6 @@ const AdminFilmEdit: React.FC<TAdminFilmEditProps> = ({ filmId }) => {
   const includeGenre = useMemo(() => {
     return genres
       ?.map((genre: TGenreCountriesYears) => {
-        debugger;
         if (filmGenres?.includes(genre.englishName)) {
           return genre.name;
         }
@@ -53,7 +50,6 @@ const AdminFilmEdit: React.FC<TAdminFilmEditProps> = ({ filmId }) => {
       .join(', ');
   }, [genres, filmGenres]);
   const saveData = (values: { name: string; originalName: string; genres: Array<string> }) => {
-    debugger;
     if (values.name !== film?.name) {
       changeFilmName({ id: String(filmId), newNameFilm: values.name });
     }

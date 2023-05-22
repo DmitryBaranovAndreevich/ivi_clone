@@ -2,15 +2,10 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import style from './WatchExtra.module.scss';
-import logoClock from './../../assests/svg/logoClock.svg';
-import { IFilm } from '../../type/TFilm';
-import films from '../../components/filmContent/films.json';
+import logoArrow from './../../assests/svg/logoArrow.svg';
 import Spinner from '../../components/UI/spinner/Spinner';
 import WatchExtraAside from '../../components/watchExtraAside/WatchExtraAside';
-import WatchExtraContent from '../../components/watchExtraContent/WatchExtraAside';
-
-// type TWatchExtraPageProps = {
-// };
+import WatchExtraContent from '../../components/watchExtraContent/WatchExtraContent';
 
 const WatchExtra = () => {
   const params = useParams();
@@ -26,12 +21,14 @@ const WatchExtra = () => {
   if (!film) return <div>Фильм не найден!</div>;
   return (
     <div className={style.container}>
-      <Link to="#">
-        <div></div>
-        <div>К фильму</div>
+      <Link className={style.return} to={`/watch/${params.id}`}>
+        <img className={style.return_logo} src={logoArrow} alt="arrow" />
+        <div className={style.return_text}>К фильму</div>
       </Link>
       <WatchExtraContent
         choosenPage={params.page ? params.page : ''}
+        filmPoster={film.poster}
+        filmTrailer={film.trailer}
         filmName={film.name}
         filmId={film.id}
         reviews={film.reviews}

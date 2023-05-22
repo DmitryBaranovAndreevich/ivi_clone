@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import style from './FilterRange.module.scss';
 import FilterRangeForm from './FilterRangeForm';
 
@@ -11,14 +11,10 @@ type TFilterRangeProps = {
   max: number;
 };
 
-type qqq = {
-  rating_gte?: string;
-  ratingsNumber_gte?: string;
-};
-
 const FilterRange: React.FC<TFilterRangeProps> = ({ title, nameInitialValue, step, min, max }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [choosenRate, setChoosenRate] = useState(0);
+  const location = useLocation();
   const rating: number = Number(searchParams.get('rating_gte'))
     ? Number(searchParams.get('rating_gte'))
     : 0;
@@ -31,18 +27,14 @@ const FilterRange: React.FC<TFilterRangeProps> = ({ title, nameInitialValue, ste
     nameInitialValue === 'countReviews' && setChoosenRate(countReviews);
   }, [searchParams, nameInitialValue]);
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const queryParams: qqq = {};
+    const queryParams = new URLSearchParams(location.search);
     const target = e.target as HTMLInputElement;
     if (isFinite(Number(target.value)) && nameInitialValue === 'rate') {
-      if (searchParams.get('ratingsNumber_gte')) {
-        queryParams.ratingsNumber_gte = String(searchParams.get('ratingsNumber_gte'));
-      }
-      queryParams.rating_gte = target.value;
+      queryParams.delete('rating_gte');
+      queryParams.set('rating_gte', target.value);
     } else if (isFinite(Number(target.value)) && nameInitialValue === 'countReviews') {
-      if (searchParams.get('rating_gte')) {
-        queryParams.rating_gte = String(searchParams.get('rating_gte'));
-      }
-      queryParams.ratingsNumber_gte = target.value;
+      queryParams.delete('ratingsNumber_gte');
+      queryParams.set('ratingsNumber_gte', target.value);
     }
     setSearchParams(queryParams);
   };

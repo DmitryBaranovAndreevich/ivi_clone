@@ -5,8 +5,31 @@
 .container {
     background: $bgcMain;
     color: $white;
-    max-width: 1240px;  
+    max-width: 1240px;
     margin: 0 auto;
     padding: 68px 12px;
     display: flex;
+    position: relative
+}
+
+.return {
+    @include font-source-sans(15px, $white, 500, 20px);
+    margin-left: 8px;
+    text-decoration: none;
+    align-self: center;
+    position: absolute;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0.7;
+    @include transition(0s, $duration-small, ease-out, $properties: opacity);
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &_logo {
+        width: 7px;
+    }
 }

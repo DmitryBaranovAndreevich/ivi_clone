@@ -1,0 +1,146 @@
+@import '../../commonStyles/mixins/index.scss';
+@import '../../commonStyles/variables/index.scss';
+@import '../../commonStyles/fonts.scss';
+
+.content {}
+
+.formBlock {
+    margin-bottom: 32px;
+}
+
+.title {
+    @include font-source-sans(20px, $white, 700, 24px);
+    margin-bottom: 16px;
+    padding: 0 12px;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    list-style-type: none;
+}
+
+.item {
+    width: calc(100%/4);
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.person {
+    @include font-source-sans(15px, $textColorLight, 500, 20px);
+}
+
+.showMore {
+    width: 100%;
+    height: 40px;
+    padding: 9px 15px;
+    margin-bottom: 40px;
+}
+
+.reviewsBlock {
+    margin-top: 28px;
+
+    &:first-child {
+        margin: 0;
+    }
+
+    & .reviewsBlock {
+        &:nth-child(2) {
+            width: 90%;
+            margin-left: 10%;
+        }
+    
+        &:nth-child(3) {
+            width: 80%;
+            margin-left: 20%;
+        }
+    
+        &:nth-child(4) {
+            width: 70%;
+            margin-left: 30%;
+        }
+    }
+}
+
+.childReviews {
+    width: 90%;
+    margin-left: 10%;
+    margin-top: 28px;
+
+    & .review {
+        margin-top: 28px;
+    }
+}
+
+.review {
+    padding-left: 36px;
+    // margin-top: 28px;
+    position: relative;
+
+    // &:first-child {
+    //     margin: 0;
+    // }
+
+    &_header {
+        display: flex;
+        align-items: center;
+    }
+
+    &_title {
+        @include font-source-sans(13px, $textColorGrey, 700, 16px);
+        margin-right: 8px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &_date {
+        margin-right: 12px;
+    }
+
+    &_rate {
+        margin-left: auto;
+    }
+
+    &_content {
+        margin-top: 4px 0;
+        padding-right: 82px;
+    }
+
+    &_text {
+        @include font-source-sans(15px, $textColorLight, 400, 22px);
+    }
+}
+
+
+.avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $bgcDarkBlue;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.answer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    @include font-source-sans(13px, $textColorGrey, 500, 16px);
+    @include transition(0s, $duration, ease-out, $properties: all);
+
+    &:hover {
+        text-decoration: underline;
+        color: $textColorLight;
+    }
+}
+
+.childrenForm {
+    margin: 24px 0;
+}

@@ -10,7 +10,6 @@ export const reviewApi = createApi({
     baseUrl: 'http://localhost:3000/api/',
     credentials: 'include',
     prepareHeaders: (headers, { getState, endpoint }) => {
-      debugger;
       headers.set('Content-Type', 'application/json');
       const token = getCookie('token');
       if (token) {
@@ -22,7 +21,6 @@ export const reviewApi = createApi({
   endpoints: (build) => ({
     addReview: build.mutation<TAddReview, { review: TAddReview; filmId: number }>({
       query: ({ review, filmId }) => {
-        debugger;
         return {
           url: `films/${filmId}`,
           method: 'POST',
@@ -38,7 +36,6 @@ export const reviewApi = createApi({
       { review: TAddReview; filmId: number; reviewId: number }
     >({
       query: ({ review, filmId, reviewId }) => {
-        debugger;
         return {
           url: `films/${filmId}/review/${reviewId}`,
           method: 'POST',
