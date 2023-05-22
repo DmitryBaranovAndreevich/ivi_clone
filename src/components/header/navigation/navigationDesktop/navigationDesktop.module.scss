@@ -1,0 +1,45 @@
+@import '../../../../commonStyles/mixins/index.scss';
+@import '../../../../commonStyles/variables/index.scss';
+@import '../../../../commonStyles/fonts.scss';
+
+.navigation {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  list-style-type: none;
+}
+
+.desktop {
+  &_item {
+    padding-left: 16px;
+  }
+
+  &_link {
+    padding: 10px 0;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+}
+
+.expand {
+  padding: 12px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.button {
+  &_logo {
+
+  }
+
+  &_text {
+
+  }
+}

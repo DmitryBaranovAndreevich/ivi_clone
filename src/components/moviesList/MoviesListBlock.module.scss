@@ -7,14 +7,31 @@
 }
 
 .list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    // flex-wrap: wrap;
     list-style-type: none;
+
+    @media (max-width: $smallDesktop) {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      @media (max-width: $laptop) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: $tablets) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: $phones) {
+        display: block;
+      }
 }
 
 .item {
-    width: calc(100%/7);
-    padding: 0 12px 24px 12px;
+    max-width: 100%;
 }
 
 .showMore {

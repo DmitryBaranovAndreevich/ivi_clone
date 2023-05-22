@@ -7,7 +7,6 @@ import logoBell from './../../assests/svg/logoBell.svg';
 import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
-import NavigationContainer from './navigation/NavigationContainer';
 import { TNavigationDesctopTitle } from '../../type/type';
 import DropdownSubscribe from './dropdownSubscribe/DropdownSubscribe';
 import DropdownFilms from './dropdownFilms/DropdownFilms';
@@ -19,10 +18,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { userLoginSlice } from '../../store/reducers/UserLoginSlice';
 import { eraseCookie } from '../../service/eraseCookie';
 import { useTranslation } from 'react-i18next';
+import useAppMediaQuery from '../../hooks/useAppMediaQuery';
+import NavigationDesktop from './navigation/navigationDesktop/NavigationDesktop';
+import NavigationMain from './navigation/navigationMain/NavigationMain';
 
 export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
 
 const Header = () => {
+  const { isDesktop } = useAppMediaQuery();
   const { t, i18n } = useTranslation();
   const { setDefaultValue } = userLoginSlice.actions;
   const dispatch = useAppDispatch();
@@ -51,10 +54,10 @@ const Header = () => {
             </Link>
           </div>
           <div className={style.content_menu}>
-            <NavigationContainer setItemHovered={setItemHovered} />
+            {isDesktop ? <NavigationMain /> : <NavigationDesktop setItemHovered={setItemHovered} />}
           </div>
           <div className={style.content_combine}>
-            <div className={style.content_button + ' ' + style.content_block}>
+            <div className={`${style.content_button} ${style.content_block} ${style.lang}`}>
               <input
                 type="radio"
                 id="check1"
@@ -148,6 +151,6 @@ const Header = () => {
 };
 
 export default Header;
-function dispatch(arg0: { payload: undefined; type: 'login/setDefaultValue' }) {
-  throw new Error('Function not implemented.');
-}
+// function dispatch(arg0: { payload: undefined; type: 'login/setDefaultValue' }) {
+//   throw new Error('Function not implemented.');
+// }

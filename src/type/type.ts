@@ -16,7 +16,7 @@ export type TNavigationLaptopTitle = 'Мой Иви' | 'Каталог' | 'По�
 export type TNavigationLaptop = {
   href: string;
   title: TNavigationLaptopTitle;
-  isExpand: boolean;
+  logo: string;
 };
 
 export type TGenreCountriesYears = {

@@ -1,0 +1,94 @@
+@import '../../../../commonStyles/mixins/index.scss';
+@import '../../../../commonStyles/variables/index.scss';
+@import '../../../../commonStyles/fonts.scss';
+
+.navigation {
+  height: 48px;
+  backdrop-filter: blur(8px);
+  background-color: rgba(31,27,46,.88);
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+
+  &_item {
+    position: relative;
+    text-decoration: none;
+    max-width: 120px;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 4px;
+    flex-direction: column;
+    flex-grow: 1;
+    cursor: pointer;
+    flex-shrink: 1;
+    flex-basis: 100%;
+  }
+
+  &_link {
+    padding: 10px 0;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.5;
+  cursor: pointer;
+  text-decoration: none;
+
+  &_logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_text {
+    max-width: 100%;
+    align-self: center;
+    @include font-source-sans(10px, $white, 500, 12px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 4px;
+  }
+}
+
+.bgc {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 0;
+  width: 64px;
+  height: 48px;
+  background-image: url(https://solea-parent.dfs.ivi.ru/picture/7e798f,7e798f/tabBarGlow.svg);
+  background-size: 64px 48px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+}
+
+.select {
+
+  & .bgc {
+    opacity: 1;
+  }
+
+  & .button {
+    opacity: 1;
+  }
+}

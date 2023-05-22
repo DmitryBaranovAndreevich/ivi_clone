@@ -1,7 +1,8 @@
 export const mediaQuery = {
+  $desktop: '(max-width: 1240px)',
   $smallDesktop: '(max-width: 1160px)',
   $laptop: '(max-width: 850px)',
-  $tablets: '(max-width: 550px)',
+  $tablets: '(max-width: 600px)',
   $phones: '(max-width: 450px)',
 };
 
