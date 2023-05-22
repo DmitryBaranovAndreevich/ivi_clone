@@ -1,6 +1,6 @@
 import Slider from '../../components/mainSlider/MainSlider';
 import styles from './Main.module.scss';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
 import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';
@@ -24,6 +24,9 @@ const Main = () => {
         <>
           <Slider items={data as IFilm[]} />
           <div className={styles.wrapper}>
+            <NavLink className={styles.link} to={'/admin/films'}>
+              ссылка
+            </NavLink>
             <MainPageSlider genre={'fantasy'} size={'medium'} title={'Фентези'} />
             <MainPageSlider genre={'action'} size={'big'} title={'Боевики'} />
             <MainPageSlider genre={'adventure'} size={'medium'} title={'Приключения'} />

@@ -45,7 +45,7 @@ const LoginPassword = () => {
       })
       .then(({ payload }) => {
         if (typeof payload !== 'string') {
-          setCookie('token', (payload as { token: string }).token, {
+          setCookie('token', (payload as { accessToken: string }).accessToken, {
             expires: 1000 * 60 * 60 * 24 * 30,
           });
           navigate('/profile/finish', { replace: true });

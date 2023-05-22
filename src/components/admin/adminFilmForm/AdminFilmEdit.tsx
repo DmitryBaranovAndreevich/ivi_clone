@@ -78,7 +78,6 @@ const AdminFilmEdit: React.FC<TAdminFilmEditProps> = ({ filmId }) => {
           onSubmit={(values) => saveData(values)}
         >
           {({ touched, errors, values }) => {
-            console.log(values);
             return (
               <div className={style.container}>
                 <Form className={style.form}>

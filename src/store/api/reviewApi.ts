@@ -24,9 +24,6 @@ export const reviewApi = createApi({
         return {
           url: `films/${filmId}`,
           method: 'POST',
-          // headers: {
-          //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
-          // },
           body: review,
         };
       },
@@ -39,9 +36,6 @@ export const reviewApi = createApi({
         return {
           url: `films/${filmId}/review/${reviewId}`,
           method: 'POST',
-          // headers: {
-          //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0eUBnbWFpbC5jb20iLCJpZCI6MTMsInBob25lIjoiODkyNzExMTExMTEiLCJyb2xlcyI6W10sImlhdCI6MTY4NDQwODMzMiwiZXhwIjoxNjg0NDk0NzMyfQ.NZjyTXmXC-HxNZbulDZMVeJxmvsAjVzVQdJ22bZr0H0`,
-          // },
           body: review,
         };
       },

@@ -5,7 +5,7 @@ const sortAscending = (array: Array<IFilm>, field: keyof IFilm): Array<IFilm> =>
   const q = array.sort((a: IFilm, b: IFilm) => {
     return a[field] > b[field] ? 1 : -1;
   });
-  console.log(q);
+  // console.log(q);
   return q;
 };
 
@@ -22,7 +22,7 @@ export const sortList: TFuncSortList = (kindSort, filmFilter) => {
         return sortAscending(filmFilterCopy, 'ratingsNumber');
         break;
       case 'rate':
-        console.log(sortAscending(filmFilterCopy, 'rating'));
+        // console.log(sortAscending(filmFilterCopy, 'rating'));
         return sortAscending(filmFilterCopy, 'rating');
         break;
       case 'year':

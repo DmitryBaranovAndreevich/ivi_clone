@@ -34,7 +34,7 @@ const FormSchema = Yup.object().shape({
     .min(3, 'Минимальная длина 3 символов')
     .max(50, 'Максимальная длина 50 символов')
     .required('Required'),
-  genres: Yup.array().min(1, 'Required'),
+  // genres: Yup.array().min(1, 'Required'),
   poster: Yup.string()
     .required('Required')
     .matches(/(\.png|\.jpeg)$/, 'Формат png или jpeg'),
@@ -61,7 +61,7 @@ const FormSchema = Yup.object().shape({
 const AdminFilmAddSelf: React.FC = ({}) => {
   const navigate = useNavigate();
   const { data: genres } = useGetGenresQuery('');
-  const [addFilmSelf, {}] = useAddFilmSelfMutation();
+  const [addFilmSelf, { isSuccess }] = useAddFilmSelfMutation();
   const [addGenreToFilm, {}] = useAddGenreToFilmMutation();
   const checkboxGenre = useMemo(() => {
     return genres?.map((genre: TGenreCountriesYears) => {
@@ -88,7 +88,7 @@ const AdminFilmAddSelf: React.FC = ({}) => {
     duration: 0,
     description: '',
   };
-  const submitAddFilm = (values: TInitialValue) => {
+  const submitAddFilm = async (values: TInitialValue) => {
     const filmObj: TFilmAdding = {
       name: values.name,
       originalName: values.originalName,
@@ -101,7 +101,9 @@ const AdminFilmAddSelf: React.FC = ({}) => {
       duration: values.duration,
       description: values.description,
     };
-    addFilmSelf({ filmData: filmObj });
+    await addFilmSelf({ filmData: filmObj });
+    console.log('dg' + isSuccess);
+    // if (isSuccess) {}
     values.genres.map((genre: string) => {
       // addGenreToFilm({ id: filmId, genre });
     });
@@ -111,7 +113,10 @@ const AdminFilmAddSelf: React.FC = ({}) => {
       <Formik
         initialValues={initialValue}
         validationSchema={FormSchema}
-        onSubmit={(values) => submitAddFilm(values)}
+        onSubmit={(values) => {
+          debugger;
+          submitAddFilm(values);
+        }}
       >
         {({ touched, errors, values }) => {
           return (

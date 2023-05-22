@@ -1,10 +1,20 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getCookie } from '../../service/getCookie';
 import { IFilm, TFilmAdding } from '../../type/TFilm';
 
 export const adminApi = createApi({
   reducerPath: 'adminApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3000/api/',
+    // credentials: 'include',
+    prepareHeaders: (headers, { getState, endpoint }) => {
+      headers.set('Content-Type', 'application/json');
+      const token = getCookie('token');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints: (build) => ({
     addFilmById: build.query<IFilm[], { id: string | undefined }>({
@@ -16,6 +26,7 @@ export const adminApi = createApi({
     }),
     addFilmSelf: build.mutation<IFilm[], { filmData: TFilmAdding }>({
       query: ({ filmData }) => {
+        debugger;
         return {
           url: `/films`,
           method: 'POST',

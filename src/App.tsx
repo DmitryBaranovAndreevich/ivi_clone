@@ -25,7 +25,7 @@ import AdminGenresAdd from './pages/admin/adminGenresAdd/AdminGenresAdd';
 
 function App() {
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
-  console.log(!isRegister);
+  // console.log(isRegister);
   return (
     <div className={styles.container}>
       <Routes>
@@ -52,7 +52,10 @@ function App() {
               <Route path="finish" element={<LoginFinish />} />
             </Route>
           </Route>
-          <Route path="/admin" element={<ProtectedRoute user={isRegister} />}>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute user={!isRegister} redirectPath={'/profile/email'} />}
+          >
             <Route path="films" element={<AdminFilms />}></Route>
             <Route path="films/edit/:id" element={<AdminFilmForm />} />
             <Route path="films/add/:method?" element={<AdminFilmsAdd />} />
