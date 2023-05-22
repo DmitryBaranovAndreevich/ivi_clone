@@ -20,7 +20,7 @@ type TPlayerAddingProps = {
   trailer: string;
 };
 
-const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, duration }) => {
+const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, duration, trailer }) => {
   const { t } = useTranslation();
   const [isShareModal, setIsShareModal] = useState(false);
   const [isTrailerModal, setIsTrailerModal] = useState(false);
