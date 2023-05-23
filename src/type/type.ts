@@ -4,10 +4,12 @@ export type TNavigationDesctopTitle =
   | 'Фильмы'
   | 'Сериалы'
   | 'Мультфильмы';
+export type TNavigationDesctopEnTitle = 'My ivi' | "What's new" | 'Films' | 'Serials' | 'Cartoons';
 
 export type TNavigationDesctop = {
   href: string;
   title: TNavigationDesctopTitle;
+  enTitle: TNavigationDesctopEnTitle;
   isExpand: boolean;
 };
 

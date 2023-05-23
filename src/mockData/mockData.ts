@@ -243,26 +243,31 @@ export const MOCK_NAVIGATION_DESKTOP: Array<TNavigationDesctop> = [
   {
     href: '/',
     title: 'Мой Иви',
+    enTitle: 'My ivi',
     isExpand: false,
   },
   {
     href: 'https://www.ivi.tv/new',
     title: 'Что нового',
+    enTitle: "What's new",
     isExpand: false,
   },
   {
     href: '/movies',
     title: 'Фильмы',
+    enTitle: 'Films',
     isExpand: true,
   },
   {
     href: '/movies',
     title: 'Сериалы',
+    enTitle: 'Serials',
     isExpand: true,
   },
   {
     href: '/movies',
     title: 'Мультфильмы',
+    enTitle: 'Cartoons',
     isExpand: true,
   },
 ];

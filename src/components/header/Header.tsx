@@ -7,7 +7,8 @@ import logoBell from './../../assests/svg/logoBell.svg';
 import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
-import { TNavigationDesctopTitle } from '../../type/type';
+import NavigationContainer from './navigation/NavigationContainer';
+import { TNavigationDesctopEnTitle, TNavigationDesctopTitle } from '../../type/type';
 import DropdownSubscribe from './dropdownSubscribe/DropdownSubscribe';
 import DropdownFilms from './dropdownFilms/DropdownFilms';
 import DropdownNotification from './dropdownNotification/DropdownNotification';
@@ -22,7 +23,13 @@ import useAppMediaQuery from '../../hooks/useAppMediaQuery';
 import NavigationDesktop from './navigation/navigationDesktop/NavigationDesktop';
 import NavigationMain from './navigation/navigationMain/NavigationMain';
 
-export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
+export type TItemHovered =
+  | TNavigationDesctopTitle
+  | TNavigationDesctopEnTitle
+  | 'Подписка'
+  | 'Уведомление'
+  | 'Профиль'
+  | null;
 
 const Header = () => {
   const { isDesktop } = useAppMediaQuery();
@@ -126,9 +133,9 @@ const Header = () => {
           </div>
         </div>
         <div
-          className={`${style.dropdown} ${itemHovered && style.dropdown_visible} ${
-            itemHovered === 'Уведомление' && style.dropdown_small
-          }`}
+          className={`${style.dropdown}
+          ${itemHovered && style.dropdown_visible}
+          ${itemHovered === 'Уведомление' && style.dropdown_small}`}
           onMouseLeave={onMouseLeave}
         >
           <Dropdown>
