@@ -7,26 +7,32 @@ import MoviesList from './MoviesList';
 import style from './MoviesListBlock.module.scss';
 
 const MoviesListBlock = () => {
+  debugger;
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(2);
   const indexShowElement = useMemo(() => {
     return pageSize * currentPage;
   }, [pageSize, currentPage]);
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const { data: filmFilter } = useGetFilmsQuery(
-    { pathName: location.pathname.replace(/\/movies/, ''), search: location.search },
+    {
+      pathName: location.pathname.replace(/\/movies/, ''),
+      searchRatingGte: searchParams.get('rating_gte'),
+      searchRatingsNumberGte: searchParams.get('ratingsNumber_gte'),
+      searchPerson: searchParams.get('person'),
+    },
     {
       refetchOnMountOrArgChange: true,
     }
   );
   const [filmSort, setFilmSort] = useState(filmFilter);
-  const [searchParams] = useSearchParams();
   useEffect(() => {
     setFilmSort(sortList(String(searchParams.get('sort')), filmFilter));
   }, [filmFilter, searchParams]);
   return (
     <div className={style.movies}>
-      {filmFilter && <MoviesList filmSort={filmSort && filmSort.slice(0, indexShowElement)} />}
+      {filmFilter && <MoviesList filmSort={filmSort && filmSort} />}
       {filmFilter && filmFilter.length > indexShowElement && (
         <div className={style.showMore}>
           <ButtonWithoutBgc

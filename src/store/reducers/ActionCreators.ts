@@ -35,3 +35,12 @@ export const authUser = createAsyncThunk(
     }
   }
 );
+
+export const addFilmById = createAsyncThunk('film/add', async (id: string, thunkAPI) => {
+  try {
+    const res = await axios.get(`${URL}/parse/${id}`, { headers });
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue('Ошибка при добавлении фильма');
+  }
+});

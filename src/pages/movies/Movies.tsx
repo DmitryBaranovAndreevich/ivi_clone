@@ -7,8 +7,7 @@ import { useNavigation } from '../../hooks/useNavigation';
 import MoviesHeader from '../../components/moviesHeader/MoviesHeader';
 import MoviesListBlock from '../../components/moviesList/MoviesListBlock';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
-import { useLocation } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getArrayFromOneItem } from '../../utils/helperFilmBreadCrumbs';
 import { useTranslation } from 'react-i18next';
 

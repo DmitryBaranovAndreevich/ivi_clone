@@ -9,6 +9,7 @@ import GreyButton from '../../UI/greyButton/GreyButton';
 import UIModal from '../../UI/modal/UIModal';
 import ModalShare from '../../modalShare/ModalShare';
 import { useNavigate } from 'react-router-dom';
+import ModalTrailer from '../../modalTrailer/ModalTrailer';
 import { useTranslation } from 'react-i18next';
 
 type TPlayerAddingProps = {
@@ -16,6 +17,7 @@ type TPlayerAddingProps = {
   name: string;
   year: number;
   duration: number;
+  trailer: string;
 };
 
 const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, duration }) => {
@@ -26,7 +28,7 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
   const navigate = useNavigate();
   return (
     <div className={style.adding}>
-      <GreyButton onClick={() => {}} addingClass={style.adding_btn}>
+      <GreyButton onClick={() => setIsTrailerModal(true)} addingClass={style.adding_btn}>
         <img className={`${style.logo} ${style.logo_withText}`} src={logoPlay} alt="trailer" />
         {t('movie.trailer')}
       </GreyButton>
@@ -61,13 +63,7 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
       )}
       {isTrailerModal && (
         <UIModal>
-          <ModalShare
-            closeModal={() => setIsShareModal(false)}
-            poster={poster}
-            name={name}
-            year={year}
-            duration={duration}
-          />
+          <ModalTrailer trailer={trailer} closeModal={() => setIsTrailerModal(false)} />
         </UIModal>
       )}
     </div>

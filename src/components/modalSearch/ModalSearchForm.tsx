@@ -1,12 +1,9 @@
 import { Form, Formik, Field } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import style from './ModalSearch.module.scss';
 import logoSearch from './../../assests/svg/logoSearchGrey.svg';
 import logoCross from './../../assests/svg/logoCrossGrey.svg';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { reviewSlice } from '../../store/reducers/ReviewSlice';
-import { reviewApi, useAddReviewMutation } from '../../store/api/reviewApi';
-import { useGetPersonByNameQuery } from '../../store/api/searchApi';
+import { useAppDispatch } from '../../hooks/redux';
 import { searchSlice } from '../../store/reducers/SearchSlice';
 
 type TModalSearchFormProps = {

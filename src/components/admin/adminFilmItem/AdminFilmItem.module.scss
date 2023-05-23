@@ -1,0 +1,57 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.film {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 2fr 0.5fr 0.5fr;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+
+  &_delete {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.imageBlock {
+  display: flex;
+  justify-content: center;
+
+  &_img {
+    max-width: 100%;
+    max-height: 50px;
+  }
+}
+
+.title {
+  @include font-source-sans(15px, $white, 500, 20px);
+}
+
+.edit {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.delete {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  &_logo {
+    width: 16px;
+    height: 16px;
+  }
+}

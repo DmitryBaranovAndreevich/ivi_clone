@@ -1,10 +1,9 @@
 import Slider from '../../components/mainSlider/MainSlider';
 import styles from './Main.module.scss';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
 import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { IFilm } from '../../type/TFilm';
 import InfiniteSlider from '../../components/infiniteSlider/InfiniteSlider';
 import { useTranslation } from 'react-i18next';

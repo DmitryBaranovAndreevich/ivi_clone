@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import style from './ModalSearch.module.scss';
 import CrossButton from '../UI/crossButton/CrossButton';
 import ModalSearchForm from './ModalSearchForm';
 import { useAppSelector } from '../../hooks/redux';
-import { useGetPersonByNameQuery } from '../../store/api/searchApi';
 import FindPerson from './FindPerson';
 
 type TModalSearchProps = {
@@ -12,12 +11,12 @@ type TModalSearchProps = {
 
 const ModalSearch: React.FC<TModalSearchProps> = ({ closeModal }) => {
   const { searchMain } = useAppSelector((state) => state.searchReducer);
-  const { data: listPerson } = useGetPersonByNameQuery({ name: searchMain });
-  const findPersonsBlock = useMemo(() => {
-    return listPerson?.map((person) => {
-      // return <div></div>;
-    });
-  }, [listPerson]);
+  // const { data: listPerson } = useGetPersonByNameQuery({ name: searchMain });
+  // const findPersonsBlock = useMemo(() => {
+  //   return listPerson?.map((person) => {
+  //     // return <div></div>;
+  //   });
+  // }, [listPerson]);
   return (
     <div className={style.wrapper}>
       <CrossButton closeModal={closeModal} addingClass={style.cross} />

@@ -3,15 +3,12 @@ import { useParams } from 'react-router-dom';
 import FilmContent from '../../components/filmContent/FilmContent';
 import FilmCreators from '../../components/filmCreators/FilmCreators';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
-import { IFilm, IFilmsList } from '../../type/TFilm';
 import styles from './Watch.module.scss';
-import films from './../../components/filmContent/films.json';
-import filmsList from './../../components/filmContent/filmsList.json';
-import ReviewCard from '../../components/reviewCard/ReviewCard';
 import RelatedFilms from '../../components/relatedFilms/RelatedFilms';
 import FilmReview from '../../components/filmReview/FilmReview';
-import UIModal from '../../components/UI/modal/UIModal';
 import Spinner from '../../components/UI/spinner/Spinner';
+import FilmTrailer from '../../components/filmTrailer/FilmTrailer';
+import FilmAllDevices from '../../components/filmDevices/FilmAllDevices';
 
 const Watch = () => {
   const params = useParams();
@@ -39,14 +36,9 @@ const Watch = () => {
             producers={film.producers}
             writers={film.writers}
           />
-          <FilmReview
-            filmId={film.id}
-            nameFilm={film.name}
-            review={film.reviews}
-            // title="Топ коммент kkdcmseknrsvdc jkrelkncjmelrknvsdc rejlnvck."
-            // text="Мне понравился фильмf fr jjfkencx jekcmkxn fn4lemkc flkek."
-            // rating={}
-          />
+          <FilmTrailer filmId={film.id} filmPoster={film.poster} trailer={film.trailer} />
+          <FilmReview filmId={film.id} nameFilm={film.name} review={film.reviews} />
+          <FilmAllDevices filmPoster={film.poster} title={film.name} />
         </React.Fragment>
       ) : (
         <p>Фильм не найден</p>

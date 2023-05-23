@@ -17,10 +17,15 @@ import AuthPassword from './pages/auth/AuthPassword';
 import AuthEmail from './pages/auth/AuthEmail';
 import AuthFinish from './pages/auth/AuthFinish';
 import Actor from './pages/actor/Actor';
+import AdminFilms from './pages/admin/adminFilms/AdminFilms';
+import AdminGenres from './pages/admin/adminGenres/AdminGenres';
+import AdminFilmForm from './components/admin/adminFilmForm/AdminFilmEdit';
+import AdminFilmsAdd from './pages/admin/adminFilmsAdd/AdminFilmsAdd';
+import AdminGenresAdd from './pages/admin/adminGenresAdd/AdminGenresAdd';
 
 function App() {
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
-  console.log(!isRegister);
+  // console.log(isRegister);
   return (
     <div className={styles.container}>
       <Routes>
@@ -46,6 +51,16 @@ function App() {
               <Route path="password" element={<LoginPassword />} />
               <Route path="finish" element={<LoginFinish />} />
             </Route>
+          </Route>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute user={!isRegister} redirectPath={'/profile/email'} />}
+          >
+            <Route path="films" element={<AdminFilms />}></Route>
+            <Route path="films/edit/:id" element={<AdminFilmForm />} />
+            <Route path="films/add/:method?" element={<AdminFilmsAdd />} />
+            <Route path="genres" element={<AdminGenres />} />
+            <Route path="genres/add" element={<AdminGenresAdd />} />
           </Route>
           <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
           <Route path="/watch/:id/" element={<Watch />} />

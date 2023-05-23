@@ -1,0 +1,49 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.container {
+  background: $bgcMain;
+  color: $white;
+  max-width: 1240px;  
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.title {
+  @include font-source-sans(40px, $white, 700, 44px);
+}
+
+.table {
+
+    &_title {
+        padding: 20px 0;
+    }
+    &_header {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        gap: 10px;
+        @include font-source-sans(20px, $white, 500, 20px);
+    }
+}
+
+.add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include border(transparent, 0px, solid, 8px);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $red;
+    
+        &:hover {
+            background-color: $redHover;
+            color: $white;
+        }
+        &_logo {
+            transform: rotate(45deg);
+            width: 10px;
+            height: 10px;
+        }
+    }

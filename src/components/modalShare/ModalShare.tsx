@@ -1,10 +1,8 @@
 import React from 'react';
 import style from './ModalShare.module.scss';
-import logoCross from './../../assests/svg/logoCross.svg';
 import FilmInfoList from '../filmContent/filmInfo/filmInfoList/FilmInfoList';
 import { formatDurationFilm } from '../../hooks/helperFilm';
 import { TParamListMovie } from '../../type/type';
-import UIButton from '../UI/UIButton/UIButton';
 import logoFile from './../../assests/svg/logoFile.svg';
 import logoWhatsApp from './../../assests/svg/logoSocialWhatsApp.svg';
 import logoSocialTelegram from './../../assests/svg/logoSocialTelegram.svg';

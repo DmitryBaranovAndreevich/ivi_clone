@@ -151,3 +151,16 @@ export interface IFilmsList {
   FilmGenres?: TFilmGenres;
   PersonFilms?: TPersonFilms;
 }
+
+export type TFilmAdding = {
+  name: string;
+  originalName: string;
+  poster: string;
+  trailer: string;
+  mpaaRating: string;
+  rating: number;
+  ratingsNumber: number;
+  year: number;
+  duration: number;
+  description: string;
+};
