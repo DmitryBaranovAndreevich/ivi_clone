@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TNavigationLaptopTitle } from '../../../../type/type';
+import { TNavigationLaptopEnTitle, TNavigationLaptopTitle } from '../../../../type/type';
 import UIButton from '../../../UI/UIButton/UIButton';
 import style from './navigationMain.module.scss';
 import lightBackground from './../../../../assests/svg/lightBackground.svg';
 
 export type TNavigationMainItemProps = {
   href: string;
-  title: TNavigationLaptopTitle;
+  title: TNavigationLaptopTitle | TNavigationLaptopEnTitle;
   logo: string;
-  selectItem: TNavigationLaptopTitle | null;
-  setSelectItem: (title: TNavigationLaptopTitle) => void;
+  selectItem: TNavigationLaptopTitle | TNavigationLaptopEnTitle | null;
+  setSelectItem: (title: TNavigationLaptopTitle | TNavigationLaptopEnTitle) => void;
 };
 
 const NavigationMainItem: React.FC<TNavigationMainItemProps> = ({

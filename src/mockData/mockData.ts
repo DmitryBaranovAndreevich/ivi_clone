@@ -276,26 +276,31 @@ export const MOCK_NAVIGATION_LAPTOP: Array<TNavigationLaptop> = [
   {
     href: '/',
     title: 'Мой Иви',
+    enTitle: 'My ivi',
     logo: logoHome,
   },
   {
     href: '/movies',
     title: 'Каталог',
+    enTitle: 'Catalog',
     logo: logoFolder,
   },
   {
     href: '#',
     title: 'Поиск',
+    enTitle: 'Search',
     logo: logoSearch,
   },
   {
     href: '#',
     title: 'Профиль',
+    enTitle: 'Profile',
     logo: logoUser,
   },
   {
     href: '#',
     title: 'Еще',
+    enTitle: 'Else',
     logo: logoDot,
   },
 ];

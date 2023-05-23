@@ -1,12 +1,12 @@
 import React from 'react';
-import { TNavigationDesctopTitle } from '../../../../type/type';
+import { TNavigationDesctopEnTitle, TNavigationDesctopTitle } from '../../../../type/type';
 import UILink from '../../../UI/Link/UILink';
 import { TItemHovered } from '../../Header';
 import style from './navigationDesktop.module.scss';
 
 export type TNavigationDesktopItemProps = {
   href: string;
-  title: TNavigationDesctopTitle;
+  title: TNavigationDesctopTitle | TNavigationDesctopEnTitle;
   isExpand: boolean;
   setItemHovered: (isHover: TItemHovered) => void;
 };

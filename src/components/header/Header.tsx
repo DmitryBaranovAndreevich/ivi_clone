@@ -7,7 +7,6 @@ import logoBell from './../../assests/svg/logoBell.svg';
 import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
-import NavigationContainer from './navigation/NavigationContainer';
 import { TNavigationDesctopEnTitle, TNavigationDesctopTitle } from '../../type/type';
 import DropdownSubscribe from './dropdownSubscribe/DropdownSubscribe';
 import DropdownFilms from './dropdownFilms/DropdownFilms';
