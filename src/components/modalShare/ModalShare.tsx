@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './ModalShare.module.scss';
-import FilmInfoList from '../filmContent/filmInfo/filmInfoList/FilmInfoList';
+import FilmInfoList from '../filmContent/filmInfo/filmInfoWatchParams/filmInfoList/FilmInfoList';
 import { formatDurationFilm } from '../../hooks/helperFilm';
 import { TParamListMovie } from '../../type/type';
 import logoFile from './../../assests/svg/logoFile.svg';

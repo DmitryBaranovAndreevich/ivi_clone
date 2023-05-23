@@ -2,18 +2,19 @@
 @import '../../../commonStyles/variables/index.scss';
 @import '../../../commonStyles/fonts.scss';
 
+.desktop {
+  @media (max-width: $smallDesktop) {
+    display: none;
+  }
+}
+
 .info {
   width: 37.5%;
   display: inline-block;
-}
 
-.titleBlock {
-  margin: 8px 0 20px 0;
-  padding: 0 12px;
-
-  &_title {
-    @include font-source-sans(42px, $white, 700, 44px);
-    text-align: center;
+  @media (max-width: $smallDesktop) {
+    width: 100%;
+    display: block;
   }
 }
 

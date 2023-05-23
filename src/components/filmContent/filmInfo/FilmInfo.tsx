@@ -7,7 +7,9 @@ import FilmInfoStickers from './filmInfoStickers/FilmInfoStickers';
 import FilmInfoDescription from './filmInfoDescription/FilmInfoDescription';
 import FilmInfoRating from './filmInfoRating/FilmInfoRating';
 import { IActors, ICountries, IGenres } from '../../../type/TFilm';
-import FilmInfoList from './filmInfoList/FilmInfoList';
+import FilmInfoList from './filmInfoWatchParams/filmInfoList/FilmInfoList';
+import FilmInfoWatchParams from './filmInfoWatchParams/FilmInfoWatchParams';
+import FilmTitleBlock from './filmTitleBlock/FilmTitleBlock';
 
 type TFilmInfoProps = {
   name: string;
@@ -32,42 +34,19 @@ const FilmInfo: React.FC<TFilmInfoProps> = ({
   rating,
   description,
 }) => {
-  const [country] = useState(countries.length > 0 ? countries[0].name : '');
-  const paramsYear: TParamListMovie = {
-    title: String(year),
-    link: `/movies/${year}`,
-  };
-  const paramsDuration: TParamListMovie = {
-    title: formatDurationFilm(duration),
-  };
-  const paramsMpaaRating: TParamListMovie = {
-    title: mpaaRating,
-  };
-  const paramsCountry: TParamListMovie = {
-    title: country,
-    link: `/movies/${country}`,
-  };
-  const paramsGenre: Array<TParamListMovie> = genre.slice(0, 3).map((genre: IGenres) => ({
-    title: genre.name,
-    link: `/movies/${genre.englishName}`,
-  }));
-  const paramsQuality: TParamListMovie = {
-    title: 'FullHD',
-    type: 'likeButton',
-  };
-  const paramsLanguage: TParamListMovie = {
-    title: 'Рус',
-    icon: logoSound,
-  };
   return (
     <div className={style.info}>
-      <div className={style.titleBlock}>
-        <h2 className={style.titleBlock_title}>{name}</h2>
-      </div>
-      <div className={`${style.paramsBlock} ${style.block}`}>
-        <FilmInfoList paramsList={[paramsYear, paramsDuration, paramsMpaaRating]} />
-        <FilmInfoList paramsList={[paramsCountry, ...paramsGenre]} modify="withDot" />
-        <FilmInfoList paramsList={[paramsQuality, paramsLanguage]} />
+      <div className={style.desktop}>
+        <FilmTitleBlock name={name} />
+        <div className={`${style.paramsBlock} ${style.block}`}>
+          <FilmInfoWatchParams
+            year={year}
+            duration={duration}
+            mpaaRating={mpaaRating}
+            countries={countries}
+            genre={genre}
+          />
+        </div>
       </div>
       <div className={`${style.stickersBlock} ${style.block}`}>
         <FilmInfoStickers actors={actors} rating={rating} />

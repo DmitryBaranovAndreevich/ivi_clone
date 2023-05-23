@@ -8,6 +8,7 @@
     display: flex;
     gap: 24px;
     align-items: stretch;
+    overflow: scroll;
   }
 }
 
@@ -26,6 +27,7 @@
 
 .person {
   width: calc(100%/11);
+  min-width: 80px;
 }
 
 .button {

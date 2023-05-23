@@ -11,6 +11,7 @@ import ModalShare from '../../modalShare/ModalShare';
 import { useNavigate } from 'react-router-dom';
 import ModalTrailer from '../../modalTrailer/ModalTrailer';
 import { useTranslation } from 'react-i18next';
+import useAppMediaQuery from '../../../hooks/useAppMediaQuery';
 
 type TPlayerAddingProps = {
   poster: string;
@@ -26,6 +27,7 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
   const [isTrailerModal, setIsTrailerModal] = useState(false);
   const [isInBookmark, setIsInBookmark] = useState(false);
   const navigate = useNavigate();
+  const { isLaptop } = useAppMediaQuery();
   return (
     <div className={style.adding}>
       <GreyButton onClick={() => setIsTrailerModal(true)} addingClass={style.adding_btn}>
@@ -42,14 +44,16 @@ const PlayerAdding: React.FC<TPlayerAddingProps> = ({ poster, name, year, durati
       <GreyButton onClick={() => setIsShareModal(true)} addingClass={style.adding_btn}>
         <img className={style.logo} src={logoShare} alt="share" />
       </GreyButton>
-      <GreyButton onClick={() => navigate('/movies')} addingClass={style.adding_btn}>
-        <img
-          className={`${style.logo} ${style.logo_withText}`}
-          src={logoFolder}
-          alt="free movies"
-        />
-        {t('movie.freeMovies')}
-      </GreyButton>
+      {!isLaptop && (
+        <GreyButton onClick={() => navigate('/movies')} addingClass={style.adding_btn}>
+          <img
+            className={`${style.logo} ${style.logo_withText}`}
+            src={logoFolder}
+            alt="free movies"
+          />
+          {t('movie.freeMovies')}
+        </GreyButton>
+      )}
       {isShareModal && (
         <UIModal>
           <ModalShare

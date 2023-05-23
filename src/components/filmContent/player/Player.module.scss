@@ -3,57 +3,74 @@
 @import '../../../commonStyles/fonts.scss';
 
 .player {
-    width: 62.5%;
-    padding-right: 32px;
-    position: sticky;
-    top: 32px;
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    // padding-right: 32px;
+  width: 62.5%;
+  padding-right: 32px;
+  position: sticky;
+  top: 32px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+
+  @media (max-width: $smallDesktop) {
+    width: 100%;
+    display: block;
+    position: static;
+    padding-right: 0;
+  }
 }
 
 .playerBlock {
-    padding: 0 12px;
+  padding: 0 12px;
 }
 
 .video {
-    height: 405px;
-    // background-color: grey;
+  height: 405px;
 }
 
 .iframe {
-    border: none;
-    width: 100%;
-    height: 100%;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 .adding {
-    display: flex;
-    margin-top: 24px;
-    padding: 0 12px;
+  display: flex;
+  margin-top: 24px;
+  padding: 0 12px;
 
-    &_btn {
-        margin-right: 16px;
-        margin-bottom: 16px;
+  @media (max-width: $tablets) {
+    justify-content: center;
+  }
 
-        &:last-child {
-            margin-left: auto;
-            margin-right: 0;
-        }
+  &_btn {
+    margin-right: 16px;
+    margin-bottom: 16px;
 
-        &:hover .logo {
-            opacity: 1;
-        }
+    @media (max-width: $tablets) {
+      position: static;
     }
+
+    &:last-child {
+      margin-left: auto;
+      margin-right: 0;
+
+      @media (max-width: $tablets) {
+        margin-left: 0;
+      }
+    }
+
+    &:hover .logo {
+      opacity: 1;
+    }
+  }
 }
 
 .logo {
-    width: 16px;
-    height: 16px;
-    opacity: 0.7;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
 
-    &_withText {
-        margin-right: 6px;
-    }
+  &_withText {
+    margin-right: 6px;
+  }
 }
