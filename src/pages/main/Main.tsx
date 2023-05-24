@@ -25,7 +25,7 @@ const Main = () => {
         <p className={styles.error}>{(error as Error).error}</p>
       ) : (
         <>
-          <NavLink to="/admin/films">ссылка</NavLink>
+          <NavLink to="/admin">ссылка</NavLink>
           <Slider items={data as IFilm[]} />
           <div className={styles.wrapper}>
             <MainPageSlider genre={'fantasy'} size={'medium'} title={t('genre.fantasy')} />

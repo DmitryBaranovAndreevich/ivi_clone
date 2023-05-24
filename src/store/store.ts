@@ -1,3 +1,5 @@
+import addGenreSlice from './reducers/AddGenreSlice';
+import addFilmsSlice from './reducers/AddFilmSlice';
 import { searchApi } from './api/searchApi';
 import reviewReducer from './reducers/ReviewSlice';
 import searchReducer from './reducers/SearchSlice';
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
   moviesFilterReduser,
   searchReducer,
   userAuthReduser,
+  addFilmsSlice,
+  addGenreSlice,
   [appApi.reducerPath]: appApi.reducer,
   [filmApi.reducerPath]: filmApi.reducer,
   [personApi.reducerPath]: personApi.reducer,

@@ -21,7 +21,6 @@ const AdminFilmItem: React.FC<TAdminFilmItemType> = ({
   filmOriginalName,
   refetch,
 }) => {
-  // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(filmId) });
   const navigate = useNavigate();
   const [deleteFilm, {}] = useDeleteFilmMutation();
   const onclickDelete = async () => {

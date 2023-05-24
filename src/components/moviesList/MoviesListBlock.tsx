@@ -7,9 +7,8 @@ import MoviesList from './MoviesList';
 import style from './MoviesListBlock.module.scss';
 
 const MoviesListBlock = () => {
-  debugger;
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(2);
+  const [pageSize] = useState(10);
   const indexShowElement = useMemo(() => {
     return pageSize * currentPage;
   }, [pageSize, currentPage]);

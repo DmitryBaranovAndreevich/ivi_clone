@@ -6,6 +6,7 @@ import logoArrow from './../../assests/svg/logoArrow.svg';
 import Spinner from '../../components/UI/spinner/Spinner';
 import WatchExtraAside from '../../components/watchExtraAside/WatchExtraAside';
 import WatchExtraContent from '../../components/watchExtraContent/WatchExtraContent';
+import LinkBack from '../../components/UI/linkStepBack/LinkBack';
 
 const WatchExtra = () => {
   const params = useParams();
@@ -21,10 +22,7 @@ const WatchExtra = () => {
   if (!film) return <div>Фильм не найден!</div>;
   return (
     <div className={style.container}>
-      <Link className={style.return} to={`/watch/${params.id}`}>
-        <img className={style.return_logo} src={logoArrow} alt="arrow" />
-        <div className={style.return_text}>К фильму</div>
-      </Link>
+      <LinkBack href={`/watch/${params.id}`} text="К фильму" />
       <WatchExtraContent
         choosenPage={params.page ? params.page : ''}
         filmPoster={film.poster}

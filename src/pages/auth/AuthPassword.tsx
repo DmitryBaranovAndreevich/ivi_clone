@@ -61,7 +61,6 @@ const AuthPassword = () => {
       })
       .then(({ payload }) => {
         if (payload) {
-          debugger;
           setCookie('token', (payload as { token: string }).token, {
             expires: 1000 * 60 * 60 * 24 * 30,
           });

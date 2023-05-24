@@ -1,0 +1,25 @@
+@import '../../../commonStyles/mixins/index.scss';
+@import '../../../commonStyles/variables/index.scss';
+@import '../../../commonStyles/fonts.scss';
+
+.return {
+    @include font-source-sans(15px, $white, 500, 20px);
+    margin-left: 8px;
+    text-decoration: none;
+    align-self: center;
+    position: absolute;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0.7;
+    @include transition(0s, $duration-small, ease-out, $properties: opacity);
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &_logo {
+        width: 7px;
+    }
+}

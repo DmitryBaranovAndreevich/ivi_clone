@@ -33,7 +33,6 @@ export const adminApi = createApi({
         };
       },
       transformResponse: (response: IFilm) => {
-        debugger;
         return response.id;
       },
     }),

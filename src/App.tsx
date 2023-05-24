@@ -22,6 +22,7 @@ import AdminGenres from './pages/admin/adminGenres/AdminGenres';
 import AdminFilmForm from './components/admin/adminFilmForm/AdminFilmEdit';
 import AdminFilmsAdd from './pages/admin/adminFilmsAdd/AdminFilmsAdd';
 import AdminGenresAdd from './pages/admin/adminGenresAdd/AdminGenresAdd';
+import Admin from './pages/admin/Admin';
 
 function App() {
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
@@ -56,6 +57,7 @@ function App() {
             path="/admin"
             element={<ProtectedRoute user={!isRegister} redirectPath={'/profile/email'} />}
           >
+            <Route path="" element={<Admin />}></Route>
             <Route path="films" element={<AdminFilms />}></Route>
             <Route path="films/edit/:id" element={<AdminFilmForm />} />
             <Route path="films/add/:method?" element={<AdminFilmsAdd />} />
