@@ -28,6 +28,7 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
   const { treeReviews } = useAppSelector((state) => state.reviewReducer);
   useEffect(() => {
     const treeReviews = makeTreeReviews(film?.reviews ?? []);
+    debugger;
     dispatch(setTreeReviews({ treeReviews }));
   }, [film?.reviews, dispatch, setTreeReviews]);
   const reviewsBlock = useMemo((): ReactNode => {

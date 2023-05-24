@@ -13,12 +13,12 @@ export type TKindSort = {
   href: string;
 };
 
-type TMoviesSortInitialState = {
+export type TMoviesSortInitialState = {
   kindsSort: Array<TKindSort>;
   choosenSort: TKindSort;
 };
 
-const moviesSortInitialState: TMoviesSortInitialState = {
+export const moviesSortInitialState: TMoviesSortInitialState = {
   kindsSort: [
     {
       title: 'По количеству оценок',

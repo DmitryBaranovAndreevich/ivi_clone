@@ -7,7 +7,7 @@ export type TTreeReviews = {
   childrenReviews?: Array<TTreeReviews>;
 };
 
-type TReviewSliceInitialState = {
+export type TReviewSliceInitialState = {
   treeReviews: Array<TTreeReviews>;
   reviews: {
     review?: IReviews;
