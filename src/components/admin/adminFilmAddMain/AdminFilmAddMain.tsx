@@ -21,6 +21,13 @@ const AdminFilmAddMain = () => {
             href={'/admin/films/add/self'}
           />
         </li>
+        <li className={style.item}>
+          <UILink
+            addingClass={style.link}
+            title={'Самостоятельное добавление'}
+            href={'/admin/films/add/self'}
+          />
+        </li>
       </ul>
     </div>
   );

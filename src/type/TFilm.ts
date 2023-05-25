@@ -115,7 +115,7 @@ export interface IFilm {
   poster: string;
   trailer: string;
   mpaaRating: string;
-  rating: number;
+  rating: string;
   ratingsNumber: number;
   year: number;
   duration: number;

@@ -13,7 +13,6 @@ import FilmAllDevices from '../../components/filmDevices/FilmAllDevices';
 const Watch = () => {
   const params = useParams();
   const { data: film, isLoading } = useGetOneFilmQuery({ id: params.id });
-  // const film: IFilm = films;
   if (isLoading) {
     return (
       <div className="spinner">

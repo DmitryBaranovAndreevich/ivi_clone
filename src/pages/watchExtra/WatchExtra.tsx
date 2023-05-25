@@ -35,7 +35,7 @@ const WatchExtra = () => {
         filmId={film.id}
         poster={film.poster}
         filmName={film.name}
-        ratingsNumber={film.ratingsNumber}
+        rating={film.rating}
         year={film.year}
         country={film.countries.length > 0 ? film.countries[0].name : ''}
         genre={film.countries.length > 0 ? film.genres[0].name : ''}

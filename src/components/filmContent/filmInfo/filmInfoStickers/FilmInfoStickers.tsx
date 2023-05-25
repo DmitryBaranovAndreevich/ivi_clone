@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 type TFilmInfoStickersProps = {
   actors: Array<IActors>;
-  rating: number;
+  rating: string;
 };
 
 const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) => {

@@ -4,7 +4,6 @@ import UILink from '../Link/UILink';
 import style from './UIList.module.scss';
 
 type TUIListProps = {
-  // title: string;
   listItems: Array<TMockObj>;
 };
 

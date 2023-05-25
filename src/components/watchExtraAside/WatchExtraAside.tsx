@@ -10,7 +10,7 @@ type TWatchExtraAsideProps = {
   filmId: number;
   poster: string;
   filmName: string;
-  ratingsNumber: number;
+  rating: string;
   year: number;
   country: string;
   genre: string;
@@ -21,7 +21,7 @@ const WatchExtraAside: React.FC<TWatchExtraAsideProps> = ({
   filmId,
   poster,
   filmName,
-  ratingsNumber,
+  rating,
   year,
   country,
   genre,
@@ -35,7 +35,7 @@ const WatchExtraAside: React.FC<TWatchExtraAsideProps> = ({
         </Link>
       </div>
       <div className={style.textBlock}>
-        <CardFilmRating ratingsNumber={ratingsNumber} />
+        <CardFilmRating rating={rating} />
         <CardFilmInfo year={year} country={country} genre={genre} />
         <CardFilmDuration>
           <img className={style.duration_logo} src={logoClock} alt="logoClock" />

@@ -1,6 +1,5 @@
 import { Field, Formik, Form } from 'formik';
-import React, { useMemo, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import RedButton from '../../UI/redButton/RedButton';
 import AdminInput from '../adminFilmForm/adminInput/AdminInput';
 import * as Yup from 'yup';
@@ -10,24 +9,17 @@ import Spinner from '../../UI/spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
 import AdminModal from '../adminModal/AdminModal';
 
-const FormSchema = Yup.object().shape({
-  id: Yup.number().required('Required').positive('Только положительное число'),
-});
+// const FormSchema = Yup.object().shape({
+//   id: Yup.number().required('Required').positive('Только положительное число'),
+// });
 
 const AdminFilmAddById: React.FC = () => {
   const navigate = useNavigate();
   const [skipAdding, setSkipAdding] = useState(true);
   const [filmId, setfFilmId] = useState('');
-  const {
-    error: errorAdding,
-    isSuccess,
-    isError,
-    isLoading,
-  } = useAddFilmByIdQuery(
+  const { isSuccess, isError, isLoading } = useAddFilmByIdQuery(
     { id: filmId },
-    {
-      skip: skipAdding,
-    }
+    { skip: skipAdding }
   );
   const onsubmit = (values: { id: number }) => {
     setSkipAdding(false);
@@ -57,10 +49,8 @@ const AdminFilmAddById: React.FC = () => {
         initialValues={{
           id: 0,
         }}
-        validationSchema={FormSchema}
-        onSubmit={(values) => {
-          onsubmit(values);
-        }}
+        // validationSchema={FormSchema}
+        onSubmit={(values) => onsubmit(values)}
       >
         {({ values }) => {
           return (

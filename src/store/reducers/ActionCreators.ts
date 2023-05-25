@@ -51,7 +51,6 @@ export const addFilm = createAsyncThunk(
           authorization: `Bearer ${getCookie('token')}`,
         },
       });
-      debugger;
       return res.data.id;
     } catch (e) {
       return thunkAPI.rejectWithValue('Ошибка');

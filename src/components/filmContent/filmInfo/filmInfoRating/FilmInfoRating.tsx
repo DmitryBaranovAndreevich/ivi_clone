@@ -8,7 +8,7 @@ import style from './FilmInfoRating.module.scss';
 import { useTranslation } from 'react-i18next';
 
 type TFilmInfoDescriptionProps = {
-  rating: number;
+  rating: string;
 };
 
 const FilmInfoRating: React.FC<TFilmInfoDescriptionProps> = ({ rating }) => {

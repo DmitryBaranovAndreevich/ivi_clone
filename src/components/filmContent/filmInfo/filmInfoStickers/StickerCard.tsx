@@ -5,7 +5,7 @@ import style from './FilmInfoStickers.module.scss';
 type TStickerCardProps = {
   type: 'actor' | 'rating';
   caption: string;
-  rating?: number;
+  rating?: string;
   avatar?: string;
   hover: string | null;
 };

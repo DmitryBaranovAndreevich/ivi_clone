@@ -19,7 +19,7 @@ type TFilmInfoProps = {
   countries: Array<ICountries>;
   genre: Array<IGenres>;
   actors: Array<IActors>;
-  rating: number;
+  rating: string;
   description: string;
 };
 
