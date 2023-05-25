@@ -24,14 +24,17 @@ export const adminApi = createApi({
         };
       },
     }),
-    addFilmSelf: build.mutation<IFilm[], { filmData: TFilmAdding }>({
+    addFilmSelf: build.mutation<number, { filmData: TFilmAdding }>({
       query: ({ filmData }) => {
-        debugger;
         return {
           url: `/films`,
           method: 'POST',
           body: filmData,
         };
+      },
+      transformResponse: (response: IFilm) => {
+        debugger;
+        return response.id;
       },
     }),
     deleteFilm: build.mutation<IFilm[], { id: string | undefined }>({

@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
-import { TParamListMovie } from '../../../../type/type';
-import UILink from '../../../UI/Link/UILink';
+import { TParamListMovie } from '../../../../../type/type';
+import UILink from '../../../../UI/Link/UILink';
 import style from './FilmInfoList.module.scss';
 
 type TFilmInfoListProps = {

@@ -19,6 +19,10 @@
   z-index: 100;
   position: relative;
 
+  @media (max-width: $tablets) {
+    justify-content: space-around;
+  }
+
   &_block {
     display: flex;
     align-items: center;
@@ -31,6 +35,13 @@
     justify-content: flex-end;
     margin-left: 16px;
     margin-right: 16px;
+
+    @media (max-width: $tablets) {
+      flex-grow: 0;
+      justify-content: space-around;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   &_button {
@@ -40,10 +51,22 @@
       height: 32px;
       padding: 7px 11px;
     }
+
+    @media (max-width: $tablets) {
+      margin-right: 10px;
+    }
+
+    @media (max-width: $phones) {
+      margin-right: 0;
+    }
   }
 
   &_search {
     opacity: 0.5;
+
+    @media (max-width: $smallDesktop) {
+      display: none;
+    }
 
     &:hover {
       opacity: 1;
@@ -76,6 +99,10 @@
         opacity: 1;
       }
     }
+
+    @media (max-width: $tablets) {
+      display: none;
+    }
   }
 
   &_avatar {
@@ -94,6 +121,10 @@
         height: 48px;
         padding: 12px;
       }
+    }
+
+    @media (max-width: $tablets) {
+      display: none;
     }
   }
 }
@@ -134,6 +165,12 @@
 
 .label {
   color: $white;
-  padding: 5px 25px;
+  padding: 5px 10px;
   background: $buttonGreyHover;
+}
+
+.lang {
+  @media (max-width: $phones) {
+    display: none;
+  }
 }

@@ -6,6 +6,10 @@
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
+
+  @media (max-width: $smallDesktop) {
+    display: none;
+  }
 }
 
 .content {
@@ -32,11 +36,6 @@
     width: 50%;
   }
 }
-
-// .columnBottom {
-//   padding: 0 12px;
-//   width: 50%;
-// }
 
 .title {
   @include font-source-sans(15px, $white, 700, 20px);

@@ -14,11 +14,13 @@ export type TNavigationDesctop = {
 };
 
 export type TNavigationLaptopTitle = 'Мой Иви' | 'Каталог' | 'Поиск' | 'Профиль' | 'Еще';
+export type TNavigationLaptopEnTitle = 'My ivi' | 'Catalog' | 'Search' | 'Profile' | 'Else';
 
 export type TNavigationLaptop = {
   href: string;
   title: TNavigationLaptopTitle;
-  isExpand: boolean;
+  enTitle: TNavigationLaptopEnTitle;
+  logo: string;
 };
 
 export type TGenreCountriesYears = {

@@ -61,8 +61,8 @@ const FormSchema = Yup.object().shape({
 const AdminFilmAddSelf: React.FC = ({}) => {
   const navigate = useNavigate();
   const { data: genres } = useGetGenresQuery('');
-  const [addFilmSelf, { isSuccess }] = useAddFilmSelfMutation();
-  const [addGenreToFilm, {}] = useAddGenreToFilmMutation();
+  const [addFilmSelf, { isSuccess, error: errorAddFilm, data: filmId }] = useAddFilmSelfMutation();
+  const [addGenreToFilm, { error: errorAddGenreToFilm }] = useAddGenreToFilmMutation();
   const checkboxGenre = useMemo(() => {
     return genres?.map((genre: TGenreCountriesYears) => {
       return (
@@ -101,13 +101,22 @@ const AdminFilmAddSelf: React.FC = ({}) => {
       duration: values.duration,
       description: values.description,
     };
+    // debugger;
     await addFilmSelf({ filmData: filmObj });
-    console.log('dg' + isSuccess);
-    // if (isSuccess) {}
-    values.genres.map((genre: string) => {
-      // addGenreToFilm({ id: filmId, genre });
-    });
+    // debugger;
+    // console.log(data);
+    // console.log(error);
+    if (!errorAddFilm) {
+      // debugger;
+      // console.log(filmId);
+      values.genres.map((genre: string) => {
+        debugger;
+        addGenreToFilm({ id: String(filmId), genre });
+      });
+    }
   };
+  // console.log(film);
+  // console.log(filmId);
   return (
     <div>
       <Formik

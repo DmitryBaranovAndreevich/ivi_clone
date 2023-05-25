@@ -1,4 +1,9 @@
 import { TNavigationDesctop, TNavigationLaptop, TPersons } from '../type/type';
+import logoHome from './../assests/svg/logoHome.svg';
+import logoFolder from './../assests/svg/logoFolder.svg';
+import logoSearch from './../assests/svg/logoSearch.svg';
+import logoUser from './../assests/svg/logoUser.svg';
+import logoDot from './../assests/svg/logoDot.svg';
 
 export const MOCK_GENRES = [
   {
@@ -269,29 +274,34 @@ export const MOCK_NAVIGATION_DESKTOP: Array<TNavigationDesctop> = [
 
 export const MOCK_NAVIGATION_LAPTOP: Array<TNavigationLaptop> = [
   {
-    href: '#',
+    href: '/',
     title: 'Мой Иви',
-    isExpand: false,
+    enTitle: 'My ivi',
+    logo: logoHome,
   },
   {
-    href: '#',
+    href: '/movies',
     title: 'Каталог',
-    isExpand: false,
+    enTitle: 'Catalog',
+    logo: logoFolder,
   },
   {
     href: '#',
     title: 'Поиск',
-    isExpand: false,
+    enTitle: 'Search',
+    logo: logoSearch,
   },
   {
     href: '#',
     title: 'Профиль',
-    isExpand: false,
+    enTitle: 'Profile',
+    logo: logoUser,
   },
   {
     href: '#',
     title: 'Еще',
-    isExpand: false,
+    enTitle: 'Else',
+    logo: logoDot,
   },
 ];
 

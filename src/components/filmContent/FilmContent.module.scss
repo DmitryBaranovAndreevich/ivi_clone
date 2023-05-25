@@ -1,3 +1,21 @@
 @import '../../commonStyles/mixins/index.scss';
 @import '../../commonStyles/variables/index.scss';
 @import '../../commonStyles/fonts.scss';
+
+.filmContent {
+
+}
+
+.watch {
+    display: none;
+    @media (max-width: $smallDesktop) {
+        display: flex;
+        padding: 0 12px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      @media (max-width: $laptop) {
+        align-items: center;
+      }
+}

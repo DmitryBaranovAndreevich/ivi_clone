@@ -13,6 +13,11 @@
     justify-content: space-around;
     margin-left: -6px;
     margin-right: -6px;
+
+    @media (max-width: $tablets) {
+      flex-direction: column;
+      gap: 12px;
+    }
   }
 }
 
@@ -21,12 +26,24 @@
   justify-content: space-around;
   margin-left: -6px;
   margin-right: -6px;
+
+  @media (max-width: $tablets) {
+    margin-bottom: 10px;
+}
 }
 
 .dropdown {
   &_genre {
     width: 630px;
     overflow: hidden;
+
+    @media (max-width: $laptop) {
+      width: 500px;
+    }
+
+    // @media (max-width: $tablets) {
+    //   width: 100%;
+    // }
   }
 
   &_country {

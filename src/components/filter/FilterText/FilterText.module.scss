@@ -11,6 +11,10 @@
     margin: 10px;
     position: relative;
 
+    @media (max-width: $tablets) {
+        margin: 0;
+    }
+
     &_block {
         position: relative;
         margin: 10px;
