@@ -12,7 +12,7 @@ import Spinner from '../UI/spinner/Spinner';
 import style from './WatchPerson.module.scss';
 
 type TWatchPersonTypeProps = {
-  filmId: number;
+  filmId?: number;
   film: IFilm;
   typePerson: TPersonName;
   typePersonEnglish: TPersonEnglishName;
@@ -28,7 +28,7 @@ const WatchPersonType: React.FC<TWatchPersonTypeProps> = ({
   const personsBlock: Array<ReactNode> = useMemo((): Array<ReactNode> => {
     return film[typePersonEnglish].map((person) => {
       return (
-        <li className={style.item} key={person.id}>
+        <li role="WatchPersonType-item" className={style.item} key={person.id}>
           <PersonItem
             personId={person.id}
             role={''}

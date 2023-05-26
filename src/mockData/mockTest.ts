@@ -1,3 +1,6 @@
+import { IFilm } from './../type/TFilm';
+import { TPersonEnglishName, TPersonName } from '../type/type';
+
 export const textContent = 'test';
 
 export const yearContent = 2020;
@@ -8,7 +11,11 @@ export const genreContent = 'Комедия';
 
 export const ratingContent = '8.9';
 
-export const mockFilmTest = {
+export const typePersonNameTest: TPersonName = 'Актёры';
+
+export const typePersonEnglishName: TPersonEnglishName = 'actors';
+
+export const mockFilmTest: IFilm = {
   id: 1,
   name: '1+1',
   originalName: 'Intouchables',
@@ -21,8 +28,6 @@ export const mockFilmTest = {
   duration: 112,
   description:
     'Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений.',
-  createdAt: '2023-05-25T13:31:04.898Z',
-  updatedAt: '2023-05-25T13:31:04.898Z',
   directors: [
     {
       id: 1,

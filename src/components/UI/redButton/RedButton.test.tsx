@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { renderWithProviders } from '../../../../utils/test-utils';
-import RedButton from '../../../UI/redButton/RedButton';
+import { renderWithProviders } from '../../../utils/test-utils';
+import RedButton from './RedButton';
 
 test('if load equal false text on button should be show', () => {
   renderWithProviders(<RedButton text={'test'} isLoad={false} />);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { fireEvent, screen } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import AdminFilmAddById from '../../../admin/adminFilmAddById/AdminFilmAddById';
-import { renderWithProviders } from '../../../../utils/test-utils';
-import { mockFilmTest } from '../../../../mockData/mockTest';
-import { useAddFilmByIdQuery } from '../../../../store/api/adminApi';
+import AdminFilmAddById from './AdminFilmAddById';
+import { renderWithProviders } from '../../../utils/test-utils';
+import { mockFilmTest } from '../../../mockData/mockTest';
+import { useAddFilmByIdQuery } from '../../../store/api/adminApi';
 // import { useAddFilmByIdQuery } from '../../../../store/api/adminApi';
 
 const mockedUsedNavigate = jest.fn();
@@ -32,7 +32,9 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test('qqq', async () => {
-  renderWithProviders(<AdminFilmAddById />);
+  act(() => {
+    renderWithProviders(<AdminFilmAddById />);
+  });
 
   expect(screen.getByText(/Добавить/i)).toBeInTheDocument();
   expect(screen.queryByText(/Фильм успешно добавлен/i)).not.toBeInTheDocument();

@@ -38,7 +38,7 @@ const FormSchema = Yup.object().shape({
     .min(3, 'Минимальная длина 3 символов')
     .max(50, 'Максимальная длина 50 символов')
     .required('Required'),
-  // genres: Yup.array().min(1, 'Required'),
+  genres: Yup.array().min(1, 'Required'),
   poster: Yup.string()
     .required('Required')
     .matches(/(\.png|\.jpeg)$/, 'Формат png или jpeg'),

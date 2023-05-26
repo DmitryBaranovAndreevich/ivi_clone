@@ -8,7 +8,7 @@ import style from './PersonItem.module.scss';
 type TPersonItemProps = {
   personId: number;
   role?: string;
-  addingClass: string;
+  addingClass?: string;
   isShowCount?: boolean;
 };
 
