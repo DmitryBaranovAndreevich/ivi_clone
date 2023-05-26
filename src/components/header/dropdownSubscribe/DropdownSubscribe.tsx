@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './DropdownSubscribe.module.scss';
-import { useAppSelector } from '../../../hooks/redux';
-import { useGetCountriesQuery, useGetGenresQuery } from '../../../store/api/appApi';
+import { appApi } from '../../../store/api/appApi';
 import DropdownSubscribeCard from './DropdownSubscribeCard';
 import logoCamera from './../../../assests/svg/logoCamera.svg';
 import logoFolderWithPlus from './../../../assests/svg/logoFolderWithPlus.svg';
@@ -11,10 +10,13 @@ import logoDownload from './../../../assests/svg/logoDownload.svg';
 import ButtonWithHoverBgc from '../../UI/buttonWithHoverBgc/ButtonWithHoverBgc';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import InfiniteSlider from '../../infiniteSlider/InfiniteSlider';
+import { IFilm } from '../../../type/TFilm';
 
 const DropdownSubscribe: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { data } = appApi.useGetAllFilmsQuery('');
   return (
     <>
       <div className={style.content}>
@@ -41,7 +43,11 @@ const DropdownSubscribe: React.FC = () => {
         </div>
       </div>
       <div className={style.content}>
-        <div className={style.slider}></div>
+        <div className={style.slider}>
+          <InfiniteSlider items={data as IFilm[]} />
+          <InfiniteSlider items={data as IFilm[]} rtl={true} />
+          <InfiniteSlider items={data as IFilm[]} />
+        </div>
         <ButtonWithHoverBgc
           title={t('dropdown.otherSubscriptions')}
           addingClass={style.button}
