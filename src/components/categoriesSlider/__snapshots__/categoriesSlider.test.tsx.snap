@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тестим компонент слайдера большого размера Тест слайдера 1`] = `
+<div>
+  <div>
+    <div>
+      <div
+        className="undefined undefined"
+        onClick={[Function]}
+      >
+        <svg
+          fill="none"
+          height="68"
+          viewBox="0 0 10 18"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 17L8 9L1 0.999999"
+            opacity="0.75"
+            stroke="#C7C3C3"
+            strokeWidth="2"
+          />
+        </svg>
+      </div>
+      <div
+        className="undefined undefined"
+        onClick={[Function]}
+      >
+        <svg
+          fill="none"
+          height="58"
+          viewBox="0 0 10 18"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 1L2 9L9 17"
+            stroke="#C7C3C3"
+            strokeWidth="2"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="undefined keen-slider"
+    />
+  </div>
+</div>
+`;

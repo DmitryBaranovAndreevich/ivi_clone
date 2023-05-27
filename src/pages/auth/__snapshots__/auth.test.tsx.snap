@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тестим страницу авторизации Страница authEmail рендерится без ошибок 1`] = `
+<div>
+  <div>
+    <p>
+      auth.register
+    </p>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <p>
+        X
+      </p>
+    </a>
+  </div>
+  <a
+    href="/auth/email"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <p>
+      login.register
+    </p>
+  </a>
+  <div
+    style={
+      {
+        "--size": "10%",
+      }
+    }
+  />
+  <form>
+    <p
+      style={{}}
+    >
+      <span>
+        auth.register1
+      </span>
+       
+      login.use
+    </p>
+    <div>
+      <span>
+        auth.emailEnt
+      </span>
+      <input
+        name="email"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <span>
+        auth.nameEnt
+      </span>
+      <input
+        name="first_name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <span>
+        auth.secNameEnt
+      </span>
+      <input
+        name="second_name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="undefined undefined"
+      onClick={[Function]}
+      type="submit"
+    >
+      login.continue
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Тестим страницу авторизации Страница authFinish рендерится без ошибок 1`] = `
+<div>
+  <div>
+    <p>
+      auth.congratulations
+    </p>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <p>
+        X
+      </p>
+    </a>
+  </div>
+  <a
+    href="/auth/email"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <p>
+      login.register
+    </p>
+  </a>
+  <div
+    style={
+      {
+        "--size": "100%",
+      }
+    }
+  />
+  <p
+    style={{}}
+  >
+    auth.register1
+  </p>
+  <div
+    className="undefined undefined undefined"
+  >
+    <p
+      style={
+        {
+          "backgroundColor": "lightgreen",
+          "color": "black",
+        }
+      }
+    >
+      login.finish
+    </p>
+  </div>
+</div>
+`;

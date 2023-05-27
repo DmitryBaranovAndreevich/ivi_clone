@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тестим страницу входа Страница loginEmail рендерится без ошибок 1`] = `
+<div>
+  <div
+    className="{spinnerStyle.spinner} undefined"
+  >
+    <i
+      className="undefined undefined"
+    />
+  </div>
+</div>
+`;
