@@ -16,6 +16,9 @@
     border-color: $redHover;
   }
 
+  &_loader_active {
+    color: transparent;
+  }
 }
 
 .spinner {
