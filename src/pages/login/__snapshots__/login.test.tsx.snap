@@ -57,7 +57,7 @@ exports[`Тестим страницу входа Страница loginEmail р
       />
     </div>
     <button
-      className="undefined undefined"
+      className="undefined "
       onClick={[Function]}
       type="submit"
     >
