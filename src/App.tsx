@@ -70,9 +70,9 @@ function App() {
           <Route
             path="/person/:id"
             element={
-              <ProtectedRoute user={!isRegister} redirectPath={'/profile/email'}>
-                <Actor />
-              </ProtectedRoute>
+              // <ProtectedRoute user={!isRegister} redirectPath={'/profile/email'}>
+              <Actor />
+              // </ProtectedRoute>
             }
           />
           <Route path="*" element={<NotFoundPage />} />

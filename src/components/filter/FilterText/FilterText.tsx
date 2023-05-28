@@ -41,9 +41,10 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
             const queryParams = new URLSearchParams(location.search);
             queryParams.delete('person');
             queryParams.set('person', person.name);
-            queryParams.delete('person');
-            queryParams.set('person', person.name);
+            queryParams.delete(nameInitialValue);
+            queryParams.set(nameInitialValue, person.name);
             setSearchParams(queryParams);
+            setIsOpen(false);
           }}
           className={style.person}
         >
@@ -106,7 +107,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
         )}
       </Formik>
       <div>
-        {isOpen && (
+        {isOpen && personsBlock && personsBlock.length > 0 && (
           <div className={style.dropdown} ref={dropdownElement}>
             {personsBlock}
           </div>
