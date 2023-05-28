@@ -50,8 +50,6 @@ const LoginPassword = () => {
         debugger;
         const role = getCookie('role');
         const role1 = getCookie('Role');
-        console.log(role);
-        console.log(role1);
         if (typeof payload !== 'string') {
           setCookie('token', (payload as { refreshToken: string }).refreshToken, {
             expires: 1000 * 60 * 60 * 24 * 30,

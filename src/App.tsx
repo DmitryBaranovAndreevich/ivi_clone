@@ -26,7 +26,7 @@ import Admin from './pages/admin/Admin';
 
 function App() {
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
-  // console.log(isRegister);
+
   return (
     <div className={styles.container}>
       <Routes>

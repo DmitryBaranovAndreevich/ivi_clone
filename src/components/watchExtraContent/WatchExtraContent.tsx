@@ -28,7 +28,7 @@ const WatchExtraContent: React.FC<TWatchExtraContentProps> = ({
     <div className={style.content}>
       <WatchExtraTitle filmName={filmName} />
       <WatchNavigation filmId={filmId} countReviews={reviews.length} choosenPage={choosenPage} />
-      {choosenPage === 'person' && <WatchPerson filmId={filmId} />}
+      {choosenPage === 'persons' && <WatchPerson filmId={filmId} />}
       {choosenPage === 'reviews' && <WatchReviews filmId={filmId} reviews={reviews} />}
       {choosenPage === 'trailers' && (
         <WatchTrailer filmId={filmId} filmPoster={filmPoster} filmTrailer={filmTrailer} />

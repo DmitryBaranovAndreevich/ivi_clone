@@ -46,21 +46,20 @@
     }
 
     & .reviewsBlock {
-        &:nth-child(2) {
             width: 90%;
             margin-left: 10%;
         }
     
-        &:nth-child(3) {
-            width: 80%;
-            margin-left: 20%;
-        }
+    //     &:nth-child(3) {
+            // width: 80%;
+            // margin-left: 20%;
+    //     }
     
-        &:nth-child(4) {
-            width: 70%;
-            margin-left: 30%;
-        }
-    }
+    //     &:nth-child(4) {
+    //         width: 70%;
+    //         margin-left: 30%;
+    //     }
+    // }
 }
 
 .childReviews {
@@ -110,6 +109,8 @@
 
     &_text {
         @include font-source-sans(15px, $textColorLight, 400, 22px);
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

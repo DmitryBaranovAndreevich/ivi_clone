@@ -5,6 +5,7 @@ import { useClickOutside } from '../../../hooks/useClickOutside';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetPersonByNameQuery } from '../../../store/api/searchApi';
 import IPerson from '../../../type/TPerson';
+import FindPerson from '../../modalSearch/FindPerson';
 
 type TFilterPlankProps = {
   title: string;
@@ -36,13 +37,21 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
       return (
         <button
           key={person.id}
-          onClick={() => setSearchParams(`${searchParams}&person=${person.name}`)}
+          onClick={() => {
+            const queryParams = new URLSearchParams(location.search);
+            queryParams.delete('person');
+            queryParams.set('person', person.name);
+            queryParams.delete('person');
+            queryParams.set('person', person.name);
+            setSearchParams(queryParams);
+          }}
+          className={style.person}
         >
-          {person.name}
+          <FindPerson namePerson={person.name} />
         </button>
       );
     });
-  }, [persons]);
+  }, [persons, location.search, setSearchParams]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onChange = (e: ChangeEvent<HTMLInputElement>, values: any): void => {
     const queryParams = new URLSearchParams(location.search);

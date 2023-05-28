@@ -11,7 +11,7 @@ const WatchExtraTitle: React.FC<TWatchExtraTitleProps> = ({ filmName }) => {
   const [titleString, setTitleString] = useState(filmName);
   useEffect(() => {
     switch (params.page) {
-      case 'person':
+      case 'persons':
         setTitleString(`Создатели и актеры фильма ${filmName}`);
         break;
       case 'reviews':

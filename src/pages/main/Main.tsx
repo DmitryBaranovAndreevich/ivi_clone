@@ -29,7 +29,7 @@ const Main = () => {
           <Slider items={data as IFilm[]} />
           <div className={styles.wrapper}>
             <MainPageSlider genre={'fantasy'} size={'medium'} title={t('genre.fantasy')} />
-            <MainPageSlider genre={'action'} size={'big'} title={t('genre.action')} />
+            <MainPageSlider genre={'action'} size={'medium'} title={t('genre.action')} />
             <MainPageSlider genre={'adventure'} size={'medium'} title={t('genre.adventure')} />
           </div>
         </>

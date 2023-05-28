@@ -5,7 +5,8 @@ import style from './ModalSearch.module.scss';
 
 type TFindPersonProps = {
   namePerson: string;
-  role: string;
+  role?: string;
+  isChoosen?: boolean;
 };
 
 const FindPerson: React.FC<TFindPersonProps> = ({ namePerson, role }) => {
@@ -16,8 +17,8 @@ const FindPerson: React.FC<TFindPersonProps> = ({ namePerson, role }) => {
           <img className={style.iconBlock_img} src={logoUserRed} alt={role} />
         </div>
         <div className={style.textBlock}>
-          <p className={style.textBlock_title}>{namePerson}</p>
-          <p className={style.textBlock_role}>{role}</p>
+          <p className={`${style.textBlock_title}`}>{namePerson}</p>
+          {role && <p className={style.textBlock_role}>{role}</p>}
         </div>
       </Link>
     </div>

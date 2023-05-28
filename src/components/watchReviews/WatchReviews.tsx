@@ -24,8 +24,10 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
     dispatch(setTreeReviews({ treeReviews }));
   }, [film?.reviews, dispatch, setTreeReviews]);
   const reviewsBlock = useMemo((): ReactNode => {
-    const qqq = (treeReviews: Array<TTreeReviews>) => {
+    const makeReviewBlock = (treeReviews: Array<TTreeReviews>) => {
+      debugger;
       return treeReviews.map((treeReview: TTreeReviews) => {
+        debugger;
         return (
           <div className={style.reviewsBlock} key={treeReview.review.id}>
             <WatchReviewItem
@@ -38,12 +40,12 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
               refetchFilms={refetch}
               isFetching={isFetching}
             />
-            {treeReview.childrenReviews && qqq(treeReview.childrenReviews)}
+            {treeReview.childrenReviews && makeReviewBlock(treeReview.childrenReviews)}
           </div>
         );
       });
     };
-    return qqq(treeReviews);
+    return makeReviewBlock(treeReviews);
   }, [filmId, treeReviews, refetch, isFetching]);
   if (isLoading) {
     return (

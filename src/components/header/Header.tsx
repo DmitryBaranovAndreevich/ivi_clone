@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FormEvent, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import RedButton from '../UI/redButton/RedButton';
 import logo from './../../assests/svg/logo.svg';
 import logoSearch from './../../assests/svg/logoSearch.svg';
@@ -36,8 +36,20 @@ const Header = () => {
   const { setDefaultValue } = userLoginSlice.actions;
   const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
-  const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
+  const [itemHovered, setItemHovered] = useState<TItemHovered>('Подписка');
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+  const [initialUrl, setInitialUrl] = useState('');
+  const location = useLocation();
+
+  // useEffect(() => {
+  //   setInitialUrl(location.pathname);
+  // }, []);
+
+  // useEffect(() => {
+  //   if (initialUrl !== location.pathname) {
+  //     setItemHovered(null);
+  //   }
+  // }, [location, initialUrl]);
 
   const changeLanguage = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;
@@ -134,7 +146,8 @@ const Header = () => {
         <div
           className={`${style.dropdown}
           ${itemHovered && style.dropdown_visible}
-          ${itemHovered === 'Уведомление' && style.dropdown_small}`}
+          ${itemHovered === 'Уведомление' && style.dropdown_small} 
+          ${itemHovered === 'Подписка' && style.dropdown_big}`}
           onMouseLeave={onMouseLeave}
         >
           <Dropdown>
