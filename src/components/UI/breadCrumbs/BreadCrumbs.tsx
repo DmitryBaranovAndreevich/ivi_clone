@@ -32,9 +32,10 @@ const BreadCrumbs: React.FC<TBreadCrumbsProps> = ({ listParams, constantMean }) 
       <ul className={style.list}>
         <li className={style.item}>
           <ButtonWithHoverBgc
+            data-testid="BreadCrumbs_buttonMain"
             title={t('filter.crumbs')}
             addingClass={style.button}
-            onClick={() => navigate('/movies')}
+            onClick={() => navigate('/')}
           />
         </li>
         {constantMean && (

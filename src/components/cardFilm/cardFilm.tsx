@@ -8,6 +8,7 @@ import CardFilmRating from './cardFilmRating';
 import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';
 import { Link } from 'react-router-dom';
+import { useGetOneFilmQuery } from '../../store/api/filmApi';
 
 type TCardFilmProps = {
   filmId: number;
@@ -18,7 +19,7 @@ type TCardFilmProps = {
   image: string;
   duration: number;
   rating: string;
-  size: 'big' | 'medium';
+  size?: 'big' | 'medium';
 };
 
 const CardFilm: React.FC<TCardFilmProps> = ({
@@ -33,13 +34,14 @@ const CardFilm: React.FC<TCardFilmProps> = ({
   size,
 }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
-
+  // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(filmId });
   return (
     <Link
       to={`/watch/${filmId}`}
       className={style.card}
       onMouseOver={() => setIsMouseOverImageSection(true)}
       onMouseOut={() => setIsMouseOverImageSection(false)}
+      data-testid="CardFilm_link"
     >
       <div
         className={
@@ -55,6 +57,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({
             ' ' +
             (isMouseOverImageSection && style.imageSection_information_show)
           }
+          data-testid="CardFilm_information"
         >
           <div className={style.imageSection_information_buttons}>
             <div className={style.imageSection_information_buttons_btn}>
@@ -78,7 +81,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({
                 <div className={style.imageSection_information_content_rate_range_progress}></div>
               </div>
             </div>
-            <CardFilmInfo year={year} country={country} genre={genre} />
+            <CardFilmInfo filmId={filmId} />
             <CardFilmDuration>{duration} мин.</CardFilmDuration>
           </div>
         </div>
