@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import RedButton from '../UI/redButton/RedButton';
 import logo from './../../assests/svg/logo.svg';
 import logoSearch from './../../assests/svg/logoSearch.svg';
@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 import useAppMediaQuery from '../../hooks/useAppMediaQuery';
 import NavigationDesktop from './navigation/navigationDesktop/NavigationDesktop';
 import NavigationMain from './navigation/navigationMain/NavigationMain';
+import UILink from '../UI/Link/UILink';
 
 export type TItemHovered =
   | TNavigationDesctopTitle
@@ -36,10 +37,8 @@ const Header = () => {
   const { setDefaultValue } = userLoginSlice.actions;
   const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
-  const [itemHovered, setItemHovered] = useState<TItemHovered>('Подписка');
+  const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
-  const [initialUrl, setInitialUrl] = useState('');
-  const location = useLocation();
 
   // useEffect(() => {
   //   setInitialUrl(location.pathname);
@@ -75,6 +74,9 @@ const Header = () => {
             {isDesktop ? <NavigationMain /> : <NavigationDesktop setItemHovered={setItemHovered} />}
           </div>
           <div className={style.content_combine}>
+            <div className={style.content_button + ' ' + style.content_block}>
+              <UILink addingClass={style.content_link} title={'Admin'} href={'/admin'} />
+            </div>
             <div className={`${style.content_button} ${style.content_block} ${style.lang}`}>
               <input
                 type="radio"

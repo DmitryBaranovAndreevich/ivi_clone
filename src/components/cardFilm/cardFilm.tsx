@@ -13,26 +13,12 @@ import { useGetOneFilmQuery } from '../../store/api/filmApi';
 type TCardFilmProps = {
   filmId: number;
   name: string;
-  year: number;
-  country: string;
-  genre: string;
   image: string;
   duration: number;
   rating: string;
-  size?: 'big' | 'medium';
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({
-  filmId,
-  image,
-  name,
-  year,
-  country,
-  genre,
-  duration,
-  rating,
-  size,
-}) => {
+const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rating }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
   // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(filmId });
   return (

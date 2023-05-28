@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import styles from './loginHeader.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import CrossButton from '../../UI/crossButton/CrossButton';
 
 interface ILoginHader {
   title: string;
@@ -10,13 +11,12 @@ interface ILoginHader {
 const LoginHeader: FC<ILoginHader> = ({ title }) => {
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.container}>
         <p className={styles.title}>{title}</p>
-        <Link to={'/'}>
-          <p className={styles.button}>X</p>
-        </Link>
+        <CrossButton onClick={() => navigate('/')} addingClass={styles.cross} />
       </div>
       {!location.pathname.startsWith('/auth') && (
         <Link to={'/auth/email'} style={{ textDecoration: 'none' }}>

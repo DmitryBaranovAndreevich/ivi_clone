@@ -12,9 +12,6 @@ test('text in component should be show', () => {
         filmId={mockFilmTest.id}
         image={mockFilmTest.poster}
         name={mockFilmTest.name}
-        year={mockFilmTest.year}
-        country={countryContent}
-        genre={genreContent}
         duration={mockFilmTest.duration}
         rating={mockFilmTest.rating}
       />
@@ -31,9 +28,6 @@ test('text in component should be show', () => {
         filmId={mockFilmTest.id}
         image={mockFilmTest.poster}
         name={mockFilmTest.name}
-        year={mockFilmTest.year}
-        country={countryContent}
-        genre={genreContent}
         duration={mockFilmTest.duration}
         rating={mockFilmTest.rating}
       />

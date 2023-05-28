@@ -7,7 +7,7 @@ import { IFilm } from '../../type/TFilm';
 
 export interface ISlider {
   size: 'big' | 'medium';
-  title: string;
+  title?: string;
 }
 
 export interface ICategoriesSlider extends ISlider {
@@ -81,12 +81,8 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
                 >
                   <CardFilm
                     filmId={movie.id}
-                    size={size}
                     image={movie.poster}
                     name={movie.name}
-                    year={movie.year}
-                    country="qwerty"
-                    genre={title}
                     duration={movie.duration}
                     rating={movie.rating}
                   />

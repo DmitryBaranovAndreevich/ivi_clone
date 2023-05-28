@@ -1,12 +1,13 @@
 import Slider from '../../components/mainSlider/MainSlider';
 import styles from './Main.module.scss';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
 import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';
 import { IFilm } from '../../type/TFilm';
-import InfiniteSlider from '../../components/infiniteSlider/InfiniteSlider';
 import { useTranslation } from 'react-i18next';
+import MainPageDescription from '../../components/mainPageDescription/MainPageDescription';
+import CategoriesSlider from '../../components/categoriesSlider/CategoriesSlider';
 
 interface Error {
   error: string;
@@ -25,12 +26,24 @@ const Main = () => {
         <p className={styles.error}>{(error as Error).error}</p>
       ) : (
         <>
-          <NavLink to="/admin">ссылка</NavLink>
           <Slider items={data as IFilm[]} />
           <div className={styles.wrapper}>
-            <MainPageSlider genre={'fantasy'} size={'medium'} title={t('genre.fantasy')} />
-            <MainPageSlider genre={'action'} size={'medium'} title={t('genre.action')} />
-            <MainPageSlider genre={'adventure'} size={'medium'} title={t('genre.adventure')} />
+            {data && (
+              <div className={styles.container}>
+                <Link className={styles.title} to="#">
+                  {t('main.top')}
+                </Link>
+                <CategoriesSlider size={'medium'} items={data.slice(0, 10) as IFilm[]} />
+              </div>
+            )}
+            <MainPageSlider genre={'fantasy'} size={'medium'} title={t('genre.fantasy') ?? ''} />
+            <MainPageDescription />
+            <MainPageSlider genre={'action'} size={'medium'} title={t('genre.action') ?? ''} />
+            <MainPageSlider
+              genre={'adventure'}
+              size={'medium'}
+              title={t('genre.adventure') ?? ''}
+            />
           </div>
         </>
       )}

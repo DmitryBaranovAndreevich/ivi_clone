@@ -23,6 +23,10 @@
     justify-content: space-around;
   }
 
+  &_link {
+    @include font-source-sans(15px, $white, 500, 20px);
+  }
+
   &_block {
     display: flex;
     align-items: center;

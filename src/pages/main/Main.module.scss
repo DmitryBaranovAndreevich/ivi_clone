@@ -13,7 +13,13 @@
   gap: 20px;
   max-width: $desctop;
   margin: 50px auto;
+}
 
+.title {
+    @include font-source-sans(24px, $white, 700, 28px);
+    margin: 0 0 24px 100px;
+    text-decoration: none;
+    display: block;
 }
 
 .spinner {

@@ -34,7 +34,7 @@ const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year
   return (
     <div className={style.wrapper}>
       <div className={style.cross}>
-        <CrossButton closeModal={closeModal} addingClass={style.cross_btn} />
+        <CrossButton onClick={closeModal} addingClass={style.cross_btn} />
       </div>
       <div className={style.header}>
         <div className={style.imageBlock}>

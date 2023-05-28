@@ -1,4 +1,26 @@
 {
+  "main": {
+    "top": "Top 10 films",
+    "description": {
+      "title": "Ivi online cinema: movies in high quality always bring real pleasure",
+      "about": "Have you ever refused to watch an interesting movie because it was shown at an inconvenient time? Did you have to search the Internet for where to watch movies online? And to argue with your family over the choice of movies to watch on TV?",
+      "problems": "All these problems are in the past! Discover movies online in HD quality with the Ivi Cinema. We do not just free you from the need to go to the cinema or study the program of TV shows – visitors to our resource have much more opportunities.",
+      "onlainIviFull": "Ivi online cinema is the largest collection of domestic and foreign films in Runet. Our video library has more than 30 thousand films and videos available for viewing online, and is constantly being updated.",
+      "onlainIvishort": "Online movie theater ivi.tv – this is:",
+      "list": {
+        "first": "the first video service in Russia that allows you to watch movies online in high quality;",
+        "second": "the ability to postpone watching a movie for a while or start watching movies online from any moment;",
+        "third": "convenient search for movies: by title, year of release, country of production or genre;",
+        "four": "movies online that you don't need to install video players or search for codecs to watch;"
+      },
+      "update": "We regularly add the latest ones to the site",
+      "genreEnd": "and historical dramas.",
+      "openAbility": "Откройте для себя возможность смотреть фильмы онлайн в отличном качестве с кинотеатром Иви!",
+      "watchEasy": "Discover the opportunity to watch movies online in excellent quality with the Ivi Cinema!",
+      "expand": "Expand",
+      "collapse": "Collapse"
+    }
+  },
   "header": {
     "freeButton": "Watch 30 days for free",
     "search": "Search"
@@ -6,7 +28,9 @@
   "genre": {
     "fantasy": "fantasy",
     "action": "action",
-    "adventure": "adventure"
+    "adventure": "adventure",
+    "comedy": "comedy",
+    "thriller": "thriller"
   },
   "login": {
     "register": "Register",
