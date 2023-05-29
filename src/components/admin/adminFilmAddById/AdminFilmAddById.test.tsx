@@ -1,13 +1,9 @@
 import React from 'react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 import { act, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AdminFilmAddById from './AdminFilmAddById';
 import { renderWithProviders } from '../../../utils/test-utils';
-import { mockFilmTest } from '../../../mockData/mockTest';
-import { useAddFilmByIdQuery } from '../../../store/api/adminApi';
-// import { useAddFilmByIdQuery } from '../../../../store/api/adminApi';
+import { useState as useStateMock } from 'react';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -15,36 +11,32 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
-export const handlers = [
-  rest.get('/parse/1', (req, res, ctx) => {
-    return res(ctx.json(''), ctx.delay(150));
-  }),
-];
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: jest.fn(),
+}));
 
-const server = setupServer(...handlers);
+// const setState = jest.fn();
+// beforeEach(() => {
+//   (useStateMock as jest.Mock).mockImplementation((init: any) => [init, setState]);
+// });
 
-beforeAll(() => {
-  server.listen();
-});
-
-afterEach(() => server.resetHandlers());
-
-afterAll(() => server.close());
-
-test('qqq', async () => {
-  act(() => {
-    renderWithProviders(<AdminFilmAddById />);
+describe('AdminFilmAddById', () => {
+  const setState = jest.fn();
+  beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useStateMock as jest.Mock).mockImplementation((init: any) => [init, setState]);
   });
-
-  expect(screen.getByText(/Добавить/i)).toBeInTheDocument();
-  expect(screen.queryByText(/Фильм успешно добавлен/i)).not.toBeInTheDocument();
-
-  // after clicking the 'Fetch user' button, it should now show that it is fetching the user
-  fireEvent.click(screen.getByRole('button', { name: /Добавить/i }));
-  // expect(screen.getByText(/no user/i)).toBeInTheDocument();
-  // const action = useAddFilmByIdQuery();
-  // after some time, the user should be received
-  // expect(useAddFilmByIdQuery).toBeCalledTimes(1);
-  // expect(screen.queryByText(/no user/i)).not.toBeInTheDocument();
-  // expect(screen.queryByText(/Fetching user\.\.\./i)).not.toBeInTheDocument();
+  test('if input is not empty, setState 3 times', async () => {
+    await act(async () => {
+      renderWithProviders(<AdminFilmAddById />);
+    });
+    expect(screen.getByText(/Добавить/i)).toBeInTheDocument();
+    const input: HTMLInputElement = screen.getByTestId('Admin_input');
+    expect(input).toBeInTheDocument();
+    fireEvent.change(input, { target: { value: '2' } });
+    expect(input.value).toBe('2');
+    fireEvent.click(screen.getByRole('button', { name: /Добавить/i }));
+    expect(useStateMock).toHaveBeenCalledTimes(3);
+  });
 });

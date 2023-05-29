@@ -41,12 +41,6 @@ export const reviewSlice = createSlice({
       };
       localStorage.setItem('reviewForFilm', JSON.stringify(state.reviewForFilm));
     },
-    // addOneMainReviewToTree(
-    //   state,
-    //   action: PayloadAction<{ reviewObj: { title: string; text: string } }>
-    // ) {
-    //   state.treeReviews = action.payload.treeReviews;
-    // },
     setReviewForReview(
       state,
       action: PayloadAction<{ reviewId: number; reviewObj: { title: string; text: string } }>

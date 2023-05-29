@@ -1,5 +1,7 @@
 import { IFilm } from './../type/TFilm';
-import { TPersonEnglishName, TPersonName } from '../type/type';
+import { TPersonEnglishName, TPersonName, TReviewUser } from '../type/type';
+import { TTreeReviews } from '../store/reducers/ReviewSlice';
+import { IRoles } from '../type/TUser';
 
 export const textContent = 'test';
 
@@ -396,3 +398,102 @@ export const mockFilmTest: IFilm = {
   awards: [],
   reviews: [],
 };
+
+export const mockTreeReviews: Array<TTreeReviews> = [
+  {
+    review: {
+      id: 30,
+      title: 'tttttttttt',
+      text: 'rfr4gf4ref4',
+      rating: 36,
+      userId: 1,
+      filmId: 2,
+      parentId: null,
+    },
+    childrenReviews: [
+      {
+        review: {
+          id: 31,
+          title: 'Lera',
+          text: 'fcgvhhjkjhh',
+          rating: 36,
+          userId: 1,
+          filmId: 2,
+          parentId: 30,
+        },
+        childrenReviews: [
+          {
+            review: {
+              id: 32,
+              title: 'ttttg',
+              text: 'rfr4gf4ref4',
+              rating: 36,
+              userId: 1,
+              filmId: 2,
+              parentId: 31,
+            },
+            childrenReviews: [
+              {
+                review: {
+                  id: 33,
+                  title: 'ttttg',
+                  text: 'fcgvhhjkjhh',
+                  rating: 36,
+                  userId: 1,
+                  filmId: 2,
+                  parentId: 32,
+                },
+                childrenReviews: [
+                  {
+                    review: {
+                      id: 34,
+                      title: 'gfv',
+                      text: 'rfr4gf4ref4',
+                      rating: 36,
+                      userId: 1,
+                      filmId: 2,
+                      parentId: 33,
+                    },
+                    childrenReviews: [
+                      {
+                        review: {
+                          id: 35,
+                          title: 'gfv',
+                          text: 'rfr4gf4ref4',
+                          rating: 36,
+                          userId: 1,
+                          filmId: 2,
+                          parentId: 34,
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const mockReviewObj = {
+  title: 'test',
+  text: 'test',
+};
+
+export const mockArrayRoles: Array<IRoles> = [
+  {
+    id: 1,
+    value: 'ADMIN',
+    description: 'ADMIN',
+  },
+  {
+    id: 2,
+    value: 'USER',
+    description: 'USER',
+  },
+];
+
+export const mockArrayStringRoles: Array<string> = ['ADMIN', 'USER'];

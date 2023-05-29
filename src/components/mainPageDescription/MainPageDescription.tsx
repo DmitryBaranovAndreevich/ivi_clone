@@ -12,7 +12,6 @@ const MainPageDescription: React.FC = () => {
           <h2 className={style.header_title}>{t('main.description.title')}</h2>
         </div>
         <div className={style.content}>
-          {/* <div className={style.content}> */}
           <p>{t('main.description.about')}</p>
           {isFullInfo && (
             <>
@@ -50,12 +49,20 @@ const MainPageDescription: React.FC = () => {
           )}
         </div>
         {!isFullInfo && (
-          <span className={style.showMore} onClick={() => setIsFillInfo(true)}>
+          <span
+            className={style.showMore}
+            onClick={() => setIsFillInfo(true)}
+            data-testid="MainPageDescription_expand"
+          >
             {t('main.description.expand')}
           </span>
         )}
         {isFullInfo && (
-          <span className={style.showMore} onClick={() => setIsFillInfo(false)}>
+          <span
+            className={style.showMore}
+            onClick={() => setIsFillInfo(false)}
+            data-testid="MainPageDescription_collapse"
+          >
             {t('main.description.collapse')}
           </span>
         )}

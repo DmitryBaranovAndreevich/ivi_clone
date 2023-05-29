@@ -9,9 +9,9 @@ import Spinner from '../../UI/spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
 import AdminModal from '../adminModal/AdminModal';
 
-// const FormSchema = Yup.object().shape({
-//   id: Yup.number().required('Required').positive('Только положительное число'),
-// });
+const FormSchema = Yup.object().shape({
+  id: Yup.number().required('Required').positive('Только положительное число'),
+});
 
 const AdminFilmAddById: React.FC = () => {
   const navigate = useNavigate();
@@ -33,9 +33,9 @@ const AdminFilmAddById: React.FC = () => {
     );
   }
   if (isSuccess || isError) {
-    setTimeout(() => {
-      navigate('/admin/films');
-    }, 3000);
+    // setTimeout(() => {
+    navigate('/admin/films');
+    // }, 3000);
     return (
       <AdminModal>
         {isSuccess && <p>Фильм успешно добавлен</p>}
@@ -49,7 +49,7 @@ const AdminFilmAddById: React.FC = () => {
         initialValues={{
           id: 0,
         }}
-        // validationSchema={FormSchema}
+        validationSchema={FormSchema}
         onSubmit={(values) => onsubmit(values)}
       >
         {({ values }) => {

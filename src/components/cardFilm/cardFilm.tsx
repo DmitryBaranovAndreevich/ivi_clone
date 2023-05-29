@@ -8,20 +8,20 @@ import CardFilmRating from './cardFilmRating';
 import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';
 import { Link } from 'react-router-dom';
-import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import { useTranslation } from 'react-i18next';
 
 type TCardFilmProps = {
   filmId: number;
   name: string;
+  enName: string;
   image: string;
   duration: number;
   rating: string;
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rating }) => {
+const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, enName, duration, rating }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <Link
       to={`/watch/${filmId}`}
@@ -50,7 +50,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rat
             <div className={style.imageSection_information_buttons_btn}>
               <img src={logoBookmark} alt="logoBookmark" title={t('cardFilm.watchLater') ?? ''} />
             </div>
-            <div className={style.imageSection_information_buttons_btn}>
+            <div data-testid="CardFilm_img" className={style.imageSection_information_buttons_btn}>
               <img src={logoMagic} alt="logoMagic" title={t('cardFilm.similar') ?? ''} />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
@@ -83,7 +83,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rat
       </div>
       <div className={style.textSection}>
         <div className={style.textSection_title}>
-          <span>{name}</span>
+          <span>{i18n.language === 'ru' ? name : enName}</span>
         </div>
         <div className={style.textSection_extra}>
           <span>{t('cardFilm.free')}</span>

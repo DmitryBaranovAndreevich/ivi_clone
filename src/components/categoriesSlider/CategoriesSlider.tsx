@@ -14,7 +14,7 @@ export interface ICategoriesSlider extends ISlider {
   items: IFilm[];
 }
 
-const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
+const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {
   const [viewItems, setViewItems] = useState(
     size === 'big'
       ? Math.ceil(window.innerWidth / 300)
@@ -83,6 +83,7 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
                     filmId={movie.id}
                     image={movie.poster}
                     name={movie.name}
+                    enName={movie.originalName}
                     duration={movie.duration}
                     rating={movie.rating}
                   />

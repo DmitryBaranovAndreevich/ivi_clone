@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IRoles } from '../../type/TUser';
 import { loginUser } from './ActionCreators';
 
-interface IInitialState {
+export interface IUserLoginInitialState {
   email: string;
   password: string;
   isLoading: boolean;
@@ -12,7 +12,7 @@ interface IInitialState {
   roles: null | Array<string>;
 }
 
-const initialState: IInitialState = {
+const initialState: IUserLoginInitialState = {
   email: '',
   password: '',
   isLoading: false,

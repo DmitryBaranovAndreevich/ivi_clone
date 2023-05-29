@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useAppSelector } from '../../hooks/redux';
 import { IFilm } from '../../type/TFilm';
 import CardFilm from '../cardFilm/cardFilm';
 import style from './MoviesListBlock.module.scss';
@@ -16,6 +15,7 @@ const MoviesList: React.FC<TMoviesListProps> = ({ filmSort }) => {
           <CardFilm
             filmId={film.id}
             name={film.name}
+            enName={film.originalName}
             image={film.poster}
             duration={film.duration}
             rating={film.rating}

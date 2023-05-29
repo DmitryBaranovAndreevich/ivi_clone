@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './App.module.scss';
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Main from './pages/main/Main';
 import NotFoundPage from './pages/404/404';
 import { useAppSelector } from './hooks/redux';
@@ -29,7 +29,7 @@ import { useAuthMeQuery } from './store/api/authApi';
 import { userLoginSlice } from './store/reducers/UserLoginSlice';
 
 function App() {
-  const { data: user, isFetching } = useAuthMeQuery('');
+  const { data: user } = useAuthMeQuery('');
   const dispatch = useDispatch();
   const { setEmailNameSurName, setPassAgeContryPhone } = userAuthSlice.actions;
   const { successAuth, setRoles } = userLoginSlice.actions;
@@ -84,14 +84,7 @@ function App() {
           <Route path="/movies/:first?/:second?/:third?" element={<Movies />} />
           <Route path="/watch/:id/" element={<Watch />} />
           <Route path="/watch/:id/:page?" element={<WatchExtra />} />
-          <Route
-            path="/person/:id"
-            element={
-              // <ProtectedRoute user={!isRegister} redirectPath={'/profile/email'}>
-              <Actor />
-              // </ProtectedRoute>
-            }
-          />
+          <Route path="/person/:id" element={<Actor />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

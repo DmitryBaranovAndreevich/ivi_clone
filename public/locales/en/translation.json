@@ -74,8 +74,8 @@
     "alreadyWatched": "Already watched, rate",
     "notLike": "I don't like this",
     "actors": "The actors",
-    "min": "мин.",
-    "free": "Бесплатно"
+    "min": "min.",
+    "free": "Free"
   },
   "actor": {
     "commBack": "Back",
@@ -92,7 +92,8 @@
     "estimate": "Estimate",
     "rating": "Kinopoisk rating",
     "trailer": "trailer",
-    "freeMovies": "Free movies"
+    "freeMovies": "Free movies",
+    "watchBtn": "Watch"
   },
   "filter": {
     "genres": "Genres",

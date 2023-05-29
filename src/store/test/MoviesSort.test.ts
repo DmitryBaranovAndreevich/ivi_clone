@@ -19,4 +19,13 @@ describe('movies sort reducer', () => {
     const expectedState: TMoviesSortInitialState = { ...state, choosenSort: mockSort };
     expect(MoviesSort(initialState, action)).toEqual(expectedState);
   });
+  it('choosenSort should be set correct', async () => {
+    const initialState: TMoviesSortInitialState = {
+      ...state,
+      maxRatingCountOfFilm: state.maxRatingCountOfFilm,
+    };
+    const action = moviesSort.actions.setMaxRatingCountOfFilm({ ratingCount: 2 });
+    const expectedState: TMoviesSortInitialState = { ...state, maxRatingCountOfFilm: 2 };
+    expect(MoviesSort(initialState, action)).toEqual(expectedState);
+  });
 });

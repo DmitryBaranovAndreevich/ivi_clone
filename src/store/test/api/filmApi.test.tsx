@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 describe('useGetOneFilmQuery', () => {
-  const endpointName = 'getOneFilm';
+  // const endpointName = 'getOneFilm';
   const filmId = 1;
   const data = {};
 
