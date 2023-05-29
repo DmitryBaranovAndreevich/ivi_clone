@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './App.module.scss';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import Main from './pages/main/Main';
@@ -23,8 +23,25 @@ import AdminFilmForm from './components/admin/adminFilmForm/AdminFilmEdit';
 import AdminFilmsAdd from './pages/admin/adminFilmsAdd/AdminFilmsAdd';
 import AdminGenresAdd from './pages/admin/adminGenresAdd/AdminGenresAdd';
 import Admin from './pages/admin/Admin';
+import { useDispatch } from 'react-redux';
+import { userAuthSlice } from './store/reducers/UserAuthSlice';
+import { useAuthMeQuery } from './store/api/authApi';
+import { userLoginSlice } from './store/reducers/UserLoginSlice';
 
 function App() {
+  const { data: user, isFetching } = useAuthMeQuery('');
+  const dispatch = useDispatch();
+  const { setEmailNameSurName, setPassAgeContryPhone } = userAuthSlice.actions;
+  const { successAuth, setRoles } = userLoginSlice.actions;
+
+  useEffect(() => {
+    if (user) {
+      dispatch(setEmailNameSurName(user));
+      dispatch(setPassAgeContryPhone(user));
+      dispatch(successAuth({ token: user.refreshToken }));
+      dispatch(setRoles({ roles: user.roles }));
+    }
+  }, [user, dispatch, setEmailNameSurName, setPassAgeContryPhone, successAuth, setRoles]);
   const { isRegister } = useAppSelector((state) => state.userLoginReduser);
 
   return (

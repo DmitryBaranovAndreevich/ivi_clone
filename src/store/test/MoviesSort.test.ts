@@ -7,6 +7,7 @@ import MoviesSort, {
 
 const mockSort: TKindSort = {
   title: 'По алфавиту',
+  enTitle: 'By the number of ratings',
   href: 'name',
 };
 

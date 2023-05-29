@@ -28,7 +28,6 @@ export const sortList: TFuncSortList = (kindSort, filmFilter) => {
         return sortDescending(filmFilterCopy, 'ratingsNumber');
         break;
       case 'rate':
-        // console.log(sortAscending(filmFilterCopy, 'rating'));
         return sortDescending(filmFilterCopy, 'rating');
         break;
       case 'year':

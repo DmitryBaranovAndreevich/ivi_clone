@@ -7,6 +7,10 @@
     margin-left: 12.5%;
     padding-left: 12px;
     padding-right: 12px;
+
+    @media (max-width: $laptop) {
+        display: none;
+      }
 }
 
 .imageBlock {

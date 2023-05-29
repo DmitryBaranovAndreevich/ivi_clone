@@ -9,6 +9,7 @@ export type TNavigationDesktopItemProps = {
   title: TNavigationDesctopTitle | TNavigationDesctopEnTitle;
   isExpand: boolean;
   setItemHovered: (isHover: TItemHovered) => void;
+  titleForHovered: TNavigationDesctopTitle;
 };
 
 const NavigationDesktopItem: React.FC<TNavigationDesktopItemProps> = ({
@@ -16,9 +17,10 @@ const NavigationDesktopItem: React.FC<TNavigationDesktopItemProps> = ({
   title,
   isExpand,
   setItemHovered,
+  titleForHovered,
 }) => {
   const onMouseLeave = () => setItemHovered(null);
-  const onMouseEnter = () => setItemHovered(title);
+  const onMouseEnter = () => setItemHovered(titleForHovered);
 
   return (
     <li

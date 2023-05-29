@@ -57,8 +57,6 @@ const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year
             text="Копировать ссылку"
             logo={logoFile}
             onClick={() => {
-              debugger;
-              console.log(params);
               const copyText = window.location.href;
               navigator.clipboard.writeText(copyText);
               closeModal();

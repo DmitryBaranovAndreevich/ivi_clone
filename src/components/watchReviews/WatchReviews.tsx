@@ -25,11 +25,9 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
   }, [film?.reviews, dispatch, setTreeReviews]);
   const reviewsBlock = useMemo((): ReactNode => {
     const makeReviewBlock = (treeReviews: Array<TTreeReviews>) => {
-      debugger;
       return treeReviews.map((treeReview: TTreeReviews) => {
-        debugger;
         return (
-          <div className={style.reviewsBlock} key={treeReview.review.id}>
+          <div className={`${style.reviewsBlock}`} key={treeReview.review.id}>
             <WatchReviewItem
               key={treeReview.review.id}
               filmId={filmId}

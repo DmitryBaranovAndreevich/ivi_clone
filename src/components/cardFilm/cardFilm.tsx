@@ -9,6 +9,7 @@ import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';
 import { Link } from 'react-router-dom';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
+import { useTranslation } from 'react-i18next';
 
 type TCardFilmProps = {
   filmId: number;
@@ -20,7 +21,7 @@ type TCardFilmProps = {
 
 const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rating }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
-  // const { data: film, isLoading } = useGetOneFilmQuery({ id: String(filmId });
+  const { t } = useTranslation();
   return (
     <Link
       to={`/watch/${filmId}`}
@@ -47,28 +48,36 @@ const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rat
         >
           <div className={style.imageSection_information_buttons}>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoBookmark} alt="logoBookmark" title="Смотреть позже" />
+              <img src={logoBookmark} alt="logoBookmark" title={t('cardFilm.watchLater') ?? ''} />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoMagic} alt="logoMagic" title="Похожее" />
+              <img src={logoMagic} alt="logoMagic" title={t('cardFilm.similar') ?? ''} />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoStarLight} alt="logoStarLight" title="Уже смотрел, оценить" />
+              <img
+                src={logoStarLight}
+                alt="logoStarLight"
+                title={t('cardFilm.alreadyWatched') ?? ''}
+              />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoCircle} alt="logoCircle" title="Не нравится такое" />
+              <img src={logoCircle} alt="logoCircle" title={t('cardFilm.notLike') ?? ''} />
             </div>
           </div>
           <div className={style.imageSection_information_content}>
             <CardFilmRating rating={rating} />
             <div className={style.imageSection_information_content_rate}>
-              <div className={style.imageSection_information_content_rate_name}>Актеры</div>
+              <div className={style.imageSection_information_content_rate_name}>
+                {t('cardFilm.actors')}
+              </div>
               <div className={style.imageSection_information_content_rate_range}>
                 <div className={style.imageSection_information_content_rate_range_progress}></div>
               </div>
             </div>
             <CardFilmInfo filmId={filmId} />
-            <CardFilmDuration>{duration} мин.</CardFilmDuration>
+            <CardFilmDuration>
+              {duration} {t('cardFilm.min')}
+            </CardFilmDuration>
           </div>
         </div>
       </div>
@@ -77,7 +86,7 @@ const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, duration, rat
           <span>{name}</span>
         </div>
         <div className={style.textSection_extra}>
-          <span>Бесплатно</span>
+          <span>{t('cardFilm.free')}</span>
         </div>
       </div>
     </Link>

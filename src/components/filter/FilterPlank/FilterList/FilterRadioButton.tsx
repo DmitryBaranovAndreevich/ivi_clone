@@ -2,27 +2,31 @@ import React from 'react';
 import { Field } from 'formik';
 import style from './../FilterPlank.module.scss';
 
-type TFilterListProps = {
-  nameInitialValue: 'genre' | 'country' | 'year';
+type TFilterRadioButtonProps = {
+  nameInitialValue: 'year';
   name: string;
   englishName: string;
 };
 
-const FilterCheckbox: React.FC<TFilterListProps> = ({ nameInitialValue, name, englishName }) => {
+const FilterRadioButton: React.FC<TFilterRadioButtonProps> = ({
+  nameInitialValue,
+  name,
+  englishName,
+}) => {
   return (
     <li className={style.dropdown_item}>
       <label className={style.dropdown_label}>
         <Field
           className={style.dropdown_input}
-          type="checkbox"
+          type="radio"
           name={nameInitialValue}
           value={englishName}
         />
         <div className={style.dropdown_text}>{name}</div>
-        <div className={style.dropdown_checkbox}></div>
+        <div className={style.dropdown_radio}></div>
       </label>
     </li>
   );
 };
 
-export default FilterCheckbox;
+export default FilterRadioButton;

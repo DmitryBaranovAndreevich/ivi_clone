@@ -108,7 +108,6 @@ const AdminFilmAddSelf: React.FC = ({}) => {
     };
     dispatch(addFilm({ ...filmObj }))
       .then((res) => {
-        debugger;
         values.genres.map((genre: string) => {
           dispatch(addGenre({ genre, filmId: res.payload as number }));
         });
@@ -117,7 +116,6 @@ const AdminFilmAddSelf: React.FC = ({}) => {
         setTimeout(() => {
           navigate('/admin/films');
         }, 3000);
-        debugger;
         setIsSuccess(true);
       })
       .catch((err) => {

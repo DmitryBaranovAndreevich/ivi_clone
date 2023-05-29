@@ -7,7 +7,6 @@ import logoUser from './../../assests/svg/logoUser.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { reviewSlice } from '../../store/reducers/ReviewSlice';
 import { useAddReviewForReviewMutation, useAddReviewMutation } from '../../store/api/reviewApi';
-import Spinner from '../UI/spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
 
 const FormSchema = Yup.object().shape({
@@ -82,7 +81,6 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
         }}
         validationSchema={FormSchema}
         onSubmit={async (values) => {
-          debugger;
           if (!isRegister) {
             return navigate('/profile/email');
           } else {

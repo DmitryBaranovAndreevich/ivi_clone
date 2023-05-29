@@ -11,6 +11,11 @@
     position: relative;
     align-items: flex-end;
 
+    @media (max-width: $tablets) {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
     &_content {
         width: 100%;
         display: flex;
@@ -79,6 +84,10 @@
 
     &:disabled {
         opacity: 0.3;
+    }
+    @media (max-width: $tablets) {
+        width: 90%;
+        margin-top: 26px;
     }
 }
 

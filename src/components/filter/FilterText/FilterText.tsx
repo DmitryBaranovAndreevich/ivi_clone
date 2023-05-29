@@ -80,7 +80,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
           // login(values.email, values.password, setStatus)
         }}
       >
-        {({ values, handleChange, handleBlur }) => (
+        {({ values, handleBlur }) => (
           <div ref={buttonElement}>
             <Form className={style.form}>
               <Field
@@ -97,7 +97,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
                   ' ' +
                   style.description_focus +
                   ' ' +
-                  (values.actor && style.description_active)
+                  ((values.actor || values.director) && style.description_active)
                 }
               >
                 {title}

@@ -94,6 +94,11 @@
   }
 
   &_notifications {
+
+    @media (max-width: $tablets) {
+      display: none;
+    }
+
     &_logo {
       opacity: 0.5;
       height: 48px;
@@ -103,14 +108,14 @@
         opacity: 1;
       }
     }
-
-    @media (max-width: $tablets) {
-      display: none;
-    }
   }
 
   &_avatar {
     padding-left: 12px;
+
+    // @media (max-width: $tablets) {
+    //   display: none;
+    // }
 
     &_link {
       opacity: 0.5;
@@ -125,10 +130,6 @@
         height: 48px;
         padding: 12px;
       }
-    }
-
-    @media (max-width: $tablets) {
-      display: none;
     }
   }
 }
@@ -178,6 +179,18 @@
 }
 
 .lang {
+  @media (max-width: $phones) {
+    display: none;
+  }
+}
+
+.freeButton {
+  @media (max-width: $laptop) {
+    display: none;
+  }
+}
+
+.adminButton {
   @media (max-width: $phones) {
     display: none;
   }

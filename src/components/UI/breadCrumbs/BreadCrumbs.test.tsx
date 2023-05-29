@@ -3,13 +3,18 @@ import { screen, act, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { renderWithProviders } from '../../../utils/test-utils';
 import BreadCrumbs from './BreadCrumbs';
+import { TName } from '../../../utils/helperFilmBreadCrumbs';
 
 type TConstantMean = {
   title: string;
   href: string;
 };
 
-const paramsBreadCrumbsTest: Array<Array<string>> = [['комедия'], ['2023'], ['Великобритания']];
+const paramsBreadCrumbsTest: Array<Array<TName>> = [
+  [{ name: 'комедия', enName: 'comedy' }],
+  [{ name: '2023', enName: '2023' }],
+  [{ name: 'Великобритания', enName: 'uk' }],
+];
 
 const constantMean: TConstantMean = {
   title: 'Фильмы',

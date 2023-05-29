@@ -23,7 +23,8 @@
   },
   "header": {
     "freeButton": "Watch 30 days for free",
-    "search": "Search"
+    "search": "Search",
+    "logout": "Log out of profile"
   },
   "genre": {
     "fantasy": "fantasy",
@@ -67,6 +68,15 @@
     "countEnt": "Enter the country",
     "congratulations": "Congratulations"
   },
+  "cardFilm": {
+    "watchLater": "Watch later",
+    "similar": "Similar",
+    "alreadyWatched": "Already watched, rate",
+    "notLike": "I don't like this",
+    "actors": "The actors",
+    "min": "мин.",
+    "free": "Бесплатно"
+  },
   "actor": {
     "commBack": "Back",
     "films": "Full filmography",
@@ -94,7 +104,8 @@
     "reviews": "Number of reviews",
     "reset": "Reset the filter",
     "title": "Films",
-    "crumbs": "My Film"
+    "crumbs": "My Film",
+    "sort": "Sort"
   },
   "dropdown": {
     "subscribe": "Ivy's subscription",
@@ -105,7 +116,9 @@
     "account": "Family account on 5 devices",
     "uploading": "Uploading to mobile devices",
     "otherSubscriptions": "Other subscriptions",
-    "turnOff": "You can turn it off at any time"
+    "turnOff": "You can turn it off at any time",
+    "watchSmartTv": "Watch on SmartTV",
+    "importantEvents": "Only important events appear here"
   },
   "footer": {
     "aboutCompany": "About the company",
@@ -131,5 +144,11 @@
     "chat": "Write in the chat",
     "answers": "Answers to questions",
     "withoutAds": "Watch movies, TV series and cartoons without ads"
+  },
+  "footerDevice": {
+    "upload": "Upload to",
+    "available": "Available in",
+    "look": "Look at",
+    "devices": "All devices"
   }
 }

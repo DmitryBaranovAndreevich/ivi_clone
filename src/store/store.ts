@@ -14,6 +14,7 @@ import { filmApi } from './api/filmApi';
 import { personApi } from './api/personApi';
 import { reviewApi } from './api/reviewApi';
 import { adminApi } from './api/adminApi';
+import { authApi } from './api/authApi';
 
 export const rootReducer = combineReducers({
   appReducer,
@@ -24,6 +25,7 @@ export const rootReducer = combineReducers({
   userAuthReduser,
   addFilmsSlice,
   addGenreSlice,
+  [authApi.reducerPath]: authApi.reducer,
   [appApi.reducerPath]: appApi.reducer,
   [filmApi.reducerPath]: filmApi.reducer,
   [personApi.reducerPath]: personApi.reducer,
@@ -38,6 +40,7 @@ export const setupStore = (preloadedState?: PreloadedState<TRootState>) => {
     preloadedState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat([
+        authApi.middleware,
         appApi.middleware,
         filmApi.middleware,
         personApi.middleware,

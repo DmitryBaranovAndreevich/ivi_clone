@@ -55,5 +55,6 @@ export type TReviewUser = {
 
 export type TInfoFilm = {
   title: string;
+  enTitle: string;
   href: string;
 };

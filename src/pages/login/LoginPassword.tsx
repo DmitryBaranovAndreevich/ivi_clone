@@ -47,7 +47,6 @@ const LoginPassword = () => {
         return dispatch(loginUser({ email, password }));
       })
       .then(({ payload }) => {
-        debugger;
         const role = getCookie('role');
         const role1 = getCookie('Role');
         if (typeof payload !== 'string') {
