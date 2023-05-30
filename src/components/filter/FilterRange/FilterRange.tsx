@@ -25,7 +25,7 @@ const FilterRange: React.FC<TFilterRangeProps> = ({ title, nameInitialValue, ste
   useEffect(() => {
     nameInitialValue === 'rate' && setChoosenRate(rating);
     nameInitialValue === 'countReviews' && setChoosenRate(countReviews);
-  }, [searchParams, nameInitialValue]);
+  }, [searchParams, nameInitialValue, countReviews, rating]);
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const queryParams = new URLSearchParams(location.search);
     const target = e.target as HTMLInputElement;

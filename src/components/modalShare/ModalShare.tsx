@@ -12,7 +12,6 @@ import logoSocialOK from './../../assests/svg/logoSocialOK.svg';
 import logoSocialTwitter from './../../assests/svg/logoSocialTwitter.svg';
 import ModalShareButton from './ModalShareButton';
 import CrossButton from '../UI/crossButton/CrossButton';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 type TModalShareProps = {
   closeModal: () => void;
@@ -23,8 +22,6 @@ type TModalShareProps = {
 };
 
 const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year, duration }) => {
-  const location = useLocation();
-  const params = useParams();
   const paramsYear: TParamListMovie = {
     title: String(year),
   };

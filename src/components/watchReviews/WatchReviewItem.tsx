@@ -1,20 +1,8 @@
-import { title } from 'process';
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
-import { useAppSelector } from '../../hooks/redux';
-import { useGetOneFilmQuery } from '../../store/api/filmApi';
-import { useGetOnePersonQuery } from '../../store/api/personApi';
-import { IFilm } from '../../type/TFilm';
-import { TPersonEnglishName, TPersonName } from '../../type/type';
-import PersonItem from '../personItem/PersonItem';
+import React, { useState } from 'react';
 import ReviewCardDate from '../reviewCard/ReviewCardDate';
 import ReviewCardVote from '../reviewCard/ReviewCardVote';
-import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
-import UILink from '../UI/Link/UILink';
-import Spinner from '../UI/spinner/Spinner';
 import style from './WatchReviews.module.scss';
 import logoUser from './../../assests/svg/logoUser.svg';
-import GreyButton from '../UI/greyButton/GreyButton';
-import UIButton from '../UI/UIButton/UIButton';
 import FormAddReview from '../formAddReview/FormAddReview';
 import { IReviews } from '../../type/TReviews';
 
@@ -35,7 +23,6 @@ const WatchReviewItem: React.FC<TWatchReviewItemProps> = ({
   titleReview,
   textReview,
   rating,
-  childReviews,
   refetchFilms,
   isFetching,
 }) => {

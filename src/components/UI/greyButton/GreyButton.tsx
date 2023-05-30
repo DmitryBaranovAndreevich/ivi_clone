@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import style from './GreyButton.module.scss';
 
 type TGreyButtonProps = {

@@ -1,6 +1,5 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useAppSelector } from '../../../../hooks/redux';
-import useAppMediaQuery from '../../../../hooks/useAppMediaQuery';
 import { TNavigationDesctop } from '../../../../type/type';
 import { TItemHovered } from '../../Header';
 import style from './navigationDesktop.module.scss';

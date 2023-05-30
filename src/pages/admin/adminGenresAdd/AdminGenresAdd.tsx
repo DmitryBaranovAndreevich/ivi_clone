@@ -56,7 +56,7 @@ const AdminGenresAdd = () => {
         validationSchema={FormSchema}
         onSubmit={(values) => submitAddGenre(values)}
       >
-        {({ values }) => {
+        {() => {
           return (
             <Form className={style.form}>
               <Field

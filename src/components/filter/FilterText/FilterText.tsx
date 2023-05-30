@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import React, { ChangeEvent, useMemo, useState } from 'react';
 import { Form, Formik, Field } from 'formik';
 import style from './FilterText.module.scss';
 import { useClickOutside } from '../../../hooks/useClickOutside';
@@ -11,11 +11,6 @@ type TFilterPlankProps = {
   title: string;
   nameInitialValue: 'actor' | 'director';
   setFilter: (value: Array<string>) => void;
-};
-
-type TSearchParams = {
-  actor?: string;
-  director?: string;
 };
 
 const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) => {
@@ -52,7 +47,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
         </button>
       );
     });
-  }, [persons, location.search, setSearchParams]);
+  }, [persons, location.search, setSearchParams, nameInitialValue]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onChange = (e: ChangeEvent<HTMLInputElement>, values: any): void => {
     const queryParams = new URLSearchParams(location.search);

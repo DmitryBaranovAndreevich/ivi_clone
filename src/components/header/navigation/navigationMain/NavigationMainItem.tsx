@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { TNavigationLaptopEnTitle, TNavigationLaptopTitle } from '../../../../type/type';
-import UIButton from '../../../UI/UIButton/UIButton';
 import style from './navigationMain.module.scss';
-import lightBackground from './../../../../assests/svg/lightBackground.svg';
 
 export type TNavigationMainItemProps = {
   href: string;

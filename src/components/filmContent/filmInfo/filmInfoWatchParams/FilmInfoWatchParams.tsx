@@ -21,7 +21,7 @@ const FilmInfoWatchParams: React.FC<TFilmInfoWatchParamsProps> = ({
   countries,
   genre,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [country] = useState(
     countries.length > 0
       ? i18n.language === 'ru'

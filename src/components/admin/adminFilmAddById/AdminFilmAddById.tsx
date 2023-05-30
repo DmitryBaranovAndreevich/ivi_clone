@@ -52,7 +52,7 @@ const AdminFilmAddById: React.FC = () => {
         validationSchema={FormSchema}
         onSubmit={(values) => onsubmit(values)}
       >
-        {({ values }) => {
+        {() => {
           return (
             <Form className={style.form}>
               <Field

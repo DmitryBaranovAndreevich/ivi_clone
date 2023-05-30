@@ -1,20 +1,13 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { useAppSelector } from '../../../../hooks/redux';
-import useAppMediaQuery from '../../../../hooks/useAppMediaQuery';
 import {
-  TNavigationDesctop,
   TNavigationLaptop,
   TNavigationLaptopEnTitle,
   TNavigationLaptopTitle,
 } from '../../../../type/type';
-import { TItemHovered } from '../../Header';
 import style from './navigationMain.module.scss';
 import NavigationMainItem from './NavigationMainItem';
 import { useTranslation } from 'react-i18next';
-
-type TNavigationMainProps = {
-  setItemHovered: (isHover: TItemHovered) => void;
-};
 
 const NavigationMain: React.FC = ({}) => {
   const { i18n } = useTranslation();

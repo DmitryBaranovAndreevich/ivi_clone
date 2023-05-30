@@ -27,6 +27,7 @@ const Sort = () => {
         searchParams.get('sort') === href &&
         setSortWithParams({ title, enTitle, href });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={style.sortBlock}>

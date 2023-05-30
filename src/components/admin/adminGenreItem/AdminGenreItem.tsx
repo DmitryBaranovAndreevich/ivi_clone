@@ -31,7 +31,7 @@ const AdminGenreItem: React.FC<TAdminGenreItemType> = ({ genreId, genreName, ref
             setIsEdit(false);
           }}
         >
-          {({ values, handleChange, handleBlur }) => (
+          {({ handleChange, handleBlur }) => (
             <Form className={style.form}>
               <Field
                 name={'nameGenres'}

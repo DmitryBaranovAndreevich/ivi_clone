@@ -1,6 +1,6 @@
 import Slider from '../../components/mainSlider/MainSlider';
 import styles from './Main.module.scss';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
 import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';

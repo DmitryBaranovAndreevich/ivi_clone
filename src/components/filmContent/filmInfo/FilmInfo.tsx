@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
-import { formatDurationFilm } from '../../../hooks/helperFilm';
-import { TParamListMovie } from '../../../type/type';
+import React from 'react';
 import style from './FilmInfo.module.scss';
-import logoSound from './../../../assests/svg/logoSound.svg';
 import FilmInfoStickers from './filmInfoStickers/FilmInfoStickers';
 import FilmInfoDescription from './filmInfoDescription/FilmInfoDescription';
 import FilmInfoRating from './filmInfoRating/FilmInfoRating';
 import { IActors, ICountries, IGenres } from '../../../type/TFilm';
-import FilmInfoList from './filmInfoWatchParams/filmInfoList/FilmInfoList';
 import FilmInfoWatchParams from './filmInfoWatchParams/FilmInfoWatchParams';
 import FilmTitleBlock from './filmTitleBlock/FilmTitleBlock';
 

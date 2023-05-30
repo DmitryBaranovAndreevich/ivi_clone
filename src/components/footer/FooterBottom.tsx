@@ -11,15 +11,6 @@ export type TMockObj = {
   href: string;
 };
 
-const MOCK_ABOUT: Array<TMockObj> = [
-  { title: 'VK', href: 'https://vk.com/iviru?crc=fa4448c13e06e69ba9e814e8743c7e2e' },
-  { title: 'OK', href: 'https://ok.ru/ivi.ru' },
-  { title: 'twitter', href: 'https://twitter.com/ivi_ru' },
-  { title: 'Viber', href: 'https://vb.me/a0544c' },
-  { title: 'Linkedin', href: 'https://www.linkedin.com/company/2543415/' },
-  { title: 'Telegram', href: 'https://t.me/official_iviru' },
-];
-
 const FooterBottom = () => {
   const { t } = useTranslation();
   return (

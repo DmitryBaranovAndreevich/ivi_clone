@@ -11,7 +11,7 @@ type TDropdownBlockProps = {
 };
 
 const DropdownBlock: React.FC<TDropdownBlockProps> = ({ title, titleRu, listItems }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const itemsBlock: Array<ReactNode> | undefined = useMemo((): Array<ReactNode> | undefined => {
     if (titleRu === 'Годы' || titleRu === 'Страны') {
       return listItems?.slice(0, 4).map((item: TGenreCountriesYears): ReactNode => {

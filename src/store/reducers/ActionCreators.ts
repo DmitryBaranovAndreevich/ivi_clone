@@ -1,10 +1,6 @@
-import { appApi } from './../api/appApi';
 import { TFilmAdding } from './../../type/TFilm';
 import axios from 'axios';
-// import { TAppDispatch } from '../store';
-// import { URL, headers } from '../../service/constans';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import fakeLogin from '../../service/fakeReg';
 import { IInitialState } from './UserAuthSlice';
 import { URL, headers } from '../../service/constans';
 import { getCookie } from '../../service/getCookie';

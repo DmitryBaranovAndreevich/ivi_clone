@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import style from './WatchNavigation.module.scss';
 import WatchNavigationItem from './WatchNavigationItem';
 

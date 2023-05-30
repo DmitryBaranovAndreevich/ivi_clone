@@ -35,8 +35,8 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {
     if (window.innerWidth < 1600)
       setViewItems(
         size === 'big'
-          ? Math.ceil(window.innerWidth / 300) //не получается вынести в отдельную переменную, т.к. при создании переменной расчет будет произведен всего 1 раз
-          : size === 'medium' // а нам нужно это делать для размера экрана в данный момент
+          ? Math.ceil(window.innerWidth / 300)
+          : size === 'medium'
           ? Math.ceil(window.innerWidth / 246)
           : 1
       );
@@ -46,11 +46,12 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {
     window.addEventListener('resize', callback);
     instanceRef.current?.update();
     return () => window.removeEventListener('resize', callback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     instanceRef.current?.update();
-  }, [items]);
+  }, [items, instanceRef]);
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

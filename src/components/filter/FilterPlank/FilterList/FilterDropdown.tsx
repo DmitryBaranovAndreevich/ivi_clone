@@ -43,7 +43,7 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
       });
       navigate(`${path}?${searchParams}`);
     }
-  }, [valuesCheckbox, valuesRadio, navigate]);
+  }, [valuesCheckbox, valuesRadio, navigate, choosenValue, nameInitialValue, searchParams]);
   const filterList = useMemo(() => {
     if (nameInitialValue === 'year') {
       return listItem?.map((item: TGenreCountriesYears) => {

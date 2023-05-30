@@ -1,11 +1,5 @@
 import React, { ReactNode } from 'react';
-import UIButton from '../UIButton/UIButton';
 import style from './dropdown.module.scss';
-import logoTV from './../../../assests/svg/logoTV.svg';
-import { useAppSelector } from '../../../hooks/redux';
-import { appApi, useGetCountriesQuery, useGetGenresQuery } from '../../../store/api/appApi';
-import InfiniteSlider from '../../infiniteSlider/InfiniteSlider';
-import { IFilm } from '../../../type/TFilm';
 
 type TDropdownProps = {
   children: ReactNode;

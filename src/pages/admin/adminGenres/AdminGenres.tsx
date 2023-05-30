@@ -11,6 +11,7 @@ import style from './AdminGenres.module.scss';
 const AdminGenres = () => {
   const navigate = useNavigate();
   const { data: genres, refetch } = useGetGenresQuery('');
+  // eslint-disable-next-line
   const [addFilmSelf, {}] = useAddFilmSelfMutation();
   const checkboxGenre = useMemo(() => {
     return genres?.map((genre: TGenreCountriesYears) => {

@@ -10,14 +10,16 @@ import { useTranslation } from 'react-i18next';
 const AuthFinish = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const redirect = () => {
-    navigate('/', { replace: true });
-  };
   useEffect(() => {
+    const redirect = () => {
+      navigate('/', { replace: true });
+    };
+
     const timer = setTimeout(redirect, 4500);
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <LoginLayout>

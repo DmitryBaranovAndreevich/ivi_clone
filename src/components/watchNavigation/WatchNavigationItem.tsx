@@ -1,6 +1,4 @@
-import { title } from 'process';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import UILink from '../UI/Link/UILink';
 import style from './WatchNavigation.module.scss';
 
@@ -19,8 +17,6 @@ const WatchNavigationItem: React.FC<TWatchNavigationItemProps> = ({
   filmId,
   activeLink,
 }) => {
-  const navigate = useNavigate();
-  const [link] = useState(`http://localhost:3003/watch/${filmId}/${href}`);
   return (
     <li className={`${style.item} ${activeLink === href && style.item_active}`}>
       <UILink href={`/watch/${filmId}/${href}`} title={title} addingClass={style.item_link} />

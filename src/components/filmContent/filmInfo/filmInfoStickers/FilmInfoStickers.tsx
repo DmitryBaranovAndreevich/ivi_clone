@@ -42,7 +42,7 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
         </li>
       );
     });
-  }, [actors, hover]);
+  }, [actors, hover, i18n.language]);
   return (
     <ul className={style.stickersList}>
       <li

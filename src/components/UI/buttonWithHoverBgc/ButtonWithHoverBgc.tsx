@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import style from './ButtonWithHoverBgc.module.scss';
 
 type TButtonWithHoverBgcProps = {

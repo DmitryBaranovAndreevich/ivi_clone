@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { addFilm } from './ActionCreators';
 
 export interface IInitialState {
@@ -36,7 +36,7 @@ export const addGenreSlice = createSlice({
       builder.addCase(pending, (state) => {
         state.isLoading = true;
       });
-      builder.addCase(fulfilled, (state, action) => {
+      builder.addCase(fulfilled, (state) => {
         state.isLoading = false;
         // state = action.payload;
         state.error = '';

@@ -55,7 +55,7 @@ export const userLoginSlice = createSlice({
       builder.addCase(pending, (state) => {
         state.isLoading = true;
       });
-      builder.addCase(fulfilled, (state, action) => {
+      builder.addCase(fulfilled, (state) => {
         state.isLoading = false;
         state.error = '';
         state.isRegister = true;

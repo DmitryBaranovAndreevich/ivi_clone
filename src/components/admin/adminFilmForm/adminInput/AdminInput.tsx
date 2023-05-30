@@ -6,7 +6,6 @@ import style from './../AdminFilmEdit.module.scss';
 const AdminInput: React.FC<any> = ({
   field,
   txtLabel,
-  error,
   type,
   form: { touched, errors },
   ...props

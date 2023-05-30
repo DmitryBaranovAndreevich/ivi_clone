@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IFilm } from '../../type/TFilm';
 import IPerson from '../../type/TPerson';
 
 export const searchApi = createApi({

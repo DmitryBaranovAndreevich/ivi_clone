@@ -5,15 +5,12 @@ import style from './FilmContent.module.scss';
 import { IFilm } from '../../type/TFilm';
 import FilmTitleBlock from './filmInfo/filmTitleBlock/FilmTitleBlock';
 import FilmInfoWatchParams from './filmInfo/filmInfoWatchParams/FilmInfoWatchParams';
-import { useTranslation } from 'react-i18next';
 
 type TFilmContentProps = {
   film: IFilm;
 };
 
 const FilmContent: React.FC<TFilmContentProps> = ({ film }) => {
-  debugger;
-  const { i18n } = useTranslation();
   return (
     <div className={style.filmContent}>
       <div className={style.watch}>

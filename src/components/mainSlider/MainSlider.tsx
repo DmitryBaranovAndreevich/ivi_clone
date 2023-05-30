@@ -58,6 +58,7 @@ const MainSlider: FC<IMainSlider> = ({ items }) => {
   useEffect(() => {
     window.addEventListener('resize', callback);
     return () => window.removeEventListener('resize', callback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

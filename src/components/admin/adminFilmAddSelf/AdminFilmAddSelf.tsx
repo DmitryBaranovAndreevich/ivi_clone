@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import style from './AdminFilmAddSelf.module.scss';
@@ -9,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import RedButton from '../../UI/redButton/RedButton';
 import AdminCheckbox from '../adminFilmForm/adminCheckbox/adminCheckbox';
 import AdminInput from '../adminFilmForm/adminInput/AdminInput';
-import { useAddFilmSelfMutation, useAddGenreToFilmMutation } from '../../../store/api/adminApi';
 import { TFilmAdding } from '../../../type/TFilm';
 import { useAppDispatch } from '../../../hooks/redux';
 import { addFilm, addGenre } from '../../../store/reducers/ActionCreators';
@@ -118,7 +116,7 @@ const AdminFilmAddSelf: React.FC = ({}) => {
         }, 3000);
         setIsSuccess(true);
       })
-      .catch((err) => {
+      .catch(() => {
         setTimeout(() => {
           navigate('/admin/films');
         }, 3000);
@@ -148,7 +146,7 @@ const AdminFilmAddSelf: React.FC = ({}) => {
           submitAddFilm(values);
         }}
       >
-        {({ touched, errors, values }) => {
+        {() => {
           return (
             <div className={style.container}>
               <Form className={style.form}>

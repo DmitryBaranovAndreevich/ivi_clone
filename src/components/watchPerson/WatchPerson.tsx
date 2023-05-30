@@ -1,11 +1,6 @@
-import { title } from 'process';
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
-import { number } from 'yup';
+import React, { ReactNode, useMemo } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
-import { useGetOnePersonQuery } from '../../store/api/personApi';
-import PersonItem from '../personItem/PersonItem';
-import UILink from '../UI/Link/UILink';
 import Spinner from '../UI/spinner/Spinner';
 import style from './WatchPerson.module.scss';
 import WatchPersonType from './WatchPersonType';

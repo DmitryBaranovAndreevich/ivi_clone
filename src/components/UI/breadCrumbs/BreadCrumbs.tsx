@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ButtonWithHoverBgc from '../buttonWithHoverBgc/ButtonWithHoverBgc';
 import style from './BreadCrumbs.module.scss';
 import { useTranslation } from 'react-i18next';

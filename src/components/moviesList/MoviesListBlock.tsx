@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
 import { moviesSort } from '../../store/reducers/MoviesSort';
 import { sortList } from '../../utils/helperWithSort';

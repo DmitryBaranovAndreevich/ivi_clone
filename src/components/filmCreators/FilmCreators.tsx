@@ -3,7 +3,6 @@ import CreatorList from './CreatorList';
 import { IActors, IDirectors, IProducers, IWriters } from '../../type/TFilm';
 import style from './FilmCreators.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { number } from 'yup';
 import { useTranslation } from 'react-i18next';
 
 type TFilmCreatorsProps = {

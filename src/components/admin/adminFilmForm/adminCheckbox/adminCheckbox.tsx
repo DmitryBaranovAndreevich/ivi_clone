@@ -3,13 +3,7 @@ import { Field } from 'formik';
 import React from 'react';
 import style from './../AdminFilmEdit.module.scss';
 
-const AdminCheckbox: React.FC<any> = ({
-  field,
-  txtLabel,
-  genreName,
-  genreEnglishName,
-  ...props
-}) => {
+const AdminCheckbox: React.FC<any> = ({ genreName, ...props }) => {
   return (
     <label className={style.checkboxBlock_label}>
       <Field className={style.checkboxBlock_input} type="checkbox" value={genreName} {...props} />

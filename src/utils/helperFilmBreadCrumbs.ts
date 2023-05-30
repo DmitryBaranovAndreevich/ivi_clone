@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { TGenreCountriesYears } from '../type/type';
 
 export type TName = {
@@ -12,7 +11,6 @@ export type TGetArrayFromOneItem = (
 ) => Array<TName>;
 
 export const getArrayFromOneItem: TGetArrayFromOneItem = (listItem, itemsParams) => {
-  // const objWithParamsUrl: TObjWithParamsUrl = {};
   const arr: Array<TName> = [];
   if (listItem && itemsParams) {
     const itemsParamsArr = itemsParams.split('+');

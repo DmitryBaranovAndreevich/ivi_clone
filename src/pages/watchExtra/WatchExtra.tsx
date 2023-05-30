@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
 import style from './WatchExtra.module.scss';
-import logoArrow from './../../assests/svg/logoArrow.svg';
 import Spinner from '../../components/UI/spinner/Spinner';
 import WatchExtraAside from '../../components/watchExtraAside/WatchExtraAside';
 import WatchExtraContent from '../../components/watchExtraContent/WatchExtraContent';
@@ -18,7 +17,7 @@ const WatchExtra = () => {
       </div>
     );
   }
-  // const film: IFilm = films;
+
   if (!film) return <div>Фильм не найден!</div>;
   return (
     <div className={style.container}>

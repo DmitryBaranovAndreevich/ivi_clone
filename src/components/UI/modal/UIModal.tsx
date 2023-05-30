@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import style from './UIModal.module.scss';
 

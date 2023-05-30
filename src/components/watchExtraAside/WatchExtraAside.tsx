@@ -3,7 +3,6 @@ import style from './WatchExtraPage.module.scss';
 import logoClock from './../../assests/svg/logoClock.svg';
 import CardFilmRating from '../cardFilm/cardFilmRating';
 import CardFilmDuration from '../cardFilm/cardFilmDuration';
-import CardFilmInfo from '../cardFilm/cardFilmInfo';
 import { Link } from 'react-router-dom';
 
 type TWatchExtraAsideProps = {
@@ -22,9 +21,6 @@ const WatchExtraAside: React.FC<TWatchExtraAsideProps> = ({
   poster,
   filmName,
   rating,
-  year,
-  country,
-  genre,
   duration,
 }) => {
   return (
@@ -36,7 +32,6 @@ const WatchExtraAside: React.FC<TWatchExtraAsideProps> = ({
       </div>
       <div className={style.textBlock}>
         <CardFilmRating rating={rating} />
-        {/* <CardFilmInfo filmId={filmId} /> */}
         <CardFilmDuration>
           <img className={style.duration_logo} src={logoClock} alt="logoClock" />
           <p className={style.duration_text}>{duration} мин.</p>

@@ -6,8 +6,7 @@ export const adminApi = createApi({
   reducerPath: 'adminApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3000/api/',
-    // credentials: 'include',
-    prepareHeaders: (headers, { getState, endpoint }) => {
+    prepareHeaders: (headers) => {
       headers.set('Content-Type', 'application/json');
       const token = getCookie('token');
       if (token) {

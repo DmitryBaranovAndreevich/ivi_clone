@@ -1,5 +1,5 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import React, { FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import RedButton from '../UI/redButton/RedButton';
 import logo from './../../assests/svg/logo.svg';
 import logoSearch from './../../assests/svg/logoSearch.svg';
@@ -7,7 +7,7 @@ import logoBell from './../../assests/svg/logoBell.svg';
 import logoUser from './../../assests/svg/logoUser.svg';
 import style from './header.module.scss';
 import Dropdown from '../UI/Dropdowns/Dropdown';
-import { TNavigationDesctopEnTitle, TNavigationDesctopTitle } from '../../type/type';
+import { TNavigationDesctopTitle } from '../../type/type';
 import DropdownSubscribe from './dropdownSubscribe/DropdownSubscribe';
 import DropdownFilms from './dropdownFilms/DropdownFilms';
 import DropdownNotification from './dropdownNotification/DropdownNotification';

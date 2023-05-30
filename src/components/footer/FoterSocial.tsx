@@ -13,27 +13,7 @@ export type TMockObj = {
   href: string;
 };
 
-const MOCK_SOCIAL: Array<TMockObj> = [
-  { title: 'VK', href: 'https://vk.com/iviru?crc=fa4448c13e06e69ba9e814e8743c7e2e' },
-  { title: 'OK', href: 'https://ok.ru/ivi.ru' },
-  { title: 'Twitter', href: 'https://twitter.com/ivi_ru' },
-  { title: 'Viber', href: 'https://vb.me/a0544c' },
-  { title: 'Linkedin', href: 'https://www.linkedin.com/company/2543415/' },
-  { title: 'Telegram', href: 'https://t.me/official_iviru' },
-];
-
 const FoterSocial = () => {
-  // const itemsBlock: Array<ReactNode> = useMemo((): Array<ReactNode> => {
-  //   return MOCK_SOCIAL.map(({ title, href }: TMockObj): ReactNode => {
-  //     return (
-  //       <li className={style.block_item} key={title}>
-  //         <UIButton addingClass={style.link} href={href}>
-  //           <img src={`logoSocial${title}.svg`} alt={title} />
-  //         </UIButton>
-  //       </li>
-  //     );
-  //   });
-  // }, [MOCK_SOCIAL]);
   return (
     <ul className={style.social_list}>
       <UIButton
