@@ -9,7 +9,6 @@
   @include border($red, 1px, solid, 8px);
   @include font-source-sans(13px, $white, 500, 16px);
   cursor: pointer;
-  // display: inline-flex;
 
   &:hover {
     background-color: $redHover;

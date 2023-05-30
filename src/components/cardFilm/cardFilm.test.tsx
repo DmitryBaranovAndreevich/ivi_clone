@@ -62,7 +62,6 @@ describe('CardFilm', () => {
         />
       );
     });
-    // expect(screen.getByTestId('CardFilm_information')).not.toBeVisible();
     fireEvent.mouseOver(screen.getByTestId('CardFilm_link'));
     expect(useStateMock).toHaveBeenCalled();
   });

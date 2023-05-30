@@ -78,6 +78,7 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {
                   className={`${styles.slide} keen-slider__slide`}
                   key={movie.id}
                   style={size === 'big' ? { height: 500 } : { height: 350 }}
+                  data-testid="CategoriesSlider_slider"
                 >
                   <CardFilm
                     filmId={movie.id}
