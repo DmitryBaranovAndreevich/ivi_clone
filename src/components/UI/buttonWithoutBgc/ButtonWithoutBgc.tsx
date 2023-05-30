@@ -4,7 +4,7 @@ import style from './ButtonWithoutBgc.module.scss';
 type TButtonShowMoreProps = {
   onClick: () => void;
   children: ReactNode;
-  addingClass: string;
+  addingClass?: string;
 };
 
 const ButtonWithoutBgc: React.FC<TButtonShowMoreProps> = ({ onClick, children, addingClass }) => {

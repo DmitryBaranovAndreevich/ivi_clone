@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useGetFilmsQuery } from '../../store/api/filmApi';
+import { moviesSort } from '../../store/reducers/MoviesSort';
 import { sortList } from '../../utils/helperWithSort';
 import ButtonWithoutBgc from '../UI/buttonWithoutBgc/ButtonWithoutBgc';
 import MoviesList from './MoviesList';
@@ -29,6 +31,17 @@ const MoviesListBlock = () => {
   useEffect(() => {
     setFilmSort(sortList(String(searchParams.get('sort')), filmFilter));
   }, [filmFilter, searchParams]);
+  const dispatch = useAppDispatch();
+  const { setMaxRatingCountOfFilm } = moviesSort.actions;
+  useEffect(() => {
+    const sorrtArrayFilm = sortList('mark', filmFilter);
+    let ratingCount = 0;
+    if (sorrtArrayFilm) {
+      ratingCount = sorrtArrayFilm[0] && sorrtArrayFilm[0].ratingsNumber;
+    }
+    dispatch(setMaxRatingCountOfFilm({ ratingCount }));
+  }, [filmFilter, setMaxRatingCountOfFilm, dispatch]);
+
   return (
     <div className={style.movies}>
       {filmFilter && <MoviesList filmSort={filmSort && filmSort} />}

@@ -1,4 +1,5 @@
 import React, { ReactNode, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TInfoFilm } from '../../../type/type';
 import UILink from '../../UI/Link/UILink';
 import style from './DropdownFilms.module.scss';
@@ -9,6 +10,7 @@ type TDropdownBlockProps = {
 
 const DropdownSlider: React.FC<TDropdownBlockProps> = ({ listItems }) => {
   const [active, setActive] = useState(0);
+  const { i18n } = useTranslation();
 
   const makeItemActive = (index: number) => {
     setActive(index);
@@ -22,11 +24,15 @@ const DropdownSlider: React.FC<TDropdownBlockProps> = ({ listItems }) => {
           key={item.title}
           onMouseEnter={() => makeItemActive(index)}
         >
-          <UILink addingClass={style.link} title={item.title} href={item.href} />
+          <UILink
+            addingClass={style.link}
+            title={i18n.language === 'ru' ? item.title : item.enTitle}
+            href={item.href}
+          />
         </div>
       );
     });
-  }, [listItems, active]);
+  }, [listItems, active, i18n.language]);
   return (
     <div className={style.block}>
       <div className={style.dropdown_content_line}></div>

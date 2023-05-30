@@ -89,8 +89,8 @@ const MainSlider: FC<IMainSlider> = ({ items }) => {
             key={movie.id}
           >
             <p className={styles.moviesName}>{movie.name}</p>
-            <p className={styles.description}>{movie.description}</p>
-            <div>
+            {/* <p className={styles.description}>{movie.description}</p> */}
+            <div className={styles.watchButton}>
               <RedButton addingClass={styles.button} text={'Смотреть по подписке'} />
             </div>
           </div>

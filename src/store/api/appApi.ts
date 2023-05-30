@@ -3,6 +3,7 @@ import { URL_TO_FILMS } from '../../service/constans';
 
 import { TGenreCountriesYears } from '../../type/type';
 import { IFilm } from '../../type/TFilm';
+import { IUser } from '../../type/TUser';
 
 export const appApi = createApi({
   reducerPath: 'appApi',

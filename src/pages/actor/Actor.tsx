@@ -1,13 +1,14 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/UI/spinner/Spinner';
 import { personApi } from '../../store/api/personApi';
 import styles from './actor.module.scss';
 import Line from '../../components/login/Line/Line';
 import Movie from '../../components/UI/Movie/Movie';
 import { useTranslation } from 'react-i18next';
+import LinkBack from '../../components/UI/linkStepBack/LinkBack';
 
 const Actor = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const { data, isLoading } = personApi.useGetOnePersonQuery({ id });
   const navigate = useNavigate();
@@ -17,13 +18,12 @@ const Actor = () => {
     </div>
   ) : (
     <div className={styles.wrapper}>
-      <Link to={''} onClick={() => navigate(-1)} className={styles.reverse}>
-        {t('actor.commBack')}
-      </Link>
+      <LinkBack href={`#`} onClick={() => navigate(-1)} text={t('actor.commBack')} />
       <div className={styles.container}>
         <img src={data?.photo} alt="actor foto" className={styles.foto} />
-        <h1 className={styles.rusName}>{data?.name}</h1>
-        <h3 className={styles.engName}>{data?.originalName}</h3>
+        <h1 className={styles.rusName}>
+          {i18n.language === 'ru' ? data?.name : data?.originalName}
+        </h1>
         <p className={styles.title}>
           {t('actor.films')}
           <span className={styles.span}>

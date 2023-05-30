@@ -2,10 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { TGenreCountriesYears } from '../../../../type/type';
 import style from './../FilterPlank.module.scss';
-import FilterCheckbox from './FilterItem';
+import FilterCheckbox from './FilterCheckbox';
 import { generatePath, useNavigate, useSearchParams } from 'react-router-dom';
 import { TObjWithParamsUrl } from '../../../../hooks/useNavigation';
-import { setUrlParams } from '../../../../utils/helperWithNavigation';
+import { setUrlParamsCheckbox, setUrlParamsRadio } from '../../../../utils/helperWithNavigation';
+import FilterRadioButton from './FilterRadioButton';
 
 type TFilterListProps = {
   nameInitialValue: 'genre' | 'country' | 'year';
@@ -23,29 +24,50 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
   const [valuesCheckbox, setValuesCheckbox] = useState<Array<string>>(
     choosenValue[nameInitialValue]?.split('+') || []
   );
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [valuesRadio, setValuesRadio] = useState<string | undefined | null>(
+    nameInitialValue === 'year' ? choosenValue.year : null
+  );
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   useEffect(() => {
-    if (valuesCheckbox.join('+') !== choosenValue[nameInitialValue]) {
+    if (
+      valuesCheckbox.join('+') !== choosenValue[nameInitialValue] ||
+      valuesRadio !== choosenValue.year
+    ) {
       const path = generatePath('/movies/:genre?/:year?/:country?', {
-        genre: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'genre') || null,
-        year: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'year') || null,
-        country: setUrlParams(nameInitialValue, valuesCheckbox, choosenValue, 'country') || null,
+        genre:
+          setUrlParamsCheckbox(nameInitialValue, valuesCheckbox, choosenValue, 'genre') || null,
+        year: setUrlParamsRadio(nameInitialValue, valuesRadio, choosenValue, 'year') || null,
+        country:
+          setUrlParamsCheckbox(nameInitialValue, valuesCheckbox, choosenValue, 'country') || null,
       });
       navigate(`${path}?${searchParams}`);
     }
-  }, [valuesCheckbox, navigate]);
+  }, [valuesCheckbox, valuesRadio, navigate]);
   const filterList = useMemo(() => {
-    return listItem?.map((item: TGenreCountriesYears) => {
-      return (
-        <FilterCheckbox
-          key={item.id}
-          nameInitialValue={nameInitialValue}
-          name={item.name}
-          englishName={item.englishName}
-        />
-      );
-    });
+    if (nameInitialValue === 'year') {
+      return listItem?.map((item: TGenreCountriesYears) => {
+        return (
+          <FilterRadioButton
+            key={item.id}
+            nameInitialValue={nameInitialValue}
+            name={item.name}
+            englishName={item.englishName}
+          />
+        );
+      });
+    } else {
+      return listItem?.map((item: TGenreCountriesYears) => {
+        return (
+          <FilterCheckbox
+            key={item.id}
+            nameInitialValue={nameInitialValue}
+            name={item.name}
+            englishName={item.englishName}
+          />
+        );
+      });
+    }
   }, [listItem, nameInitialValue]);
 
   return (
@@ -53,17 +75,33 @@ const FilterDropdown: React.FC<TFilterListProps> = ({
       initialValues={{
         genre: valuesCheckbox,
         country: valuesCheckbox,
-        year: valuesCheckbox,
+        year: valuesRadio,
       }}
-      onSubmit={(values) => setValuesCheckbox(values[nameInitialValue])}
+      onSubmit={(values) => {
+        if (nameInitialValue === 'year') {
+          setValuesRadio(values.year);
+        } else {
+          setValuesCheckbox(values[nameInitialValue]);
+        }
+      }}
     >
       {({ values }) => {
         {
-          setValuesCheckbox(values[nameInitialValue]);
+          if (nameInitialValue === 'year') {
+            setValuesRadio(values.year);
+          } else {
+            setValuesCheckbox(values[nameInitialValue]);
+          }
         }
         return (
           <Form className={`${addingClass} ${style.dropdown}`}>
-            <ul className={style.dropdown_list}>{filterList}</ul>
+            <ul
+              className={`${style.dropdown_list} ${
+                nameInitialValue === 'year' && style.dropdown_list_year
+              }`}
+            >
+              {filterList}
+            </ul>
           </Form>
         );
       }}

@@ -11,17 +11,21 @@ type TMoviesHeaderProps = {
 };
 
 const MoviesHeader: React.FC<TMoviesHeaderProps> = ({ meanUrl }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data: genres } = useGetGenresQuery('');
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
   const makeListOneCategory = useCallback(
-    (data: TGenreCountriesYears[] | undefined, choosenData: string | undefined | null) => {
+    (
+      data: TGenreCountriesYears[] | undefined,
+      choosenData: string | undefined | null,
+      lang: string
+    ) => {
       const choosenArray = choosenData?.split('+') || [];
       return data?.map((item: TGenreCountriesYears) => {
         for (let i = 0; i < choosenArray.length; i++) {
           if (item.englishName === choosenArray[i]) {
-            return item.name;
+            return lang === 'ru' ? item.name : item.englishName;
           }
         }
       });
@@ -30,13 +34,13 @@ const MoviesHeader: React.FC<TMoviesHeaderProps> = ({ meanUrl }) => {
   );
 
   const listAllCategories = useMemo(() => {
-    const listGenres = makeListOneCategory(genres, meanUrl.genre) || [];
-    const listCountries = makeListOneCategory(countries, meanUrl.country) || [];
-    const listYears = makeListOneCategory(years, meanUrl.year) || [];
+    const listGenres = makeListOneCategory(genres, meanUrl.genre, i18n.language) || [];
+    const listCountries = makeListOneCategory(countries, meanUrl.country, i18n.language) || [];
+    const listYears = makeListOneCategory(years, meanUrl.year, i18n.language) || [];
     const fullList = [...listGenres, ...listCountries, ...listYears].filter((item) => item);
     const fullListInStr = fullList.join(', ');
     return fullListInStr;
-  }, [genres, countries, years, makeListOneCategory, meanUrl]);
+  }, [genres, countries, years, makeListOneCategory, meanUrl, i18n.language]);
 
   return (
     <div className={style.header}>

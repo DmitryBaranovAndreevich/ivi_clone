@@ -7,7 +7,7 @@ import logoUser from './../../assests/svg/logoUser.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { reviewSlice } from '../../store/reducers/ReviewSlice';
 import { useAddReviewForReviewMutation, useAddReviewMutation } from '../../store/api/reviewApi';
-import Spinner from '../UI/spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const FormSchema = Yup.object().shape({
   reviewTitle: Yup.string()
@@ -37,7 +37,8 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
 }) => {
   const [errorReviewTitle, setErrorReviewTitle] = useState<null | string>(null);
   const [errorReviewText, setErrorReviewText] = useState<null | string>(null);
-
+  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [addReview, {}] = useAddReviewMutation();
   const [addReviewForReview, {}] = useAddReviewForReviewMutation();
@@ -80,22 +81,30 @@ const FormAddReview: React.FC<TFormAddReviewProps> = ({
         }}
         validationSchema={FormSchema}
         onSubmit={async (values) => {
-          if (forWhat === 'film') {
-            await addReview({
-              review: { title: values.reviewTitle, text: values.reviewText },
-              filmId,
-            });
-            dispatch(setReviewForFilm({ filmId, reviewObj: { title: '', text: '' } }));
+          if (!isRegister) {
+            return navigate('/profile/email');
+          } else {
+            if (forWhat === 'film') {
+              await addReview({
+                review: { title: values.reviewTitle, text: values.reviewText },
+                filmId,
+              });
+              values.reviewText = '';
+              values.reviewTitle = '';
+              dispatch(setReviewForFilm({ filmId, reviewObj: { title: '', text: '' } }));
+            }
+            if (forWhat === 'review' && reviewId) {
+              await addReviewForReview({
+                review: { title: values.reviewTitle, text: values.reviewText },
+                filmId,
+                reviewId,
+              });
+              values.reviewText = '';
+              values.reviewTitle = '';
+              dispatch(setReviewForReview({ reviewId, reviewObj: { title: '', text: '' } }));
+            }
+            refetchFilms();
           }
-          if (forWhat === 'review' && reviewId) {
-            await addReviewForReview({
-              review: { title: values.reviewTitle, text: values.reviewText },
-              filmId,
-              reviewId,
-            });
-            dispatch(setReviewForReview({ reviewId, reviewObj: { title: '', text: '' } }));
-          }
-          refetchFilms();
         }}
       >
         {({ values, handleBlur }) => {

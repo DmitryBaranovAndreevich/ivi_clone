@@ -21,7 +21,7 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
   const onMouseLeave = () => {
     setHover(null);
   };
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const blockActors: Array<ReactNode> = useMemo(() => {
     return actors?.slice(0, 5).map((actor) => {
       return (
@@ -32,7 +32,12 @@ const FilmInfoStickers: React.FC<TFilmInfoStickersProps> = ({ actors, rating }) 
           onMouseLeave={onMouseLeave}
         >
           <Link to={`/person/${actor.id}`} className={style.sticker}>
-            <StickerCard type="actor" caption={actor.name} avatar={actor.photo} hover={hover} />
+            <StickerCard
+              type="actor"
+              caption={i18n.language === 'ru' ? actor.name : actor.originalName}
+              avatar={actor.photo}
+              hover={hover}
+            />
           </Link>
         </li>
       );

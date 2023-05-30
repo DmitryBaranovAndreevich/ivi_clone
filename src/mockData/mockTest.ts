@@ -1,3 +1,8 @@
+import { IFilm } from './../type/TFilm';
+import { TPersonEnglishName, TPersonName, TReviewUser } from '../type/type';
+import { TTreeReviews } from '../store/reducers/ReviewSlice';
+import { IRoles } from '../type/TUser';
+
 export const textContent = 'test';
 
 export const yearContent = 2020;
@@ -8,7 +13,11 @@ export const genreContent = 'Комедия';
 
 export const ratingContent = '8.9';
 
-export const mockFilmTest = {
+export const typePersonNameTest: TPersonName = 'Актёры';
+
+export const typePersonEnglishName: TPersonEnglishName = 'actors';
+
+export const mockFilmTest: IFilm = {
   id: 1,
   name: '1+1',
   originalName: 'Intouchables',
@@ -21,8 +30,6 @@ export const mockFilmTest = {
   duration: 112,
   description:
     'Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений.',
-  createdAt: '2023-05-25T13:31:04.898Z',
-  updatedAt: '2023-05-25T13:31:04.898Z',
   directors: [
     {
       id: 1,
@@ -391,3 +398,102 @@ export const mockFilmTest = {
   awards: [],
   reviews: [],
 };
+
+export const mockTreeReviews: Array<TTreeReviews> = [
+  {
+    review: {
+      id: 30,
+      title: 'tttttttttt',
+      text: 'rfr4gf4ref4',
+      rating: 36,
+      userId: 1,
+      filmId: 2,
+      parentId: null,
+    },
+    childrenReviews: [
+      {
+        review: {
+          id: 31,
+          title: 'Lera',
+          text: 'fcgvhhjkjhh',
+          rating: 36,
+          userId: 1,
+          filmId: 2,
+          parentId: 30,
+        },
+        childrenReviews: [
+          {
+            review: {
+              id: 32,
+              title: 'ttttg',
+              text: 'rfr4gf4ref4',
+              rating: 36,
+              userId: 1,
+              filmId: 2,
+              parentId: 31,
+            },
+            childrenReviews: [
+              {
+                review: {
+                  id: 33,
+                  title: 'ttttg',
+                  text: 'fcgvhhjkjhh',
+                  rating: 36,
+                  userId: 1,
+                  filmId: 2,
+                  parentId: 32,
+                },
+                childrenReviews: [
+                  {
+                    review: {
+                      id: 34,
+                      title: 'gfv',
+                      text: 'rfr4gf4ref4',
+                      rating: 36,
+                      userId: 1,
+                      filmId: 2,
+                      parentId: 33,
+                    },
+                    childrenReviews: [
+                      {
+                        review: {
+                          id: 35,
+                          title: 'gfv',
+                          text: 'rfr4gf4ref4',
+                          rating: 36,
+                          userId: 1,
+                          filmId: 2,
+                          parentId: 34,
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const mockReviewObj = {
+  title: 'test',
+  text: 'test',
+};
+
+export const mockArrayRoles: Array<IRoles> = [
+  {
+    id: 1,
+    value: 'ADMIN',
+    description: 'ADMIN',
+  },
+  {
+    id: 2,
+    value: 'USER',
+    description: 'USER',
+  },
+];
+
+export const mockArrayStringRoles: Array<string> = ['ADMIN', 'USER'];

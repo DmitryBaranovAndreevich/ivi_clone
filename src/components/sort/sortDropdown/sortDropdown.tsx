@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TKindSort } from '../../../store/reducers/MoviesSort';
 import style from './sortDropdown.module.scss';
 
@@ -15,6 +16,7 @@ const SortDropdown: React.FC<TSortDropdownProps> = ({
   setSortWithParams,
   setIsOpen,
 }) => {
+  const { t, i18n } = useTranslation();
   const kindsList = useMemo(() => {
     const changeKindSort = (kindSort: TKindSort) => {
       setSortWithParams(kindSort);
@@ -30,14 +32,14 @@ const SortDropdown: React.FC<TSortDropdownProps> = ({
           key={kindSort.href}
           onClick={() => onClick(kindSort)}
         >
-          {kindSort.title}
+          {i18n.language === 'ru' ? kindSort.title : kindSort.enTitle}
         </li>
       );
     });
-  }, [kindsSort, setSortWithParams, choosenSort, setIsOpen]);
+  }, [kindsSort, setSortWithParams, choosenSort, setIsOpen, i18n.language]);
   return (
     <div className={style.dropdown}>
-      <div className={style.title}>Сортировать</div>
+      <div className={style.title}>{t('filter.sort')}</div>
       <ul className={style.list}>{kindsList}</ul>
     </div>
   );

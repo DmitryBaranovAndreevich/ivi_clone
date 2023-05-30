@@ -20,6 +20,7 @@ const NavigationDesktop: React.FC<TNavigationDesktopProps> = ({ setItemHovered }
         <NavigationDesktopItem
           key={el.title}
           href={el.href}
+          titleForHovered={el.title}
           title={i18n.language === 'ru' ? el.title : el.enTitle}
           isExpand={el.isExpand}
           setItemHovered={setItemHovered}

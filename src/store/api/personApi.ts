@@ -16,7 +16,7 @@ export const personApi = createApi({
     getOnePerson: build.query<IPerson, { id: string | undefined }>({
       query: ({ id }) => {
         return {
-          url: `persons/${id}`,
+          url: `person/${id}`,
           headers: { Authorization: `Bearer: ${getCookie('token')}` },
         };
       },

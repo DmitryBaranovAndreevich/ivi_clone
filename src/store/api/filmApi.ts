@@ -38,7 +38,6 @@ export const filmApi = createApi({
         return { url: `films/${id}` };
       },
     }),
-    // getFilmsBy
   }),
 });
 

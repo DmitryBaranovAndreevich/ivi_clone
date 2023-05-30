@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import InfiniteSlider from '../../infiniteSlider/InfiniteSlider';
 import { IFilm } from '../../../type/TFilm';
+import RedButton from '../../UI/redButton/RedButton';
 
 const DropdownSubscribe: React.FC = () => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ const DropdownSubscribe: React.FC = () => {
           <div className={style.mainBlock_narrow}>
             <DropdownSubscribeCard logo={logoCamera} text={t('dropdown.new')} />
           </div>
-          <div className={style.mainBlock_width}>
+          <div className={style.mainBlock_width_end}>
             <DropdownSubscribeCard logo={logoFolderWithPlus} text={t('dropdown.filling')} />
           </div>
           <div className={style.mainBlock_narrow}>
@@ -39,6 +40,12 @@ const DropdownSubscribe: React.FC = () => {
           </div>{' '}
           <div className={style.mainBlock_narrow}>
             <DropdownSubscribeCard logo={logoDownload} text={t('dropdown.uploading')} />
+          </div>
+          <div className={style.mainBlock_width_start}>
+            <RedButton addingClass={style.mainBlock_button} text={t('header.freeButton')} />
+          </div>
+          <div className={style.mainBlock_narrow}>
+            <p className={style.mainBlock_text}>{t('dropdown.turnOff')}</p>
           </div>
         </div>
       </div>

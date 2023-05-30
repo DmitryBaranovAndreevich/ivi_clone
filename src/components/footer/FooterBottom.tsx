@@ -4,6 +4,7 @@ import logoApple from '../../assests/svg/logoApple.svg';
 import UIButton from '../UI/UIButton/UIButton';
 import FooterDeviceLink from './FooterDeviceLink';
 import FoterSocial from './FoterSocial';
+import { useTranslation } from 'react-i18next';
 
 export type TMockObj = {
   title: string;
@@ -20,6 +21,7 @@ const MOCK_ABOUT: Array<TMockObj> = [
 ];
 
 const FooterBottom = () => {
+  const { t } = useTranslation();
   return (
     <div className={style.content}>
       <div className={style.column + ' ' + style.column_width}>
@@ -29,27 +31,39 @@ const FooterBottom = () => {
             addingClass={style.devices_link}
             target="_blank"
           >
-            <FooterDeviceLink logoSrc={logoApple} text="Загрузить в" device="App Store" />
+            <FooterDeviceLink
+              logoSrc={logoApple}
+              text={t('footerDevice.upload') ?? ''}
+              device="App Store"
+            />
           </UIButton>
           <UIButton
             href={'https://go.onelink.me/app/devicesAndroid'}
             addingClass={style.devices_link}
           >
-            <FooterDeviceLink logoSrc={logoApple} text="Доступно в" device="Google Play" />
+            <FooterDeviceLink
+              logoSrc={logoApple}
+              text={t('footerDevice.available') ?? ''}
+              device="Google Play"
+            />
           </UIButton>
           <UIButton
             href={'https://go.onelink.me/app/devicesiOS'}
             addingClass={style.devices_link}
             target="_blank"
           >
-            <FooterDeviceLink logoSrc={logoApple} text="Смотрите на" device="Smart TV" />
+            <FooterDeviceLink
+              logoSrc={logoApple}
+              text={t('footerDevice.look') ?? ''}
+              device="Smart TV"
+            />
           </UIButton>
           <UIButton
             href={'https://go.onelink.me/app/devicesiOS'}
             addingClass={style.devices_link}
             target="_blank"
           >
-            <FooterDeviceLink logoSrc={logoApple} device="Все устройства" />
+            <FooterDeviceLink logoSrc={logoApple} device={t('footerDevice.devices') ?? ''} />
           </UIButton>
         </div>
         <div className={style.copyrights}>

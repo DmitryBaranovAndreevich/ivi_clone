@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/redux';
 import { TObjWithParamsUrl } from '../../hooks/useNavigation';
@@ -19,6 +19,20 @@ const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
   const navigate = useNavigate();
+  const { maxRatingCountOfFilm } = useAppSelector((state) => state.moviesSortReduser);
+  const [stepRatingNumber, setStepRatingNumber] = useState(0.1);
+  useEffect(() => {
+    const ratingCount = maxRatingCountOfFilm / 10000;
+    if (ratingCount < 1) {
+      const stringRatingCount = String(ratingCount);
+      const stringTo = stringRatingCount.search(/[1-9]/i);
+      const substringRatingCount = stringRatingCount.substring(0, stringTo + 1);
+      const numberQ = +substringRatingCount;
+      setStepRatingNumber(numberQ * 100);
+    } else {
+      setStepRatingNumber(Math.floor(ratingCount) * 100);
+    }
+  }, [maxRatingCountOfFilm]);
 
   return (
     <div className={style.filter}>
@@ -60,9 +74,9 @@ const Filter: React.FC<TFilterProps> = ({ meanUrl }) => {
         <FilterRange
           title={t('filter.reviews')}
           nameInitialValue="countReviews"
-          step={0.1}
+          step={stepRatingNumber}
           min={0}
-          max={10}
+          max={maxRatingCountOfFilm}
         />
       </div>
       <div className={style.clear}>

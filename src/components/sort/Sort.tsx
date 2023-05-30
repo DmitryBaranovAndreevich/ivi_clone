@@ -7,8 +7,10 @@ import SortDropdown from './sortDropdown/sortDropdown';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useSearchParams } from 'react-router-dom';
 import { moviesSort, TKindSort } from '../../store/reducers/MoviesSort';
+import { useTranslation } from 'react-i18next';
 
 const Sort = () => {
+  const { i18n } = useTranslation();
   const { choosenSort, kindsSort } = useAppSelector((state) => state.moviesSortReduser);
   const dispatch = useAppDispatch();
   const { setSort } = moviesSort.actions;
@@ -20,17 +22,19 @@ const Sort = () => {
     setSearchParams({ sort: sortValue.href });
   };
   useEffect(() => {
-    kindsSort.map(({ title, href }: TKindSort) => {
+    kindsSort.map(({ title, enTitle, href }: TKindSort) => {
       searchParams.get('sort') &&
         searchParams.get('sort') === href &&
-        setSortWithParams({ title, href });
+        setSortWithParams({ title, enTitle, href });
     });
   }, []);
   return (
     <div className={style.sortBlock}>
       <div ref={buttonElement} className={style.sorting} onClick={() => setIsOpen(!isOpen)}>
         <img className={style.sorting_logo} src={logoSort} alt="logoSort" />
-        <p className={style.sorting_title}>{choosenSort.title}</p>
+        <p className={style.sorting_title}>
+          {i18n.language === 'ru' ? choosenSort.title : choosenSort.enTitle}
+        </p>
         <ArrowButton isOpen={isOpen} addingClass={style.sorting_arrow} />
       </div>
       <div ref={dropdownElement}>

@@ -8,38 +8,27 @@ import CardFilmRating from './cardFilmRating';
 import CardFilmInfo from './cardFilmInfo';
 import CardFilmDuration from './cardFilmDuration';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type TCardFilmProps = {
   filmId: number;
   name: string;
-  year: number;
-  country: string;
-  genre: string;
+  enName: string;
   image: string;
   duration: number;
   rating: string;
-  size: 'big' | 'medium';
 };
 
-const CardFilm: React.FC<TCardFilmProps> = ({
-  filmId,
-  image,
-  name,
-  year,
-  country,
-  genre,
-  duration,
-  rating,
-  size,
-}) => {
+const CardFilm: React.FC<TCardFilmProps> = ({ filmId, image, name, enName, duration, rating }) => {
   const [isMouseOverImageSection, setIsMouseOverImageSection] = useState(false);
-
+  const { t, i18n } = useTranslation();
   return (
     <Link
       to={`/watch/${filmId}`}
       className={style.card}
       onMouseOver={() => setIsMouseOverImageSection(true)}
       onMouseOut={() => setIsMouseOverImageSection(false)}
+      data-testid="CardFilm_link"
     >
       <div
         className={
@@ -55,40 +44,49 @@ const CardFilm: React.FC<TCardFilmProps> = ({
             ' ' +
             (isMouseOverImageSection && style.imageSection_information_show)
           }
+          data-testid="CardFilm_information"
         >
           <div className={style.imageSection_information_buttons}>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoBookmark} alt="logoBookmark" title="Смотреть позже" />
+              <img src={logoBookmark} alt="logoBookmark" title={t('cardFilm.watchLater') ?? ''} />
+            </div>
+            <div data-testid="CardFilm_img" className={style.imageSection_information_buttons_btn}>
+              <img src={logoMagic} alt="logoMagic" title={t('cardFilm.similar') ?? ''} />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoMagic} alt="logoMagic" title="Похожее" />
+              <img
+                src={logoStarLight}
+                alt="logoStarLight"
+                title={t('cardFilm.alreadyWatched') ?? ''}
+              />
             </div>
             <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoStarLight} alt="logoStarLight" title="Уже смотрел, оценить" />
-            </div>
-            <div className={style.imageSection_information_buttons_btn}>
-              <img src={logoCircle} alt="logoCircle" title="Не нравится такое" />
+              <img src={logoCircle} alt="logoCircle" title={t('cardFilm.notLike') ?? ''} />
             </div>
           </div>
           <div className={style.imageSection_information_content}>
             <CardFilmRating rating={rating} />
             <div className={style.imageSection_information_content_rate}>
-              <div className={style.imageSection_information_content_rate_name}>Актеры</div>
+              <div className={style.imageSection_information_content_rate_name}>
+                {t('cardFilm.actors')}
+              </div>
               <div className={style.imageSection_information_content_rate_range}>
                 <div className={style.imageSection_information_content_rate_range_progress}></div>
               </div>
             </div>
-            <CardFilmInfo year={year} country={country} genre={genre} />
-            <CardFilmDuration>{duration} мин.</CardFilmDuration>
+            <CardFilmInfo filmId={filmId} />
+            <CardFilmDuration>
+              {duration} {t('cardFilm.min')}
+            </CardFilmDuration>
           </div>
         </div>
       </div>
       <div className={style.textSection}>
         <div className={style.textSection_title}>
-          <span>{name}</span>
+          <span>{i18n.language === 'ru' ? name : enName}</span>
         </div>
         <div className={style.textSection_extra}>
-          <span>Бесплатно</span>
+          <span>{t('cardFilm.free')}</span>
         </div>
       </div>
     </Link>

@@ -3,18 +3,18 @@ import styles from './categoriesSlider.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SliderButton from '../UI/sliderButton/SliderButton';
 import CardFilm from '../cardFilm/cardFilm';
-import { IFilm } from '../../type/TFilm';
+import { IFilm, IFilmsList } from '../../type/TFilm';
 
 export interface ISlider {
   size: 'big' | 'medium';
-  title: string;
+  title?: string;
 }
 
 export interface ICategoriesSlider extends ISlider {
-  items: IFilm[];
+  items: IFilm[] | IFilmsList[];
 }
 
-const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
+const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {
   const [viewItems, setViewItems] = useState(
     size === 'big'
       ? Math.ceil(window.innerWidth / 300)
@@ -81,12 +81,9 @@ const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size, title }) => {
                 >
                   <CardFilm
                     filmId={movie.id}
-                    size={size}
                     image={movie.poster}
                     name={movie.name}
-                    year={movie.year}
-                    country="qwerty"
-                    genre={title}
+                    enName={movie.originalName}
                     duration={movie.duration}
                     rating={movie.rating}
                   />
