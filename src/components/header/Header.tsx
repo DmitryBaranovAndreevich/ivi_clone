@@ -31,7 +31,7 @@ const Header = () => {
   const { setDefaultValue } = userLoginSlice.actions;
   const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
-  const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
+  const [itemHovered, setItemHovered] = useState<TItemHovered>('Подписка');
   const { isRegister, roles } = useAppSelector((state) => state.userLoginReduser);
 
   const changeLanguage = (e: FormEvent) => {

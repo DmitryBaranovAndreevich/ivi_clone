@@ -23,7 +23,7 @@ const MainPageSlider: FC<IMainPageSlider> = ({ genre, title, size }) => {
     <>
       {data && (
         <div className={styles.container}>
-          <Link className={styles.title} to="#">
+          <Link className={styles.title} to={`/movies/${genre}`}>
             {title}
           </Link>
           <CategoriesSlider title={title} size={size} items={data as IFilm[]} />
