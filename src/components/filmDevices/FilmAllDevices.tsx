@@ -4,6 +4,7 @@ import style from './FilmAllDevices.module.scss';
 import allDevices from './../../assests/allDevices.png';
 import ipad from './../../assests/ipad.png';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type TFilmAllDevicesProps = {
   filmPoster: string;
@@ -11,15 +12,16 @@ type TFilmAllDevicesProps = {
 };
 
 const FilmAllDevices: React.FC<TFilmAllDevicesProps> = ({ filmPoster, title }) => {
+  const { t } = useTranslation();
   return (
     <div className={style.devices}>
       <div className={style.textBlock}>
-        <h2 className={style.title}>Cмотреть «{title}» на всех устройствах</h2>
-        <p className={style.text}>
-          Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
-        </p>
+        <h2 className={style.title}>
+          {t('movie.allDevices.look')} «{title}» {t('movie.allDevices.allDevices')}
+        </h2>
+        <p className={style.text}>{t('movie.allDevices.available')}</p>
         <Link className={style.link} to="https://www.ivi.tv/devices">
-          <RedButton addingClass={style.button} text="Подключить устройства" />
+          <RedButton addingClass={style.button} text={t('movie.allDevices.connectDevice')} />
         </Link>
       </div>
       <div className={style.imageBlock}>

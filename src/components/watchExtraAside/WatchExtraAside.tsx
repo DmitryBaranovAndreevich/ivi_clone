@@ -36,7 +36,7 @@ const WatchExtraAside: React.FC<TWatchExtraAsideProps> = ({
       </div>
       <div className={style.textBlock}>
         <CardFilmRating rating={rating} />
-        <CardFilmInfo filmId={filmId} />
+        {/* <CardFilmInfo filmId={filmId} /> */}
         <CardFilmDuration>
           <img className={style.duration_logo} src={logoClock} alt="logoClock" />
           <p className={style.duration_text}>{duration} мин.</p>

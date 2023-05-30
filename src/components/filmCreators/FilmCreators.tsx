@@ -14,13 +14,7 @@ type TFilmCreatorsProps = {
   writers: Array<IWriters>;
 };
 
-const FilmCreators: React.FC<TFilmCreatorsProps> = ({
-  filmId,
-  directors,
-  actors,
-  producers,
-  writers,
-}) => {
+const FilmCreators: React.FC<TFilmCreatorsProps> = ({ filmId, directors, actors }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (

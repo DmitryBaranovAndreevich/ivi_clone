@@ -92,8 +92,22 @@
     "estimate": "Оценить",
     "rating": "Рейтинг Кинопоиска",
     "trailer": "трейлер",
+    "trailers": "Трейлеры",
     "freeMovies": "Бесплатные фильмы",
-    "watchBtn": "Смотреть"
+    "watchBtn": "Смотреть",
+    "notFound": "Фильм не найден",
+    "movie": "Фильм",
+    "watchOnline": "смотреть онлайн",
+    "addMaterials": "и доп. материалы",
+    "reviews": "Отзывы",
+    "aboutFilm": "о фильме",
+    "leaveReview": "Оставить отзыв",
+    "allDevices": {
+      "look": "Смотреть",
+      "allDevices": "на всех устройствах",
+      "available": "Приложение доступно для скачивания на iOS, Android, SmartTV и приставках",
+      "connectDevice": "Подключить устройства"
+    }
   },
   "filter": {
     "genres": "Жанры",

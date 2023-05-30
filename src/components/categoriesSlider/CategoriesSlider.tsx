@@ -3,7 +3,7 @@ import styles from './categoriesSlider.module.scss';
 import { FC, useEffect, useState } from 'react';
 import SliderButton from '../UI/sliderButton/SliderButton';
 import CardFilm from '../cardFilm/cardFilm';
-import { IFilm } from '../../type/TFilm';
+import { IFilm, IFilmsList } from '../../type/TFilm';
 
 export interface ISlider {
   size: 'big' | 'medium';
@@ -11,7 +11,7 @@ export interface ISlider {
 }
 
 export interface ICategoriesSlider extends ISlider {
-  items: IFilm[];
+  items: IFilm[] | IFilmsList[];
 }
 
 const CategoriesSlider: FC<ICategoriesSlider> = ({ items, size }) => {

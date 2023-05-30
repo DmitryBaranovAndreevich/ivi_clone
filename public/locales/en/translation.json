@@ -92,8 +92,22 @@
     "estimate": "Estimate",
     "rating": "Kinopoisk rating",
     "trailer": "trailer",
+    "trailers": "Trailers",
     "freeMovies": "Free movies",
-    "watchBtn": "Watch"
+    "watchBtn": "Watch",
+    "notFound": "The movie was not found",
+    "movie": "Movie",
+    "watchOnline": "watch online",
+    "addMaterials": "and add. materials",
+    "reviews": "Reviews",
+    "aboutFilm": "about the film",
+    "leaveReview": "Leave a review",
+    "allDevices": {
+      "look": "Look",
+      "allDevices": "on all devices",
+      "available": "The app is available for download on iOS, Android, Smart TV and set-top boxes",
+      "connectDevice": "Connect devices"
+    }
   },
   "filter": {
     "genres": "Genres",

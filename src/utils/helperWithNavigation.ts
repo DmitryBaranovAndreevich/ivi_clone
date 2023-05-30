@@ -34,7 +34,6 @@ export const setUrlParamsRadio: TSetUrlParamsRadio = (
   choosenValue,
   partUrl
 ) => {
-  debugger;
   if (nameInitialValue === partUrl) {
     return valuesRadio;
   } else if (choosenValue[partUrl]) {
