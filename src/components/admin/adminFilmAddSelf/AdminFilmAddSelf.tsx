@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import style from './AdminFilmAddSelf.module.scss';
@@ -10,6 +11,9 @@ import AdminCheckbox from '../adminFilmForm/adminCheckbox/adminCheckbox';
 import AdminInput from '../adminFilmForm/adminInput/AdminInput';
 import { useAddFilmSelfMutation, useAddGenreToFilmMutation } from '../../../store/api/adminApi';
 import { TFilmAdding } from '../../../type/TFilm';
+import { useAppDispatch } from '../../../hooks/redux';
+import { addFilm, addGenre } from '../../../store/reducers/ActionCreators';
+import AdminModal from '../adminModal/AdminModal';
 
 type TInitialValue = {
   name: string;
@@ -34,7 +38,7 @@ const FormSchema = Yup.object().shape({
     .min(3, 'Минимальная длина 3 символов')
     .max(50, 'Максимальная длина 50 символов')
     .required('Required'),
-  // genres: Yup.array().min(1, 'Required'),
+  genres: Yup.array().min(1, 'Required'),
   poster: Yup.string()
     .required('Required')
     .matches(/(\.png|\.jpeg)$/, 'Формат png или jpeg'),
@@ -60,9 +64,10 @@ const FormSchema = Yup.object().shape({
 
 const AdminFilmAddSelf: React.FC = ({}) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { data: genres } = useGetGenresQuery('');
-  const [addFilmSelf, { isSuccess, error: errorAddFilm, data: filmId }] = useAddFilmSelfMutation();
-  const [addGenreToFilm, { error: errorAddGenreToFilm }] = useAddGenreToFilmMutation();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const checkboxGenre = useMemo(() => {
     return genres?.map((genre: TGenreCountriesYears) => {
       return (
@@ -101,29 +106,45 @@ const AdminFilmAddSelf: React.FC = ({}) => {
       duration: values.duration,
       description: values.description,
     };
-    // debugger;
-    await addFilmSelf({ filmData: filmObj });
-    // debugger;
-    // console.log(data);
-    // console.log(error);
-    if (!errorAddFilm) {
-      // debugger;
-      // console.log(filmId);
-      values.genres.map((genre: string) => {
-        debugger;
-        addGenreToFilm({ id: String(filmId), genre });
+    dispatch(addFilm({ ...filmObj }))
+      .then((res) => {
+        values.genres.map((genre: string) => {
+          dispatch(addGenre({ genre, filmId: res.payload as number }));
+        });
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate('/admin/films');
+        }, 3000);
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        setTimeout(() => {
+          navigate('/admin/films');
+        }, 3000);
+        setIsError(true);
       });
-    }
   };
-  // console.log(film);
-  // console.log(filmId);
+  if (isSuccess) {
+    return (
+      <AdminModal>
+        <p>Фильм успешно добавлен</p>
+      </AdminModal>
+    );
+  }
+  if (isError) {
+    return (
+      <AdminModal>
+        <p>Произошла ошибка</p>
+      </AdminModal>
+    );
+  }
   return (
     <div>
       <Formik
         initialValues={initialValue}
         validationSchema={FormSchema}
         onSubmit={(values) => {
-          debugger;
           submitAddFilm(values);
         }}
       >

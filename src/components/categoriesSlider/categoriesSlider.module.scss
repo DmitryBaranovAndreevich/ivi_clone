@@ -13,10 +13,12 @@
 
 .rightButton {
   right: -50px;
+  top: 40%;
 }
 
 .leftButton {
   left: -30px;
+  top: 40%;
 }
 
 @include tablets {

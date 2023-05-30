@@ -6,14 +6,17 @@ type TModalShareButtonProps = {
   text: string;
   logo: string;
   href: string;
+  onClick?: () => void;
 };
 
-const ModalShareButton: React.FC<TModalShareButtonProps> = ({ text, logo, href }) => {
+const ModalShareButton: React.FC<TModalShareButtonProps> = ({ text, logo, href, onClick }) => {
   return (
-    <UIButton addingClass={style.button}>
-      <p className={style.button_text}>{text}</p>
-      <img className={style.button_img} src={logo} alt={text} />
-    </UIButton>
+    <div onClick={onClick}>
+      <UIButton addingClass={style.button} href={href}>
+        <p className={style.button_text}>{text}</p>
+        <img className={style.button_img} src={logo} alt={text} />
+      </UIButton>
+    </div>
   );
 };
 

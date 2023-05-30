@@ -4,7 +4,7 @@ import style from './ButtonWithHoverBgc.module.scss';
 
 type TButtonWithHoverBgcProps = {
   title: string;
-  addingClass: string;
+  addingClass?: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
   onClick?: () => void;
 };

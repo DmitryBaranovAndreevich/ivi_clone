@@ -27,7 +27,6 @@ export const filmApi = createApi({
         if (searchPerson) {
           searchParams.push(`person=${searchPerson.split('+').join(' ')}`);
         }
-        debugger;
         if (!pathName) {
           return { url: `films/?${searchParams.join('&')}` };
         }
@@ -39,7 +38,6 @@ export const filmApi = createApi({
         return { url: `films/${id}` };
       },
     }),
-    // getFilmsBy
   }),
 });
 

@@ -1,22 +1,25 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { IRoles } from '../../type/TUser';
 import { loginUser } from './ActionCreators';
 
-interface IInitialState {
+export interface IUserLoginInitialState {
   email: string;
   password: string;
   isLoading: boolean;
   error: string;
   token: string | null;
   isRegister: boolean;
+  roles: null | Array<string>;
 }
 
-const initialState: IInitialState = {
+const initialState: IUserLoginInitialState = {
   email: '',
   password: '',
   isLoading: false,
   error: '',
   token: null,
   isRegister: false,
+  roles: null,
 };
 
 export const userLoginSlice = createSlice({
@@ -33,6 +36,16 @@ export const userLoginSlice = createSlice({
       state.email = initialState.email;
       state.password = initialState.password;
       state.isRegister = initialState.isRegister;
+      state.roles = null;
+    },
+    successAuth(state, action: PayloadAction<{ token: string }>) {
+      state.token = action.payload.token;
+      state.isRegister = true;
+    },
+    setRoles(state, action: PayloadAction<{ roles: Array<IRoles> }>) {
+      state.roles = action.payload.roles.map((role: IRoles) => {
+        return role.value;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -44,8 +57,6 @@ export const userLoginSlice = createSlice({
       });
       builder.addCase(fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isRegister = true;
-        state.token = action.payload.token;
         state.error = '';
         state.isRegister = true;
       });

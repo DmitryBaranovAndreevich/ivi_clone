@@ -7,12 +7,14 @@ import { IFilm } from '../../../type/TFilm';
 import style from './AdminFilms.module.scss';
 import logoCross from './../../../assests/svg/logoCross.svg';
 import { useNavigate } from 'react-router-dom';
+import LinkBack from '../../../components/UI/linkStepBack/LinkBack';
+import { useTranslation } from 'react-i18next';
 
 const AdminFilms = () => {
-  // const [isAdding, setIsAdding] = useState(false);
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(2);
+  const [pageSize] = useState(10);
   const indexShowElement = useMemo(() => {
     return pageSize * currentPage;
   }, [pageSize, currentPage]);
@@ -49,6 +51,7 @@ const AdminFilms = () => {
   }
   return (
     <div className={style.container}>
+      <LinkBack href={`/admin`} text={t('actor.commBack')} />
       <div className={style.table}>
         <h2 className={style.table_title}>Фильмы</h2>
         <div className={style.table_header}>

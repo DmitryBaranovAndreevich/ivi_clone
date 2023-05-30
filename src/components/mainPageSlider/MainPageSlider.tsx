@@ -12,19 +12,24 @@ interface IMainPageSlider extends ISlider {
 
 const MainPageSlider: FC<IMainPageSlider> = ({ genre, title, size }) => {
   const { data, isLoading } = appApi.useGetMoviesOfGenreQuery(genre);
+  if (isLoading) {
+    return (
+      <div className={styles.spinner}>
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
   return (
-    <div className={styles.container}>
-      <Link className={styles.title} to="#">
-        {title}
-      </Link>
-      {isLoading ? (
-        <div className={styles.spinner}>
-          <Spinner size={'big'} />
+    <>
+      {data && (
+        <div className={styles.container}>
+          <Link className={styles.title} to="#">
+            {title}
+          </Link>
+          <CategoriesSlider title={title} size={size} items={data as IFilm[]} />
         </div>
-      ) : (
-        <CategoriesSlider title={title} size={size} items={data as IFilm[]} />
       )}
-    </div>
+    </>
   );
 };
 

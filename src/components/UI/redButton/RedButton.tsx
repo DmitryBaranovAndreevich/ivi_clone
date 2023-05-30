@@ -3,7 +3,7 @@ import style from './redButton.module.scss';
 import Spinner from '../spinner/Spinner';
 
 type TRedButtonProps = {
-  addingClass: string;
+  addingClass?: string;
   text: string;
   onClick?: (e: FormEvent) => void;
   type?: 'button' | 'submit' | 'reset' | undefined;

@@ -13,18 +13,20 @@ import FilmTitleBlock from './filmTitleBlock/FilmTitleBlock';
 
 type TFilmInfoProps = {
   name: string;
+  originalName: string;
   year: number;
   duration: number;
   mpaaRating: string;
   countries: Array<ICountries>;
   genre: Array<IGenres>;
   actors: Array<IActors>;
-  rating: number;
+  rating: string;
   description: string;
 };
 
 const FilmInfo: React.FC<TFilmInfoProps> = ({
   name,
+  originalName,
   year,
   duration,
   mpaaRating,
@@ -37,7 +39,7 @@ const FilmInfo: React.FC<TFilmInfoProps> = ({
   return (
     <div className={style.info}>
       <div className={style.desktop}>
-        <FilmTitleBlock name={name} />
+        <FilmTitleBlock name={name} originalName={originalName} />
         <div className={`${style.paramsBlock} ${style.block}`}>
           <FilmInfoWatchParams
             year={year}

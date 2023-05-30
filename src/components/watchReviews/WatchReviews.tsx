@@ -1,18 +1,11 @@
-import { title } from 'process';
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
-import { number } from 'yup';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useGetOneFilmQuery } from '../../store/api/filmApi';
-import { useGetOnePersonQuery } from '../../store/api/personApi';
 import { IReviews } from '../../type/TReviews';
-import PersonItem from '../personItem/PersonItem';
-import UILink from '../UI/Link/UILink';
 import Spinner from '../UI/spinner/Spinner';
 import style from './WatchReviews.module.scss';
 import WatchReviewItem from './WatchReviewItem';
-import WatchPersonType from './WatchReviewItem';
 import FormAddReview from '../formAddReview/FormAddReview';
-import { TReviewUser } from '../../type/type';
 import { reviewSlice, TTreeReviews } from '../../store/reducers/ReviewSlice';
 import { makeTreeReviews } from '../../utils/helperWithReviews';
 
@@ -31,10 +24,10 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
     dispatch(setTreeReviews({ treeReviews }));
   }, [film?.reviews, dispatch, setTreeReviews]);
   const reviewsBlock = useMemo((): ReactNode => {
-    const qqq = (treeReviews: Array<TTreeReviews>) => {
+    const makeReviewBlock = (treeReviews: Array<TTreeReviews>) => {
       return treeReviews.map((treeReview: TTreeReviews) => {
         return (
-          <div className={style.reviewsBlock} key={treeReview.review.id}>
+          <div className={`${style.reviewsBlock}`} key={treeReview.review.id}>
             <WatchReviewItem
               key={treeReview.review.id}
               filmId={filmId}
@@ -45,12 +38,12 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
               refetchFilms={refetch}
               isFetching={isFetching}
             />
-            {treeReview.childrenReviews && qqq(treeReview.childrenReviews)}
+            {treeReview.childrenReviews && makeReviewBlock(treeReview.childrenReviews)}
           </div>
         );
       });
     };
-    return qqq(treeReviews);
+    return makeReviewBlock(treeReviews);
   }, [filmId, treeReviews, refetch, isFetching]);
   if (isLoading) {
     return (
@@ -69,11 +62,6 @@ const WatchReviews: React.FC<TWatchReviewsProps> = ({ filmId }) => {
           isFetching={isFetching}
         />
       </div>
-      {/* {isFetching && (
-        <div>
-          <Spinner size={'small'} />
-        </div>
-      )} */}
       <div>{reviewsBlock}</div>
     </div>
   );

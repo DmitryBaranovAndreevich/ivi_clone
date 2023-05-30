@@ -19,7 +19,7 @@ const ModalSearch: React.FC<TModalSearchProps> = ({ closeModal }) => {
   // }, [listPerson]);
   return (
     <div className={style.wrapper}>
-      <CrossButton closeModal={closeModal} addingClass={style.cross} />
+      <CrossButton onClick={closeModal} addingClass={style.cross} />
       <h2 className={style.title}>Поиск</h2>
       <ModalSearchForm searchMain={searchMain} />
       <div className={style.findBlock}>

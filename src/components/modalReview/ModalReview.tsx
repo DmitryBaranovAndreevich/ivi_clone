@@ -21,7 +21,7 @@ const ModalReview: React.FC<TModalReviewProps> = ({ closeModal }) => {
   }, [rateValue]);
   return (
     <div className={style.wrapper}>
-      <CrossButton closeModal={closeModal} addingClass={style.cross} />
+      <CrossButton onClick={closeModal} addingClass={style.cross} />
       <div className={style.content}>
         <h2 className={style.title}>Ваша оценка</h2>
         <p className={style.text}>Оценки улучшают рекомендации</p>

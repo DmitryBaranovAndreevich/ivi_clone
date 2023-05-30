@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminGenreItem from '../../../components/admin/adminGenreItem/AdminGenreItem';
+import LinkBack from '../../../components/UI/linkStepBack/LinkBack';
 import { useAddFilmSelfMutation } from '../../../store/api/adminApi';
 import { useGetGenresQuery } from '../../../store/api/appApi';
 import { TGenreCountriesYears } from '../../../type/type';
@@ -25,8 +26,9 @@ const AdminGenres = () => {
   }, [genres, refetch]);
   return (
     <div className={style.container}>
+      <LinkBack href={`/admin`} text="Назад" />
       <h2 className={style.title}>Жанры</h2>
-      <div className={style.container}>
+      <div>
         <div className={style.table_header}>
           <p className={style.table_header_block}>Название жанра</p>
           <button className={style.add} onClick={() => navigate('/admin/genres/add')}>

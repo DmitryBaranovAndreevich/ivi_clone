@@ -3,13 +3,13 @@ import style from './CrossButton.module.scss';
 import logoCross from './../../../assests/svg/logoCross.svg';
 
 type TCrossButtonProps = {
-  closeModal: () => void;
-  addingClass: string;
+  onClick: () => void;
+  addingClass?: string;
 };
 
-const CrossButton: React.FC<TCrossButtonProps> = ({ closeModal, addingClass }) => {
+const CrossButton: React.FC<TCrossButtonProps> = ({ onClick, addingClass }) => {
   return (
-    <button className={`${style.cross} ${addingClass}`} onClick={closeModal}>
+    <button className={`${style.cross} ${addingClass}`} onClick={onClick}>
       <img className={style.cross_logo} src={logoCross} alt="cross" />
     </button>
   );

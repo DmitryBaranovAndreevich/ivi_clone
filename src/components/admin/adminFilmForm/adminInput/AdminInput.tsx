@@ -23,11 +23,11 @@ const AdminInput: React.FC<any> = ({
         type={type}
         {...field}
         {...props}
+        data-testid="Admin_input"
       />
       {touched[field.name] && errors[field.name] ? (
         <div className={style.input_error_text}>{errors[field.name]}</div>
       ) : null}
-      {/* {errors && console.log(errors)} */}
     </div>
   );
 };

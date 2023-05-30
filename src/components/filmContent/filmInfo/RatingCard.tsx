@@ -2,7 +2,7 @@ import React from 'react';
 import style from './FilmInfo.module.scss';
 
 type TRatingCardProps = {
-  rating: number | undefined;
+  rating: string | undefined;
   addingClass: string;
 };
 

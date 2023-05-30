@@ -9,11 +9,12 @@ import FilmReview from '../../components/filmReview/FilmReview';
 import Spinner from '../../components/UI/spinner/Spinner';
 import FilmTrailer from '../../components/filmTrailer/FilmTrailer';
 import FilmAllDevices from '../../components/filmDevices/FilmAllDevices';
+import { useTranslation } from 'react-i18next';
 
 const Watch = () => {
+  const { t, i18n } = useTranslation();
   const params = useParams();
   const { data: film, isLoading } = useGetOneFilmQuery({ id: params.id });
-  // const film: IFilm = films;
   if (isLoading) {
     return (
       <div className="spinner">
@@ -27,7 +28,10 @@ const Watch = () => {
         <React.Fragment>
           <FilmContent film={film} />
           {film.relatedFilms.length > 0 && (
-            <RelatedFilms title={film.name} relatedFilms={film.relatedFilms}></RelatedFilms>
+            <RelatedFilms
+              title={i18n.language === 'ru' ? film.name : film.originalName}
+              relatedFilms={film.relatedFilms}
+            ></RelatedFilms>
           )}
           <FilmCreators
             filmId={film.id}
@@ -37,11 +41,18 @@ const Watch = () => {
             writers={film.writers}
           />
           <FilmTrailer filmId={film.id} filmPoster={film.poster} trailer={film.trailer} />
-          <FilmReview filmId={film.id} nameFilm={film.name} review={film.reviews} />
-          <FilmAllDevices filmPoster={film.poster} title={film.name} />
+          <FilmReview
+            filmId={film.id}
+            nameFilm={i18n.language === 'ru' ? film.name : film.originalName}
+            review={film.reviews}
+          />
+          <FilmAllDevices
+            filmPoster={film.poster}
+            title={i18n.language === 'ru' ? film.name : film.originalName}
+          />
         </React.Fragment>
       ) : (
-        <p>Фильм не найден</p>
+        <p>{t('movie.notFound')}</p>
       )}
     </div>
   );

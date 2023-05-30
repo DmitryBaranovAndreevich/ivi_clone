@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FormEvent, useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import RedButton from '../UI/redButton/RedButton';
 import logo from './../../assests/svg/logo.svg';
 import logoSearch from './../../assests/svg/logoSearch.svg';
@@ -21,14 +21,9 @@ import { useTranslation } from 'react-i18next';
 import useAppMediaQuery from '../../hooks/useAppMediaQuery';
 import NavigationDesktop from './navigation/navigationDesktop/NavigationDesktop';
 import NavigationMain from './navigation/navigationMain/NavigationMain';
+import UILink from '../UI/Link/UILink';
 
-export type TItemHovered =
-  | TNavigationDesctopTitle
-  | TNavigationDesctopEnTitle
-  | 'Подписка'
-  | 'Уведомление'
-  | 'Профиль'
-  | null;
+export type TItemHovered = TNavigationDesctopTitle | 'Подписка' | 'Уведомление' | 'Профиль' | null;
 
 const Header = () => {
   const { isDesktop } = useAppMediaQuery();
@@ -37,15 +32,16 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [itemHovered, setItemHovered] = useState<TItemHovered>(null);
-  const { isRegister } = useAppSelector((state) => state.userLoginReduser);
+  const { isRegister, roles } = useAppSelector((state) => state.userLoginReduser);
 
   const changeLanguage = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;
     if (input.checked) i18n.changeLanguage(input.value);
   };
-
   const exitFromProfile = () => {
     dispatch(setDefaultValue());
+    localStorage.setItem('reviewForFilm', JSON.stringify({}));
+    localStorage.setItem('reviewForReview', JSON.stringify({}));
     eraseCookie('token');
   };
   const onMouseLeave = () => setItemHovered(null);
@@ -63,6 +59,13 @@ const Header = () => {
             {isDesktop ? <NavigationMain /> : <NavigationDesktop setItemHovered={setItemHovered} />}
           </div>
           <div className={style.content_combine}>
+            {(roles?.includes('ADMIN') || roles?.includes('SUPERUSER')) && (
+              <div
+                className={`${style.content_button} ${style.content_block} ${style.adminButton}`}
+              >
+                <UILink addingClass={style.content_link} title={'Admin'} href={'/admin'} />
+              </div>
+            )}
             <div className={`${style.content_button} ${style.content_block} ${style.lang}`}>
               <input
                 type="radio"
@@ -90,7 +93,7 @@ const Header = () => {
             </div>
             <div
               onMouseEnter={() => onMouseEnter('Подписка')}
-              className={style.content_button + ' ' + style.content_block}
+              className={style.content_button + ' ' + style.content_block + ' ' + style.freeButton}
             >
               <RedButton addingClass={style.content_button_btn} text={t('header.freeButton')} />
             </div>
@@ -119,7 +122,7 @@ const Header = () => {
             {isRegister ? (
               <RedButton
                 addingClass={style.content_button_btn}
-                text={'Выйти из профиля'}
+                text={t('header.logout')}
                 onClick={exitFromProfile}
               />
             ) : (
@@ -134,7 +137,8 @@ const Header = () => {
         <div
           className={`${style.dropdown}
           ${itemHovered && style.dropdown_visible}
-          ${itemHovered === 'Уведомление' && style.dropdown_small}`}
+          ${itemHovered === 'Уведомление' && style.dropdown_small} 
+          ${itemHovered === 'Подписка' && style.dropdown_big}`}
           onMouseLeave={onMouseLeave}
         >
           <Dropdown>
@@ -157,6 +161,3 @@ const Header = () => {
 };
 
 export default Header;
-// function dispatch(arg0: { payload: undefined; type: 'login/setDefaultValue' }) {
-//   throw new Error('Function not implemented.');
-// }

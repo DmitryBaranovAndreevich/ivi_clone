@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type TSearchInitialState = {
+export type TSearchInitialState = {
   searchMain: string;
 };
 

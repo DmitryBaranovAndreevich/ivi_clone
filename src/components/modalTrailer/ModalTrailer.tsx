@@ -10,7 +10,7 @@ type TModaTrailerProps = {
 const ModalTrailer: React.FC<TModaTrailerProps> = ({ trailer, closeModal }) => {
   return (
     <div className={style.wrapper}>
-      <CrossButton closeModal={closeModal} addingClass={style.cross} />
+      <CrossButton onClick={closeModal} addingClass={style.cross} />
       <div className={style.content}>
         <div className={style.video}>
           <iframe className={style.iframe} src={trailer}></iframe>

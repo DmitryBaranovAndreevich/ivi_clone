@@ -8,7 +8,7 @@ import MoviesHeader from '../../components/moviesHeader/MoviesHeader';
 import MoviesListBlock from '../../components/moviesList/MoviesListBlock';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 import { useEffect, useState } from 'react';
-import { getArrayFromOneItem } from '../../utils/helperFilmBreadCrumbs';
+import { getArrayFromOneItem, TName } from '../../utils/helperFilmBreadCrumbs';
 import { useTranslation } from 'react-i18next';
 
 const Movies = () => {
@@ -17,7 +17,7 @@ const Movies = () => {
   const { data: countries } = useGetCountriesQuery('');
   const { years } = useAppSelector((state) => state.appReducer);
   const meanUrl = useNavigation(genres, years, countries);
-  const [meanBreadcrumbs, setMeanBreadcrumbs] = useState<Array<Array<string>> | null>(null);
+  const [meanBreadcrumbs, setMeanBreadcrumbs] = useState<Array<Array<TName>> | null>(null);
   useEffect(() => {
     const arrGenres = getArrayFromOneItem(genres, meanUrl.genre);
     const arrYears = getArrayFromOneItem(years, meanUrl.year);

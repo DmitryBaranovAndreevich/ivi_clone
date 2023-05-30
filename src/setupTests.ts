@@ -3,3 +3,11 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import fetch from 'jest-fetch-mock';
+import 'whatwg-fetch';
+import fetchMock from 'jest-fetch-mock';
+import { enableFetchMocks } from 'jest-fetch-mock';
+
+fetch.mockResponse(JSON.stringify({ testing: true }));
+
+enableFetchMocks();

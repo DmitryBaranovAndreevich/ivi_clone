@@ -10,3 +10,27 @@
     height: 40px;
     @include font-source-sans(15px, $white, 500, 20px);
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+  
+    &_txt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $bgcDarkBlue;
+      @include font-source-sans(15px, $white, 500, 20px);
+      width: 300px;
+      height: 100px;
+      border-radius: 8px;
+    }
+  
+  }

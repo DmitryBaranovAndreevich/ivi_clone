@@ -17,8 +17,6 @@ type TWatchPersonProps = {
 const WatchPerson: React.FC<TWatchPersonProps> = ({ filmId }) => {
   const { typePersons } = useAppSelector((state) => state.appReducer);
   const { data: film, isLoading } = useGetOneFilmQuery({ id: String(filmId) });
-  // const { data: person } = useGetOnePersonQuery({ id: String(2) });
-  // console.log('jkm' + person);
   const typePersonBlock: Array<ReactNode> = useMemo((): Array<ReactNode> => {
     return typePersons.map((type) => {
       if (film && film[type.englishName].length > 0) {

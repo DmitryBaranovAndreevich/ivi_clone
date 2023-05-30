@@ -4,6 +4,7 @@ import { ICountries, IGenres } from '../../../../type/TFilm';
 import FilmInfoList from './filmInfoList/FilmInfoList';
 import { TParamListMovie } from '../../../../type/type';
 import { formatDurationFilm } from '../../../../hooks/helperFilm';
+import { useTranslation } from 'react-i18next';
 
 type TFilmInfoWatchParamsProps = {
   year: number;
@@ -20,7 +21,14 @@ const FilmInfoWatchParams: React.FC<TFilmInfoWatchParamsProps> = ({
   countries,
   genre,
 }) => {
-  const [country] = useState(countries.length > 0 ? countries[0].name : '');
+  const { t, i18n } = useTranslation();
+  const [country] = useState(
+    countries.length > 0
+      ? i18n.language === 'ru'
+        ? countries[0].name
+        : countries[0].englishName
+      : ''
+  );
   const paramsYear: TParamListMovie = {
     title: String(year),
     link: `/movies/${year}`,
@@ -36,7 +44,7 @@ const FilmInfoWatchParams: React.FC<TFilmInfoWatchParamsProps> = ({
     link: `/movies/${country}`,
   };
   const paramsGenre: Array<TParamListMovie> = genre.slice(0, 3).map((genre: IGenres) => ({
-    title: genre.name,
+    title: i18n.language === 'ru' ? genre.name : genre.englishName,
     link: `/movies/${genre.englishName}`,
   }));
   const paramsQuality: TParamListMovie = {
@@ -44,7 +52,7 @@ const FilmInfoWatchParams: React.FC<TFilmInfoWatchParamsProps> = ({
     type: 'likeButton',
   };
   const paramsLanguage: TParamListMovie = {
-    title: 'Рус',
+    title: i18n.language === 'ru' ? 'Рус' : 'Ru',
     icon: logoSound,
   };
   return (

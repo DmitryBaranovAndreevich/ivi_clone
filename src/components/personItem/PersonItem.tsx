@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useGetOnePersonQuery } from '../../store/api/personApi';
 import { makeWordEnd } from '../../utils/helper';
@@ -8,17 +9,26 @@ import style from './PersonItem.module.scss';
 type TPersonItemProps = {
   personId: number;
   role?: string;
-  addingClass: string;
+  addingClass?: string;
   isShowCount?: boolean;
 };
 
 const PersonItem: React.FC<TPersonItemProps> = ({ personId, role, addingClass, isShowCount }) => {
   const { data: person, isLoading } = useGetOnePersonQuery({ id: String(personId) });
-  const nameArray = person ? person.name.split(' ') : ['', ''];
+  const { i18n } = useTranslation();
+  const nameArray = person
+    ? i18n.language === 'ru'
+      ? person.name.split(' ')
+      : person.originalName.split(' ')
+    : ['', ''];
   const [wordFilm, setWordFilm] = useState('фильм');
+  const [wordFilmEn, setWordFilmEn] = useState('movie');
   useEffect(() => {
     const count = !isLoading && person ? person?.films.length : 0;
     setWordFilm(makeWordEnd(count, 'фильм', 'фильма', 'фильмов'));
+    if (count > 1) {
+      setWordFilmEn('movies');
+    }
   }, [person, isLoading]);
   if (isLoading) {
     return (
@@ -39,11 +49,15 @@ const PersonItem: React.FC<TPersonItemProps> = ({ personId, role, addingClass, i
       <div className={style.textSection}>
         {nameArray[0] && <span className={style.textSection_name}>{nameArray[0]}</span>}
         {nameArray[1] && <span className={style.textSection_name}>{nameArray[1]}</span>}
-        {role && <span className={style.textSection_role}>{role}</span>}
+        {role && (
+          <span className={style.textSection_role}>
+            {i18n.language === 'ru' ? role : role === 'актер' ? 'actor' : 'director'}
+          </span>
+        )}
       </div>
       {isShowCount && person?.films && (
         <p className={style.count}>
-          {person.films.length} {wordFilm}
+          {person.films.length} {i18n.language === 'ru' ? wordFilm : wordFilmEn}
         </p>
       )}
     </Link>

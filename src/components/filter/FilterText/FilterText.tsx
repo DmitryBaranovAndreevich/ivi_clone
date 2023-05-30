@@ -5,6 +5,7 @@ import { useClickOutside } from '../../../hooks/useClickOutside';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useGetPersonByNameQuery } from '../../../store/api/searchApi';
 import IPerson from '../../../type/TPerson';
+import FindPerson from '../../modalSearch/FindPerson';
 
 type TFilterPlankProps = {
   title: string;
@@ -36,13 +37,22 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
       return (
         <button
           key={person.id}
-          onClick={() => setSearchParams(`${searchParams}&person=${person.name}`)}
+          onClick={() => {
+            const queryParams = new URLSearchParams(location.search);
+            queryParams.delete('person');
+            queryParams.set('person', person.name);
+            queryParams.delete(nameInitialValue);
+            queryParams.set(nameInitialValue, person.name);
+            setSearchParams(queryParams);
+            setIsOpen(false);
+          }}
+          className={style.person}
         >
-          {person.name}
+          <FindPerson namePerson={person.name} />
         </button>
       );
     });
-  }, [persons]);
+  }, [persons, location.search, setSearchParams]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onChange = (e: ChangeEvent<HTMLInputElement>, values: any): void => {
     const queryParams = new URLSearchParams(location.search);
@@ -70,7 +80,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
           // login(values.email, values.password, setStatus)
         }}
       >
-        {({ values, handleChange, handleBlur }) => (
+        {({ values, handleBlur }) => (
           <div ref={buttonElement}>
             <Form className={style.form}>
               <Field
@@ -87,7 +97,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
                   ' ' +
                   style.description_focus +
                   ' ' +
-                  (values.actor && style.description_active)
+                  ((values.actor || values.director) && style.description_active)
                 }
               >
                 {title}
@@ -97,7 +107,7 @@ const FilterText: React.FC<TFilterPlankProps> = ({ title, nameInitialValue }) =>
         )}
       </Formik>
       <div>
-        {isOpen && (
+        {isOpen && personsBlock && personsBlock.length > 0 && (
           <div className={style.dropdown} ref={dropdownElement}>
             {personsBlock}
           </div>

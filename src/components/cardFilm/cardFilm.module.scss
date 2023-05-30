@@ -43,11 +43,13 @@
     left: 0;
     right: 0;
     opacity: 0;
+    visibility: hidden;
     margin: 15px;
     @include transition(0s, $duration, ease-out, $properties: all);
 
     &_show {
       opacity: 1;
+      visibility: visible;
     }
 
     &_buttons {

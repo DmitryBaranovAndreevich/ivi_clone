@@ -12,6 +12,7 @@ import logoSocialOK from './../../assests/svg/logoSocialOK.svg';
 import logoSocialTwitter from './../../assests/svg/logoSocialTwitter.svg';
 import ModalShareButton from './ModalShareButton';
 import CrossButton from '../UI/crossButton/CrossButton';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 type TModalShareProps = {
   closeModal: () => void;
@@ -22,6 +23,8 @@ type TModalShareProps = {
 };
 
 const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year, duration }) => {
+  const location = useLocation();
+  const params = useParams();
   const paramsYear: TParamListMovie = {
     title: String(year),
   };
@@ -31,7 +34,7 @@ const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year
   return (
     <div className={style.wrapper}>
       <div className={style.cross}>
-        <CrossButton closeModal={closeModal} addingClass={style.cross_btn} />
+        <CrossButton onClick={closeModal} addingClass={style.cross_btn} />
       </div>
       <div className={style.header}>
         <div className={style.imageBlock}>
@@ -50,7 +53,16 @@ const ModalShare: React.FC<TModalShareProps> = ({ closeModal, poster, name, year
       </div>
       <div className={style.content}>
         <div className={`${style.content_group}`}>
-          <ModalShareButton text="Копировать ссылку" logo={logoFile} href="#" />
+          <ModalShareButton
+            text="Копировать ссылку"
+            logo={logoFile}
+            onClick={() => {
+              const copyText = window.location.href;
+              navigator.clipboard.writeText(copyText);
+              closeModal();
+            }}
+            href="#"
+          />
         </div>
         <div className={`${style.content_group} ${style.content_group_big}`}>
           <ModalShareButton text="WhatsApp" logo={logoWhatsApp} href="#" />

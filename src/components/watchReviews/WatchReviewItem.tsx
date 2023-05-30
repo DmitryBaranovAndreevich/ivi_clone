@@ -40,24 +40,6 @@ const WatchReviewItem: React.FC<TWatchReviewItemProps> = ({
   isFetching,
 }) => {
   const [isShowForm, setIsShowForm] = useState(false);
-  // const { data: film, isFetching } = useGetOneFilmQuery({ id: String(filmId) });
-  // const childBlock = useMemo(() => {
-  //   return childReviews?
-  //     .map(({ id, title, text, rating, parentId }) => {
-  //         return (
-  //           <WatchReviewItem
-  //             key={id}
-  //             filmId={filmId}
-  //             reviewId={id}
-  //             titleReview={title}
-  //             textReview={text}
-  //             rating={rating}
-  //             refetchFilms={refetch}
-  //           />
-  //         );
-  //     })
-  //     .reverse();
-  // }, [filmId, film?.reviews, refetch]);
   return (
     <div>
       <div className={style.review}>

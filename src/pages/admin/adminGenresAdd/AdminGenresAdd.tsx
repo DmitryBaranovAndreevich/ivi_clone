@@ -3,7 +3,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import AdminInput from '../../../components/admin/adminFilmForm/adminInput/AdminInput';
+import AdminModal from '../../../components/admin/adminModal/AdminModal';
+import LinkBack from '../../../components/UI/linkStepBack/LinkBack';
 import RedButton from '../../../components/UI/redButton/RedButton';
+import Spinner from '../../../components/UI/spinner/Spinner';
 import { useAddNewGenresMutation } from '../../../store/api/adminApi';
 import style from './AdminGenresAdd.module.scss';
 
@@ -20,12 +23,31 @@ const FormSchema = Yup.object().shape({
 
 const AdminGenresAdd = () => {
   const navigate = useNavigate();
-  const [addNewGenres, {}] = useAddNewGenresMutation();
+  const [addNewGenres, { isLoading, isSuccess, isError }] = useAddNewGenresMutation();
   const submitAddGenre = (values: { nameGenre: string; englishNameGenre: string }) => {
     addNewGenres({ nameGenre: values.nameGenre, englishNameGenre: values.englishNameGenre });
   };
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <Spinner size={'big'} />
+      </div>
+    );
+  }
+  if (isSuccess || isError) {
+    setTimeout(() => {
+      navigate('/admin/films');
+    }, 3000);
+    return (
+      <AdminModal>
+        {isSuccess && <p>Жанр успешно добавлен</p>}
+        {isError && <p>Произошла ошибка</p>}
+      </AdminModal>
+    );
+  }
   return (
     <div className={style.container}>
+      <LinkBack href={`/admin`} text="Назад" />
       <Formik
         initialValues={{
           nameGenre: '',

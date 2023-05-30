@@ -21,7 +21,7 @@ export interface IDirectors {
   name: string;
   originalName: string;
   photo: string;
-  FilmDirectors: TFilmRoles;
+  FilmDirectors?: TFilmRoles;
 }
 
 export interface IActors {
@@ -29,7 +29,7 @@ export interface IActors {
   name: string;
   originalName: string;
   photo: string;
-  FilmActors: TFilmRoles;
+  FilmActors?: TFilmRoles;
 }
 
 export interface IWriters {
@@ -37,7 +37,7 @@ export interface IWriters {
   name: string;
   originalName: string;
   photo: string;
-  FilmWriters: TFilmRoles;
+  FilmWriters?: TFilmRoles;
 }
 
 export interface IProducers {
@@ -45,7 +45,7 @@ export interface IProducers {
   name: string;
   originalName: string;
   photo: string;
-  FilmProducers: TFilmRoles;
+  FilmProducers?: TFilmRoles;
 }
 
 export interface ICinematography {
@@ -53,7 +53,7 @@ export interface ICinematography {
   name: string;
   originalName: string;
   photo: string;
-  FilmCinematography: TFilmRoles;
+  FilmCinematography?: TFilmRoles;
 }
 
 export interface IMusicians {
@@ -61,7 +61,7 @@ export interface IMusicians {
   name: string;
   originalName: string;
   photo: string;
-  FilmMusicians: TFilmRoles;
+  FilmMusicians?: TFilmRoles;
 }
 
 export interface IEditors {
@@ -84,7 +84,7 @@ export interface IGenres {
   id: number;
   name: string;
   englishName: string;
-  FilmGenres: TFilmGenres;
+  FilmGenres?: TFilmGenres;
 }
 
 type TFilmAwards = {
@@ -98,14 +98,14 @@ interface IAwards {
   id: number;
   name: string;
   year: number;
-  FilmAwards: TFilmAwards;
+  FilmAwards?: TFilmAwards;
 }
 
 export interface ICountries {
   id: number;
   name: string;
   englishName: string;
-  FilmCountries: TFilmCountries;
+  FilmCountries?: TFilmCountries;
 }
 
 export interface IFilm {
@@ -115,19 +115,19 @@ export interface IFilm {
   poster: string;
   trailer: string;
   mpaaRating: string;
-  rating: number;
+  rating: string;
   ratingsNumber: number;
   year: number;
   duration: number;
   description: string;
-  directors: Array<IDirectors>;
-  actors: Array<IActors>;
-  writers: Array<IWriters>;
-  producers: Array<IProducers>;
-  cinematography: Array<ICinematography>;
-  musicians: Array<IMusicians>;
-  designers: Array<IDesigners>;
-  editors: Array<IEditors>;
+  directors: Array<TRoles>;
+  actors: Array<TRoles>;
+  writers: Array<TRoles>;
+  producers: Array<TRoles>;
+  cinematography: Array<TRoles>;
+  musicians: Array<TRoles>;
+  designers: Array<TRoles>;
+  editors: Array<TRoles>;
   genres: Array<IGenres>;
   awards: Array<IAwards>;
   countries: Array<ICountries>;
@@ -142,7 +142,7 @@ export interface IFilmsList {
   poster: string;
   trailer: string;
   mpaaRating: string;
-  rating: number;
+  rating: string;
   ratingsNumber: number;
   year: number;
   duration: number;

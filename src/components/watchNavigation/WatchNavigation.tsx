@@ -17,7 +17,7 @@ const WatchNavigation: React.FC<TWatchNavigationProps> = ({
     const navigationItems = [
       {
         title: 'Создатели',
-        linkAdd: `person`,
+        linkAdd: `persons`,
         count: null,
       },
       {

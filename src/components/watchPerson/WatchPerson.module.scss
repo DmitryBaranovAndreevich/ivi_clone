@@ -21,6 +21,10 @@
     width: calc(100%/4);
     padding-left: 12px;
     padding-right: 12px;
+
+    @media (max-width: $tablets) {
+        width: calc(100%/3);
+      }
 }
 
 .person {
