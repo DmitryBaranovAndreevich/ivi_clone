@@ -80,7 +80,7 @@ exports[`Тестим страницу авторизации Страница a
       />
     </div>
     <button
-      className="undefined "
+      className="undefined undefined "
       onClick={[Function]}
       type="submit"
     >
