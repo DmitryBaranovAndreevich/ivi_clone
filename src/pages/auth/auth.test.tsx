@@ -32,6 +32,7 @@ describe('Тестим страницу авторизации', () => {
         </MemoryRouter>
       </Provider>
     );
+    console.log(tree);
     expect(tree).toMatchSnapshot();
   });
   it('Страница authFinish рендерится без ошибок', () => {

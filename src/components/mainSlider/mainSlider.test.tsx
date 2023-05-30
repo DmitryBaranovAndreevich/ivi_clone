@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { store } from '../../store/mainStore';
 import { Provider } from 'react-redux';
 import '@testing-library/jest-dom';
@@ -19,7 +19,13 @@ describe('Тестим компонент слайдера большого ра
   });
 
   it('Тест слайдера', async () => {
-    const tree = renderer.create(<BrowserRouter><Provider store={store}><MainSlider items={[]} /></Provider></BrowserRouter>);
+    const tree = renderer.create(
+      <BrowserRouter>
+        <Provider store={store}>
+          <MainSlider items={[]} />
+        </Provider>
+      </BrowserRouter>
+    );
     expect(tree).toMatchSnapshot();
-  })
-})
+  });
+});

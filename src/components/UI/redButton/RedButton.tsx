@@ -21,7 +21,7 @@ const RedButton: React.FC<TRedButtonProps> = ({
 }) => {
   return (
     <button
-      className={ `${addingClass} ${isLoad ? style.btn_loader_active : ''}`}
+      className={`${addingClass} ${isLoad ? style.btn_loader_active : ''}`}
       onClick={onClick}
       type={type}
       disabled={isDisabled}

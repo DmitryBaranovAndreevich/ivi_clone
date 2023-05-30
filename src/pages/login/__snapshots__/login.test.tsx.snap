@@ -6,14 +6,15 @@ exports[`Тестим страницу входа Страница loginEmail р
     <p>
       login.enter
     </p>
-    <a
-      href="/"
+    <button
+      className="undefined undefined"
       onClick={[Function]}
     >
-      <p>
-        X
-      </p>
-    </a>
+      <img
+        alt="cross"
+        src={{}}
+      />
+    </button>
   </div>
   <a
     href="/auth/email"
@@ -73,14 +74,15 @@ exports[`Тестим страницу входа Страница loginFinish �
     <p>
       login.greeting
     </p>
-    <a
-      href="/"
+    <button
+      className="undefined undefined"
       onClick={[Function]}
     >
-      <p>
-        X
-      </p>
-    </a>
+      <img
+        alt="cross"
+        src={{}}
+      />
+    </button>
   </div>
   <a
     href="/auth/email"
