@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тестим страницу входа Страница loginEmail рендерится без ошибок 1`] = `
+<div>
+  <div>
+    <p>
+      login.enter
+    </p>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <p>
+        X
+      </p>
+    </a>
+  </div>
+  <a
+    href="/auth/email"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <p>
+      login.register
+    </p>
+  </a>
+  <div
+    style={
+      {
+        "--size": "10%",
+      }
+    }
+  />
+  <form>
+    <p
+      style={{}}
+    >
+      <span>
+        login.enter1
+      </span>
+       
+      login.use
+    </p>
+    <div>
+      <span>
+        login.placeholder
+      </span>
+      <input
+        name="email"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="undefined "
+      onClick={[Function]}
+      type="submit"
+    >
+      login.continue
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Тестим страницу входа Страница loginFinish рендерится без ошибок 1`] = `
+<div>
+  <div>
+    <p>
+      login.greeting
+    </p>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <p>
+        X
+      </p>
+    </a>
+  </div>
+  <a
+    href="/auth/email"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <p>
+      login.register
+    </p>
+  </a>
+  <div
+    style={
+      {
+        "--size": "100%",
+      }
+    }
+  />
+  <p
+    style={{}}
+  >
+    login.enter1
+  </p>
+  <div
+    className="undefined"
+  >
+    <p
+      style={
+        {
+          "borderRadius": "10px 10px 0 10px",
+        }
+      }
+    />
+  </div>
+  <p
+    style={{}}
+  >
+    login.passEnt
+  </p>
+  <div
+    className="undefined undefined undefined"
+  >
+    <p
+      style={
+        {
+          "borderRadius": "10px 10px 0 10px",
+        }
+      }
+    />
+  </div>
+  <div
+    className="undefined undefined undefined"
+  >
+    <p
+      style={
+        {
+          "backgroundColor": "lightgreen",
+          "color": "black",
+        }
+      }
+    >
+      login.finish
+    </p>
+  </div>
+</div>
+`;

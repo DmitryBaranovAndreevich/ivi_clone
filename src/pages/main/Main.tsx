@@ -5,7 +5,6 @@ import MainPageSlider from '../../components/mainPageSlider/MainPageSlider';
 import { appApi } from '../../store/api/appApi';
 import Spinner from '../../components/UI/spinner/Spinner';
 import { IFilm } from '../../type/TFilm';
-import InfiniteSlider from '../../components/infiniteSlider/InfiniteSlider';
 import { useTranslation } from 'react-i18next';
 
 interface Error {

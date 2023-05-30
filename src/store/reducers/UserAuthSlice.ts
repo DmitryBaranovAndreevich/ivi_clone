@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { authUser } from './ActionCreators';
 
 export interface IInitialState {
+  id?: string;
   email: string;
   password: string;
   first_name: string;
@@ -11,6 +12,11 @@ export interface IInitialState {
   country: string;
   phone: string;
   isLoading: boolean;
+  roles?: string[];
+}
+
+export interface IUser extends IInitialState {
+  id: string;
 }
 
 const initialState: IInitialState = {
@@ -23,6 +29,7 @@ const initialState: IInitialState = {
   phone: '',
   isLoading: false,
   error: '',
+  roles: [],
 };
 
 export const userAuthSlice = createSlice({
@@ -47,6 +54,17 @@ export const userAuthSlice = createSlice({
       state.age = age;
       state.country = country;
       state.phone = phone;
+    },
+    setUser(state, action: PayloadAction<IUser>) {
+      const { id, email, first_name, second_name, age, country, phone, roles } = action.payload;
+      state.id = id;
+      state.email = email;
+      state.first_name = first_name;
+      state.second_name = second_name;
+      state.age = age;
+      state.country = country;
+      state.phone = phone;
+      state.roles = roles;
     },
   },
   extraReducers: (builder) => {

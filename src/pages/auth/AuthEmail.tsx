@@ -4,7 +4,6 @@ import LoginHeader from '../../components/login/LoginHeader/LoginHeader';
 import LoginLayout from '../../components/login/LoginLayout/LoginLayout';
 import LoginMessage from '../../components/login/LoginMessage/LoginMessage';
 import Input from '../../components/UI/Input/Input';
-import RedButton from '../../components/UI/redButton/RedButton';
 import useForm from '../../hooks/useForm';
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +12,7 @@ import * as Yup from 'yup';
 import { userAuthSlice } from '../../store/reducers/UserAuthSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { useTranslation } from 'react-i18next';
+import RedButton from '../../components/UI/redButton/RedButton';
 
 const AuthEmail = () => {
   const { t } = useTranslation();

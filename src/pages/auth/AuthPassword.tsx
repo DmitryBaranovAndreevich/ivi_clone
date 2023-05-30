@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import * as Yup from 'yup';
 import { FormEvent, useState } from 'react';
 import { authUser } from '../../store/reducers/ActionCreators';
-import { userAuthSlice } from '../../store/reducers/UserAuthSlice';
+import { IUser, userAuthSlice } from '../../store/reducers/UserAuthSlice';
 import ErrorMessage from '../../components/login/ErrorMessage/ErrorMessage';
 import { loginUser } from '../../store/reducers/ActionCreators';
 import { setCookie } from '../../service/setCookie';
@@ -28,7 +28,7 @@ const AuthPassword = () => {
     error: errMes,
   } = useAppSelector((state) => state.userAuthReduser);
   const [error, setError] = useState(errMes);
-  const { setPassAgeContryPhone } = userAuthSlice.actions;
+  const { setPassAgeContryPhone, setUser } = userAuthSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { value, handleChange } = useForm({ password: '', phone: '', age: '', country: '' });
@@ -54,7 +54,8 @@ const AuthPassword = () => {
         return dispatch(authUser({ ...res, email, first_name, second_name }));
       })
       .then((res) => {
-        if (typeof res.payload !== 'string') {
+        if (res.payload !== 'string') {
+          dispatch(setUser(res.payload as IUser));
           return dispatch(loginUser({ email, password: value.password }));
         }
         return Promise.reject(res.payload as string);

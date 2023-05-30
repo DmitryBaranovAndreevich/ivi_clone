@@ -1,6 +1,5 @@
 
 import 'whatwg-fetch';
-import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from './Main';
 import { Provider } from 'react-redux';
@@ -31,17 +30,6 @@ describe('Тестим главную страницу', () => {
         <Main />
       </Provider>
     );
-
-    expect(tree).toMatchInlineSnapshot(`
-    <div>
-      <div
-        className="{spinnerStyle.spinner} undefined"
-      >
-        <i
-          className="undefined undefined"
-        />
-      </div>
-    </div>
-  `);
+    expect(tree).toMatchSnapshot();
   });
 })

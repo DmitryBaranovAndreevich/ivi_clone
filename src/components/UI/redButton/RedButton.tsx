@@ -21,18 +21,17 @@ const RedButton: React.FC<TRedButtonProps> = ({
 }) => {
   return (
     <button
-      className={style.btn + ' ' + addingClass}
+      className={ `${addingClass} ${isLoad ? style.btn_loader_active : ''}`}
       onClick={onClick}
       type={type}
       disabled={isDisabled}
     >
-      {isLoad ? (
+      {isLoad && (
         <div className={style.spinner}>
           <Spinner size={'small'} />
         </div>
-      ) : (
-        text
       )}
+      {text}
     </button>
   );
 };
