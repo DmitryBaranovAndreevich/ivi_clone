@@ -5,7 +5,9 @@
 - https://github.com/ValeriyaLukovkina
 - https://github.com/DmitryBaranovAndreevich
 
-Для запуска проекта выполнить команду: npm run start
+Для запуска проекта выполнить команды: 
+- npm i
+- npm run start
 
 
 Для запуска сервера необходимо скачать репозиторий: https://github.com/GoToChurch/ivi и выполнить инструкции по запуску проекта
